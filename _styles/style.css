@@ -1226,7 +1226,7 @@ main {
   width: 100%;
   min-height: 100%;
   padding: 0;
-  background-color: #eee;
+  background-color: #fff;
   color: #333;
   position: relative;
   -webkit-flex: 1 0 auto;
@@ -3886,7 +3886,7 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__button {
   z-index: 1;
   border-radius: 0;
   border: 0;
-  background-color: #eee;
+  background-color: #fff;
   color: #333;
   height: 1.5em;
   line-height: 1.5em;
@@ -4020,7 +4020,7 @@ body {
   margin-right: auto;
   margin-left: auto;
   max-width: 50em;
-  background-color: #eee;
+  background-color: #fff;
   color: #333;
 }
 
@@ -4638,6 +4638,24 @@ _:-webkit-any-link, :root .c-card.c-card {
 _:-ms-lang(x), .c-card.c-card {
   margin-right: -2px\9;
   margin-left: -2px\9;
+}
+
+.c-card--unpublished {
+  opacity: 0.5;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+}
+
+.c-card--unpublished::after {
+  content: "Unpublished";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 3px;
+  font-size: 0.75em;
+  color: #fff;
+  background-color: #000;
 }
 
 /*@include card-theme("card", (

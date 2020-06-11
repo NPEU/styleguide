@@ -505,3 +505,22 @@ $theme-only: false !default;
 
     }
 }
+
+
+.#{$card-namespace}card--unpublished {
+    opacity: 0.5;
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+    
+    &::after {
+        content: "Unpublished";
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 3px;
+        font-size: 0.75em;
+        color: #fff;
+        background-color: #000;
+    }
+}

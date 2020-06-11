@@ -11,6 +11,9 @@
 
 $experimental_checkradios: true;
 
+$f__base-background-color: #fff;
+$f__main-background-color: #fff;
+
 $f__html-background-color: darken(map-get(map-get($themes, neutral), primary-color), 20%);
 
 $f__body-padding: 0;
