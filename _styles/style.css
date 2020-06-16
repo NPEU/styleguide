@@ -12572,14 +12572,23 @@ html.wireframe {
 }
 
 .c-user-content a[href$=".pdf"]:not([data-contains="thumbnail"])::before,
+.c-user-content a[href$=".pdf"] br + span::before,
 .c-user-content a[href$=".doc"]:not([data-contains="thumbnail"])::before,
+.c-user-content a[href$=".doc"] br + span::before,
 .c-user-content a[href$=".docx"]:not([data-contains="thumbnail"])::before,
+.c-user-content a[href$=".docx"] br + span::before,
 .c-user-content a[href$=".ppt"]:not([data-contains="thumbnail"])::before,
+.c-user-content a[href$=".ppt"] br + span::before,
 .c-user-content a[href$=".pptx"]:not([data-contains="thumbnail"])::before,
+.c-user-content a[href$=".pptx"] br + span::before,
 .c-user-content a[href$=".ppsx"]:not([data-contains="thumbnail"])::before,
+.c-user-content a[href$=".ppsx"] br + span::before,
 .c-user-content a[href$=".xls"]:not([data-contains="thumbnail"])::before,
+.c-user-content a[href$=".xls"] br + span::before,
 .c-user-content a[href$=".xlsx"]:not([data-contains="thumbnail"])::before,
-.c-user-content a[href$=".zip"]:not([data-contains="thumbnail"])::before {
+.c-user-content a[href$=".xlsx"] br + span::before,
+.c-user-content a[href$=".zip"]:not([data-contains="thumbnail"])::before,
+.c-user-content a[href$=".zip"] br + span::before {
   content: "[FILE] ";
   position: relative;
   display: inline-block;

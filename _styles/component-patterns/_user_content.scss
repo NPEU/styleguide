@@ -15,7 +15,7 @@ $uc-breakpoint: 35em !default;
 
 
 
-// We don't need this if we're only themeing the pattern:
+// We don't need this if we're only theming the pattern:
 @if $theme-only == false {
     .#{$user-content-namespace}user-content {
 
@@ -490,15 +490,26 @@ $uc-breakpoint: 35em !default;
         }
 
         // Links
+        // (So normal links should have the [FILE] marker, but not links that contain thumbnails,
+        // however, we apply it to a span after a break to follow the proper thumbnail pattern)
         a[href$=".pdf"]:not([data-contains="thumbnail"])::before,
+        a[href$=".pdf"] br + span::before,
         a[href$=".doc"]:not([data-contains="thumbnail"])::before,
+        a[href$=".doc"] br + span::before,
         a[href$=".docx"]:not([data-contains="thumbnail"])::before,
+        a[href$=".docx"] br + span::before,
         a[href$=".ppt"]:not([data-contains="thumbnail"])::before,
+        a[href$=".ppt"] br + span::before,
         a[href$=".pptx"]:not([data-contains="thumbnail"])::before,
+        a[href$=".pptx"] br + span::before,
         a[href$=".ppsx"]:not([data-contains="thumbnail"])::before,
+        a[href$=".ppsx"] br + span::before,
         a[href$=".xls"]:not([data-contains="thumbnail"])::before,
+        a[href$=".xls"] br + span::before,
         a[href$=".xlsx"]:not([data-contains="thumbnail"])::before,
-        a[href$=".zip"]:not([data-contains="thumbnail"])::before {
+        a[href$=".xlsx"] br + span::before,
+        a[href$=".zip"]:not([data-contains="thumbnail"])::before,
+        a[href$=".zip"] br + span::before {
             content: "[FILE] ";
             position: relative;
             display: inline-block;
