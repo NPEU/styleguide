@@ -6717,6 +6717,225 @@ _:-ms-lang(x), .l-col-to-row__item  {
 
 .l-distribute-wrap > .l-distribute, .c-user-content [data-display-as~="blocks"] > .l-distribute, .c-user-content [data-display-as~="blocks"] > * {
   -ms-flex-preferred-size: 100%;
+}
+
+.l-distribute, .c-user-content [data-display-as~="blocks"] > * {
+  /*&.l-distribute--limit-10 > * {        //-webkit-//flex-basis: 10em;                //flex-basis: 7.5em;                 max-width: 10em;    }*/
+  /*    &.l-distribute--limit-15 > *  {        //-webkit-//flex-basis: 15em;                //flex-basis: 11.25em;                 max-width: 15em;    }    &.l-distribute--limit-20 > *  {        //-webkit-//flex-basis: 20em;                //flex-basis: 15em;                 max-width: 20em;    }    &.l-distribute--limit-25 > *  {        //-webkit-//flex-basis: 25em;                //flex-basis: 18.75em;                 max-width: 25em;    }    &.l-distribute--limit-30 > *  {        //-webkit-//flex-basis: 30em;                //flex-basis: 22.5em;                 max-width: 30em;    }    &.l-distribute--limit-35 > *  {        //-webkit-//flex-basis: 35em;                //flex-basis: 26.25em;                 max-width: 35em;    }    &.l-distribute--limit-40 > *  {        //-webkit-//flex-basis: 40em;                //flex-basis: 30em;                 max-width: 40em;    }    */
+}
+
+.l-distribute.l-distribute, .c-user-content [data-display-as~="blocks"] > * {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  list-style-type: none;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  /*-webkit-align-items: flex-start;             -ms-flex-align: start;                align-items: flex-start;*/
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.l-distribute > *, .c-user-content [data-display-as~="blocks"] > * > * {
+  display: inline-block;
+  /* [1] */
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  /*-webkit-flex: 0 1 auto;            -ms-flex: 0 1 auto;                flex: 0 1 auto;*/
+  margin: 0;
+  padding: 0;
+  min-width: 15em;
+}
+
+.l-distribute.l-distribute--start, .c-user-content [data-display-as~="blocks"] > .l-distribute--start {
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.l-distribute.l-distribute--end, .c-user-content [data-display-as~="blocks"] > .l-distribute--end {
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.l-distribute.l-distribute--gutter--small, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small,
+.l-distribute.l-distribute--gutter--small > *,
+.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > * {
+  padding: 0.5rem;
+}
+
+.l-distribute.l-distribute--gutter, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter,
+.l-distribute.l-distribute--gutter > *,
+.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter > *, .l-distribute.l-distribute--gutter--medium, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--medium,
+.l-distribute.l-distribute--gutter--medium > *,
+.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--medium > * {
+  padding: 1rem;
+}
+
+.l-distribute.l-distribute--gutter--large, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--large,
+.l-distribute.l-distribute--gutter--large > *,
+.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--large > * {
+  padding: 2rem;
+}
+
+.l-distribute--flush-edge-gutters {
+  overflow: hidden;
+  -ms-flex-preferred-size: 100%;
+}
+
+.l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter--small, .l-distribute--flush-edge-gutters .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small, .c-user-content .l-distribute--flush-edge-gutters [data-display-as~="blocks"] > .l-distribute--gutter--small {
+  margin: -1rem;
+}
+
+.l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter, .l-distribute--flush-edge-gutters .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter, .c-user-content .l-distribute--flush-edge-gutters [data-display-as~="blocks"] > .l-distribute--gutter,
+.l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter--medium,
+.l-distribute--flush-edge-gutters .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--medium,
+.c-user-content .l-distribute--flush-edge-gutters [data-display-as~="blocks"] > .l-distribute--gutter--medium {
+  margin: -2rem;
+}
+
+.l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter--large, .l-distribute--flush-edge-gutters .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--large, .c-user-content .l-distribute--flush-edge-gutters [data-display-as~="blocks"] > .l-distribute--gutter--large {
+  margin: -4rem;
+}
+
+.l-distribute.l-distribute--gutter--small, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small {
+  /*& > :nth-last-child(n+5) + * + *,        & > :nth-last-child(n+5) + * + * + *,        & > :nth-last-child(n+5) + * + * + * + * {*/
+}
+
+
+.l-distribute.l-distribute--gutter--small > *,
+.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > * {
+  flex-basis: 100%;
+  outline: 2px solid pink;
+}
+
+.l-distribute.l-distribute--gutter--small > :nth-last-child(n+2), .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+2),
+.l-distribute.l-distribute--gutter--small > :nth-last-child(n+2) ~ *,
+.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+2) ~ * {
+  flex-basis: 50%;
+  outline: 2px solid yellow;
+}
+
+.l-distribute.l-distribute--gutter--small > :nth-last-child(n+3), .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+3),
+.l-distribute.l-distribute--gutter--small > :nth-last-child(n+3) ~ *,
+.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+3) ~ * {
+  flex-basis: 33%;
+  outline: 2px solid red;
+}
+
+.l-distribute.l-distribute--gutter--small > :nth-last-child(n+4), .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+4),
+.l-distribute.l-distribute--gutter--small > :nth-last-child(n+4) ~ *,
+.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+4) ~ * {
+  flex-basis: calc((60em + 1rem - 100%) * 999);
+  outline: 2px solid green;
+}
+
+.l-distribute.l-distribute--gutter--small > :nth-last-child(n+5), .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+5),
+.l-distribute.l-distribute--gutter--small > :nth-last-child(n+5) ~ *,
+.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+5) ~ * {
+  flex-basis: 50%;
+  outline: 2px solid blue;
+}
+
+.l-distribute.l-distribute--gutter--small > :nth-last-child(n+5) ~ :nth-last-child(n+3) ~ *, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+5) ~ :nth-last-child(n+3) ~ * {
+  flex-basis: 33%;
+}
+
+.l-distribute.l-distribute--gutter--small > :nth-last-child(n+6), .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+6),
+.l-distribute.l-distribute--gutter--small > :nth-last-child(n+6) ~ *,
+.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+6) ~ * {
+  outline: 2px solid red;
+}
+
+.l-distribute.l-distribute--gutter--small > :nth-last-child(n+7), .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+7),
+.l-distribute.l-distribute--gutter--small > :nth-last-child(n+7) ~ *,
+.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+7) ~ * {
+  outline: 2px solid green;
+}
+
+.l-distribute.l-distribute--gutter--small > :nth-last-child(n+8), .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+8),
+.l-distribute.l-distribute--gutter--small > :nth-last-child(n+8) ~ *,
+.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+8) ~ * {
+  outline: 2px solid blue;
+}
+
+.l-distribute.l-distribute--gutter--small > :nth-last-child(n+9), .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+9),
+.l-distribute.l-distribute--gutter--small > :nth-last-child(n+9) ~ *,
+.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+9) ~ * {
+  outline: 2px solid red;
+}
+
+.l-distribute.l-distribute--gutter--small > :nth-last-child(n+10), .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+10),
+.l-distribute.l-distribute--gutter--small > :nth-last-child(n+10) ~ *,
+.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+10) ~ * {
+  outline: 2px solid green;
+}
+
+/* IE10-11 */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .l-distribute, .c-user-content [data-display-as~="blocks"] > * {
+    /*&.l-distribute--limit-10 > * {            width: 10em;            -ms-flex-preferred-size: auto;            //flex-basis: auto;        }*/
+  }
+  .l-distribute.l-distribute--limit-15 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-15 > * {
+    width: 15em;
+    -ms-flex-preferred-size: auto;
+  }
+  .l-distribute.l-distribute--limit-20 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-20 > * {
+    width: 20em;
+    -ms-flex-preferred-size: auto;
+  }
+  .l-distribute.l-distribute--limit-25 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-25 > * {
+    width: 25em;
+    -ms-flex-preferred-size: auto;
+  }
+  .l-distribute.l-distribute--limit-30 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-30 > * {
+    width: 30em;
+    -ms-flex-preferred-size: auto;
+  }
+  .l-distribute.l-distribute--limit-35 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-35 > * {
+    width: 35em;
+    -ms-flex-preferred-size: auto;
+  }
+  .l-distribute.l-distribute--limit-40 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-40 > * {
+    width: 40em;
+    -ms-flex-preferred-size: auto;
+  }
+}
+
+_:-ms-lang(x), .l-distribute.l-distribute, .c-user-content [data-display-as~="blocks"] > * {
+  max-width: 100%\9;
+}
+
+/*    Older webkit browsers also need special treatment.    1. Chrome 39-50, Opera 26-37, Safari/iOS 9-10. Using prefixed property as flex-direction       breaks IE11 otherwise, so may as well use for all.*/
+_:-webkit-any-link, :root .l-distribute.l-distribute > *, :root .c-user-content [data-display-as~="blocks"] > * > *, .c-user-content :root [data-display-as~="blocks"] > * > * {
+  display: flex;
+  /* [1] */
+  flex-direction: column;
+}
+
+/*    Distribute items inside a container.*/
+/*    IE11 needs this wrapper to behave properly.    If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.*/
+.l-distribute-wrap, .c-user-content [data-display-as~="blocks"] {
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.l-distribute-wrap > .l-distribute, .c-user-content [data-display-as~="blocks"] > .l-distribute, .c-user-content [data-display-as~="blocks"] > * {
+  -ms-flex-preferred-size: 100%;
   flex-basis: 100%;
 }
 
