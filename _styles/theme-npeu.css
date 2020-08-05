@@ -1,4 +1,9 @@
 @charset "UTF-8";
+/*
+    NeoCLEAR Theme
+    Note this theme file needs to be loaded *in addition* to the base 'style' file.
+*/
+/* --| START THEME |----------------------------------------------------------------------------- */
 /* --| SETTINGS |-------------------------------------------------------------------------------- */
 /*
 
@@ -6717,225 +6722,6 @@ _:-ms-lang(x), .l-col-to-row__item  {
 
 .l-distribute-wrap > .l-distribute, .c-user-content [data-display-as~="blocks"] > .l-distribute, .c-user-content [data-display-as~="blocks"] > * {
   -ms-flex-preferred-size: 100%;
-}
-
-.l-distribute, .c-user-content [data-display-as~="blocks"] > * {
-  /*&.l-distribute--limit-10 > * {        //-webkit-//flex-basis: 10em;                //flex-basis: 7.5em;                 max-width: 10em;    }*/
-  /*    &.l-distribute--limit-15 > *  {        //-webkit-//flex-basis: 15em;                //flex-basis: 11.25em;                 max-width: 15em;    }    &.l-distribute--limit-20 > *  {        //-webkit-//flex-basis: 20em;                //flex-basis: 15em;                 max-width: 20em;    }    &.l-distribute--limit-25 > *  {        //-webkit-//flex-basis: 25em;                //flex-basis: 18.75em;                 max-width: 25em;    }    &.l-distribute--limit-30 > *  {        //-webkit-//flex-basis: 30em;                //flex-basis: 22.5em;                 max-width: 30em;    }    &.l-distribute--limit-35 > *  {        //-webkit-//flex-basis: 35em;                //flex-basis: 26.25em;                 max-width: 35em;    }    &.l-distribute--limit-40 > *  {        //-webkit-//flex-basis: 40em;                //flex-basis: 30em;                 max-width: 40em;    }    */
-}
-
-.l-distribute.l-distribute, .c-user-content [data-display-as~="blocks"] > * {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  list-style-type: none;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-justify-content: space-around;
-  -ms-flex-pack: distribute;
-  justify-content: space-around;
-  /*-webkit-align-items: flex-start;             -ms-flex-align: start;                align-items: flex-start;*/
-  -webkit-align-items: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-}
-
-.l-distribute > *, .c-user-content [data-display-as~="blocks"] > * > * {
-  display: inline-block;
-  /* [1] */
-  -webkit-flex: 1 1 auto;
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
-  /*-webkit-flex: 0 1 auto;            -ms-flex: 0 1 auto;                flex: 0 1 auto;*/
-  margin: 0;
-  padding: 0;
-  min-width: 15em;
-}
-
-.l-distribute.l-distribute--start, .c-user-content [data-display-as~="blocks"] > .l-distribute--start {
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-}
-
-.l-distribute.l-distribute--end, .c-user-content [data-display-as~="blocks"] > .l-distribute--end {
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-}
-
-.l-distribute.l-distribute--gutter--small, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small,
-.l-distribute.l-distribute--gutter--small > *,
-.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > * {
-  padding: 0.5rem;
-}
-
-.l-distribute.l-distribute--gutter, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter,
-.l-distribute.l-distribute--gutter > *,
-.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter > *, .l-distribute.l-distribute--gutter--medium, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--medium,
-.l-distribute.l-distribute--gutter--medium > *,
-.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--medium > * {
-  padding: 1rem;
-}
-
-.l-distribute.l-distribute--gutter--large, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--large,
-.l-distribute.l-distribute--gutter--large > *,
-.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--large > * {
-  padding: 2rem;
-}
-
-.l-distribute--flush-edge-gutters {
-  overflow: hidden;
-  -ms-flex-preferred-size: 100%;
-}
-
-.l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter--small, .l-distribute--flush-edge-gutters .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small, .c-user-content .l-distribute--flush-edge-gutters [data-display-as~="blocks"] > .l-distribute--gutter--small {
-  margin: -1rem;
-}
-
-.l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter, .l-distribute--flush-edge-gutters .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter, .c-user-content .l-distribute--flush-edge-gutters [data-display-as~="blocks"] > .l-distribute--gutter,
-.l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter--medium,
-.l-distribute--flush-edge-gutters .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--medium,
-.c-user-content .l-distribute--flush-edge-gutters [data-display-as~="blocks"] > .l-distribute--gutter--medium {
-  margin: -2rem;
-}
-
-.l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter--large, .l-distribute--flush-edge-gutters .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--large, .c-user-content .l-distribute--flush-edge-gutters [data-display-as~="blocks"] > .l-distribute--gutter--large {
-  margin: -4rem;
-}
-
-.l-distribute.l-distribute--gutter--small, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small {
-  /*& > :nth-last-child(n+5) + * + *,        & > :nth-last-child(n+5) + * + * + *,        & > :nth-last-child(n+5) + * + * + * + * {*/
-}
-
-
-.l-distribute.l-distribute--gutter--small > *,
-.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > * {
-  flex-basis: 100%;
-  outline: 2px solid pink;
-}
-
-.l-distribute.l-distribute--gutter--small > :nth-last-child(n+2), .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+2),
-.l-distribute.l-distribute--gutter--small > :nth-last-child(n+2) ~ *,
-.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+2) ~ * {
-  flex-basis: 50%;
-  outline: 2px solid yellow;
-}
-
-.l-distribute.l-distribute--gutter--small > :nth-last-child(n+3), .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+3),
-.l-distribute.l-distribute--gutter--small > :nth-last-child(n+3) ~ *,
-.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+3) ~ * {
-  flex-basis: 33%;
-  outline: 2px solid red;
-}
-
-.l-distribute.l-distribute--gutter--small > :nth-last-child(n+4), .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+4),
-.l-distribute.l-distribute--gutter--small > :nth-last-child(n+4) ~ *,
-.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+4) ~ * {
-  flex-basis: calc((60em + 1rem - 100%) * 999);
-  outline: 2px solid green;
-}
-
-.l-distribute.l-distribute--gutter--small > :nth-last-child(n+5), .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+5),
-.l-distribute.l-distribute--gutter--small > :nth-last-child(n+5) ~ *,
-.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+5) ~ * {
-  flex-basis: 50%;
-  outline: 2px solid blue;
-}
-
-.l-distribute.l-distribute--gutter--small > :nth-last-child(n+5) ~ :nth-last-child(n+3) ~ *, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+5) ~ :nth-last-child(n+3) ~ * {
-  flex-basis: 33%;
-}
-
-.l-distribute.l-distribute--gutter--small > :nth-last-child(n+6), .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+6),
-.l-distribute.l-distribute--gutter--small > :nth-last-child(n+6) ~ *,
-.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+6) ~ * {
-  outline: 2px solid red;
-}
-
-.l-distribute.l-distribute--gutter--small > :nth-last-child(n+7), .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+7),
-.l-distribute.l-distribute--gutter--small > :nth-last-child(n+7) ~ *,
-.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+7) ~ * {
-  outline: 2px solid green;
-}
-
-.l-distribute.l-distribute--gutter--small > :nth-last-child(n+8), .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+8),
-.l-distribute.l-distribute--gutter--small > :nth-last-child(n+8) ~ *,
-.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+8) ~ * {
-  outline: 2px solid blue;
-}
-
-.l-distribute.l-distribute--gutter--small > :nth-last-child(n+9), .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+9),
-.l-distribute.l-distribute--gutter--small > :nth-last-child(n+9) ~ *,
-.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+9) ~ * {
-  outline: 2px solid red;
-}
-
-.l-distribute.l-distribute--gutter--small > :nth-last-child(n+10), .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+10),
-.l-distribute.l-distribute--gutter--small > :nth-last-child(n+10) ~ *,
-.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > :nth-last-child(n+10) ~ * {
-  outline: 2px solid green;
-}
-
-/* IE10-11 */
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-  .l-distribute, .c-user-content [data-display-as~="blocks"] > * {
-    /*&.l-distribute--limit-10 > * {            width: 10em;            -ms-flex-preferred-size: auto;            //flex-basis: auto;        }*/
-  }
-  .l-distribute.l-distribute--limit-15 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-15 > * {
-    width: 15em;
-    -ms-flex-preferred-size: auto;
-  }
-  .l-distribute.l-distribute--limit-20 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-20 > * {
-    width: 20em;
-    -ms-flex-preferred-size: auto;
-  }
-  .l-distribute.l-distribute--limit-25 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-25 > * {
-    width: 25em;
-    -ms-flex-preferred-size: auto;
-  }
-  .l-distribute.l-distribute--limit-30 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-30 > * {
-    width: 30em;
-    -ms-flex-preferred-size: auto;
-  }
-  .l-distribute.l-distribute--limit-35 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-35 > * {
-    width: 35em;
-    -ms-flex-preferred-size: auto;
-  }
-  .l-distribute.l-distribute--limit-40 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-40 > * {
-    width: 40em;
-    -ms-flex-preferred-size: auto;
-  }
-}
-
-_:-ms-lang(x), .l-distribute.l-distribute, .c-user-content [data-display-as~="blocks"] > * {
-  max-width: 100%\9;
-}
-
-/*    Older webkit browsers also need special treatment.    1. Chrome 39-50, Opera 26-37, Safari/iOS 9-10. Using prefixed property as flex-direction       breaks IE11 otherwise, so may as well use for all.*/
-_:-webkit-any-link, :root .l-distribute.l-distribute > *, :root .c-user-content [data-display-as~="blocks"] > * > *, .c-user-content :root [data-display-as~="blocks"] > * > * {
-  display: flex;
-  /* [1] */
-  flex-direction: column;
-}
-
-/*    Distribute items inside a container.*/
-/*    IE11 needs this wrapper to behave properly.    If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.*/
-.l-distribute-wrap, .c-user-content [data-display-as~="blocks"] {
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-}
-
-.l-distribute-wrap > .l-distribute, .c-user-content [data-display-as~="blocks"] > .l-distribute, .c-user-content [data-display-as~="blocks"] > * {
-  -ms-flex-preferred-size: 100%;
   flex-basis: 100%;
 }
 
@@ -9356,6 +9142,499 @@ main :target {
 }
 
 /* ---------------------------------------------------------------------------------------------- */
+/* --| USER CONTENT |---------------------------------------------------------------------------- */
+/*
+    NOTE: data-width and data-position are currently unused.
+    I'm considering their use. An (abandoned) attempt at customising the CKEditor div plugin
+    would have required these.
+*/
+.c-user-content {
+  /*
+            Note this original method just assumed that images are square.
+            MaatHRI team page proves this is not the case, so the above, explicit portrait
+            declaration is needed.
+            It's still ok to assume square images in templates, though, where I know I'm just using
+            the avatars folder (where square is forced on upload).
+            So, it's really just user content that's the problem, so keep things as they are for
+            now.
+        */
+}
+
+.c-user-content [data-display-is~="width-one-quarter"] + [data-contains~="contact-details"],
+.c-user-content [data-width="one-quarter"] + [data-contains~="contact-details"] {
+  max-width: 100%;
+  width: calc((35em - 100%) * 1000);
+  min-width: calc(75% - 2.4rem);
+}
+
+.c-user-content [data-display-is~="width-one-third"] + [data-contains~="contact-details"],
+.c-user-content [data-width="one-third"] + [data-contains~="contact-details"] {
+  max-width: 100%;
+  width: calc((35em - 100%) * 1000);
+  min-width: calc(67% - 2.4rem);
+}
+
+.c-user-content [data-display-is~="width-one-half"] + [data-contains~="contact-details"],
+.c-user-content [data-width="one-half"] + [data-contains~="contact-details"] {
+  max-width: 100%;
+  width: calc((35em - 100%) * 1000);
+  min-width: calc(50% - 2.4rem);
+}
+
+.c-user-content [data-display-is~="width-two-thirds"] + [data-contains~="contact-details"],
+.c-user-content [data-width="two-thirds"] + [data-contains~="contact-details"] {
+  max-width: 100%;
+  width: calc((35em - 100%) * 1000);
+  min-width: calc(33% - 2.4rem);
+}
+
+.c-user-content [data-display-is*="width-"] + [data-contains~="contact-details"] + *,
+.c-user-content [data-width] + [data-contains~="contact-details"] + * {
+  clear: both;
+}
+
+.c-user-content [data-display-as~="box"],
+.c-user-content [data-display-as~="pale-box"],
+.c-user-content [data-display-as~="themed-box--background"],
+.c-user-content [data-display-as~="themed-box--border"],
+.c-user-content [data-display-as~="notice-box"] {
+  padding: 2.4rem;
+  margin-bottom: 2.4rem;
+  padding-bottom: 0 !important;
+  width: 100%;
+}
+
+.c-user-content [data-display-as~="box"]::after,
+.c-user-content [data-display-as~="pale-box"]::after,
+.c-user-content [data-display-as~="themed-box--background"]::after,
+.c-user-content [data-display-as~="themed-box--border"]::after,
+.c-user-content [data-display-as~="notice-box"]::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-top: calc(2.4rem - 1px);
+  clear: both;
+}
+
+.c-user-content [data-display-as~="box"]::before,
+.c-user-content [data-display-as~="pale-box"]::before,
+.c-user-content [data-display-as~="themed-box--background"]::before,
+.c-user-content [data-display-as~="themed-box--border"]::before,
+.c-user-content [data-display-as~="notice-box"]::before {
+  content: " ";
+  display: table;
+}
+
+.c-user-content [data-display-as~="box"], .c-user-content [data-display-as~="box"]::after,
+.c-user-content [data-display-as~="pale-box"],
+.c-user-content [data-display-as~="pale-box"]::after,
+.c-user-content [data-display-as~="themed-box--background"],
+.c-user-content [data-display-as~="themed-box--background"]::after,
+.c-user-content [data-display-as~="themed-box--border"],
+.c-user-content [data-display-as~="themed-box--border"]::after,
+.c-user-content [data-display-as~="notice-box"],
+.c-user-content [data-display-as~="notice-box"]::after {
+  clear: both;
+}
+
+.c-user-content [data-display-as~="box"] {
+  border: 1px solid #8e8279;
+}
+
+.c-user-content [data-display-as~="pale-box"] {
+  background-color: #f7f6f6;
+}
+
+.c-user-content [data-display-as~="themed-box--background"] {
+  background: currentColor;
+}
+
+.c-user-content [data-display-as~="themed-box--background"] a[href] {
+  color: #fff;
+}
+
+.c-user-content [data-display-as~="themed-box--background"] a[href]:hover,
+.c-user-content [data-display-as~="themed-box--background"] a[href]:active,
+.c-user-content [data-display-as~="themed-box--background"] a[href]:focus {
+  color: #fff;
+}
+
+.c-user-content [data-display-as~="themed-box--background"] a[href].c-cta {
+  border-color: #fff;
+  color: #fff;
+  background-color: transparent;
+}
+
+.c-user-content [data-display-as~="themed-box--background"] a[href].c-cta:hover,
+.c-user-content [data-display-as~="themed-box--background"] a[href].c-cta:active,
+.c-user-content [data-display-as~="themed-box--background"] a[href].c-cta:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.c-user-content [data-display-as~="themed-box--border"] {
+  border-color: currentColor;
+  border-style: solid;
+  border-width: 3px;
+}
+
+.c-user-content [data-display-as~="notice-box"] {
+  border: 6px solid #b9975b;
+  background: #faf8f4;
+}
+
+.c-user-content [data-display-as~="notice-box"] a[href].c-cta:hover,
+.c-user-content [data-display-as~="notice-box"] a[href].c-cta:active,
+.c-user-content [data-display-as~="notice-box"] a[href].c-cta:focus {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.c-user-content [data-display-as~="blocks"] > * > * {
+  -webkit-flex-basis: 15em;
+  flex-basis: 11.25em;
+  max-width: 15em;
+  align-self: stretch;
+}
+
+.c-user-content [data-display-as~="blocks"] > * > * > span {
+  display: flex;
+  flex-direction: column;
+}
+
+.c-user-content [data-display-as~="blocks"] > * > * > span > a {
+  flex: 0 0 auto;
+}
+
+.c-user-content [data-display-as~="blocks"] > * > * > span > a:first-child {
+  flex: 1 0 auto;
+}
+
+.c-user-content [data-display-is~="pulled-left"],
+.c-user-content [data-display-is~="pulled-right"],
+.c-user-content [data-display-is~="pulled-center"],
+.c-user-content [data-position] {
+  margin-bottom: 1.2rem;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  /*&::before,
+            &::after {
+                content: "";
+                display: block;
+                -webkit-flex: 0 0 auto;
+                    -ms-flex: 0 0 auto;
+                        flex: 0 0 auto;
+                //@include ff-width($sz-m, $uc-breakpoint, 100%);
+            }
+
+            // Because these pseudo elements are children, we need to calculate parent's parent:
+
+            &[data-display-is~="width-one-half"]::before,
+            &[data-display-is~="width-one-half"]::after {
+                @include ff-width($sz-m, ($uc-breakpoint / 2), 0);
+            }*/
+}
+
+.c-user-content [data-display-is~="pulled-left"],
+.c-user-content [data-position="left"] {
+  float: left;
+  clear: left;
+  margin-right: 2.4rem;
+}
+
+.c-user-content [data-display-is~="pulled-left"]::before,
+.c-user-content [data-position="left"]::before {
+  display: none;
+}
+
+.c-user-content [data-display-is~="pulled-left"] + ::before,
+.c-user-content [data-display-is~="pulled-left"] + ::after,
+.c-user-content [data-position="left"] + ::before,
+.c-user-content [data-position="left"] + ::after {
+  content: " ";
+  display: table;
+}
+
+.c-user-content [data-display-is~="pulled-left"] + ::after,
+.c-user-content [data-position="left"] + ::after {
+  clear: both;
+}
+
+.c-user-content [data-display-is~="pulled-right"],
+.c-user-content [data-position="right"] {
+  float: right;
+  clear: right;
+  margin-left: 2.4rem;
+}
+
+.c-user-content [data-display-is~="pulled-right"]::after,
+.c-user-content [data-position="right"]::after {
+  display: none;
+}
+
+.c-user-content [data-display-is~="pulled-right"] + ::before,
+.c-user-content [data-display-is~="pulled-right"] + ::after,
+.c-user-content [data-position="right"] + ::before,
+.c-user-content [data-position="right"] + ::after {
+  content: " ";
+  display: table;
+}
+
+.c-user-content [data-display-is~="pulled-right"] + ::after,
+.c-user-content [data-position="right"] + ::after {
+  clear: both;
+}
+
+.c-user-content [data-display-is~="pulled-center"],
+.c-user-content [data-position="center"] {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.c-user-content [data-display-is~="pulled-center"]::after,
+.c-user-content [data-position="center"]::after {
+  display: none;
+}
+
+.c-user-content [data-display-is~="width-one-quarter"],
+.c-user-content [data-width="one-quarter"] {
+  max-width: 100%;
+  width: calc((35em - 100%) * 1000);
+  min-width: 25%;
+}
+
+.c-user-content [data-display-is~="width-one-third"],
+.c-user-content [data-width="one-third"] {
+  max-width: 100%;
+  width: calc((35em - 100%) * 1000);
+  min-width: 33%;
+}
+
+.c-user-content [data-display-is~="width-one-half"],
+.c-user-content [data-width="one-half"] {
+  max-width: 100%;
+  width: calc((35em - 100%) * 1000);
+  min-width: 50%;
+}
+
+.c-user-content [data-display-is~="width-two-thirds"],
+.c-user-content [data-width="two-thirds"] {
+  max-width: 100%;
+  width: calc((35em - 100%) * 1000);
+  min-width: 67%;
+}
+
+.c-user-content [data-display-is~="width-one-whole"],
+.c-user-content [data-width="one-whole"] {
+  width: 100%;
+}
+
+.c-user-content [data-contains~="image"] {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  /* [1] */
+}
+
+.c-user-content [data-contains~="image"] svg {
+  max-width: 100%;
+}
+
+.c-user-content [data-contains~="image"] img {
+  /*
+                    1. This is to provide positioning context for the ::after pseudo-element.
+                    2. This is so a broken image is still 100%.
+                    3. Center in container.
+                    4. This prevents long-thin images appearing huge an narrow (100% width) sizes.
+                       However, it's a bit of a magic number, so may not work in all cases.
+                */
+  position: relative;
+  /* [1] */
+  display: block;
+  /* [2] */
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  max-height: 50vw;
+  /* [4] */
+  border-style: none;
+  margin: 0 auto;
+  /* [3] */
+}
+
+.c-user-content a[href][data-contains~="image"] {
+  border: 0;
+  padding: 0;
+}
+
+.c-user-content a[href][data-contains~="image"]:hover, .c-user-content a[href][data-contains~="image"]:active, .c-user-content a[href][data-contains~="image"]:focus {
+  border: 0;
+  box-shadow: 0 0 0 0.6rem #fff, 0 0 0 1.2rem rgba(0, 0, 0, 0.2);
+}
+
+.c-user-content a[href][rel=external][data-contains~="image"]::after {
+  position: absolute;
+  right: -1em;
+  top: -1em;
+  width: 1.25em;
+  height: 1.25em;
+  display: block;
+}
+
+.c-user-content [data-contains~="logo"] img {
+  max-height: 9rem;
+  background-color: transparent;
+}
+
+.c-user-content [data-contains~="logo-xsmall"] img {
+  max-height: 5.4rem;
+}
+
+.c-user-content [data-contains~="logo-small"] img {
+  max-height: 7.2rem;
+}
+
+.c-user-content [data-contains~="logo-medium"] img {
+  max-height: 9rem;
+}
+
+.c-user-content [data-contains~="logo-large"] img {
+  max-height: 10.8rem;
+}
+
+.c-user-content [data-contains~="logo-xlarge"] img {
+  max-height: 14.4rem;
+}
+
+.c-user-content [data-contains~="logo-xxlarge"] img {
+  max-height: 18rem;
+}
+
+.c-user-content [data-contains~="logo-xxxlarge"] img {
+  max-height: 21.6rem;
+}
+
+.c-user-content img {
+  background: #fff;
+}
+
+.c-user-content b > img,
+.c-user-content b > i > img {
+  border: 3px solid #a59c95 !important;
+}
+
+.c-user-content b > i > img {
+  padding: 1.2rem;
+}
+
+.c-user-content [data-contains~="portrait"] {
+  max-width: 16em;
+}
+
+.c-user-content [data-contains~="portrait"]::before {
+  content: "";
+  width: 1px;
+  margin-left: -1px;
+  float: left;
+  height: 0;
+  padding-top: 100%;
+}
+
+.c-user-content [data-contains~="portrait"]::after {
+  /* to clear float */
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.c-user-content [data-contains~="portrait"] img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: cover;
+}
+
+.c-user-content img[src*="/img/avatars/"],
+.c-user-content [data-contains~="portrait"] img {
+  display: block;
+  width: 100%;
+  max-width: 16em;
+  margin: 0 auto;
+  border-radius: 99999px;
+  overflow: hidden;
+}
+
+.c-user-content [data-display-as~="smallprint"] {
+  font-size: 0.875em;
+}
+
+.c-user-content [data-display-as~="strapline"] {
+  font-size: 1.125em;
+}
+
+.c-user-content figcaption {
+  text-align: center;
+  font-size: 0.875em;
+  margin-top: 1.2rem;
+}
+
+.c-user-content a[href$=".pdf"]:not([data-contains="thumbnail"])::before,
+.c-user-content a[href$=".pdf"] br + span::before,
+.c-user-content a[href$=".doc"]:not([data-contains="thumbnail"])::before,
+.c-user-content a[href$=".doc"] br + span::before,
+.c-user-content a[href$=".docx"]:not([data-contains="thumbnail"])::before,
+.c-user-content a[href$=".docx"] br + span::before,
+.c-user-content a[href$=".ppt"]:not([data-contains="thumbnail"])::before,
+.c-user-content a[href$=".ppt"] br + span::before,
+.c-user-content a[href$=".pptx"]:not([data-contains="thumbnail"])::before,
+.c-user-content a[href$=".pptx"] br + span::before,
+.c-user-content a[href$=".ppsx"]:not([data-contains="thumbnail"])::before,
+.c-user-content a[href$=".ppsx"] br + span::before,
+.c-user-content a[href$=".xls"]:not([data-contains="thumbnail"])::before,
+.c-user-content a[href$=".xls"] br + span::before,
+.c-user-content a[href$=".xlsx"]:not([data-contains="thumbnail"])::before,
+.c-user-content a[href$=".xlsx"] br + span::before,
+.c-user-content a[href$=".zip"]:not([data-contains="thumbnail"])::before,
+.c-user-content a[href$=".zip"] br + span::before {
+  content: "[FILE] ";
+  position: relative;
+  display: inline-block;
+  font-size: 0.75em;
+  vertical-align: middle;
+  line-height: 1;
+  opacity: .6;
+  margin-right: 0.5em;
+  margin-top: -0.3125em;
+}
+
+[data-contains="priority-content"] [data-display-as*="pale-box"],
+[data-contains="priority-content"] [data-display-as*="themed-box"] {
+  text-align: center;
+}
+
+[data-contains="priority-content"] [data-display-as*="pale-box"] h2,
+[data-contains="priority-content"] [data-display-as*="themed-box"] h2 {
+  font-size: 1.5em;
+  margin-bottom: 0;
+}
+
+[data-contains="priority-content"] [data-display-as*="pale-box"] h3,
+[data-contains="priority-content"] [data-display-as*="themed-box"] h3 {
+  font-size: 1.25em;
+  margin-bottom: 0;
+}
+
+[data-contains="priority-content"] [data-display-as*="pale-box"] p:only-child,
+[data-contains="priority-content"] [data-display-as*="themed-box"] p:only-child {
+  font-size: 1.25em;
+}
+
 /* --| THEMES |---------------------------------------------------------------------------------- */
 /*
 Note - this won't work until SASS supports dynamic calling of mixins. It's close, but hasn't been
@@ -10769,6 +11048,580 @@ input:not([type]):focus,
   color: #333;
 }
 
+.nav-bar {
+  background: -moz-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
+  background: -webkit-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
+  background: linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
+}
+
+.over-panel__contents {
+  background: -moz-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
+  background: -webkit-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
+  background: linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
+}
+
+.c-panel.c-panel--very-light {
+  color: #333;
+  background: white;
+}
+
+.c-panel.c-panel--very-light a[href] {
+  color: #333;
+}
+
+.c-panel.c-panel--very-light a[href]:hover,
+.c-panel.c-panel--very-light a[href]:active,
+.c-panel.c-panel--very-light a[href]:focus {
+  color: #333;
+}
+
+.c-panel.c-panel--very-light a[href].c-cta {
+  border-color: #333;
+  color: #333;
+  background-color: transparent;
+}
+
+.c-panel.c-panel--very-light a[href].c-cta:hover,
+.c-panel.c-panel--very-light a[href].c-cta:active,
+.c-panel.c-panel--very-light a[href].c-cta:focus {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.c-card--very-light .c-card__full-link.t-neutral,
+.c-card--very-light .c-card__full-link.t-neutral:hover {
+  background: #7b7068;
+}
+
+.c-card--very-light.t-neutral,
+.c-card--very-light.t-neutral .c-card__main {
+  background-color: #8e8279;
+}
+
+.c-card--very-light.t-neutral .c-card__main .c-card__title,
+.c-card--very-light.t-neutral .c-card__main .c-card__body,
+.c-card--very-light.t-neutral .c-card__main .c-card__footer {
+  color: #333;
+  background-color: #8e8279;
+}
+
+.c-card--very-light.t-neutral .c-card__main .c-card__title a[href],
+.c-card--very-light.t-neutral .c-card__main .c-card__body a[href],
+.c-card--very-light.t-neutral .c-card__main .c-card__footer a[href] {
+  background-color: #8e8279;
+  color: #333;
+}
+
+.c-card--very-light.t-neutral .c-card__main .c-card__title a[href]:hover, .c-card--very-light.t-neutral .c-card__main .c-card__title a[href]:active, .c-card--very-light.t-neutral .c-card__main .c-card__title a[href]:focus,
+.c-card--very-light.t-neutral .c-card__main .c-card__body a[href]:hover,
+.c-card--very-light.t-neutral .c-card__main .c-card__body a[href]:active,
+.c-card--very-light.t-neutral .c-card__main .c-card__body a[href]:focus,
+.c-card--very-light.t-neutral .c-card__main .c-card__footer a[href]:hover,
+.c-card--very-light.t-neutral .c-card__main .c-card__footer a[href]:active,
+.c-card--very-light.t-neutral .c-card__main .c-card__footer a[href]:focus {
+  background-color: #8e8279;
+  color: #333;
+}
+
+.c-card--very-light.t-neutral {
+  border-color: #57504a;
+}
+
+.c-panel.c-panel--light {
+  color: #333;
+  background: #e0dcda;
+}
+
+.c-panel.c-panel--light a[href] {
+  color: #333;
+}
+
+.c-panel.c-panel--light a[href]:hover,
+.c-panel.c-panel--light a[href]:active,
+.c-panel.c-panel--light a[href]:focus {
+  color: #333;
+}
+
+.c-panel.c-panel--light a[href].c-cta {
+  border-color: #333;
+  color: #333;
+  background-color: transparent;
+}
+
+.c-panel.c-panel--light a[href].c-cta:hover,
+.c-panel.c-panel--light a[href].c-cta:active,
+.c-panel.c-panel--light a[href].c-cta:focus {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.c-card--light .c-card__full-link.t-neutral,
+.c-card--light .c-card__full-link.t-neutral:hover {
+  background: #7b7068;
+}
+
+.c-card--light.t-neutral,
+.c-card--light.t-neutral .c-card__main {
+  background-color: #8e8279;
+}
+
+.c-card--light.t-neutral .c-card__main .c-card__title,
+.c-card--light.t-neutral .c-card__main .c-card__body,
+.c-card--light.t-neutral .c-card__main .c-card__footer {
+  color: #333;
+  background-color: #8e8279;
+}
+
+.c-card--light.t-neutral .c-card__main .c-card__title a[href],
+.c-card--light.t-neutral .c-card__main .c-card__body a[href],
+.c-card--light.t-neutral .c-card__main .c-card__footer a[href] {
+  background-color: #8e8279;
+  color: #333;
+}
+
+.c-card--light.t-neutral .c-card__main .c-card__title a[href]:hover, .c-card--light.t-neutral .c-card__main .c-card__title a[href]:active, .c-card--light.t-neutral .c-card__main .c-card__title a[href]:focus,
+.c-card--light.t-neutral .c-card__main .c-card__body a[href]:hover,
+.c-card--light.t-neutral .c-card__main .c-card__body a[href]:active,
+.c-card--light.t-neutral .c-card__main .c-card__body a[href]:focus,
+.c-card--light.t-neutral .c-card__main .c-card__footer a[href]:hover,
+.c-card--light.t-neutral .c-card__main .c-card__footer a[href]:active,
+.c-card--light.t-neutral .c-card__main .c-card__footer a[href]:focus {
+  background-color: #8e8279;
+  color: #333;
+}
+
+.c-card--light.t-neutral {
+  border-color: #57504a;
+}
+
+.c-panel.c-panel--dark {
+  color: #fff;
+  background: #736961;
+}
+
+.c-panel.c-panel--dark a[href] {
+  color: #fff;
+}
+
+.c-panel.c-panel--dark a[href]:hover,
+.c-panel.c-panel--dark a[href]:active,
+.c-panel.c-panel--dark a[href]:focus {
+  color: #fff;
+}
+
+.c-panel.c-panel--dark a[href].c-cta {
+  border-color: #fff;
+  color: #fff;
+  background-color: transparent;
+}
+
+.c-panel.c-panel--dark a[href].c-cta:hover,
+.c-panel.c-panel--dark a[href].c-cta:active,
+.c-panel.c-panel--dark a[href].c-cta:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.c-panel.c-panel--very-dark {
+  color: #fff;
+  background: #57504a;
+}
+
+.c-panel.c-panel--very-dark a[href] {
+  color: #fff;
+}
+
+.c-panel.c-panel--very-dark a[href]:hover,
+.c-panel.c-panel--very-dark a[href]:active,
+.c-panel.c-panel--very-dark a[href]:focus {
+  color: #fff;
+}
+
+.c-panel.c-panel--very-dark a[href].c-cta {
+  border-color: #fff;
+  color: #fff;
+  background-color: transparent;
+}
+
+.c-panel.c-panel--very-dark a[href].c-cta:hover,
+.c-panel.c-panel--very-dark a[href].c-cta:active,
+.c-panel.c-panel--very-dark a[href].c-cta:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+/* --| WIREFRAME--------------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------------------- */
+/* --| JOOMLA |---------------------------------------------------------------------------------- */
+.highlight {
+  background-color: #e0dcda;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+/*
+    Many (soon all?) of these patterns are themeable, so they are configured and imported here
+    (separately) so that they can be imported into other theme files without resulting in
+    re-declared base-styles. E.g. bands defines a set of size classes, these only need to appear in
+    the stylesheet once. The file that includes *this* file should set `$theme-only: true` to toggle
+    this behaviour.
+*/
+/*
+
+*/
+/*-------------------------------------------------------------------------------------------------|
+    Fall-Back Start-CSS Settings
+
+    Fall-Back is designed for use with the basic
+    [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
+
+    This determines a browser support base of:
+
+    IE 9+, FF 8+, Opera 12, [Chrome 29+, Android ~4.4+]
+    Chrome 29+, Opera 16+, Safari 6.1+, iOS 7+, Android ~4.4+
+
+
+    Any double-classing (e.g. `.class.class`) is deliberate and intended to increase specifity.
+    This allows any applicable Start-CSS declarations to be overidden.
+    E.g. `.{pattern} .{pattern}__child` would `a[href]`, but just `.{pattern}` wouldn't, so we use
+    `.{pattern}.{pattren}`
+
+    https://coolors.co/50514f-f25f5c-ffe066-247ba0-70c1b3
+
+|-------------------------------------------------------------------------------------------------*/
+/* --| FUNCTIONS AND MIXINS |-------------------------------------------------------------------- */
+/*
+    Global sizes
+*/
+/* --| Component Patterns |---------------------------------------------------------------------- */
+/*
+
+*/
+/*$brochure-spacing-unit: $f__base-rem-space-unit;
+$brochure--border-or-outline: false;
+@import "component-patterns/_brochure.scss";*/
+/*
+    The `height: 100%;` in the `.card` class below allows the card to fill it's container (if inside,
+    say, a list-grid). However, it doesn't work in Safari OSX/iOS.
+    Applying a `card-wrap` class to a list item to make those items flex-containers seems to work
+    OK, but perhaps this would be better abstracted as a `fill-height` class or something?
+
+    Note IE10-11 flexbox for card, main and body causes problems when in other flex contexts.
+    For IE10 I'm just leaving off the -ms prefixes - it's still usable without flex.
+*/
+/*
+$card-cta--border-width: 1px !default;
+$card-cta--border-style: solid !default;
+$card-cta--border-radius: 3px !default;
+*/
+/*
+$card--link-color: false !default;
+$card--link-color--alt: false !default;
+$card--link-has-border-bottom: false !default;
+$card--link-border-bottom: false !default;
+$card--link-border-bottom--alt: false !default;
+
+// If we've specified a link color for the card, but not an alt state (e.g. hover)
+// then generate one
+@if $card--link-color != false and $card--link-color--alt == false {
+    $card--link-color--alt: darken($card--link-color, 10%) !default;;
+}
+
+// If we've specified a link color for the card, and we want bottom borders, generate the borders:
+@if $card--link-color != false and $card--link-has-border-bottom != false {
+    $card--link-border-bottom: 1px solid lighten($card--link-color, 20%) !default;
+    $card--link-border-bottom--alt: 2px solid lighten($card--link-color--alt, 30%) !default;
+}
+*/
+/*
+$card-button--text-color: #fff !default;
+$card-button--background-color: $card--base-color !default;
+$card-button--background-color-alt: lighten($card--base-color, 20%) !default;
+$card-button--border-color: darken($card--base-color, 20%) !default;
+*/
+/*
+    .c-card-wrap .c-card {
+
+        //width: 100%;
+    }
+*/
+_:-ms-lang(x), .c-card.c-card {
+  margin-right: -2px\9;
+  margin-left: -2px\9;
+}
+
+.c-card--unpublished {
+  opacity: 0.5;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+}
+
+.c-card--unpublished::after {
+  content: "Unpublished";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 3px;
+  font-size: 0.75em;
+  color: #fff;
+  background-color: #000;
+}
+
+/*@include card-theme("card", (
+    background-color: darken($f__base-ui-color, 20%),
+    text-color: #fff
+    )
+);*/
+/*
+
+*/
+/*
+    The `height: 100%;` in the `.event` class below allows the event to fill it's container (if inside,
+    say, a list-grid). However, it doesn't work in Safari OSX/iOS.
+    Applying a `event-wrap` class to a list item to make those items flex-containers seems to work
+    OK, but perhaps this would be better abstracted as a `fill-height` class or something?
+*/
+/*
+$event-cta--border-width: 1px !default;
+$event-cta--border-style: solid !default;
+$event-cta--border-radius: 3px !default;
+*/
+/*
+$event--link-color: false !default;
+$event--link-color--alt: false !default;
+$event--link-has-border-bottom: false !default;
+$event--link-border-bottom: false !default;
+$event--link-border-bottom--alt: false !default;
+
+// If we've specified a link color for the event, but not an alt state (e.g. hover)
+// then generate one
+@if $event--link-color != false and $event--link-color--alt == false {
+    $event--link-color--alt: darken($event--link-color, 10%) !default;;
+}
+
+// If we've specified a link color for the event, and we want bottom borders, generate the borders:
+@if $event--link-color != false and $event--link-has-border-bottom != false {
+    $event--link-border-bottom: 1px solid lighten($event--link-color, 20%) !default;
+    $event--link-border-bottom--alt: 2px solid lighten($event--link-color--alt, 30%) !default;
+}
+*/
+/*
+$event-button--text-color: #fff !default;
+$event-button--background-color: $event--base-color !default;
+$event-button--background-color-alt: lighten($event--base-color, 20%) !default;
+$event-button--border-color: darken($event--base-color, 20%) !default;
+*/
+/*
+    IE11 needs this wrapper to behave properly.
+    If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.
+*/
+.c-event-wrap {
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+}
+
+.c-event-wrap > .c-event {
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
+}
+
+_:-ms-lang(x), .c-event.c-event {
+  padding-left: 0\9;
+  padding-right: 0\9;
+}
+
+_:-ms-lang(x), .c-event.c-event > * {
+  margin-left: 2.4rem\9;
+  margin-right: 2.4rem\9;
+}
+
+_:-ms-lang(x), .c-event.c-event .c-event__action {
+  margin-right: 2.4rem\9;
+}
+
+/*
+    Note featurettes should only appear in the main body and fill the width, so media queries are
+    ok here - we don't need to worry about other contexts and container-queries.
+*/
+/*
+$featurette-cta--border-width: 1px !default;
+$featurette-cta--border-style: solid !default;
+$featurette-cta--border-radius: 3px !default;
+*/
+/*
+$featurette--link-color: false !default;
+$featurette--link-color--alt: false !default;
+$featurette--link-has-border-bottom: false !default;
+$featurette--link-border-bottom: false !default;
+$featurette--link-border-bottom--alt: false !default;
+
+// If we've specified a link color for the featurette, but not an alt state (e.g. hover)
+// then generate one
+@if $featurette--link-color != false and $featurette--link-color--alt == false {
+    $featurette--link-color--alt: darken($featurette--link-color, 10%) !default;;
+}
+
+// If we've specified a link color for the featurette, and we want bottom borders, generate the borders:
+@if $featurette--link-color != false and $featurette--link-has-border-bottom != false {
+    $featurette--link-border-bottom: 1px solid lighten($featurette--link-color, 20%) !default;
+    $featurette--link-border-bottom--alt: 2px solid lighten($featurette--link-color--alt, 30%) !default;
+}
+*/
+/*
+$featurette-button--text-color: #fff !default;
+$featurette-button--background-color: $featurette--base-color !default;
+$featurette-button--background-color-alt: lighten($featurette--base-color, 20%) !default;
+$featurette-button--border-color: darken($featurette--base-color, 20%) !default;
+*/
+/*
+    IE11 needs this wrapper to behave properly.
+    If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.
+*/
+.c-featurette-wrap {
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+}
+
+.c-featurette-wrap > .c-featurette {
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
+}
+
+.c-featurette.t-featurette--dark,
+.c-featurette.t-featurette--dark * {
+  background-color: #2d2136;
+  color: #fff;
+}
+
+.c-featurette.t-featurette--light,
+.c-featurette.t-featurette--light * {
+  background-color: #ad96c0;
+  color: #fff;
+}
+
+/*
+
+
+*/
+/*$glimpse--link-color: false !default;
+$glimpse--link-has-border-bottom: false !default;
+$glimpse--link-color--alt: false !default;
+$glimpse--link-has-border-bottom: false !default;
+$glimpse--link-border-bottom: false !default;
+$glimpse--link-border-bottom--hover: false !default;*/
+/*
+*/
+/*
+*/
+/*
+*/
+/*
+*/
+/*
+*/
+/*
+*/
+/*
+*/
+/*
+*/
+/*
+*/
+/*
+    Utilitarian text and links. E.g. footer, login info, skiplinks
+    
+    Utilitext links are prime candidates to have icons as part of the links text.
+    However, the underline border doesn't work well with icons, so an additional span is used to
+    wrap the link text (not the icon) regardless of whether or not there is an icon, since we can't 
+    look inside elements with CSS.
+*/
+.c-utilitext.c-utilitext {
+  font-size: 0.875em;
+  margin: 0;
+  padding: 0;
+}
+
+.c-utilitext.c-utilitext a[href] {
+  border-width: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.c-utilitext.c-utilitext a[href] span {
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  margin-bottom: -1px;
+  padding-bottom: 2px;
+}
+
+.c-utilitext.c-utilitext a[href]:hover span, .c-utilitext.c-utilitext a[href]:active span, .c-utilitext.c-utilitext a[href]:focus span {
+  border-style: dashed;
+}
+
+ul.c-utilitext, ol.c-utilitext {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+ul.c-utilitext li, ol.c-utilitext li {
+  margin: 0;
+}
+
+ul.c-utilitext li + li, ol.c-utilitext li + li {
+  margin-left: 1em;
+}
+
+.c-utilitext.c-utilitext--skiplinks li {
+  margin-left: 0;
+  position: relative;
+}
+
+.c-utilitext.c-utilitext--skiplinks a[href] {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: auto;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.c-utilitext.c-utilitext--skiplinks a[href]:active, .c-utilitext.c-utilitext--skiplinks a[href]:focus {
+  clip: auto;
+  height: auto;
+  overflow: visible;
+  position: initial;
+  white-space: inherit;
+  width: auto;
+}
+
+.c-utilitext.c-utilitext--pale,
+.c-utilitext.c-utilitext--pale a[href] {
+  color: #666666;
+}
+
+.c-utilitext.c-utilitext--pale a[href]:hover span, .c-utilitext.c-utilitext--pale a[href]:active span, .c-utilitext.c-utilitext--pale a[href]:focus span {
+  color: #333;
+}
+
+.c-utilitext.c-utilitext--smaller {
+  font-size: 0.8125em;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+/* --| Decoration Patterns |--------------------------------------------------------------------- */
 /*
 Note - this won't work until SASS supports dynamic calling of mixins. It's close, but hasn't been
 merged yet. Hoping that will be done soon so I can change this.
@@ -11026,7 +11879,7 @@ $patterns: (
 
 .c-primary-cta.t-npeu[href] {
   color: #ffffff;
-  background-color: #5d4777;
+  background-color: #9C2F33;
 }
 
 .c-primary-cta.t-npeu[href]:hover, .c-primary-cta.t-npeu[href]:active, .c-primary-cta.t-npeu[href]:focus {
@@ -11042,7 +11895,7 @@ $patterns: (
                 }
             }
             */
-  background-color: #443457;
+  background-color: #752326;
 }
 
 .c-sign.t-npeu {
@@ -11620,1231 +12473,6 @@ input:not([type]):focus,
 
 [data-brand="npeu"] [data-display-as~="themed-box--border"] > * {
   color: #333;
-}
-
-.nav-bar {
-  background: -moz-linear-gradient(45deg, #513d67 0%, #533f6a 50%, #584371 50%, #56416d 100%) !important;
-  background: -webkit-linear-gradient(45deg, #513d67 0%, #533f6a 50%, #584371 50%, #56416d 100%) !important;
-  background: linear-gradient(45deg, #513d67 0%, #533f6a 50%, #584371 50%, #56416d 100%) !important;
-}
-
-.over-panel__contents {
-  background: -moz-linear-gradient(45deg, #513d67 0%, #533f6a 50%, #584371 50%, #56416d 100%) !important;
-  background: -webkit-linear-gradient(45deg, #513d67 0%, #533f6a 50%, #584371 50%, #56416d 100%) !important;
-  background: linear-gradient(45deg, #513d67 0%, #533f6a 50%, #584371 50%, #56416d 100%) !important;
-}
-
-.d-background--very-light.t-npeu--alt {
-  background-color: #fefdfc !important;
-  color: #333 !important;
-}
-
-.d-background--very-light.t-npeu--alt a[href] {
-  color: #333 !important;
-}
-
-.d-background--very-light.t-npeu--alt a[href]:hover,
-.d-background--very-light.t-npeu--alt a[href]:active,
-.d-background--very-light.t-npeu--alt a[href]:focus {
-  color: #333 !important;
-}
-
-.d-background--very-light.t-npeu--alt a[href].c-cta {
-  border-color: #333 !important;
-  color: #333 !important;
-  background-color: transparent !important;
-}
-
-.d-background--very-light.t-npeu--alt a[href].c-cta:hover,
-.d-background--very-light.t-npeu--alt a[href].c-cta:active,
-.d-background--very-light.t-npeu--alt a[href].c-cta:focus {
-  background-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-.d-background--light.t-npeu--alt {
-  background-color: #eee6d8 !important;
-  color: #333 !important;
-}
-
-.d-background--light.t-npeu--alt a[href] {
-  color: #333 !important;
-}
-
-.d-background--light.t-npeu--alt a[href]:hover,
-.d-background--light.t-npeu--alt a[href]:active,
-.d-background--light.t-npeu--alt a[href]:focus {
-  color: #333 !important;
-}
-
-.d-background--light.t-npeu--alt a[href].c-cta {
-  border-color: #333 !important;
-  color: #333 !important;
-  background-color: transparent !important;
-}
-
-.d-background--light.t-npeu--alt a[href].c-cta:hover,
-.d-background--light.t-npeu--alt a[href].c-cta:active,
-.d-background--light.t-npeu--alt a[href].c-cta:focus {
-  background-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-.d-background.t-npeu--alt {
-  background-color: #b9975b !important;
-  color: #333 !important;
-}
-
-.d-background.t-npeu--alt a[href] {
-  color: #333 !important;
-}
-
-.d-background.t-npeu--alt a[href]:hover,
-.d-background.t-npeu--alt a[href]:active,
-.d-background.t-npeu--alt a[href]:focus {
-  color: #333 !important;
-}
-
-.d-background.t-npeu--alt a[href].c-cta {
-  border-color: #333 !important;
-  color: #333 !important;
-  background-color: transparent !important;
-}
-
-.d-background.t-npeu--alt a[href].c-cta:hover,
-.d-background.t-npeu--alt a[href].c-cta:active,
-.d-background.t-npeu--alt a[href].c-cta:focus {
-  background-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-.d-background--dark.t-npeu--alt {
-  background-color: #9e7d43 !important;
-  color: #333 !important;
-}
-
-.d-background--dark.t-npeu--alt a[href] {
-  color: #333 !important;
-}
-
-.d-background--dark.t-npeu--alt a[href]:hover,
-.d-background--dark.t-npeu--alt a[href]:active,
-.d-background--dark.t-npeu--alt a[href]:focus {
-  color: #333 !important;
-}
-
-.d-background--dark.t-npeu--alt a[href].c-cta {
-  border-color: #333 !important;
-  color: #333 !important;
-  background-color: transparent !important;
-}
-
-.d-background--dark.t-npeu--alt a[href].c-cta:hover,
-.d-background--dark.t-npeu--alt a[href].c-cta:active,
-.d-background--dark.t-npeu--alt a[href].c-cta:focus {
-  background-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-.d-background--very-dark.t-npeu--alt {
-  background-color: #7a6134 !important;
-  color: #fff !important;
-}
-
-.d-background--very-dark.t-npeu--alt a[href] {
-  color: #fff !important;
-}
-
-.d-background--very-dark.t-npeu--alt a[href]:hover,
-.d-background--very-dark.t-npeu--alt a[href]:active,
-.d-background--very-dark.t-npeu--alt a[href]:focus {
-  color: #fff !important;
-}
-
-.d-background--very-dark.t-npeu--alt a[href].c-cta {
-  border-color: #fff !important;
-  color: #fff !important;
-  background-color: transparent !important;
-}
-
-.d-background--very-dark.t-npeu--alt a[href].c-cta:hover,
-.d-background--very-dark.t-npeu--alt a[href].c-cta:active,
-.d-background--very-dark.t-npeu--alt a[href].c-cta:focus {
-  background-color: rgba(0, 0, 0, 0.1) !important;
-}
-
-.d-background--sloped.t-npeu--alt {
-  background: -moz-linear-gradient(45deg, #b08b4b 0%, #b38e4d 50%, #b69254 50%, #b49050 100%) !important;
-  background: -webkit-linear-gradient(45deg, #b08b4b 0%, #b38e4d 50%, #b69254 50%, #b49050 100%) !important;
-  background: linear-gradient(45deg, #b08b4b 0%, #b38e4d 50%, #b69254 50%, #b49050 100%) !important;
-}
-
-.c-panel.c-panel--very-light {
-  color: #333;
-  background: #f8f6fa;
-}
-
-.c-panel.c-panel--very-light a[href] {
-  color: #333;
-}
-
-.c-panel.c-panel--very-light a[href]:hover,
-.c-panel.c-panel--very-light a[href]:active,
-.c-panel.c-panel--very-light a[href]:focus {
-  color: #333;
-}
-
-.c-panel.c-panel--very-light a[href].c-cta {
-  border-color: #333;
-  color: #333;
-  background-color: transparent;
-}
-
-.c-panel.c-panel--very-light a[href].c-cta:hover,
-.c-panel.c-panel--very-light a[href].c-cta:active,
-.c-panel.c-panel--very-light a[href].c-cta:focus {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-.c-card--very-light .c-card__full-link.t-npeu,
-.c-card--very-light .c-card__full-link.t-npeu:hover {
-  background: #4c3a61;
-}
-
-.c-card--very-light.t-npeu,
-.c-card--very-light.t-npeu .c-card__main {
-  background-color: #5d4777;
-}
-
-.c-card--very-light.t-npeu .c-card__main .c-card__title,
-.c-card--very-light.t-npeu .c-card__main .c-card__body,
-.c-card--very-light.t-npeu .c-card__main .c-card__footer {
-  color: #333;
-  background-color: #5d4777;
-}
-
-.c-card--very-light.t-npeu .c-card__main .c-card__title a[href],
-.c-card--very-light.t-npeu .c-card__main .c-card__body a[href],
-.c-card--very-light.t-npeu .c-card__main .c-card__footer a[href] {
-  background-color: #5d4777;
-  color: #333;
-}
-
-.c-card--very-light.t-npeu .c-card__main .c-card__title a[href]:hover, .c-card--very-light.t-npeu .c-card__main .c-card__title a[href]:active, .c-card--very-light.t-npeu .c-card__main .c-card__title a[href]:focus,
-.c-card--very-light.t-npeu .c-card__main .c-card__body a[href]:hover,
-.c-card--very-light.t-npeu .c-card__main .c-card__body a[href]:active,
-.c-card--very-light.t-npeu .c-card__main .c-card__body a[href]:focus,
-.c-card--very-light.t-npeu .c-card__main .c-card__footer a[href]:hover,
-.c-card--very-light.t-npeu .c-card__main .c-card__footer a[href]:active,
-.c-card--very-light.t-npeu .c-card__main .c-card__footer a[href]:focus {
-  background-color: #5d4777;
-  color: #333;
-}
-
-.c-card--very-light.t-npeu {
-  border-color: #2b2137;
-}
-
-.c-panel.c-panel--light {
-  color: #333;
-  background: #b7a6ca;
-}
-
-.c-panel.c-panel--light a[href] {
-  color: #333;
-}
-
-.c-panel.c-panel--light a[href]:hover,
-.c-panel.c-panel--light a[href]:active,
-.c-panel.c-panel--light a[href]:focus {
-  color: #333;
-}
-
-.c-panel.c-panel--light a[href].c-cta {
-  border-color: #333;
-  color: #333;
-  background-color: transparent;
-}
-
-.c-panel.c-panel--light a[href].c-cta:hover,
-.c-panel.c-panel--light a[href].c-cta:active,
-.c-panel.c-panel--light a[href].c-cta:focus {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-.c-card--light .c-card__full-link.t-npeu,
-.c-card--light .c-card__full-link.t-npeu:hover {
-  background: #4c3a61;
-}
-
-.c-card--light.t-npeu,
-.c-card--light.t-npeu .c-card__main {
-  background-color: #5d4777;
-}
-
-.c-card--light.t-npeu .c-card__main .c-card__title,
-.c-card--light.t-npeu .c-card__main .c-card__body,
-.c-card--light.t-npeu .c-card__main .c-card__footer {
-  color: #333;
-  background-color: #5d4777;
-}
-
-.c-card--light.t-npeu .c-card__main .c-card__title a[href],
-.c-card--light.t-npeu .c-card__main .c-card__body a[href],
-.c-card--light.t-npeu .c-card__main .c-card__footer a[href] {
-  background-color: #5d4777;
-  color: #333;
-}
-
-.c-card--light.t-npeu .c-card__main .c-card__title a[href]:hover, .c-card--light.t-npeu .c-card__main .c-card__title a[href]:active, .c-card--light.t-npeu .c-card__main .c-card__title a[href]:focus,
-.c-card--light.t-npeu .c-card__main .c-card__body a[href]:hover,
-.c-card--light.t-npeu .c-card__main .c-card__body a[href]:active,
-.c-card--light.t-npeu .c-card__main .c-card__body a[href]:focus,
-.c-card--light.t-npeu .c-card__main .c-card__footer a[href]:hover,
-.c-card--light.t-npeu .c-card__main .c-card__footer a[href]:active,
-.c-card--light.t-npeu .c-card__main .c-card__footer a[href]:focus {
-  background-color: #5d4777;
-  color: #333;
-}
-
-.c-card--light.t-npeu {
-  border-color: #2b2137;
-}
-
-.c-panel.c-panel--dark {
-  color: #fff;
-  background: #443457;
-}
-
-.c-panel.c-panel--dark a[href] {
-  color: #fff;
-}
-
-.c-panel.c-panel--dark a[href]:hover,
-.c-panel.c-panel--dark a[href]:active,
-.c-panel.c-panel--dark a[href]:focus {
-  color: #fff;
-}
-
-.c-panel.c-panel--dark a[href].c-cta {
-  border-color: #fff;
-  color: #fff;
-  background-color: transparent;
-}
-
-.c-panel.c-panel--dark a[href].c-cta:hover,
-.c-panel.c-panel--dark a[href].c-cta:active,
-.c-panel.c-panel--dark a[href].c-cta:focus {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.c-panel.c-panel--very-dark {
-  color: #fff;
-  background: #2b2137;
-}
-
-.c-panel.c-panel--very-dark a[href] {
-  color: #fff;
-}
-
-.c-panel.c-panel--very-dark a[href]:hover,
-.c-panel.c-panel--very-dark a[href]:active,
-.c-panel.c-panel--very-dark a[href]:focus {
-  color: #fff;
-}
-
-.c-panel.c-panel--very-dark a[href].c-cta {
-  border-color: #fff;
-  color: #fff;
-  background-color: transparent;
-}
-
-.c-panel.c-panel--very-dark a[href].c-cta:hover,
-.c-panel.c-panel--very-dark a[href].c-cta:active,
-.c-panel.c-panel--very-dark a[href].c-cta:focus {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* ---------------------------------------------------------------------------------------------- */
-/* --| WIREFRAME--------------------------------------------------------------------------------- */
-html.wireframe {
-  filter: grayscale(1);
-}
-
-.wireframe [wf-box] {
-  outline-style: solid;
-  outline-width: 1px;
-  outline-color: #444;
-  position: relative;
-  z-index: 1;
-  display: flow-root;
-  height: 100%;
-}
-
-.wireframe [wf-box]::before {
-  content: attr(wf-box);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.5em;
-  color: #444;
-  text-shadow: 0 0 0.25em #ccc, 0 0 0.25em #ccc, 0 0 0.25em #ccc, 0 0 0.25em #ccc, 0 0 0.25em #ccc;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background-color: #ccc;
-  background-size: 100% 100%;
-  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%20preserveAspectRatio%3D%22none%22%3E%3Cg%20stroke-width%3D%221px%22%20stroke%3D%22#444%22%20%3E%3Cline%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%20vector-effect%3D%22non-scaling-stroke%22%2F%3E%3Cline%20x1%3D%221%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%20vector-effect%3D%22non-scaling-stroke%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-  /* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1" preserveAspectRatio="none"><g stroke-width="1px" stroke="$wf-wire"><line x1="0" y1="0" x2="1" y2="1" vector-effect="non-scaling-stroke"/><line x1="1" y1="0" x2="0" y2="1" vector-effect="non-scaling-stroke"/></g></svg> */
-}
-
-/*
-.wireframe [data-wf]::before {
-    position: absolute;
-    z-index: 999;
-    opacity: 0.7;
-
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-
-   background:
-        linear-gradient(to top right,
-            transparent calc(50% - 1px), $wf-wire calc(50% - 1px),
-            $wf-wire calc(50% + 1px), transparent calc(50% + 1px)),
-        linear-gradient(to bottom right,
-            transparent calc(50% - 1px), $wf-wire calc(50% - 1px),
-            $wf-wire calc(50% + 1px), transparent calc(50% + 1px)),
-        $wf-fill--mid;
-
-
-    content: attr(data-wf);
-    font: bold 2em Georgia, serif;
-    color: $wf-wire;
-
-    text-shadow:
-        1px 1px 0 $wf-fill--mid,
-        -1px 1px 0 $wf-fill--mid,
-        1px -1px 0 $wf-fill--mid,
-        -1px -1px 0 $wf-fill--mid,
-        1px 0 0 $wf-fill--mid,
-        -1px 0 0 $wf-fill--mid,
-        2px 2px 0 $wf-fill--mid,
-        -2px 2px 0 $wf-fill--mid,
-        2px -2px 0 $wf-fill--mid,
-        -2px -2px 0 $wf-fill--mid,
-        2px 0 0 $wf-fill--mid,
-        -2px 0 0 $wf-fill--mid,
-        3px 3px 0 $wf-fill--mid,
-        -3px 3px 0 $wf-fill--mid,
-        3px -3px 0 $wf-fill--mid,
-        -3px -3px 0 $wf-fill--mid,
-        3px 0 0 $wf-fill--mid,
-        -3px 0 0 $wf-fill--mid,
-        4px 4px 0 $wf-fill--mid,
-        -4px 4px 0 $wf-fill--mid,
-        4px -4px 0 $wf-fill--mid,
-        -4px -4px 0 $wf-fill--mid,
-        4px 0 0 $wf-fill--mid,
-        -4px 0 0 $wf-fill--mid;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-*/
-.wireframe [wf-links] a[href] {
-  color: inherit;
-  background-color: inherit;
-}
-
-.wireframe [wf-links] a[href]:hover,
-.wireframe [wf-links] a[href]:active,
-.wireframe [wf-links] a[href]:focus {
-  color: inherit;
-}
-
-.wireframe [wf-area] {
-  /*a[href] {
-        color: inherit;
-        background-color: inherit;
-    }
-
-    a[href]:hover,
-    a[href]:active,
-    a[href]:focus {
-        color: inherit;
-    }*/
-}
-
-.wireframe [wf-area*=outline] {
-  outline-style: solid;
-  outline-width: 1px;
-  outline-color: #444;
-}
-
-.wireframe [wf-area*=white] {
-  background-color: #fff;
-  color: #333;
-}
-
-.wireframe [wf-area*=light] {
-  background-color: #eee;
-  color: #333;
-}
-
-.wireframe [wf-area*=mid] {
-  background-color: #ccc;
-  color: #333;
-}
-
-.wireframe [wf-area*=dark] {
-  background-color: #666;
-  color: #fff;
-}
-
-.wireframe [wf-area*=darkest] {
-  background-color: #333;
-  color: #fff;
-}
-
-/*
-.wireframe [wf-area*=padding] {
-
-    &:after {
-        content: "";
-        display: block;
-        height: 1px;
-        margin-bottom: -1px;
-        width: 100%;
-    }
-}*/
-.wireframe [wf-area*=xs-padding] {
-  padding-left: 0.6rem;
-  padding-right: 0.6rem;
-  padding-top: 0.6rem;
-}
-
-.wireframe [wf-area*=xs-padding]::after {
-  content: "";
-  display: block;
-  margin-top: 0.6rem;
-  margin-bottom: -1px;
-  height: 1px;
-}
-
-.wireframe [wf-area*=small-padding] {
-  padding-left: 1.2rem;
-  padding-right: 1.2rem;
-  padding-top: 1.2rem;
-}
-
-.wireframe [wf-area*=small-padding]::after {
-  content: "";
-  display: block;
-  margin-top: 1.2rem;
-  margin-bottom: -1px;
-  height: 1px;
-}
-
-.wireframe [wf-area*=medium-padding] {
-  padding-left: 2.4rem;
-  padding-right: 2.4rem;
-  padding-top: 2.4rem;
-}
-
-.wireframe [wf-area*=medium-padding]::after {
-  content: "";
-  display: block;
-  margin-top: 2.4rem;
-  margin-bottom: -1px;
-  height: 1px;
-}
-
-.wireframe [wf-area*=large-padding] {
-  padding-left: 4.8rem;
-  padding-right: 4.8rem;
-  padding-top: 4.8rem;
-}
-
-.wireframe [wf-area*=large-padding]::after {
-  content: "";
-  display: block;
-  margin-top: 4.8rem;
-  margin-bottom: -1px;
-  height: 1px;
-}
-
-.wireframe [wf-bar-links] {
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.wireframe [wf-bar-links] li {
-  margin: 0;
-  padding: 0;
-}
-
-.wireframe [wf-bar-links] a[href] {
-  display: block;
-  border: 0;
-  margin: 0;
-}
-
-.wireframe [wf-bar-links] a[href]:hover,
-.wireframe [wf-bar-links] a[href]:active,
-.wireframe [wf-bar-links] a[href]:focus {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.wireframe [wf-bar-links*=small-padding] a[href] {
-  padding: 0.6rem 1.2rem;
-}
-
-.wireframe [wf-area*=white] [wf-bar-links] a[href]:hover,
-.wireframe [wf-area*=white] [wf-bar-links] a[href]:active,
-.wireframe [wf-area*=white] [wf-bar-links] a[href]:focus {
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-.wireframe [wf-bar-links*=divided] {
-  overflow: hidden;
-}
-
-.wireframe [wf-bar-links*=divided] > li {
-  position: relative;
-  margin: 0 0 0 -3px;
-}
-
-.wireframe [wf-bar-links*=divided] > li:before {
-  content: "";
-  display: block;
-  height: 1em;
-  width: 2px;
-  background: #fff;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.wireframe [wf-bar-links*=divided] a[href] {
-  margin: 0 2px;
-}
-
-.wireframe [wf-bar-links*=small-text] {
-  font-size: 0.85em;
-}
-
-.wireframe [wf-heading*=large] {
-  font-size: 1.625em;
-  line-height: 1.1;
-  border-bottom: 1px solid;
-  padding-bottom: 0.5em;
-}
-
-.wireframe button[wf-button] {
-  display: inline-block;
-  /* AK. IE9 needs this. */
-  overflow: visible;
-  /* S: Internet Explorer 11-, N: Show the overflow in Edge, Firefox, and IE. */
-  background-color: #663399;
-  color: #fff;
-  font-size: inherit;
-  font-family: inherit;
-  font-style: inherit;
-  font-weight: inherit;
-  min-height: 3rem;
-  line-height: 2.4rem;
-  margin: 0.3rem 0;
-  text-transform: none;
-  /* [N0], N: Remove the inheritance of text transform in Edge, Firefox, and IE. */
-  /* -webkit-appearance: button; // [N2] */
-  -webkit-appearance: none;
-  /* AK */
-  cursor: pointer;
-  /* [N3] */
-  border-color: rgba(0, 0, 0, 0.2);
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 3px;
-  padding-top: 0.3rem;
-  padding-top: -moz-calc(0);
-  padding-top: calc(0.3rem - 1px);
-  padding-bottom: 0.3rem;
-  padding-bottom: -moz-calc(0);
-  padding-bottom: calc(0.3rem - 1px);
-  padding-left: 0.6rem;
-  padding-right: 0.6rem;
-  vertical-align: middle;
-  /* S: Remove the tapping delay from clickable elements */
-  -ms-touch-action: manipulation;
-  /* S: IE10 */
-  touch-action: manipulation;
-}
-
-.wireframe button[wf-button]:hover,
-.wireframe button[wf-button]:active,
-.wireframe button[wf-button]:focus {
-  box-shadow: 0 0 0 2px #b38cd9 inset;
-  outline: 0;
-  border-color: rgba(0, 0, 0, 0.2);
-  border-style: solid;
-  border-width: 1px;
-  color: #fff;
-}
-
-.wireframe a[href][wf-cta] {
-  display: inline-block;
-  color: #663399;
-  background-color: #ffffff;
-  font-size: inherit;
-  font-family: inherit;
-  font-style: inherit;
-  font-weight: inherit;
-  min-height: 3rem;
-  line-height: 2.4rem;
-  margin: 0.3rem 0;
-  text-transform: none;
-  cursor: pointer;
-  border-color: rgba(0, 0, 0, 0.4);
-  border-style: solid;
-  border-width: 2px;
-  border-radius: 3px;
-  padding-top: 0.3rem;
-  padding-top: -moz-calc(0);
-  padding-top: calc(0.3rem - 1px);
-  padding-bottom: 0.3rem;
-  padding-bottom: -moz-calc(0);
-  padding-bottom: calc(0.3rem - 1px);
-  padding-left: 0.6rem;
-  padding-right: 0.6rem;
-  vertical-align: middle;
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
-}
-
-.wireframe a[href][wf-cta]:hover,
-.wireframe a[href][wf-cta]:active,
-.wireframe a[href][wf-cta]:focus {
-  box-shadow: 0 0 0 2px #bbbbbb inset;
-  outline: 0;
-  border-color: rgba(0, 0, 0, 0.4);
-  border-style: solid;
-  border-width: 2px;
-  background-color: #eeeeee;
-}
-
-.wireframe a[href] svg {
-  vertical-align: text-top;
-}
-
-/* ---------------------------------------------------------------------------------------------- */
-/* --| USER CONTENT |---------------------------------------------------------------------------- */
-/*
-    NOTE: data-width and data-position are currently unused.
-    I'm considering their use. An (abandoned) attempt at customising the CKEditor div plugin
-    would have required these.
-*/
-.c-user-content {
-  /*
-            Note this original method just assumed that images are square.
-            MaatHRI team page proves this is not the case, so the above, explicit portrait
-            declaration is needed.
-            It's still ok to assume square images in templates, though, where I know I'm just using
-            the avatars folder (where square is forced on upload).
-            So, it's really just user content that's the problem, so keep things as they are for
-            now.
-        */
-}
-
-.c-user-content [data-display-is~="width-one-quarter"] + [data-contains~="contact-details"],
-.c-user-content [data-width="one-quarter"] + [data-contains~="contact-details"] {
-  max-width: 100%;
-  width: calc((35em - 100%) * 1000);
-  min-width: calc(75% - 2.4rem);
-}
-
-.c-user-content [data-display-is~="width-one-third"] + [data-contains~="contact-details"],
-.c-user-content [data-width="one-third"] + [data-contains~="contact-details"] {
-  max-width: 100%;
-  width: calc((35em - 100%) * 1000);
-  min-width: calc(67% - 2.4rem);
-}
-
-.c-user-content [data-display-is~="width-one-half"] + [data-contains~="contact-details"],
-.c-user-content [data-width="one-half"] + [data-contains~="contact-details"] {
-  max-width: 100%;
-  width: calc((35em - 100%) * 1000);
-  min-width: calc(50% - 2.4rem);
-}
-
-.c-user-content [data-display-is~="width-two-thirds"] + [data-contains~="contact-details"],
-.c-user-content [data-width="two-thirds"] + [data-contains~="contact-details"] {
-  max-width: 100%;
-  width: calc((35em - 100%) * 1000);
-  min-width: calc(33% - 2.4rem);
-}
-
-.c-user-content [data-display-is*="width-"] + [data-contains~="contact-details"] + *,
-.c-user-content [data-width] + [data-contains~="contact-details"] + * {
-  clear: both;
-}
-
-.c-user-content [data-display-as~="box"],
-.c-user-content [data-display-as~="pale-box"],
-.c-user-content [data-display-as~="themed-box--background"],
-.c-user-content [data-display-as~="themed-box--border"],
-.c-user-content [data-display-as~="notice-box"] {
-  padding: 2.4rem;
-  margin-bottom: 2.4rem;
-  padding-bottom: 0 !important;
-  width: 100%;
-}
-
-.c-user-content [data-display-as~="box"]::after,
-.c-user-content [data-display-as~="pale-box"]::after,
-.c-user-content [data-display-as~="themed-box--background"]::after,
-.c-user-content [data-display-as~="themed-box--border"]::after,
-.c-user-content [data-display-as~="notice-box"]::after {
-  content: "";
-  display: block;
-  height: 1px;
-  margin-top: calc(2.4rem - 1px);
-  clear: both;
-}
-
-.c-user-content [data-display-as~="box"]::before,
-.c-user-content [data-display-as~="pale-box"]::before,
-.c-user-content [data-display-as~="themed-box--background"]::before,
-.c-user-content [data-display-as~="themed-box--border"]::before,
-.c-user-content [data-display-as~="notice-box"]::before {
-  content: " ";
-  display: table;
-}
-
-.c-user-content [data-display-as~="box"], .c-user-content [data-display-as~="box"]::after,
-.c-user-content [data-display-as~="pale-box"],
-.c-user-content [data-display-as~="pale-box"]::after,
-.c-user-content [data-display-as~="themed-box--background"],
-.c-user-content [data-display-as~="themed-box--background"]::after,
-.c-user-content [data-display-as~="themed-box--border"],
-.c-user-content [data-display-as~="themed-box--border"]::after,
-.c-user-content [data-display-as~="notice-box"],
-.c-user-content [data-display-as~="notice-box"]::after {
-  clear: both;
-}
-
-.c-user-content [data-display-as~="box"] {
-  border: 1px solid #8e8279;
-}
-
-.c-user-content [data-display-as~="pale-box"] {
-  background-color: #f7f6f6;
-}
-
-.c-user-content [data-display-as~="themed-box--background"] {
-  background: currentColor;
-}
-
-.c-user-content [data-display-as~="themed-box--background"] a[href] {
-  color: #fff;
-}
-
-.c-user-content [data-display-as~="themed-box--background"] a[href]:hover,
-.c-user-content [data-display-as~="themed-box--background"] a[href]:active,
-.c-user-content [data-display-as~="themed-box--background"] a[href]:focus {
-  color: #fff;
-}
-
-.c-user-content [data-display-as~="themed-box--background"] a[href].c-cta {
-  border-color: #fff;
-  color: #fff;
-  background-color: transparent;
-}
-
-.c-user-content [data-display-as~="themed-box--background"] a[href].c-cta:hover,
-.c-user-content [data-display-as~="themed-box--background"] a[href].c-cta:active,
-.c-user-content [data-display-as~="themed-box--background"] a[href].c-cta:focus {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.c-user-content [data-display-as~="themed-box--border"] {
-  border-color: currentColor;
-  border-style: solid;
-  border-width: 3px;
-}
-
-.c-user-content [data-display-as~="notice-box"] {
-  border: 6px solid #b9975b;
-  background: #faf8f4;
-}
-
-.c-user-content [data-display-as~="notice-box"] a[href].c-cta:hover,
-.c-user-content [data-display-as~="notice-box"] a[href].c-cta:active,
-.c-user-content [data-display-as~="notice-box"] a[href].c-cta:focus {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-.c-user-content [data-display-as~="blocks"] > * > * {
-  -webkit-flex-basis: 15em;
-  flex-basis: 11.25em;
-  max-width: 15em;
-  align-self: stretch;
-}
-
-.c-user-content [data-display-as~="blocks"] > * > * > span {
-  display: flex;
-  flex-direction: column;
-}
-
-.c-user-content [data-display-as~="blocks"] > * > * > span > a {
-  flex: 0 0 auto;
-}
-
-.c-user-content [data-display-as~="blocks"] > * > * > span > a:first-child {
-  flex: 1 0 auto;
-}
-
-.c-user-content [data-display-is~="pulled-left"],
-.c-user-content [data-display-is~="pulled-right"],
-.c-user-content [data-display-is~="pulled-center"],
-.c-user-content [data-position] {
-  margin-bottom: 1.2rem;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  /*&::before,
-            &::after {
-                content: "";
-                display: block;
-                -webkit-flex: 0 0 auto;
-                    -ms-flex: 0 0 auto;
-                        flex: 0 0 auto;
-                //@include ff-width($sz-m, $uc-breakpoint, 100%);
-            }
-
-            // Because these pseudo elements are children, we need to calculate parent's parent:
-
-            &[data-display-is~="width-one-half"]::before,
-            &[data-display-is~="width-one-half"]::after {
-                @include ff-width($sz-m, ($uc-breakpoint / 2), 0);
-            }*/
-}
-
-.c-user-content [data-display-is~="pulled-left"],
-.c-user-content [data-position="left"] {
-  float: left;
-  clear: left;
-  margin-right: 2.4rem;
-}
-
-.c-user-content [data-display-is~="pulled-left"]::before,
-.c-user-content [data-position="left"]::before {
-  display: none;
-}
-
-.c-user-content [data-display-is~="pulled-left"] + ::before,
-.c-user-content [data-display-is~="pulled-left"] + ::after,
-.c-user-content [data-position="left"] + ::before,
-.c-user-content [data-position="left"] + ::after {
-  content: " ";
-  display: table;
-}
-
-.c-user-content [data-display-is~="pulled-left"] + ::after,
-.c-user-content [data-position="left"] + ::after {
-  clear: both;
-}
-
-.c-user-content [data-display-is~="pulled-right"],
-.c-user-content [data-position="right"] {
-  float: right;
-  clear: right;
-  margin-left: 2.4rem;
-}
-
-.c-user-content [data-display-is~="pulled-right"]::after,
-.c-user-content [data-position="right"]::after {
-  display: none;
-}
-
-.c-user-content [data-display-is~="pulled-right"] + ::before,
-.c-user-content [data-display-is~="pulled-right"] + ::after,
-.c-user-content [data-position="right"] + ::before,
-.c-user-content [data-position="right"] + ::after {
-  content: " ";
-  display: table;
-}
-
-.c-user-content [data-display-is~="pulled-right"] + ::after,
-.c-user-content [data-position="right"] + ::after {
-  clear: both;
-}
-
-.c-user-content [data-display-is~="pulled-center"],
-.c-user-content [data-position="center"] {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.c-user-content [data-display-is~="pulled-center"]::after,
-.c-user-content [data-position="center"]::after {
-  display: none;
-}
-
-.c-user-content [data-display-is~="width-one-quarter"],
-.c-user-content [data-width="one-quarter"] {
-  max-width: 100%;
-  width: calc((35em - 100%) * 1000);
-  min-width: 25%;
-}
-
-.c-user-content [data-display-is~="width-one-third"],
-.c-user-content [data-width="one-third"] {
-  max-width: 100%;
-  width: calc((35em - 100%) * 1000);
-  min-width: 33%;
-}
-
-.c-user-content [data-display-is~="width-one-half"],
-.c-user-content [data-width="one-half"] {
-  max-width: 100%;
-  width: calc((35em - 100%) * 1000);
-  min-width: 50%;
-}
-
-.c-user-content [data-display-is~="width-two-thirds"],
-.c-user-content [data-width="two-thirds"] {
-  max-width: 100%;
-  width: calc((35em - 100%) * 1000);
-  min-width: 67%;
-}
-
-.c-user-content [data-display-is~="width-one-whole"],
-.c-user-content [data-width="one-whole"] {
-  width: 100%;
-}
-
-.c-user-content [data-contains~="image"] {
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-  /* [1] */
-}
-
-.c-user-content [data-contains~="image"] svg {
-  max-width: 100%;
-}
-
-.c-user-content [data-contains~="image"] img {
-  /*
-                    1. This is to provide positioning context for the ::after pseudo-element.
-                    2. This is so a broken image is still 100%.
-                    3. Center in container.
-                    4. This prevents long-thin images appearing huge an narrow (100% width) sizes.
-                       However, it's a bit of a magic number, so may not work in all cases.
-                */
-  position: relative;
-  /* [1] */
-  display: block;
-  /* [2] */
-  height: auto;
-  width: auto;
-  max-width: 100%;
-  max-height: 50vw;
-  /* [4] */
-  border-style: none;
-  margin: 0 auto;
-  /* [3] */
-}
-
-.c-user-content a[href][data-contains~="image"] {
-  border: 0;
-  padding: 0;
-}
-
-.c-user-content a[href][data-contains~="image"]:hover, .c-user-content a[href][data-contains~="image"]:active, .c-user-content a[href][data-contains~="image"]:focus {
-  border: 0;
-  box-shadow: 0 0 0 0.6rem #fff, 0 0 0 1.2rem rgba(0, 0, 0, 0.2);
-}
-
-.c-user-content a[href][rel=external][data-contains~="image"]::after {
-  position: absolute;
-  right: -1em;
-  top: -1em;
-  width: 1.25em;
-  height: 1.25em;
-  display: block;
-}
-
-.c-user-content [data-contains~="logo"] img {
-  max-height: 9rem;
-  background-color: transparent;
-}
-
-.c-user-content [data-contains~="logo-xsmall"] img {
-  max-height: 5.4rem;
-}
-
-.c-user-content [data-contains~="logo-small"] img {
-  max-height: 7.2rem;
-}
-
-.c-user-content [data-contains~="logo-medium"] img {
-  max-height: 9rem;
-}
-
-.c-user-content [data-contains~="logo-large"] img {
-  max-height: 10.8rem;
-}
-
-.c-user-content [data-contains~="logo-xlarge"] img {
-  max-height: 14.4rem;
-}
-
-.c-user-content [data-contains~="logo-xxlarge"] img {
-  max-height: 18rem;
-}
-
-.c-user-content [data-contains~="logo-xxxlarge"] img {
-  max-height: 21.6rem;
-}
-
-.c-user-content img {
-  background: #fff;
-}
-
-.c-user-content b > img,
-.c-user-content b > i > img {
-  border: 3px solid #a59c95 !important;
-}
-
-.c-user-content b > i > img {
-  padding: 1.2rem;
-}
-
-.c-user-content [data-contains~="portrait"] {
-  max-width: 16em;
-}
-
-.c-user-content [data-contains~="portrait"]::before {
-  content: "";
-  width: 1px;
-  margin-left: -1px;
-  float: left;
-  height: 0;
-  padding-top: 100%;
-}
-
-.c-user-content [data-contains~="portrait"]::after {
-  /* to clear float */
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.c-user-content [data-contains~="portrait"] img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  max-height: none;
-  object-fit: cover;
-}
-
-.c-user-content img[src*="/img/avatars/"],
-.c-user-content [data-contains~="portrait"] img {
-  display: block;
-  width: 100%;
-  max-width: 16em;
-  margin: 0 auto;
-  border-radius: 99999px;
-  overflow: hidden;
-}
-
-.c-user-content [data-display-as~="smallprint"] {
-  font-size: 0.875em;
-}
-
-.c-user-content [data-display-as~="strapline"] {
-  font-size: 1.125em;
-}
-
-.c-user-content figcaption {
-  text-align: center;
-  font-size: 0.875em;
-  margin-top: 1.2rem;
-}
-
-.c-user-content a[href$=".pdf"]:not([data-contains="thumbnail"])::before,
-.c-user-content a[href$=".pdf"] br + span::before,
-.c-user-content a[href$=".doc"]:not([data-contains="thumbnail"])::before,
-.c-user-content a[href$=".doc"] br + span::before,
-.c-user-content a[href$=".docx"]:not([data-contains="thumbnail"])::before,
-.c-user-content a[href$=".docx"] br + span::before,
-.c-user-content a[href$=".ppt"]:not([data-contains="thumbnail"])::before,
-.c-user-content a[href$=".ppt"] br + span::before,
-.c-user-content a[href$=".pptx"]:not([data-contains="thumbnail"])::before,
-.c-user-content a[href$=".pptx"] br + span::before,
-.c-user-content a[href$=".ppsx"]:not([data-contains="thumbnail"])::before,
-.c-user-content a[href$=".ppsx"] br + span::before,
-.c-user-content a[href$=".xls"]:not([data-contains="thumbnail"])::before,
-.c-user-content a[href$=".xls"] br + span::before,
-.c-user-content a[href$=".xlsx"]:not([data-contains="thumbnail"])::before,
-.c-user-content a[href$=".xlsx"] br + span::before,
-.c-user-content a[href$=".zip"]:not([data-contains="thumbnail"])::before,
-.c-user-content a[href$=".zip"] br + span::before {
-  content: "[FILE] ";
-  position: relative;
-  display: inline-block;
-  font-size: 0.75em;
-  vertical-align: middle;
-  line-height: 1;
-  opacity: .6;
-  margin-right: 0.5em;
-  margin-top: -0.3125em;
-}
-
-[data-contains="priority-content"] [data-display-as*="pale-box"],
-[data-contains="priority-content"] [data-display-as*="themed-box"] {
-  text-align: center;
-}
-
-[data-contains="priority-content"] [data-display-as*="pale-box"] h2,
-[data-contains="priority-content"] [data-display-as*="themed-box"] h2 {
-  font-size: 1.5em;
-  margin-bottom: 0;
-}
-
-[data-contains="priority-content"] [data-display-as*="pale-box"] h3,
-[data-contains="priority-content"] [data-display-as*="themed-box"] h3 {
-  font-size: 1.25em;
-  margin-bottom: 0;
-}
-
-[data-contains="priority-content"] [data-display-as*="pale-box"] p:only-child,
-[data-contains="priority-content"] [data-display-as*="themed-box"] p:only-child {
-  font-size: 1.25em;
-}
-
-/* ---------------------------------------------------------------------------------------------- */
-/* --| JOOMLA |---------------------------------------------------------------------------------- */
-.highlight {
-  background-color: #e0dcda;
 }
 
 /* ---------------------------------------------------------------------------------------------- */

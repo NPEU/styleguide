@@ -62,7 +62,8 @@ $theme: map-merge(
     );
 }
 */
-//@debug $theme;
+@debug $theme-name;
+@debug $theme;
 
 @include background-theme($theme-name, $theme);
 @include bands-theme($theme-name, $theme);
@@ -156,7 +157,6 @@ table.#{$theme-namespace}#{$theme-name} tr:nth-child(odd) > th,
 .#{$theme-namespace}#{$theme-name}.subnav__items {
     background-color: map-get($theme, background-color);
 }
-
 
 
 // Overpanel:

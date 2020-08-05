@@ -9,6 +9,9 @@
 @import "_settings.scss";
 @import "_core_themes.scss";
 
+$theme-map: ($theme-name: $theme);
+$themes: map-merge($themes, $theme-map);
+
 $experimental_checkradios: true;
 
 $f__base-background-color: #fff;
@@ -291,7 +294,7 @@ $primary-content-pull-out-side-space: 0 $primary-content-spacing-unit;
     }
 }
 
-@import "layout-patterns/_balance.scss";
+//@import "layout-patterns/_balance.scss";
 
 @import "layout-patterns/_distribute.scss";
 
@@ -404,6 +407,10 @@ $highlight-color: map-get(map-get($themes, neutral), primary-color);
 }
 /* ---------------------------------------------------------------------------------------------- */
 
+/* --| USER CONTENT |---------------------------------------------------------------------------- */
+
+@import "component-patterns/_user_content";
+
 
 
 /* --| THEMES |---------------------------------------------------------------------------------- */
@@ -444,10 +451,10 @@ $theme: map_get($themes, $theme-name);
 // ALSO NOTE that classnames SHOULD NOT (NEED TO) CHANGE. That way we can just reorganise this SCSS
 // without messing up the final output design.
 
-$theme-name: npeu;
-$theme: map_get($themes, $theme-name);
+//$theme-name: npeu;
+//$theme: map_get($themes, $theme-name);
 
-@import "_theme";
+//@import "_theme";
 
 // Navbar:
 .nav-bar {
@@ -541,14 +548,14 @@ $theme: map-merge(
 /* --| WIREFRAME--------------------------------------------------------------------------------- */
 // http://meyerweb.com/eric/thoughts/2017/11/27/generating-wireframe-boxes-with-css-and-html5
 // Just testing this out, may not keep.
-@import "_wireframe";
+//@import "_wireframe";
 
 /* ---------------------------------------------------------------------------------------------- */
 
 
-/* --| USER CONTENT |---------------------------------------------------------------------------- */
+////* --| USER CONTENT |---------------------------------------------------------------------------- */
 
-@import "component-patterns/_user_content";
+///@import "component-patterns/_user_content";
 
 /* ---------------------------------------------------------------------------------------------- */
 
@@ -563,9 +570,3 @@ $theme: map-merge(
 /* ---------------------------------------------------------------------------------------------- */
 
 
-
-/* --| SHAME |----------------------------------------------------------------------------------- */
-
-@import "_shame";
-
-/* ---------------------------------------------------------------------------------------------- */

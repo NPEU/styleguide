@@ -88,7 +88,7 @@ $uc-breakpoint: 35em !default;
 
         [data-display-as~="themed-box--background"] {
             //color: #fff;
-            //background: map-get(map-get($themes, npeu), primary-color);
+            //background: map-get(map-get($themes, $theme-name), primary-color);
             background: currentColor;
 
             //outline: 1px solid $border-color;
@@ -113,7 +113,7 @@ $uc-breakpoint: 35em !default;
             a[href].c-cta:hover,
             a[href].c-cta:active,
             a[href].c-cta:focus {
-                @if f__color_light_or_dark(map-get(map-get($themes, npeu), primary-color)) == 'light' {
+                @if f__color_light_or_dark(map-get(map-get($themes, $theme-name), primary-color)) == 'light' {
                     background-color: rgba(0,0,0,0.1);
                 } @else {
                     background-color: rgba(255,255,255,0.1);
@@ -128,13 +128,13 @@ $uc-breakpoint: 35em !default;
         }
 
         [data-display-as~="notice-box"] {
-            border: 6px solid map-get(map-get($themes, npeu), secondary-color);
-            background: scale-color(map-get(map-get($themes, npeu), secondary-color), $lightness: 93%);
+            border: 6px solid map-get(map-get($themes, $theme-name), secondary-color);
+            background: scale-color(map-get(map-get($themes, $theme-name), secondary-color), $lightness: 93%);
 
             a[href].c-cta:hover,
             a[href].c-cta:active,
             a[href].c-cta:focus {
-                @if f__color_light_or_dark(map-get(map-get($themes, npeu), secondary-color)) == 'light' {
+                @if f__color_light_or_dark(map-get(map-get($themes, $theme-name), secondary-color)) == 'light' {
                     background-color: rgba(0,0,0,0.1);
                 } @else {
                     background-color: rgba(255,255,255,0.1);
