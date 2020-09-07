@@ -62,8 +62,8 @@ $theme: map-merge(
     );
 }
 */
-@debug $theme-name;
-@debug $theme;
+//@debug $theme-name;
+//@debug $theme;
 
 @include background-theme($theme-name, $theme);
 @include bands-theme($theme-name, $theme);

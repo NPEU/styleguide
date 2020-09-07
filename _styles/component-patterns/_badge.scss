@@ -6,6 +6,8 @@ $badge-namespace: c- !default;
 
 $theme-only: false !default;
 
+$content-breakpoint: 60em !default;
+
 // Note - no theme yet!
 
 // We don't need this if we're only themeing the pattern:
@@ -138,6 +140,14 @@ $theme-only: false !default;
                 border-color: currentColor;
             }
         }
+        
+        //@media only screen and (max-width: $content-breakpoint) {
+        &#{&}--page-brand img {
+            //max-width: 25rem;
+            display: block;
+            margin: 0 auto;
+            max-height: 18rem;
+        }
     }
 
     a[href].#{$badge-namespace}badge {
@@ -145,6 +155,7 @@ $theme-only: false !default;
         padding: 0;
         width: 100%;
         height: 100%;
+        flex: 1 0px;
 
         &:hover,
         &:active,
@@ -167,13 +178,14 @@ $theme-only: false !default;
         IE10-11
 
         1. IE11- seems to need this.
+        ... Or, maybe not!?!?! Weird. 03/09/2020 - taken this out.
     */
 
-    @media only all and (-ms-high-contrast: none), only all and (-ms-high-contrast: active) {
+    /*@media only all and (-ms-high-contrast: none), only all and (-ms-high-contrast: active) {
 
         .#{$badge-namespace}badge img {
-            height: 100%; /* [1] */
+            height: 100%; /* [1] *
         }
 
-    }
+    }*/
 }

@@ -49,30 +49,52 @@
 
     <!--
         Print (Edge doesn't apply to print otherwise)
-        IE 10, 11
         Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser 11.8+
         FF 47+
     -->
-    <link rel="stylesheet" href="/css/style.min.{{ site.data.cache_bust_css.date }}.css" media="
-        only print, screen and (min-width: 1vm),
+    <link rel="stylesheet" href="/css/theme-npeu.min.{{ site.data.cache_bust_css.date }}.css" media="
+        only print, screen and (min-width: 1vmin),
         only all and (-ms-high-contrast: none), only all and (-ms-high-contrast: active),
         only all and (pointer: fine), only all and (pointer: coarse), only all and (pointer: none),
         only all and (min--moz-device-pixel-ratio:0) and (display-mode:browser), (min--moz-device-pixel-ratio:0) and (display-mode:fullscreen)
     ">
 
-    {% if project_data.theme %}
-        <link rel="stylesheet" href="/css/theme-{{ page.project }}.min.{{ site.data.cache_bust_css.date }}.css" media="
-            only print, screen and (min-width: 1vm),
-            only all and (-ms-high-contrast: none), only all and (-ms-high-contrast: active),
-            only all and (pointer: fine), only all and (pointer: coarse), only all and (pointer: none),
-            only all and (min--moz-device-pixel-ratio:0) and (display-mode:browser), (min--moz-device-pixel-ratio:0) and (display-mode:fullscreen)
-        ">
-    {% endif %}
+    <!-- Load styles for IE11 -->
+    <script>
+    if (!!window.MSInputMethodContext && !!document.documentMode) {
+        var link  = document.createElement('link');
+        link.rel  = 'stylesheet';
+        link.href = '/css/theme-npeu.min.{{ site.data.cache_bust_css.date }}.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    }
+    </script>
+    
+    
+    <!-- Remove styles for IE10 --
+    <script>    
+    if (Function('/*@cc_on return document.documentMode===10@*/')()){
+        var elements = document.querySelectorAll('rel[stylesheet]');
+        Array.prototype.forEach.call(elements, function(el, i){
+            el.parentNode.removeChild(el);
+        });
+        
+    }
+    </script>
+    -->
 
     <script src="/js/script.min.js"></script>
     
     {% if page.load_highlighter != false %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+    <!-- Load styles for IE11 -->
+    <script>
+    if (!!window.MSInputMethodContext && !!document.documentMode) {
+        var link  = document.createElement('link');
+        link.rel  = 'stylesheet';
+        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    }
+    </script>
     <style>
         /* Override hljs styles to reset to StartCSS: */
         .hljs {

@@ -2901,7 +2901,7 @@ blockquote :last-child:after {
   display: flex;
 }
 
-@media only screen and (max-width: 57.9375em) {
+@media only screen and (max-width: 64.9375em) {
   /*
 			1. Make sure the over-panel is on top.
 		*/
@@ -3353,14 +3353,14 @@ blockquote :last-child:after {
 
 /* -------------------------------------------------------------------------------------------*/
 /* -----------------------------------------------------------------------------------------------*/
-@media only screen and (max-width: 58em) {
+@media only screen and (max-width: 65em) {
   .nav-bar .subnav__items--stacked--only-narrow .subnav__item,
   .nav-bar .subnav__items--stacked--only-narrow .subnav__link {
     float: none;
   }
 }
 
-@media only screen and (min-width: 58em) {
+@media only screen and (min-width: 65em) {
   .nav-bar .subnav__items--stacked--only-wide .subnav__item,
   .nav-bar .subnav__items--stacked--only-wide .subnav__link {
     float: none;
@@ -3374,7 +3374,7 @@ blockquote :last-child:after {
     (CSS only attempts weren't good enough)
     So, scoping these styles to the 'js-nav-bar' class.
 */
-@media only screen and (max-width: 58em) and (min-width: 0\0) and (min-resolution: 0.001dpcm) {
+@media only screen and (max-width: 65em) and (min-width: 0\0) and (min-resolution: 0.001dpcm) {
   /* This is all for IE9: */
   .js-nav-bar .nav-bar,
   .js-nav-bar .nav-bar__start {
@@ -3395,7 +3395,7 @@ blockquote :last-child:after {
   }
 }
 
-@media only screen and (max-width: 58em) {
+@media only screen and (max-width: 65em) {
   /*
             1. FF8-21 needs this or is increases the height of this box for some reason.
             2. FF8-21 needs this.
@@ -3447,7 +3447,7 @@ blockquote :last-child:after {
   }
 }
 
-@media only screen and (min-width: 58em) {
+@media only screen and (min-width: 65em) {
   /*.js-nav-bar .nav-bar {
 
         }*/
@@ -3765,7 +3765,7 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__button {
   transition: opacity ease 0.8s;
 }
 
-@media only screen and (max-width: 58em) {
+@media only screen and (max-width: 65em) {
   .js-dropdown .dropdown--only-narrow .dropdown__area {
     position: absolute;
     visibility: hidden;
@@ -3796,7 +3796,7 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__button {
   }
 }
 
-@media only screen and (min-width: 58em) {
+@media only screen and (min-width: 65em) {
   .js-dropdown .dropdown--only-wide .dropdown__area {
     position: absolute;
     visibility: hidden;
@@ -3960,13 +3960,13 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__button {
 /* -------------------------------------------------------------------------------------------*/
 /* -----------------------------------------------------------------------------------------------*/
 /* -- Enhanced layout --------------------------------------------------------------------------- */
-@media only screen and (max-width: 57.9375em) {
+@media only screen and (max-width: 64.9375em) {
   .search-form .search-form__collapse {
     width: 100%;
   }
 }
 
-@media only screen and (min-width: 58em) {
+@media only screen and (min-width: 65em) {
   /*
             1. Reinstate all flexbox for enhanced view as no wrapping needs to occure
             (FF8-27 issue describbed above)
@@ -4298,11 +4298,18 @@ $fallback-svg--link-bg-color-alt: #fff;
   border-color: currentColor;
 }
 
+.c-badge.c-badge--page-brand img {
+  display: block;
+  margin: 0 auto;
+  max-height: 18rem;
+}
+
 a[href].c-badge {
   border: 0;
   padding: 0;
   width: 100%;
   height: 100%;
+  flex: 1 0px;
 }
 
 a[href].c-badge:hover, a[href].c-badge:active, a[href].c-badge:focus {
@@ -4323,14 +4330,15 @@ a[href][rel=external].c-badge::after {
         IE10-11
 
         1. IE11- seems to need this.
+        ... Or, maybe not!?!?! Weird. 03/09/2020 - taken this out.
     */
-@media only all and (-ms-high-contrast: none), only all and (-ms-high-contrast: active) {
-  .c-badge img {
-    height: 100%;
-    /* [1] */
-  }
-}
+/*@media only all and (-ms-high-contrast: none), only all and (-ms-high-contrast: active) {
 
+        .c-badge img {
+            height: 100%; /* [1] *
+        }
+
+    }*/
 /*$brochure-spacing-unit: $f__base-rem-space-unit;
 $brochure--border-or-outline: false;
 @import "component-patterns/_brochure.scss";*/
@@ -6448,12 +6456,14 @@ ul.c-utilitext li + li, ol.c-utilitext li + li {
     If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.
 */
 .l-col-to-row-wrap {
+  display: --webkit-flex;
   display: -ms-flexbox;
   display: flex;
   width: 100%;
 }
 
 .l-col-to-row-wrap > .l-col-to-row {
+  -webkit-flex-basis: 100%;
   -ms-flex-preferred-size: 100%;
   flex-basis: 100%;
 }
@@ -6628,6 +6638,10 @@ _:-ms-lang(x), .l-col-to-row__item  {
   padding: 0 2.4rem;
 }
 
+.l-primary-content .l-primary-content__pull-out__margin--\@large {
+  margin: 0;
+}
+
 @media only screen and (max-width: 60em) {
   .l-primary-content .l-primary-content__hidden--narrow {
     display: none;
@@ -6640,6 +6654,9 @@ _:-ms-lang(x), .l-col-to-row__item  {
   }
   .l-primary-content .l-primary-content__pull-out__padded--\@small {
     padding: 0;
+  }
+  .l-primary-content .l-primary-content__pull-out__margin--\@large {
+    margin: 2.4rem 0;
   }
   .l-primary-content.l-primary-content {
     padding: 0 2.4rem;
@@ -6721,8 +6738,13 @@ _:-ms-lang(x), .l-col-to-row__item  {
 }
 
 .l-distribute-wrap > .l-distribute, .c-user-content [data-display-as~="blocks"] > .l-distribute, .c-user-content [data-display-as~="blocks"] > * {
+  -webkit-flex-basis: 100%;
   -ms-flex-preferred-size: 100%;
   flex-basis: 100%;
+}
+
+.l-distribute, .c-user-content [data-display-as~="blocks"] > * {
+  /*    &.l-distribute--limit-10 > * {        -webkit-flex-basis: 10em;                flex-basis: 7.5em;                 max-width: 10em;    }    &.l-distribute--limit-15 > *  {        -webkit-flex-basis: 15em;                flex-basis: 11.25em;                 max-width: 15em;    }    &.l-distribute--limit-20 > *  {        -webkit-flex-basis: 20em;                flex-basis: 15em;                 max-width: 20em;    }    &.l-distribute--limit-25 > *  {        -webkit-flex-basis: 25em;                flex-basis: 18.75em;                 max-width: 25em;    }    &.l-distribute--limit-30 > *  {        -webkit-flex-basis: 30em;                flex-basis: 22.5em;                 max-width: 30em;    }    &.l-distribute--limit-35 > *  {        -webkit-flex-basis: 35em;                flex-basis: 26.25em;                 max-width: 35em;    }    &.l-distribute--limit-40 > *  {        -webkit-flex-basis: 40em;                flex-basis: 30em;                 max-width: 40em;    }*/
 }
 
 .l-distribute.l-distribute, .c-user-content [data-display-as~="blocks"] > * {
@@ -6745,14 +6767,15 @@ _:-ms-lang(x), .l-col-to-row__item  {
   -webkit-align-items: stretch;
   -ms-flex-align: stretch;
   align-items: stretch;
+  --s: 0;
 }
 
 .l-distribute > *, .c-user-content [data-display-as~="blocks"] > * > * {
   display: inline-block;
   /* [1] */
-  -webkit-flex: 1 1 auto;
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
   margin: 0;
   padding: 0;
 }
@@ -6769,66 +6792,27 @@ _:-ms-lang(x), .l-col-to-row__item  {
   justify-content: flex-end;
 }
 
-.l-distribute.l-distribute--limit-10 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-10 > * {
-  -webkit-flex-basis: 10em;
-  flex-basis: 7.5em;
-  max-width: 10em;
-}
-
-.l-distribute.l-distribute--limit-15 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-15 > * {
-  -webkit-flex-basis: 15em;
-  flex-basis: 11.25em;
-  max-width: 15em;
-}
-
-.l-distribute.l-distribute--limit-20 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-20 > * {
-  -webkit-flex-basis: 20em;
-  flex-basis: 15em;
-  max-width: 20em;
-}
-
-.l-distribute.l-distribute--limit-25 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-25 > * {
-  -webkit-flex-basis: 25em;
-  flex-basis: 18.75em;
-  max-width: 25em;
-}
-
-.l-distribute.l-distribute--limit-30 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-30 > * {
-  -webkit-flex-basis: 30em;
-  flex-basis: 22.5em;
-  max-width: 30em;
-}
-
-.l-distribute.l-distribute--limit-35 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-35 > * {
-  -webkit-flex-basis: 35em;
-  flex-basis: 26.25em;
-  max-width: 35em;
-}
-
-.l-distribute.l-distribute--limit-40 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-40 > * {
-  -webkit-flex-basis: 40em;
-  flex-basis: 30em;
-  max-width: 40em;
-}
-
-.l-distribute.l-distribute--gutter--small, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small,
-.l-distribute.l-distribute--gutter--small > *,
-.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--small > * {
+.l-distribute.l-distribute--gutter--s, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--s,
+.l-distribute.l-distribute--gutter--s > *,
+.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--s > * {
   padding: 0.5rem;
+  --s: 1rem;
 }
 
 .l-distribute.l-distribute--gutter, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter,
 .l-distribute.l-distribute--gutter > *,
-.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter > *, .l-distribute.l-distribute--gutter--medium, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--medium,
-.l-distribute.l-distribute--gutter--medium > *,
-.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--medium > * {
+.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter > *, .l-distribute.l-distribute--gutter--m, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--m,
+.l-distribute.l-distribute--gutter--m > *,
+.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--m > * {
   padding: 1rem;
+  --s: 2rem;
 }
 
-.l-distribute.l-distribute--gutter--large, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--large,
-.l-distribute.l-distribute--gutter--large > *,
-.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--large > * {
+.l-distribute.l-distribute--gutter--l, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--l,
+.l-distribute.l-distribute--gutter--l > *,
+.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--l > * {
   padding: 2rem;
+  --s: 4rem;
 }
 
 .l-distribute--flush-edge-gutters {
@@ -6850,6 +6834,176 @@ _:-ms-lang(x), .l-col-to-row__item  {
 
 .l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter--large, .l-distribute--flush-edge-gutters .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--large, .c-user-content .l-distribute--flush-edge-gutters [data-display-as~="blocks"] > .l-distribute--gutter--large {
   margin: -4rem;
+}
+
+.l-distribute.l-distribute--bottom-heavy > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--bottom-heavy > * {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.l-distribute.l-distribute--basis-15 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--basis-15 > * {
+  -webkit-flex-basis: 15rem;
+  -ms-flex-preferred-size: 15rem;
+  flex-basis: 15rem;
+  --b: 15rem;
+}
+
+.l-distribute.l-distribute--basis-20 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--basis-20 > * {
+  -webkit-flex-basis: 20rem;
+  -ms-flex-preferred-size: 20rem;
+  flex-basis: 20rem;
+  --b: 20rem;
+}
+
+.l-distribute.l-distribute--basis-25 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--basis-25 > * {
+  -webkit-flex-basis: 25rem;
+  -ms-flex-preferred-size: 25rem;
+  flex-basis: 25rem;
+  --b: 25rem;
+}
+
+.l-distribute.l-distribute--basis-30 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--basis-30 > * {
+  -webkit-flex-basis: 30rem;
+  -ms-flex-preferred-size: 30rem;
+  flex-basis: 30rem;
+  --b: 30rem;
+}
+
+.l-distribute.l-distribute--basis-35 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--basis-35 > * {
+  -webkit-flex-basis: 35rem;
+  -ms-flex-preferred-size: 35rem;
+  flex-basis: 35rem;
+  --b: 35rem;
+}
+
+@supports (width: max(1px, 1px)) {
+  .l-distribute, .c-user-content [data-display-as~="blocks"] > * {
+    /* 1 or more: */
+    /* 2 or more: */
+    /* 3 or more: - note this should be part of col-to-row*/
+    /*&.l-distribute--top-heavy > :nth-last-child(n+3),        &.l-distribute--top-heavy > :nth-last-child(n+3) ~ * {            //flex-basis: unquote("max(33%, (var(--bp1) - 100%) * 999)");            flex-basis: unquote("max(33%, ((var(--b) * 3) - 100%) * 999)");        }*/
+    /* 3 or more: */
+    /* 3 or more, different values for the first one: */
+    /* 4 or more: */
+    /*        From here on in there are increasingly more possibilities on how things can be laid out.        More items = more possibilities. I've tried to go for what I consider to be the most balanced option but almost all other possibilities are achievable.        */
+    /* 5 or more: */
+    /* 5 or more, different values for the first two: */
+    /* 5 or more, different values for the first one: */
+    /* 6 or more: */
+    /* 6 or more, different values for the first two: */
+    /*&.l-distribute--top-heavy > :nth-last-child(n+6),        &.l-distribute--top-heavy > :nth-last-child(n+6) + * {            flex-basis: unquote("min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(50%, ((var(--b) * 4) - 100%) * 999), max(20%, ((var(--b) * 5) - 100%) * 999), max(16%, ((var(--b) * 6) - 100%) * 999))");        }*/
+    /* 6 or more, different values for the first one: */
+    /*&.l-distribute--top-heavy > :nth-last-child(n+6) {            flex-basis: unquote("min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(50%, ((var(--b) * 4) - 100%) * 999), max(100%, ((var(--b) * 5) - 100%) * 999), max(16%, ((var(--b) * 6) - 100%) * 999))");        }*/
+    /*            It's worth noting here that things get especially tricky and messy. We've already seen            with 6 we've had to skip some steps, and things like 7 and 11 are quite hard too.            Also with ANY amount, the practicalities of allowing all arrangements up to a single            row become limiting.            If you assume you have items that are quite small - and can therefore fit into a single            row - a small reduction in available width that causes wrapping would leave a very large            item on it's own row. This is the whole reason we want to balance things in the first            place, so that this doesn't happen - we want a reduction in available width that causes            wrapping to lead to MORE items being wrapped and thus creating a better balance.            It's just very hard to know where things SHOULD land.        */
+    /* 7 or more: (1x7 | 1,2x3 | 1,3x2 | 3,4) */
+    /* 7 or more, different values for the second and third: */
+    /* 7 or more, different values for the first one: */
+    /* 8 or more: */
+    /* 9 or more: */
+    /* 9 or more, different values for the first one: */
+    /* 10 or more: */
+    /* 11 or more: */
+    /* 11 or more, different values for the second one: */
+    /* 11 or more, different values for the first one: */
+    /* 11 or more, different values for the next 3 ...: */
+    /*&.l-distribute--top-heavy > :nth-last-child(n+11) ~ :nth-child(5),        &.l-distribute--top-heavy > :nth-last-child(n+11) ~ :nth-child(5) ~ * {            flex-basis: unquote("max(33%, (var(--bp2) - 100%) * 999)");        }*/
+    /* 11 or more, different values for the last 4 ...: */
+    /*&.l-distribute--top-heavy > :nth-last-child(n+11) ~ :nth-child(7),        &.l-distribute--top-heavy > :nth-last-child(n+11) ~ :nth-child(7) ~ * {            flex-basis: unquote("max(25%, (var(--bp2) - 100%) * 999)");        }*/
+    /* 12 or more: double class to boost specificity - ugh.*/
+  }
+  .l-distribute.l-distribute--top-heavy, .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy {
+    --bp1: 90rem;
+    --bp1-2: 110rem;
+    --bp2: 130em;
+  }
+  .l-distribute.l-distribute--top-heavy > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > * {
+    flex-basis: 100%;
+    flex-grow: 1;
+  }
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+2), .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+2),
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+2) ~ *,
+  .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+2) ~ * {
+    flex-basis: max(50%, ((var(--b) * 2) - 100%) * 999);
+  }
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+3), .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+3),
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+3) ~ *,
+  .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+3) ~ * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+3), .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+3) {
+    flex-basis: max(33%, ((var(--b) * 3) - 100%) * 999);
+  }
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+4), .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+4),
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+4) ~ *,
+  .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+4) ~ * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(25%, ((var(--b) * 4) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+5), .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+5),
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+5) ~ *,
+  .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+5) ~ * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(25%, ((var(--b) * 4) - 100%) * 999), max(20%, ((var(--b) * 5) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+5), .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+5),
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+5) + *,
+  .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+5) + * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(20%, ((var(--b) * 5) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+5), .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+5) {
+    flex-basis: min(max(50%, ((var(--b) * 3) - 100%) * 999), max(100%, ((var(--b) * 4) - 100%) * 999), max(20%, ((var(--b) * 5) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+6), .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+6),
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+6) ~ *,
+  .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+6) ~ * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(16%, ((var(--b) * 6) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+7), .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+7),
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+7) ~ *,
+  .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+7) ~ * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(25%, ((var(--b) * 4) - 100%) * 999), max(14%, ((var(--b) * 7) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+7) + *, .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+7) + *,
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+7) + * + *,
+  .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+7) + * + * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(14%, ((var(--b) * 7) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+7), .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+7) {
+    flex-basis: min(max(33%, ((var(--b) * 4) - 100%) * 999), max(14%, ((var(--b) * 7) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+8), .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+8),
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+8) ~ *,
+  .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+8) ~ * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(25%, ((var(--b) * 4) - 100%) * 999), max(12%, ((var(--b) * 8) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+9), .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+9),
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+9) ~ *,
+  .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+9) ~ * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(11%, ((var(--b) * 9) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+9), .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+9) {
+    flex-basis: min(max(33%, ((var(--b) * 3) - 100%) * 999), max(11%, ((var(--b) * 9) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+10), .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+10),
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+10) ~ *,
+  .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+10) ~ * {
+    flex-basis: min(max(50%, ((var(--b) * 2)- 100%) * 999), max(20%, ((var(--b) * 5) - 100%) * 999), max(10%, ((var(--b) * 10) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+11), .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+11),
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+11) ~ *,
+  .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+11) ~ * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(9%, ((var(--b) * 11) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+11) + *, .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+11) + * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(9%, ((var(--b) * 11) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--top-heavy > :nth-last-child(n+11), .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+11) {
+    flex-basis: min(max(50%, ((var(--b) * 3) - 100%) * 999), max(9%, ((var(--b) * 11) - 100%) * 999));
+  }
+  .l-distribute.l-distribute.l-distribute--top-heavy > :nth-last-child(n+12), .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+12),
+  .l-distribute.l-distribute.l-distribute--top-heavy > :nth-last-child(n+12) ~ *,
+  .c-user-content [data-display-as~="blocks"] > .l-distribute--top-heavy > :nth-last-child(n+12) ~ * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(25%, ((var(--b) * 4) - 100%) * 999), max(16%, ((var(--b) * 6) - 100%) * 999), max(8%, ((var(--b) * 12) - 100%) * 999));
+  }
 }
 
 /* IE10-11 */
@@ -6895,7 +7049,7 @@ _:-ms-lang(x), .l-distribute.l-distribute, .c-user-content [data-display-as~="bl
   max-width: 100%\9;
 }
 
-/*    Older webkit browsers also need special treatment.        1. Chrome 39-50, Opera 26-37, Safari/iOS 9-10. Using prefixed property as flex-direction       breaks IE11 otherwise, so may as well use for all.*/
+/*    Older webkit browsers also need special treatment.    1. Chrome 39-50, Opera 26-37, Safari/iOS 9-10. Using prefixed property as flex-direction       breaks IE11 otherwise, so may as well use for all.*/
 _:-webkit-any-link, :root .l-distribute.l-distribute > *, :root .c-user-content [data-display-as~="blocks"] > * > *, .c-user-content :root [data-display-as~="blocks"] > * > * {
   display: flex;
   /* [1] */
@@ -12553,7 +12707,7 @@ img[height] {
   display: none;
 }
 
-@media only screen and (min-width: 58em) {
+@media only screen and (min-width: 65em) {
   .nav-bar.d-bands--bottom {
     border: 0;
   }

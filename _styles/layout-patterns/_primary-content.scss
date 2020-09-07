@@ -57,7 +57,9 @@ $primary-content-pull-out-side-space: 0 $primary-content-spacing-unit 0 0 !defau
         padding: 0 $primary-content-spacing-unit;
     }
     
-
+    #{&}__pull-out__margin--\@large {
+        margin: 0;
+    }
 }
 
 @media only screen and (max-width: $primary-content-breakpoint) {
@@ -79,6 +81,10 @@ $primary-content-pull-out-side-space: 0 $primary-content-spacing-unit 0 0 !defau
     
         #{&}__pull-out__padded--\@small {
             padding: 0;
+        }
+        
+        #{&}__pull-out__margin--\@large {
+            margin: $primary-content-spacing-unit 0;
         }
 
         &#{&} {
