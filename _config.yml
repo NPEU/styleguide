@@ -4,7 +4,7 @@ email: "andy.kirk@npeu.ox.ac.uk"
 description: "Testing things out"
 repository: "https://github.com/NPEU/mockups"
 baseurl: ""
-url: "https://lab.npeu.ox.ac.uk/mockup/"
+url: "https://lab.npeu.ox.ac.uk/styleguide/"
 port: 4002
 
 
@@ -57,6 +57,7 @@ kramdown:
 
 exclude: [
     "_archive",
+    "_assets",
     "_images",
     "_scripts",
     "_styles",

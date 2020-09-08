@@ -100,8 +100,8 @@ exports.css = series(empty_css_output, do_concat_css, do_sass, do_cssmin);
 /*------------------------------------------------------------------------------------------------*\
     IMAGES
 \*------------------------------------------------------------------------------------------------*/
-const img_src  = './_images/';
-const img_dest = './img/';
+const img_src  = './_assets/images/';
+const img_dest = './assets/images/';
 
 const svg2png  = require('gulp-svg2png-update');
 const imagemin = require('gulp-imagemin');
