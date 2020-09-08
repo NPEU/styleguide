@@ -7151,13 +7151,13 @@ _:-webkit-any-link, :root .l-distribute.l-distribute > *, :root .c-user-content 
   .l-gallery-grid.l-gallery-grid {
     display: grid;
   }
-  .l-gallery-grid > * {
+  .l-gallery-grid.l-gallery-grid > * {
     max-width: none;
   }
-  .l-gallery-grid.l-gallery-grid--basis-15 > * {
+  .l-gallery-grid.l-gallery-grid--basis-15 {
     grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
   }
-  .l-gallery-grid.l-gallery-grid--basis-20 > * {
+  .l-gallery-grid.l-gallery-grid--basis-20 {
     grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
   }
   .l-gallery-grid.l-gallery-grid--gutter--small {

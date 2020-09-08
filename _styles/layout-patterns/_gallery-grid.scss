@@ -111,16 +111,16 @@ $gallery-grid-bases: (
 @supports (display: grid) {
     .#{$gallery-grid-namespace}gallery-grid {
         &#{&} {
-            display: grid;
-        }
+            display: grid;        
 
-        > * {
-            max-width: none;
+            > * {
+                max-width: none;
+            }
         }
         
         // Item bases:
         @each $gallery-grid-basis in $gallery-grid-bases {
-            &.#{$gallery-grid-namespace}gallery-grid--basis-#{$gallery-grid-basis} > * {
+            &.#{$gallery-grid-namespace}gallery-grid--basis-#{$gallery-grid-basis} {
                 grid-template-columns: repeat(auto-fit, minmax(#{$gallery-grid-basis}em, 1fr));
             }
         }
