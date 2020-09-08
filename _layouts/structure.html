@@ -51,12 +51,15 @@
         Print (Edge doesn't apply to print otherwise)
         Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser 11.8+
         FF 47+
+        
+        //only print, screen and (min-width: 1vmin),
+        //only all and (pointer: fine), only all and (pointer: coarse), only all and (pointer: none),       
+        //only all and (color-gamut: srgb), only all and (color-gamut: p3), only all and (color-gamut: rec2020),
+        //only all and (min--moz-device-pixel-ratio:0) and (display-mode:browser), (min--moz-device-pixel-ratio:0) and (display-mode:fullscreen)
+
     -->
     <link rel="stylesheet" href="/css/theme-npeu.min.{{ site.data.cache_bust_css.date }}.css" media="
-        only print, screen and (min-width: 1vmin),
-        only all and (-ms-high-contrast: none), only all and (-ms-high-contrast: active),
-        only all and (pointer: fine), only all and (pointer: coarse), only all and (pointer: none),
-        only all and (min--moz-device-pixel-ratio:0) and (display-mode:browser), (min--moz-device-pixel-ratio:0) and (display-mode:fullscreen)
+        only all and (color-gamut: srgb), only all and (color-gamut: p3), only all and (color-gamut: rec2020)
     ">
 
     <!-- Load styles for IE11 -->
