@@ -1,6 +1,6 @@
 ---
 layout: structure--basic
-title: NPEU Mockups
+title: NPEU Styleguide
 project_base_url: styleguide
 ---
 

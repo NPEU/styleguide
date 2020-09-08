@@ -2,7 +2,7 @@
 <html lang="en-gb" class="">
 <head>
     <meta charset="utf-8">
-    <title>{{ page.title }} | NPEU Mockups</title>
+    <title>{{ page.title }} | NPEU Styleguide</title>
     <meta name="description" content="{{ site.description }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -63,7 +63,10 @@
 
     <!-- Load styles for IE11 -->
     <script>
-    if (!!window.MSInputMethodContext && !!document.documentMode) {
+    if (
+        (!!window.MSInputMethodContext && !!document.documentMode)
+     || (navigator.userAgent.indexOf('UCBrowser') > -1)
+    ) {
         var link  = document.createElement('link');
         link.rel  = 'stylesheet';
         link.href = '/css/theme-npeu.min.{{ site.data.cache_bust_css.date }}.css';
@@ -88,9 +91,12 @@
     
     {% if page.load_highlighter != false %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
-    <!-- Load styles for IE11 -->
+    <!-- Load styles for IE11, UC -->
     <script>
-    if (!!window.MSInputMethodContext && !!document.documentMode) {
+    if (
+        (!!window.MSInputMethodContext && !!document.documentMode)
+     || (navigator.userAgent.indexOf('UCBrowser') > -1))
+    ) {
         var link  = document.createElement('link');
         link.rel  = 'stylesheet';
         link.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css';
