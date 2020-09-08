@@ -7061,57 +7061,54 @@ _:-webkit-any-link, :root .l-distribute.l-distribute > *, :root .c-user-content 
 
 */
 .l-gallery-grid {
+  /*
+        1. This is a hack for IE11, otherwise the container goes as wide as the children in a row.
+    */
   /* MODIFIERS */
   /* Widths */
-  /* @TODO make breakpoint a variable */
+  /* 
+        1. In Flexbox, with these settings, incomplete rows will have their items stretched to fill,
+           (due to flex-grow: 1), so a max-width is necessary.
+           This is why Grid is preferred and if supported, added below.
+    */
   /* Gutters */
   /* Alignment */
 }
 
 .l-gallery-grid.l-gallery-grid {
   display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
   list-style-type: none;
+  width: 0;
+  /* [1] */
+  min-width: 100%;
+  /* [1] */
 }
 
-.l-gallery-grid .l-gallery-grid__item {
+.l-gallery-grid > * {
   margin: 0;
   -webkit-flex: 1;
-  -ms-flex-positive: 1;
   flex-grow: 1;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
+  -webkit-flex-shrink: 1;
+  flex-shrink: 1;
   -webkit-flex-basis: auto;
-  -ms-flex-preferred-size: auto;
   flex-basis: auto;
 }
 
-.l-gallery-grid.l-gallery-grid--basis-20 .l-gallery-grid__item {
-  -webkit-flex-basis: 20em;
-  -ms-flex-preferred-size: 20em;
-  flex-basis: 20em;
-  max-width: 20em;
-}
-
-.l-gallery-grid.l-gallery-grid--basis-15 .l-gallery-grid__item {
+.l-gallery-grid.l-gallery-grid--basis-15 > * {
   -webkit-flex-basis: 15em;
-  -ms-flex-preferred-size: 15em;
   flex-basis: 15em;
   max-width: 15em;
 }
 
-.l-gallery-grid.l-gallery-grid--basis-10 .l-gallery-grid__item {
-  -webkit-flex-basis: 10em;
-  -ms-flex-preferred-size: 10em;
-  flex-basis: 10em;
-  max-width: 10em;
+.l-gallery-grid.l-gallery-grid--basis-20 > * {
+  -webkit-flex-basis: 20em;
+  flex-basis: 20em;
+  max-width: 20em;
 }
 
 .l-gallery-grid.l-gallery-grid--gutter--small {
@@ -7119,7 +7116,7 @@ _:-webkit-any-link, :root .l-distribute.l-distribute > *, :root .c-user-content 
   margin-right: -0.6rem;
 }
 
-.l-gallery-grid.l-gallery-grid--gutter--small .l-gallery-grid__item {
+.l-gallery-grid.l-gallery-grid--gutter--small > * {
   padding: 0 0.6rem 1.2rem 0.6rem;
 }
 
@@ -7128,7 +7125,7 @@ _:-webkit-any-link, :root .l-distribute.l-distribute > *, :root .c-user-content 
   margin-right: -1.2rem;
 }
 
-.l-gallery-grid.l-gallery-grid--gutter--medium .l-gallery-grid__item {
+.l-gallery-grid.l-gallery-grid--gutter--medium > * {
   padding: 0 1.2rem 2.4rem 1.2rem;
 }
 
@@ -7137,12 +7134,11 @@ _:-webkit-any-link, :root .l-distribute.l-distribute > *, :root .c-user-content 
   margin-right: -2.4rem;
 }
 
-.l-gallery-grid.l-gallery-grid--gutter--large .l-gallery-grid__item {
+.l-gallery-grid.l-gallery-grid--gutter--large > * {
   padding: 0 2.4rem 4.8rem 2.4rem;
 }
 
 .l-gallery-grid.l-gallery-grid--align-center {
-  -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
 }
@@ -7155,37 +7151,34 @@ _:-webkit-any-link, :root .l-distribute.l-distribute > *, :root .c-user-content 
   .l-gallery-grid.l-gallery-grid {
     display: grid;
   }
-  .l-gallery-grid .l-gallery-grid__item.l-gallery-grid__item {
+  .l-gallery-grid > * {
     max-width: none;
   }
-  .l-gallery-grid.l-gallery-grid--basis-20 {
-    grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
-  }
-  .l-gallery-grid.l-gallery-grid--basis-15 {
+  .l-gallery-grid.l-gallery-grid--basis-15 > * {
     grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
   }
-  .l-gallery-grid.l-gallery-grid--basis-10 {
-    grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
+  .l-gallery-grid.l-gallery-grid--basis-20 > * {
+    grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
   }
   .l-gallery-grid.l-gallery-grid--gutter--small {
     margin: 0;
     grid-gap: 1.2rem;
   }
-  .l-gallery-grid.l-gallery-grid--gutter--small .l-gallery-grid__item {
+  .l-gallery-grid.l-gallery-grid--gutter--small > * {
     padding: 0;
   }
   .l-gallery-grid.l-gallery-grid--gutter--medium {
     margin: 0;
     grid-gap: 2.4rem;
   }
-  .l-gallery-grid.l-gallery-grid--gutter--medium .l-gallery-grid__item {
+  .l-gallery-grid.l-gallery-grid--gutter--medium > * {
     padding: 0;
   }
   .l-gallery-grid.l-gallery-grid--gutter--large {
     margin: 0;
     grid-gap: 4.8rem;
   }
-  .l-gallery-grid.l-gallery-grid--gutter--large .l-gallery-grid__item {
+  .l-gallery-grid.l-gallery-grid--gutter--large > * {
     padding: 0;
   }
 }
