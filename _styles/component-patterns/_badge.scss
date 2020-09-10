@@ -17,11 +17,14 @@ $content-breakpoint: 60em !default;
 
         /*
             1. For positioned pseudo elements, e.g. External indicator.
+            2. For IE11
         */
         &#{&} {
             display: inline-block;
             vertical-align: middle;
+            
             position: relative; /* [1] */
+            max-width: 100%; /* [2] */
         }
 
             svg {
@@ -39,7 +42,7 @@ $content-breakpoint: 60em !default;
 
                 display: block; /* [2] */
 
-                height: auto;
+                //height: fit-content;
                 width: auto;
 
                 max-width: 100%;
@@ -141,9 +144,7 @@ $content-breakpoint: 60em !default;
             }
         }
         
-        //@media only screen and (max-width: $content-breakpoint) {
         &#{&}--page-brand img {
-            //max-width: 25rem;
             display: block;
             margin: 0 auto;
             max-height: 18rem;
@@ -153,9 +154,10 @@ $content-breakpoint: 60em !default;
     a[href].#{$badge-namespace}badge {
         border: 0;
         padding: 0;
-        width: 100%;
-        height: 100%;
-        flex: 1 0px;
+        margin: 0;
+        //width: 100%;
+        //height: 100%;
+        //flex: 1 0px;
 
         &:hover,
         &:active,
@@ -179,13 +181,14 @@ $content-breakpoint: 60em !default;
 
         1. IE11- seems to need this.
         ... Or, maybe not!?!?! Weird. 03/09/2020 - taken this out.
+        UGGGGH - needs it in the banner badges, but not badge list badges.
     */
 
-    /*@media only all and (-ms-high-contrast: none), only all and (-ms-high-contrast: active) {
+    @media only all and (-ms-high-contrast: none), only all and (-ms-high-contrast: active) {
 
         .#{$badge-namespace}badge img {
-            height: 100%; /* [1] *
+            height: auto; /* [1] */
         }
 
-    }*/
+    }
 }

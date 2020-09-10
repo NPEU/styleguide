@@ -144,9 +144,9 @@ $uc-breakpoint: 35em !default;
 
         // Layouts:
 
-        [data-display-as~="blocks"] {
+        /*[data-display-as~="blocks"] {
             @extend .l-distribute-wrap;
-        }
+        }*/
 
         [data-display-as~="blocks"] > * {
             @extend .l-distribute;
@@ -157,9 +157,8 @@ $uc-breakpoint: 35em !default;
             @extend .u-text-align--center;
             @extend .u-padding--sides--s;
 
-            -webkit-flex-basis: 15em;
-                    flex-basis: 11.25em;
-                     max-width: 15em;
+            flex-basis: 11.25em;
+            max-width: 15em;
                      
             align-self: stretch;
         }
@@ -167,17 +166,14 @@ $uc-breakpoint: 35em !default;
         [data-display-as~="blocks"] > * > * > span {
             display: flex;
             flex-direction: column;
-            
         }
         
         [data-display-as~="blocks"] > * > * > span > a {
-            flex: 0 0 auto;
-            
+            flex: 0 0 auto;          
         }
         
         [data-display-as~="blocks"] > * > * > span > a:first-child {
-            flex: 1 0 auto;
-            
+            flex: 1 0 auto;          
         }
 
 
@@ -187,17 +183,9 @@ $uc-breakpoint: 35em !default;
         [data-position] {
             margin-bottom: $sz-s;
 
-            display: -webkit-flex;
-            display: -ms-flexbox;
             display: flex;
-
-            -webkit-justify-content: center;
-                      -ms-flex-pack: center;
-                    justify-content: center;
-
-            -webkit-flex-direction: column;
-                -ms-flex-direction: column;
-                    flex-direction: column;
+            justify-content: center;
+            flex-direction: column;
 
             // We want some space on the right, but not when narrow screens effectively turn the
             // floating off:

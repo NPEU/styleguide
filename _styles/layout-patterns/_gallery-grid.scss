@@ -19,11 +19,8 @@ $gallery-grid-bases: (
         1. This is a hack for IE11, otherwise the container goes as wide as the children in a row.
     */
     &#{&} {
-        display: -webkit-flex;
         display: flex;
-
-        -webkit-flex-wrap: wrap;
-                flex-wrap: wrap;
+        flex-wrap: wrap;
 
 
         margin: 0;
@@ -34,18 +31,10 @@ $gallery-grid-bases: (
         min-width: 100%; /* [1] */
     }
 
-
-        > * {
-            margin: 0;
-             -webkit-flex: 1;
-                flex-grow: 1;
-
-            -webkit-flex-shrink: 1;
-                    flex-shrink: 1;
-
-             -webkit-flex-basis: auto;
-                     flex-basis: auto;
-        }
+    > * {
+        margin: 0;
+        flex: 1 1 auto;
+    }
 
     /* MODIFIERS */
 
@@ -58,8 +47,7 @@ $gallery-grid-bases: (
     // Item bases:
     @each $gallery-grid-basis in $gallery-grid-bases {
         &.#{$gallery-grid-namespace}gallery-grid--basis-#{$gallery-grid-basis} > * {
-            -webkit-flex-basis: #{$gallery-grid-basis}em;
-                    flex-basis: #{$gallery-grid-basis}em;
+            flex-basis: #{$gallery-grid-basis}em;
             max-width: #{$gallery-grid-basis}em;
         }
     }
@@ -99,13 +87,11 @@ $gallery-grid-bases: (
     /* Alignment */
 
     &.#{$gallery-grid-namespace}gallery-grid--align-center {
-        -webkit-justify-content: center;
-                justify-content: center;
+        justify-content: center;
     }
 
 
 }
-
 
 /* GRID */
 @supports (display: grid) {

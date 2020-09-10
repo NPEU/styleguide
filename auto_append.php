@@ -6,8 +6,7 @@ ob_end_clean();
 $output = str_replace('href="/',        'href="/styleguide/', $output);
 $output = str_replace('link.href = \'/','link.href = \'/styleguide/', $output);
 $output = str_replace('<script src="/', '<script src="/styleguide/', $output);
-$output = str_replace('/downloads',     '/styleguide/downloads', $output);
-$output = str_replace('/img',           '/styleguide/img', $output);
+$output = str_replace('/assets',     '/styleguide/assets', $output);
 $output = str_replace('data="/',        'data="/styleguide/', $output);
 $output = str_replace('name="msapplication-config" content="/', 'name="msapplication-config" content="/styleguide/', $output);
 

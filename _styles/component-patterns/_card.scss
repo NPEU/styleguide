@@ -181,14 +181,11 @@ $theme-only: false !default;
     */
     .#{$card-namespace}card-wrap {
         &#{&} {
-            display: -ms-flexbox;
             display: flex;
-
             height: 100%;
         }
 
         & > .#{$card-namespace}card {
-            -ms-flex-preferred-size: 100%;
             flex-basis: 100%;
         }
     }
@@ -199,23 +196,18 @@ $theme-only: false !default;
         1. Chrome 39-50, Opera 26-37, Safari/iOS 9-10. Using prefixed property as flex-direction
            breaks IE11 otherwise, so may as well use for all.
     */
-    _:-webkit-any-link, :root .#{$card-namespace}card-wrap.#{$card-namespace}card-wrap {
-        
-        height: auto;
-        flex: 1 0 auto; /* [1] */
-        flex-direction: column; /* [1] */
-    }
+    //_:-webkit-any-link, :root .#{$card-namespace}card-wrap.#{$card-namespace}card-wrap {
+    //    
+    //    height: auto;
+    //    flex: 1 0 auto; /* [1] */
+    //    flex-direction: column; /* [1] */
+    //}
     
 
     .#{$card-namespace}card {
         &#{&} {
-            display: -webkit-flex;
-            display: -ms-flexbox;
             display: flex;
-
-            -webkit-flex-direction: column;
-                -ms-flex-direction: column;
-                    flex-direction: column;
+            flex-direction: column;
 
             height: 100%;
 
@@ -247,9 +239,7 @@ $theme-only: false !default;
 
 
         > * {
-            -webkit-flex: 0 0 auto;
-                -ms-flex: 0 0 auto;
-                    flex: 0 0 auto;
+            flex: 0 0 auto;
 
             width: 100%;
         }
@@ -271,9 +261,7 @@ $theme-only: false !default;
             }
 
             #{&}__full-link {
-                -webkit-flex: 1 0 auto;
-                    -ms-flex: 1 0 auto;
-                        flex: 1 0 auto;
+                flex: 1 0 auto;
             }
 
             #{&}__full-link,
@@ -286,8 +274,7 @@ $theme-only: false !default;
 
                 position: relative;
                 display: block;
-                // IE10
-                //display: -ms-flexbox;
+
                 min-height: 100%;
             }
 
@@ -323,26 +310,16 @@ $theme-only: false !default;
             margin-bottom: $card-body--margin-bottom;
             padding: $card-body--padding;
 
-            -webkit-flex: 1 0 auto;
-                -ms-flex: 1 0 auto;
-                    flex: 1 0 auto;
+            flex: 1 0 auto;
 
-
-            display: -webkit-flex;
-            display: -ms-flexbox;
             display: flex;
-
-            -webkit-flex-direction: column;
-                -ms-flex-direction: column;
-                    flex-direction: column;
+            flex-direction: column;
 
             position: relative;
         }
 
             #{&}__title {
-                -webkit-flex: 0 0 auto;
-                    -ms-flex: 0 0 auto;
-                        flex: 0 0 auto;
+                flex: 0 0 auto;
 
                 font-size:   $card-title--font-size;
                 line-height: $card-title--line-height;
@@ -372,24 +349,15 @@ $theme-only: false !default;
             }
 
             #{&}__body {
-                -webkit-flex: 1 0 auto;
-                    -ms-flex: 1 0 auto;
-                        flex: 1 0 auto;
+                flex: 1 0 auto;
 
-                display: -webkit-flex;
-                display: -ms-flexbox;
                 display: flex;
-
-                -webkit-flex-direction: column;
-                    -ms-flex-direction: column;
-                        flex-direction: column;
+                flex-direction: column;
 
                 width: 100%;
 
                 & > * {
-                    -webkit-flex: 0 0 auto;
-                        -ms-flex: 0 0 auto;
-                            flex: 0 0 auto;
+                    flex: 0 0 auto;
                 }
 
                 & > :last-child {
@@ -398,34 +366,20 @@ $theme-only: false !default;
             }
 
                 #{&}__cta {
-                    -webkit-flex: 1 0 auto;
-                        -ms-flex: 1 0 auto;
-                            flex: 1 0 auto;
+                    flex: 1 0 auto;
 
-                    display: -webkit-flex;
-                    display: -ms-flexbox;
                     display: flex;
+                    justify-content: flex-end;
+                    align-content: flex-start;
 
-                    -webkit-justify-content: flex-end;
-                              -ms-flex-pack: end;
-                            justify-content: flex-end;
-
-                    -webkit-align-content: flex-start;
-                       -ms-flex-line-pack: start;
-                            align-content: flex-start;
-
-                     & > * {
-                        -webkit-align-self: flex-end;
-                       -ms-flex-item-align: end;
-                                align-self: flex-end;
+                     > * {
+                        lign-self: flex-end;
                     }
                 }
 
 
             #{&}__footer {
-                -webkit-flex: 0 0 auto;
-                    -ms-flex: 0 0 auto;
-                        flex: 0 0 auto;
+                flex: 0 0 auto;
 
                 margin-left: $card-body--margin-left;
                 margin-right: $card-body--margin-right;
@@ -479,11 +433,11 @@ $theme-only: false !default;
         Chrome 39-50, Opera 26-37, Safari/iOS 9-10:
         1. iOS 9-10 collapses box if using height, so using min-height instead.
     */
-    _:-webkit-any-link, :root .#{$card-namespace}card.#{$card-namespace}card {
-        flex: 1 0 auto;
-        height: auto; /* [1] */
-        min-height: 100%; /* [1] */
-    }
+    //_:-webkit-any-link, :root .#{$card-namespace}card.#{$card-namespace}card {
+    //    flex: 1 0 auto;
+    //    height: auto; /* [1] */
+    //    min-height: 100%; /* [1] */
+    //}
 
     /*
     @include card-theme(
@@ -497,6 +451,7 @@ $theme-only: false !default;
 }
 
 // IE10
+/*
 @if $card--border-or-outline == 'border' {
     _:-ms-lang(x), .#{$card-namespace}card.#{$card-namespace}card {
 
@@ -505,7 +460,7 @@ $theme-only: false !default;
 
     }
 }
-
+*/
 
 .#{$card-namespace}card--unpublished {
     opacity: 0.5;

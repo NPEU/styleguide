@@ -4,6 +4,10 @@ title: NPEU Component Patterns
 load_highlighter: true
 has_map: true
 ---
+<ul>
+    <li><a href="/patterns/component/page-header">Page Header</a></li>
+</ul>
+
 
 <h2 class="u-padding--sides" id="badge">Badge</h2>
 
@@ -27,13 +31,17 @@ has_map: true
     </details>
 </div>
 
-<p class="u-padding--sides">Every effort should be made to provide a badge as an SVG. The build process will generate a fallback PNG. So that this PNG is of a reasonable quality, SVG's should be around 300px high and include width and height attributes.</p>
-<p class="u-padding--sides">SVGO removes these attributes for the final SVG output, but svg2png requires that they're present initially.</p>
+<p class="u-padding--sides">Every effort should be made to provide a badge as an SVG. The build process will generate a fallback PNG. So that this PNG is of a reasonable quality, SVG's should be around 300px high and include width and height attributes <em>initially</em>. 
+SVGO removes these attributes for the final SVG output, but svg2png requires that they're present when it runs.</p>
+
+<p class="u-padding--sides">By default, badges are <em>intrinsically</em> sized, meaning they'll be a <em>small</em> as possible. Without a <code>height</code> attribute on the <code>img</code> tag, or a CSS (min-)height, the badges will collapse to nothing, so make sure one of those is in place.</p>
+
+<p class="u-padding--sides">Badges that are part of lists or other layout should probably try to fill the container (possibly with some max-height cap). WIP: it's probably up to the layout to force it's contents to fill it's space but this is tricky. Separation of concerns etc. May opt for a c-badge-fill-container class?</p>
 
 
 <h3 class="u-padding--sides">Badge - decorated</h3>
 
-<div class="u-space--below  u-padding--s  l-center">
+<div class="u-space--below  u-padding  l-center">
     <a href="https://www.npeu.ox.ac.uk/ctu" class="c-badge  c-badge--decorated  c-badge--limit-height" style="color: #BC945C;">
         <img src="/assets/images/brand-logos/unit/npeu-ctu-logo.svg" onerror="this.src='/assets/images/brand-logos/unit/npeu-ctu-logo.png'; this.onerror=null;" alt="Logo: NPEU CTU" height="80">
     </a>
@@ -49,10 +57,99 @@ has_map: true
 </div>
 
 
+<h3 class="u-padding--sides">Badges in Layouts</h3>
+
+<p class="u-padding--sides">This is to test how badges behave in different layouts, NOT to test how the layouts work. See the Layouts section for that.</p>
+
+<h4 class="u-padding--sides">Distribute - natural width</h4>
+
+<div class="u-padding--s">
+    <ul class="l-distribute  l-distribute--gutter">
+        <li>
+            <div class="u-padding--s">
+                <a href="https://www.npeu.ox.ac.uk/baby-oscar" class="c-badge  c-badge--limit-height  c-badge--decorated u-fill-width  u-fill-height  l-center" style="color: #2d649e; -height: 7em;">
+                    <img src="/assets/images/brand-logos/unit/baby-oscar-logo.svg" onerror="this.src='/assets/images/brand-logos/unit/baby-oscar-logo.png'; this.onerror=null;" alt="Logo: Baby-OSCAR Trial: Outcome after selective early closure of PDA" height="80">
+                </a>
+            </div>
+        </li>
+        <li>
+            <div class="u-padding--s">
+                <a href="https://www.npeu.ox.ac.uk/frosttie" class="c-badge  c-badge--limit-height  c-badge--decorated u-fill-width  u-fill-height  l-center" style="color: #2b3383; -height: 7em;">
+                    <img src="/assets/images/brand-logos/unit/frosttie-logo.svg" onerror="this.src='/assets/images/brand-logos/unit/frosttie-logo.png'; this.onerror=null;" alt="Logo: FROSTTIE Trial" height="80">
+                </a>
+            </div>
+        </li>
+        <li>
+            <div class="u-padding--s">
+                <a href="https://www.npeu.ox.ac.uk/neoclear" class="c-badge  c-badge--limit-height  c-badge--decorated u-fill-width  u-fill-height  l-center" style="color: #009590; -height: 7em;">
+                    <img src="/assets/images/brand-logos/unit/neoclear-logo.svg" onerror="this.src='/assets/images/brand-logos/unit/neoclear-logo.png'; this.onerror=null;" alt="Logo: NeoCLEAR Trial: optimising lumbar punctures in newborns" height="80">
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<h4 class="u-padding--sides">Distribute - limited width</h4>
+
+<div class="u-padding--s">
+    <ul class="l-distribute  l-distribute--gutter  l-distribute--limit-20">
+        <li>
+            <div class="u-padding--s">
+                <a href="https://www.npeu.ox.ac.uk/baby-oscar" class="c-badge  c-badge--limit-height  c-badge--decorated u-fill-width  u-fill-height  l-center" style="color: #2d649e; -height: 7em;">
+                    <img src="/assets/images/brand-logos/unit/baby-oscar-logo.svg" onerror="this.src='/assets/images/brand-logos/unit/baby-oscar-logo.png'; this.onerror=null;" alt="Logo: Baby-OSCAR Trial: Outcome after selective early closure of PDA" height="80">
+                </a>
+            </div>
+        </li>
+        <li>
+            <div class="u-padding--s">
+                <a href="https://www.npeu.ox.ac.uk/frosttie" class="c-badge  c-badge--limit-height  c-badge--decorated u-fill-width  u-fill-height  l-center" style="color: #2b3383; -height: 7em;">
+                    <img src="/assets/images/brand-logos/unit/frosttie-logo.svg" onerror="this.src='/assets/images/brand-logos/unit/frosttie-logo.png'; this.onerror=null;" alt="Logo: FROSTTIE Trial" height="80">
+                </a>
+            </div>
+        </li>
+        <li>
+            <div class="u-padding--s">
+                <a href="https://www.npeu.ox.ac.uk/neoclear" class="c-badge  c-badge--limit-height  c-badge--decorated u-fill-width  u-fill-height  l-center" style="color: #009590; -height: 7em;">
+                    <img src="/assets/images/brand-logos/unit/neoclear-logo.svg" onerror="this.src='/assets/images/brand-logos/unit/neoclear-logo.png'; this.onerror=null;" alt="Logo: NeoCLEAR Trial: optimising lumbar punctures in newborns" height="80">
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<h4 class="u-padding--sides">Distribute - balanced top</h4>
+
+<div class="u-padding--s">
+    <ul class="l-distribute  l-distribute--balance-top  l-distribute--gutter  l-distribute--basis-35">
+        <li>
+            <div class="u-padding--s  u-fill-width  u-fill-height">
+                <a href="https://www.npeu.ox.ac.uk/baby-oscar" class="c-badge  c-badge--limit-height  c-badge--decorated u-fill-width  u-fill-height  l-center" style="color: #2d649e; -height: 7em;">
+                    <img src="/assets/images/brand-logos/unit/baby-oscar-logo.svg" onerror="this.src='/assets/images/brand-logos/unit/baby-oscar-logo.png'; this.onerror=null;" alt="Logo: Baby-OSCAR Trial: Outcome after selective early closure of PDA" height="80">
+                </a>
+            </div>
+        </li>
+        <li>
+            <div class="u-padding--s  u-fill-width  u-fill-height">
+                <a href="https://www.npeu.ox.ac.uk/frosttie" class="c-badge  c-badge--limit-height  c-badge--decorated u-fill-width  u-fill-height  l-center" style="color: #2b3383; -height: 7em;">
+                    <img src="/assets/images/brand-logos/unit/frosttie-logo.svg" onerror="this.src='/assets/images/brand-logos/unit/frosttie-logo.png'; this.onerror=null;" alt="Logo: FROSTTIE Trial" height="80">
+                </a>
+            </div>
+        </li>
+        <li>
+            <div class="u-padding--s  u-fill-width  u-fill-height">
+                <a href="https://www.npeu.ox.ac.uk/neoclear" class="c-badge  c-badge--limit-height  c-badge--decorated u-fill-width  u-fill-height  l-center" style="color: #009590; -height: 7em;">
+                    <img src="/assets/images/brand-logos/unit/neoclear-logo.svg" onerror="this.src='/assets/images/brand-logos/unit/neoclear-logo.png'; this.onerror=null;" alt="Logo: NeoCLEAR Trial: optimising lumbar punctures in newborns" height="80">
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>
+
+
 <h3 class="u-padding--sides">Badge - page brand</h3>
 
-<p>This type of badge is used for the brand of 'badged sections'.</p>
-<p>It's designed to be in the sidebar at full width, or limited width in single-column layout.</p>
+<p class="u-padding--sides">This type of badge is used for the brand of 'badged sections'.</p>
+<p class="u-padding--sides">It's designed to be in the sidebar at full width, or limited width in single-column layout.</p>
 
 <div class="u-space--below  u-padding--s  l-center">
     <a href="https://www.npeu.ox.ac.uk/ctu" class="c-badge  c-badge--page-brand" style="color: #BC945C;">
