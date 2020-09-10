@@ -410,6 +410,7 @@ $uc-breakpoint: 35em !default;
 
         // Avatar / portrait:
         [data-contains~="portrait"] {
+            width: 100%;
             max-width: 16em;
         }
 
@@ -445,7 +446,7 @@ $uc-breakpoint: 35em !default;
             So, it's really just user content that's the problem, so keep things as they are for
             now.
         */
-        img[src*="/img/avatars/"],
+        img[src*="/assets/images/avatars/"],
         [data-contains~="portrait"] img {
             display: block;
             width: 100%;

@@ -3,21 +3,20 @@
 */
 $center-namespace: l- !default;
 
-
+/*
+    1. This is a hack for IE11, otherwise the container goes as wide as the children in a row.
+*/
 .#{$center-namespace}center {
     &#{&} {
-        display: -webkit-flex;
         display: flex;
-
-        -webkit-align-items: center;
-                align-items: center;
-
-        -webkit-justify-content: center;
-                justify-content: center;
+        align-items: center;
+        justify-content: center;
+            
+        width: 0; /* [1] */
+        min-width: 100%; /* [1] */
     
         & > * {
-            -webkit-flex: 0 1 auto;
-                    flex: 0 1 auto;
+            flex: 0 1 auto;
         }
     }
 }

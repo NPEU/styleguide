@@ -5627,28 +5627,27 @@ $glimpse--link-border-bottom--hover: false !default;*/
         IE11 needs this wrapper to behave properly.
         If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.
     */
-.c-signpost-wrap {
-  display: -ms-flexbox;
-  display: flex;
-}
+/*.c-signpost-wrap {
 
-.c-signpost-wrap > .c-signpost {
-  -ms-flex-preferred-size: 100%;
-  flex-basis: 100%;
-}
+        display: flex;
 
+        & > .c-signpost {
+            -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
+        }
+    }*/
+/*
+        1. This is a hack for IE11, otherwise the container goes as wide as the children in a row.
+    */
 .c-signpost {
   flex-basis: 100%;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  width: 100%;
+  width: 0;
+  /* [1] */
+  min-width: 100%;
+  /* [1] */
 }
 
 /*@media only screen and (min-width: $not-too-small) {
@@ -5671,32 +5670,15 @@ $glimpse--link-border-bottom--hover: false !default;*/
             }
         }
     }*/
-.c-sign {
-  /*
-            1. IE10
-        */
-}
-
 .c-sign.c-sign {
   background-color: #614776;
-  /*-webkit-flex: 1 0 15em;
-                -ms-flex: 1 0 15em;
-                    flex: 1 0 15em;*/
-  -webkit-flex: 1 0 50%;
-  -ms-flex: 1 0 50%;
   flex: 1 0 50%;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
 }
 
 .c-sign.c-sign--span-all {
-  -webkit-flex-basis: 100%;
   flex-basis: 100%;
-  -ms-flex-preferred-size: 100%;
 }
 
 .c-sign br {
@@ -5705,14 +5687,8 @@ $glimpse--link-border-bottom--hover: false !default;*/
 
 .c-sign a[href].c-sign__link {
   padding: 0.6rem;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
   flex: 1 0 auto;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
   border: 0;
   position: relative;
@@ -5760,21 +5736,12 @@ $glimpse--link-border-bottom--hover: false !default;*/
   padding: 1.2rem;
   outline: 1px solid #fff;
   position: relative;
-  display: block;
-  /* [1]  */
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
   flex: 1 0 auto;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-flex-wrap: wrap;
+  display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
 }
 
 .c-sign .c-sign__svg {
@@ -6518,14 +6485,17 @@ _:-webkit-any-link, :root .l-col-to-row__item.l-col-to-row__item {
     Note that with browsers that don't support grid, things just appear in a single column.
     This is fine for such an old browser. Don't attempt to fix this.
 */
+/*
+    1. This is a hack for IE11, otherwise the container goes as wide as the children in a row.
+*/
 .l-primary-content.l-primary-content {
   margin: 0;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
+  width: 0;
+  /* [1] */
+  min-width: 100%;
+  /* [1] */
 }
 
 .l-primary-content .l-primary-content__header,
@@ -6535,8 +6505,6 @@ _:-webkit-any-link, :root .l-col-to-row__item.l-col-to-row__item {
 }
 
 .l-primary-content .l-primary-content__pull-out--super {
-  -webkit-order: -1;
-  -ms-flex-order: -1;
   order: -1;
 }
 
@@ -7178,17 +7146,20 @@ _:-webkit-any-link, :root .l-col-to-row__item.l-col-to-row__item {
 /*
 
 */
+/*
+    1. This is a hack for IE11, otherwise the container goes as wide as the children in a row.
+*/
 .l-center.l-center {
-  display: -webkit-flex;
   display: flex;
-  -webkit-align-items: center;
   align-items: center;
-  -webkit-justify-content: center;
   justify-content: center;
+  width: 0;
+  /* [1] */
+  min-width: 100%;
+  /* [1] */
 }
 
 .l-center.l-center > * {
-  -webkit-flex: 0 1 auto;
   flex: 0 1 auto;
 }
 
@@ -9523,6 +9494,7 @@ main :target {
 }
 
 .c-user-content [data-contains~="portrait"] {
+  width: 100%;
   max-width: 16em;
 }
 
@@ -9550,7 +9522,7 @@ main :target {
   object-fit: cover;
 }
 
-.c-user-content img[src*="/img/avatars/"],
+.c-user-content img[src*="/assets/images/avatars/"],
 .c-user-content [data-contains~="portrait"] img {
   display: block;
   width: 100%;
