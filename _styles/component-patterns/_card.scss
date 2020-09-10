@@ -458,18 +458,6 @@ $theme-only: false !default;
     */
 }
 
-// IE10
-/*
-@if $card--border-or-outline == 'border' {
-    _:-ms-lang(x), .#{$card-namespace}card.#{$card-namespace}card {
-
-        margin-right: -#{$card--border-width + 1px}\9;
-        margin-left: -#{$card--border-width + 1px}\9;
-
-    }
-}
-*/
-
 .#{$card-namespace}card--unpublished {
     opacity: 0.5;
     -webkit-filter: grayscale(1);

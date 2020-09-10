@@ -97,26 +97,16 @@ var cookie_html                   =
 
 /*
     Object-fit polyfill.
-    Browsers that don't support object-fit:
-    IE
-    Edge 15-
-    FF 35-
-    Chrome 30-
-    Safari 9.1-
-    Opera 18-
-    iOS Safari 9.3-
-    Android 4.4-
 */
 
 (function() {
-    //if(('objectFit' in document.documentElement.style !== false) || !(navigator.userAgent.indexOf('UCBrowser') > -1)) {
-    if('objectFit' in document.documentElement.style !== false) {
+    if(('objectFit' in document.documentElement.style !== false) || !(navigator.userAgent.indexOf('UCBrowser') > -1)) {
         return;
     }
 
     // https://davidwalsh.name/javascript-debounce-function
-    // Returns a function, that, as long as it continues to be invoked, will not be triggered. 
-    // The function will be called after it stops being called for N milliseconds. If `immediate` 
+    // Returns a function, that, as long as it continues to be invoked, will not be triggered.
+    // The function will be called after it stops being called for N milliseconds. If `immediate`
     // is passed, trigger the function on the leading edge, instead of the trailing.
     var debounce = function(func, wait, immediate) {
         var timeout;
@@ -140,7 +130,7 @@ var cookie_html                   =
         Array.prototype.forEach.call(elements, function(el, i) {
 
             var img = el.querySelector('img');
-
+            console.log(img);
             // Get the container dimensions:
             var container_rect = el.getBoundingClientRect();
 
@@ -154,7 +144,7 @@ var cookie_html                   =
 
             // If the image is not tall enough to fill the container, swap width/height styles:
             if (img.height <= container_rect.height) {
-
+            console.log('img switch');
                 img.style.width  = 'auto';
                 img.style.height = '100%';
             }

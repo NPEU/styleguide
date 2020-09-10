@@ -244,6 +244,9 @@ exports.uglify    = do_uglify;
 // This combined task makes it convenient to run all the steps together.
 exports.js = series(do_concat_js, do_uglify);
 
+exports.js_concat = do_concat_js;
+exports.js_uglify = do_uglify;
+
 
 
 /*------------------------------------------------------------------------------------------------*\
@@ -259,7 +262,8 @@ exports.watch_css = do_watch_css;
 
 // Watch JS:
 function do_watch_js(cb) {
-    watch(js_src + '**/!(script|map)*.js', exports.js);
+    //watch(js_src + '**/!(script|map|filter)*.js', exports.js);
+    watch(js_src + 'js/**/*.js', exports.js);
 }
 exports.watch_js = do_watch_js;
 
@@ -267,6 +271,6 @@ exports.watch_js = do_watch_js;
 // Watch all of the above:
 function do_watch_all(cb) {
     watch(css_src + '**/*.scss', exports.css);
-    watch(js_src + '**/!(script|map)*.js', exports.js);
+    watch(js_src + 'js/**/*.js', exports.js);
 }
 exports.watch_all = do_watch_all;

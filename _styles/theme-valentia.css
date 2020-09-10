@@ -4605,16 +4605,6 @@ $card-button--border-color: darken($card--base-color, 20%) !default;
         )
     );
     */
-/*
-@if $card--border-or-outline == 'border' {
-    _:-ms-lang(x), .c-card.c-card {
-
-        margin-right: -2px\9;
-        margin-left: -2px\9;
-
-    }
-}
-*/
 .c-card--unpublished {
   opacity: 0.5;
   -webkit-filter: grayscale(1);
@@ -11341,16 +11331,6 @@ $card-button--border-color: darken($card--base-color, 20%) !default;
 
         //width: 100%;
     }
-*/
-/*
-@if $card--border-or-outline == 'border' {
-    _:-ms-lang(x), .c-card.c-card {
-
-        margin-right: -2px\9;
-        margin-left: -2px\9;
-
-    }
-}
 */
 .c-card--unpublished {
   opacity: 0.5;

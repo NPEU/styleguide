@@ -1,9 +1,19 @@
 /*
     Object-fit polyfill.
+    Browsers that don't support object-fit:
+    IE
+    Edge 15-
+    FF 35-
+    Chrome 30-
+    Safari 9.1-
+    Opera 18-
+    iOS Safari 9.3-
+    Android 4.4-
 */
 
 (function() {
-    if(('objectFit' in document.documentElement.style !== false) || !(navigator.userAgent.indexOf('UCBrowser') > -1)) {
+    //if(('objectFit' in document.documentElement.style !== false) || !(navigator.userAgent.indexOf('UCBrowser') > -1)) {
+    if('objectFit' in document.documentElement.style !== false) {
         return;
     }
 
@@ -37,7 +47,7 @@
             // Get the container dimensions:
             var container_rect = el.getBoundingClientRect();
 
-            // Get the image dimesions:
+            // Get the image dimensions:
             var image_rect = img.getBoundingClientRect();
             console.log(container_rect.height, image_rect.height, img.height < container_rect.height);
 
