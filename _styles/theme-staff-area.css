@@ -4392,20 +4392,24 @@ $card-button--border-color: darken($card--base-color, 20%) !default;
         IE10-11 needs this wrapper to behave properly.
         If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.   
     */
-.c-card-wrap.c-card-wrap {
-  display: flex;
-  height: 100%;
-}
+/*.c-card-wrap {
+        & {
+            display: flex;
+            height: 100%;
+        }
 
-.c-card-wrap > .c-card {
-  flex-basis: 100%;
-}
-
+        & > .c-card {
+            flex-basis: 100%;
+        }
+    }*/
 /*
         Older webkit browsers also need special treatment.
         
         1. Chrome 39-50, Opera 26-37, Safari/iOS 9-10. Using prefixed property as flex-direction
            breaks IE11 otherwise, so may as well use for all.
+    */
+/*
+        1. This is a hack for IE11, otherwise the container goes as wide as the children in a row.
     */
 .c-card.c-card {
   display: flex;
@@ -4424,6 +4428,10 @@ $card-button--border-color: darken($card--base-color, 20%) !default;
                 so hide it:
             */
   overflow: hidden;
+  width: 0;
+  /* [1] */
+  min-width: 100%;
+  /* [1] */
 }
 
 .c-card > * {
@@ -4448,6 +4456,8 @@ $card-button--border-color: darken($card--base-color, 20%) !default;
 
 .c-card .c-card__full-link {
   flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .c-card .c-card__full-link,
@@ -4538,7 +4548,7 @@ $card-button--border-color: darken($card--base-color, 20%) !default;
 }
 
 .c-card .c-card__cta > * {
-  lign-self: flex-end;
+  align-self: flex-end;
 }
 
 .c-card .c-card__footer {
@@ -6388,21 +6398,23 @@ ul.c-utilitext li + li, ol.c-utilitext li + li {
 */
 /*
     IE11 needs this wrapper to behave properly.
-    If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.
+    If you're not supporting IE11, you don't need this CSS or the HTML that goes with it.
 */
+/*
 .l-col-to-row-wrap {
-  display: --webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
+    display: --webkit-flex;
+    display: -ms-flexbox;
+    display: flex; 
+    
+    width: 100%;
+    
+    & > .l-col-to-row {
+        -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%; 
+    }
 }
-
-.l-col-to-row-wrap > .l-col-to-row {
-  -webkit-flex-basis: 100%;
-  -ms-flex-preferred-size: 100%;
-  flex-basis: 100%;
-}
-
+*/
 .l-col-to-row {
   /*
             Older webkit browsers also need special treatment.
@@ -6415,33 +6427,25 @@ ul.c-utilitext li + li, ol.c-utilitext li + li {
 .l-col-to-row.l-col-to-row {
   /*
             1. IE11 needs this to calculate widths properly.
+            2. This is a hack for IE11, otherwise the container goes as wide as the children in a row.
         */
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  width: 100%;
   margin: 0;
   padding: 0;
   list-style-type: none;
   position: relative;
   /* [1] */
+  width: 0;
+  /* [2] */
+  min-width: 100%;
+  /* [2] */
 }
 
 .l-col-to-row .l-col-to-row__item {
   margin: 0;
   padding: 0;
-  -webkit-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-shrink: 1;
-  -ms-flex-negative: 1;
-  flex-shrink: 1;
-  -webkit-flex-basis: auto;
-  -ms-flex-preferred-size: auto;
-  flex-basis: auto;
+  flex: 1 1 auto;
   display: inline-block;
 }
 
@@ -6452,52 +6456,50 @@ _:-webkit-any-link, :root .l-col-to-row__item.l-col-to-row__item {
 }
 
 .l-col-to-row.l-col-to-row--reversed {
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
 }
 
-.l-col-to-row.l-col-to-row--gutter--small {
+.l-col-to-row.l-col-to-row--gutter--s {
   padding-top: 1.2rem;
 }
 
-.l-col-to-row.l-col-to-row--gutter--small,
-.l-col-to-row.l-col-to-row--gutter--small > .l-col-to-row__item {
+.l-col-to-row.l-col-to-row--gutter--s,
+.l-col-to-row.l-col-to-row--gutter--s > * {
   padding-left: 0.6rem;
   padding-right: 0.6rem;
 }
 
-.l-col-to-row.l-col-to-row--gutter--small > .l-col-to-row__item {
+.l-col-to-row.l-col-to-row--gutter--s > * {
   padding-bottom: 1.2rem;
 }
 
-.l-col-to-row.l-col-to-row--gutter, .l-col-to-row.l-col-to-row--gutter--medium {
+.l-col-to-row.l-col-to-row--gutter, .l-col-to-row.l-col-to-row--gutter--m {
   padding-top: 2.4rem;
 }
 
 .l-col-to-row.l-col-to-row--gutter,
-.l-col-to-row.l-col-to-row--gutter > .l-col-to-row__item, .l-col-to-row.l-col-to-row--gutter--medium,
-.l-col-to-row.l-col-to-row--gutter--medium > .l-col-to-row__item {
+.l-col-to-row.l-col-to-row--gutter > *, .l-col-to-row.l-col-to-row--gutter--m,
+.l-col-to-row.l-col-to-row--gutter--m > * {
   padding-left: 1.2rem;
   padding-right: 1.2rem;
 }
 
-.l-col-to-row.l-col-to-row--gutter > .l-col-to-row__item,
-.l-col-to-row.l-col-to-row--gutter--medium > .l-col-to-row__item {
+.l-col-to-row.l-col-to-row--gutter > *,
+.l-col-to-row.l-col-to-row--gutter--m > * {
   padding-bottom: 2.4rem;
 }
 
-.l-col-to-row.l-col-to-row--gutter--large {
+.l-col-to-row.l-col-to-row--gutter--l {
   padding-top: 4.8rem;
 }
 
-.l-col-to-row.l-col-to-row--gutter--large,
-.l-col-to-row.l-col-to-row--gutter--large > .l-col-to-row__item {
+.l-col-to-row.l-col-to-row--gutter--l,
+.l-col-to-row.l-col-to-row--gutter--l > * {
   padding-left: 2.4rem;
   padding-right: 2.4rem;
 }
 
-.l-col-to-row.l-col-to-row--gutter--large > .l-col-to-row__item {
+.l-col-to-row.l-col-to-row--gutter--l > * {
   padding-bottom: 4.8rem;
 }
 
@@ -6509,40 +6511,19 @@ _:-webkit-any-link, :root .l-col-to-row__item.l-col-to-row__item {
   width: auto;
 }
 
-.l-col-to-row--flush-edge-gutters .l-col-to-row.l-col-to-row--gutter--small {
+.l-col-to-row--flush-edge-gutters .l-col-to-row.l-col-to-row--gutter--s {
   margin: -1.2rem;
 }
 
 .l-col-to-row--flush-edge-gutters .l-col-to-row.l-col-to-row--gutter,
-.l-col-to-row--flush-edge-gutters .l-col-to-row.l-col-to-row--gutter--medium {
+.l-col-to-row--flush-edge-gutters .l-col-to-row.l-col-to-row--gutter--m {
   margin: -2.4rem;
 }
 
-.l-col-to-row--flush-edge-gutters .l-col-to-row.l-col-to-row--gutter--large {
+.l-col-to-row--flush-edge-gutters .l-col-to-row.l-col-to-row--gutter--l {
   margin: -4.8rem;
 }
 
-/* IE9-11 */
-/*
-_:-ms-lang(x), .l-col-to-row.l-col-to-row {
-        //& {
-            clear: both\9;
-            display: block\9;
-        //}
-    }
-
-_:-ms-lang(x), .l-col-to-row::after {
-        display: table\9;
-        content: ""\9;
-        clear: both\9;
-    }
-
-_:-ms-lang(x), .l-col-to-row__item  {
-        float: left\9;
-        max-width: 100%\9;
-    }
-//}
-*/
 /*
     Note that with browsers that don't support grid, things just appear in a single column.
     This is fine for such an old browser. Don't attempt to fix this.

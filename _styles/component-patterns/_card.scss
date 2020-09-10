@@ -179,7 +179,7 @@ $theme-only: false !default;
         IE10-11 needs this wrapper to behave properly.
         If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.   
     */
-    .#{$card-namespace}card-wrap {
+    /*.#{$card-namespace}card-wrap {
         &#{&} {
             display: flex;
             height: 100%;
@@ -188,7 +188,7 @@ $theme-only: false !default;
         & > .#{$card-namespace}card {
             flex-basis: 100%;
         }
-    }
+    }*/
     
     /*
         Older webkit browsers also need special treatment.
@@ -203,7 +203,9 @@ $theme-only: false !default;
     //    flex-direction: column; /* [1] */
     //}
     
-
+    /*
+        1. This is a hack for IE11, otherwise the container goes as wide as the children in a row.
+    */
     .#{$card-namespace}card {
         &#{&} {
             display: flex;
@@ -234,6 +236,9 @@ $theme-only: false !default;
                 so hide it:
             */
             overflow: hidden;
+            
+            width: 0; /* [1] */
+            min-width: 100%; /* [1] */
         }
 
 
@@ -262,6 +267,9 @@ $theme-only: false !default;
 
             #{&}__full-link {
                 flex: 1 0 auto;
+                
+                display: flex;
+                flex-direction: column;
             }
 
             #{&}__full-link,
@@ -373,7 +381,7 @@ $theme-only: false !default;
                     align-content: flex-start;
 
                      > * {
-                        lign-self: flex-end;
+                        align-self: flex-end;
                     }
                 }
 
