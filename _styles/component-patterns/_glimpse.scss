@@ -42,30 +42,17 @@ $theme-only: false !default;
 
 // We don't need this if we're only themeing the pattern:
 @if $theme-only == false {
-
+    /*
+        1. This is a hack for IE11, otherwise the container goes as wide as the children in a row.
+    */
     .#{$glimpse-namespace}glimpse {
-        &#{&} {
-            //display: flow-root;
-        
+        &#{&} {        
             position: relative;
             max-width: $glimpse--max-width;
-            //@if $glimpse--border-size != false {
-            //    border: $glimpse--border-size $glimpse--border-style $glimpse--border-color;
-            //}
-
-            //margin-bottom: $glimpse--spacing-unit;
-
-            //padding-top:    $glimpse--spacing-unit;
-            //padding-right:  $glimpse--spacing-unit;
-            //padding-bottom: $glimpse--spacing-unit;
-            //padding-left: $glimpse--image-size + $glimpse--spacing-unit;
-
-            //color: $glimpse--text-color;
-            //background-color: $glimpse--background-color;
-
             min-height: $glimpse--image-size;
-
-            //box-shadow: 0 0 9px inset;
+            
+            width: 0; /* [1] */
+            min-width: 100%; /* [1] */
         }
        
         
@@ -75,17 +62,9 @@ $theme-only: false !default;
 
         #{&}__link[href] {
         
-            display: -webkit-flex;
-            display: -ms-flexbox;
             display: flex;
-            
-            -webkit-flex-wrap: wrap;
-                -ms-flex-wrap: wrap;
-                    flex-wrap: wrap;
-
-                -webkit-align-items: center;
-                     -ms-flex-align: center;
-                        align-items: center;
+            flex-wrap: wrap;
+            align-items: center;
         
             border-bottom: 0;
 
@@ -109,26 +88,6 @@ $theme-only: false !default;
                 clear: both;
             }
         }
-
-        /*#{&}__header {
-
-            a {
-                border-bottom: 0;
-
-                &:hover {
-                    border-bottom: 0;
-
-                    span {
-                        border-bottom: 1px solid;
-                    }
-
-                    .#{$glimpse-namespace}glimpse__image {
-                        box-shadow: 0 0 0 2px currentColor;
-                    }
-                }
-            }
-        }*/
-        
 
         #{&}__image {
             width: $glimpse--image-size;

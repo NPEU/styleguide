@@ -4695,31 +4695,22 @@ $event-button--border-color: darken($event--base-color, 20%) !default;
     If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.
 */
 .c-event-wrap {
-  display: -ms-flexbox;
   display: flex;
   height: 100%;
 }
 
 .c-event-wrap > .c-event {
-  -ms-flex-preferred-size: 100%;
   flex-basis: 100%;
 }
 
+/*
+    1. This is a hack for IE11, otherwise the container goes as wide as the children in a row.
+*/
 .c-event.c-event {
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
+  flex-direction: row;
   justify-content: space-between;
-  -webkit-align-items: flex-end;
-  -ms-flex-align: end;
   align-items: flex-end;
   height: 100%;
   color: #333;
@@ -4727,6 +4718,10 @@ $event-button--border-color: darken($event--base-color, 20%) !default;
   padding: 2.4rem;
   outline: 1px solid #614776;
   overflow: hidden;
+  width: 0;
+  /* [1] */
+  min-width: 100%;
+  /* [1] */
 }
 
 .c-event.c-event--cancelled {
@@ -4734,8 +4729,6 @@ $event-button--border-color: darken($event--base-color, 20%) !default;
 }
 
 .c-event > * {
-  -webkit-flex: 0 1 auto;
-  -ms-flex: 0 1 auto;
   flex: 0 1 auto;
   width: 100%;
 }
@@ -4777,20 +4770,22 @@ $event-button--border-color: darken($event--base-color, 20%) !default;
   font-size: 3rem;
 }
 
+/*
 _:-ms-lang(x), .c-event.c-event {
-  padding-left: 0\9;
-  padding-right: 0\9;
+    padding-left: 0\9;
+    padding-right: 0\9;
 }
 
 _:-ms-lang(x), .c-event.c-event > * {
-  margin-left: 2.4rem\9;
-  margin-right: 2.4rem\9;
+
+    margin-left: 2.4rem\9;
+    margin-right: 2.4rem\9;
+
 }
 
 _:-ms-lang(x), .c-event.c-event .c-event__action {
-  margin-right: 2.4rem\9;
-}
-
+    margin-right: 2.4rem\9;
+}*/
 /*
     Note featurettes should only appear in the main body and fill the width, so media queries are
     ok here - we don't need to worry about other contexts and container-queries.
@@ -4826,51 +4821,18 @@ $featurette-button--background-color-alt: lighten($featurette--base-color, 20%) 
 $featurette-button--border-color: darken($featurette--base-color, 20%) !default;
 */
 /*
-    IE11 needs this wrapper to behave properly.
-    If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.
-*/
-.c-featurette-wrap {
-  display: -ms-flexbox;
-  display: flex;
-  height: 100%;
-}
-
-.c-featurette-wrap > .c-featurette {
-  -ms-flex-preferred-size: 100%;
-  flex-basis: 100%;
-}
-
-/*
-        IE11 needs this wrapper to behave properly.
-        If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.
+        1. This is a hack for IE11, otherwise the container goes as wide as the children in a row.
     */
-.c-featurette-wrap.c-featurette-wrap {
-  display: flex;
-  display: -ms-flexbox;
-  width: 100%;
-}
-
-.c-featurette-wrap > .c-featurette {
-  flex-basis: 100%;
-  -ms-flex-preferred-size: 100%;
-}
-
 .c-featurette.c-featurette {
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
+  width: 0;
+  /* [1] */
+  min-width: 100%;
+  /* [1] */
   color: #333;
   background: #fff;
   padding: 0;
@@ -4885,8 +4847,6 @@ $featurette-button--border-color: darken($featurette--base-color, 20%) !default;
 }
 
 .c-featurette > * {
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
   flex: 1 0 auto;
   width: 100%;
 }
@@ -4895,8 +4855,6 @@ $featurette-button--border-color: darken($featurette--base-color, 20%) !default;
   position: relative;
   text-align: center;
   max-width: 13em;
-  -webkit-order: -1;
-  -ms-flex-order: -1;
   order: -1;
 }
 
@@ -4922,9 +4880,9 @@ $featurette-button--border-color: darken($featurette--base-color, 20%) !default;
 }
 
 @media (min-width: 45em) {
-  _:-ms-lang(x), .c-featurette.c-featurette {
-    -ms-flex-preferred-size: 84%;
-  }
+  /*_:-ms-lang(x), .c-featurette.c-featurette {
+            -ms-flex-preferred-size: 84%;
+        }*/
   .c-featurette.c-featurette {
     padding-left: 8%;
     padding-right: 8%;
@@ -4977,42 +4935,22 @@ $glimpse--link-color--alt: false !default;
 $glimpse--link-has-border-bottom: false !default;
 $glimpse--link-border-bottom: false !default;
 $glimpse--link-border-bottom--hover: false !default;*/
-.c-glimpse {
-  /*.c-glimpse__header {
-
-            a {
-                border-bottom: 0;
-
-                &:hover {
-                    border-bottom: 0;
-
-                    span {
-                        border-bottom: 1px solid;
-                    }
-
-                    .c-glimpse__image {
-                        box-shadow: 0 0 0 2px currentColor;
-                    }
-                }
-            }
-        }*/
-}
-
+/*
+        1. This is a hack for IE11, otherwise the container goes as wide as the children in a row.
+    */
 .c-glimpse.c-glimpse {
   position: relative;
   max-width: none;
   min-height: 7.2rem;
+  width: 0;
+  /* [1] */
+  min-width: 100%;
+  /* [1] */
 }
 
 .c-glimpse .c-glimpse__link[href] {
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
   align-items: center;
   border-bottom: 0;
 }
@@ -5821,14 +5759,8 @@ ul.c-utilitext, ol.c-utilitext {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
 }
 
@@ -11371,30 +11303,33 @@ $event-button--border-color: darken($event--base-color, 20%) !default;
     If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.
 */
 .c-event-wrap {
-  display: -ms-flexbox;
   display: flex;
   height: 100%;
 }
 
 .c-event-wrap > .c-event {
-  -ms-flex-preferred-size: 100%;
   flex-basis: 100%;
 }
 
+/*
+    1. This is a hack for IE11, otherwise the container goes as wide as the children in a row.
+*/
+/*
 _:-ms-lang(x), .c-event.c-event {
-  padding-left: 0\9;
-  padding-right: 0\9;
+    padding-left: 0\9;
+    padding-right: 0\9;
 }
 
 _:-ms-lang(x), .c-event.c-event > * {
-  margin-left: 2.4rem\9;
-  margin-right: 2.4rem\9;
+
+    margin-left: 2.4rem\9;
+    margin-right: 2.4rem\9;
+
 }
 
 _:-ms-lang(x), .c-event.c-event .c-event__action {
-  margin-right: 2.4rem\9;
-}
-
+    margin-right: 2.4rem\9;
+}*/
 /*
     Note featurettes should only appear in the main body and fill the width, so media queries are
     ok here - we don't need to worry about other contexts and container-queries.
@@ -11429,21 +11364,6 @@ $featurette-button--background-color: $featurette--base-color !default;
 $featurette-button--background-color-alt: lighten($featurette--base-color, 20%) !default;
 $featurette-button--border-color: darken($featurette--base-color, 20%) !default;
 */
-/*
-    IE11 needs this wrapper to behave properly.
-    If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.
-*/
-.c-featurette-wrap {
-  display: -ms-flexbox;
-  display: flex;
-  height: 100%;
-}
-
-.c-featurette-wrap > .c-featurette {
-  -ms-flex-preferred-size: 100%;
-  flex-basis: 100%;
-}
-
 .c-featurette.t-featurette--dark,
 .c-featurette.t-featurette--dark * {
   background-color: #2d2136;
@@ -11519,14 +11439,8 @@ ul.c-utilitext, ol.c-utilitext {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
 }
 
