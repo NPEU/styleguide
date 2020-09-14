@@ -159,33 +159,21 @@ img[height] {
 // a multi-line flex container.
 // This means that the usual fab-four technique doesn't work as expected.
 .dl-2-col {
-    display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
-
-        -ms-flex-wrap: wrap;
-    -webkit-flex-wrap: wrap;
-            flex-wrap: wrap;
+    flex-wrap: wrap;
 
     margin: 0;
 }
 
 .dl-2-col dt {
-    -webkit-flex: 1 0 8em;
-        -ms-flex: 1 0 8em;
-            flex: 1 0 8em;
+    flex: 1 0 8em;
 
     margin: 0;
 }
 
 .dl-2-col dd {
-    -webkit-flex: 1 0 66%;
-        -ms-flex: 1 0 66%;
-            flex: 1 0 66%;
-
-     -webkit-align-self: flex-end;
-    -ms-flex-item-align: end;
-             align-self: flex-end;
+    flex: 1 0 66%;
+     align-self: flex-end;
 
     margin: 0;
     padding-left: 1em;
@@ -346,24 +334,16 @@ details:not([open]) > *:not(summary) {
 
 
 .recruitment .recruitment__info {
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
 .recruitment .recruitment__info dt {
-    -webkit-flex: 1 0 4em;
-        -ms-flex: 1 0 4em;
-            flex: 1 0 4em;
+    flex: 1 0 4em;
 }
 
 .recruitment .recruitment__info dd {
-    -webkit-flex: 1 0 -webkit-calc(100% - 4em);
-        -ms-flex: 1 0 calc(100% - 4em);
-            flex: 1 0 calc(100% - 4em);
+    flex: 1 0 calc(100% - 4em);
     margin: 0;
 }
 

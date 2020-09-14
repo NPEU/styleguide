@@ -301,7 +301,7 @@ $primary-content-pull-out-side-space: 0 $primary-content-spacing-unit;
 $gallery-grid-spacing-unit: $f__base-rem-space-unit;
 @import "layout-patterns/_gallery-grid.scss";
 
-@import "layout-patterns/_n-up.scss";
+//@import "layout-patterns/_n-up.scss";
 
 @import "layout-patterns/_proportional-container.scss";
 .proportional-container--1-1_4::before {

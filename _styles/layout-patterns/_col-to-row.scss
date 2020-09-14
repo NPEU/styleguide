@@ -74,26 +74,26 @@ $col-to-row-spacing-unit--l: ($col-to-row-spacing-unit * 2) !default;
         min-width: 100%; /* [2] */
     }
 
-        #{&}__item {
-            margin: 0;
-            padding: 0;
+    & > * {
+        margin: 0;
+        padding: 0;
 
-            flex: 1 1 auto;
+        flex: 1 1 auto;
 
-            display: inline-block;
-        }
+        display: inline-block;
+    }
+    
+     /*
+        Older webkit browsers also need special treatment.
         
-         /*
-            Older webkit browsers also need special treatment.
-            
-            1. Chrome 39-50, Opera 26-37, Safari/iOS 9-10. Using prefixed property as flex-direction
-               breaks IE11 otherwise, so may as well use for all.
-        */
-        @at-root _:-webkit-any-link, :root .#{$col-to-row-namespace}col-to-row__item.#{$col-to-row-namespace}col-to-row__item {
-            display: flex; /* [1] */
-            flex-direction: column /* [1] */;
-            
-        }
+        1. Chrome 39-50, Opera 26-37, Safari/iOS 9-10. Using prefixed property as flex-direction
+           breaks IE11 otherwise, so may as well use for all.
+    */
+    @at-root _:-webkit-any-link, :root .#{$col-to-row-namespace}col-to-row__item.#{$col-to-row-namespace}col-to-row__item {
+        display: flex; /* [1] */
+        flex-direction: column /* [1] */;
+        
+    }
 
     // Reverse order - USE WITH CAUTION:
     &#{&}--reversed {
@@ -154,13 +154,24 @@ $col-to-row-spacing-unit--l: ($col-to-row-spacing-unit * 2) !default;
 
     // Add this class to a wrapper if you want to flush the edge gutters:
     @at-root {
+        /*
+            1. This is a hack for IE11, otherwise the container goes as wide as the children in a
+               row.
+            2. Note we ONLY want this on the outermost container, so we need to turn off this hack
+               for the main distribute container.
+        */
         #{&}--flush-edge-gutters {
             overflow: hidden;
+            flex-basis: 100%;
             
-            & > .#{$col-to-row-namespace}col-to-row {
-                width: auto;
-            }
+            width: 0; /* [1] */
+            min-width: 100%; /* [1] */
         }
+        
+            #{&}--flush-edge-gutters > #{&} {
+                width: auto; /* [2] */
+                min-width: none; /* [2] */
+            }
 
             #{&}--flush-edge-gutters &#{&}--gutter--s {
                 margin: 0 -$col-to-row-spacing-unit--s;

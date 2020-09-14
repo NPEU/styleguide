@@ -5,8 +5,8 @@
 $gallery-grid-namespace: l- !default;
 
 $gallery-grid-spacing-unit: 1rem !default;
-$gallery-grid-spacing-unit--small: ($gallery-grid-spacing-unit / 2) !default;
-$gallery-grid-spacing-unit--large: ($gallery-grid-spacing-unit * 2) !default;
+$gallery-grid-spacing-unit--s: ($gallery-grid-spacing-unit / 2) !default;
+$gallery-grid-spacing-unit--l: ($gallery-grid-spacing-unit * 2) !default;
 
 $gallery-grid-bases: (
     15,
@@ -31,7 +31,7 @@ $gallery-grid-bases: (
         min-width: 100%; /* [1] */
     }
 
-    > * {
+    & > * {
         margin: 0;
         flex: 1 1 auto;
     }
@@ -55,16 +55,18 @@ $gallery-grid-bases: (
 
     /* Gutters */
 
-    &.#{$gallery-grid-namespace}gallery-grid--gutter--small {
-        margin-left: -($gallery-grid-spacing-unit--small / 2);
-        margin-right: -($gallery-grid-spacing-unit--small / 2);
+    &.#{$gallery-grid-namespace}gallery-grid--gutter--small,
+    &.#{$gallery-grid-namespace}gallery-grid--gutter--s {
+        margin-left: -($gallery-grid-spacing-unit--s / 2);
+        margin-right: -($gallery-grid-spacing-unit--s / 2);
 
         > * {
-            padding: 0 ($gallery-grid-spacing-unit--small / 2) $gallery-grid-spacing-unit--small ($gallery-grid-spacing-unit--small / 2);
+            padding: 0 ($gallery-grid-spacing-unit--s / 2) $gallery-grid-spacing-unit--s ($gallery-grid-spacing-unit--s / 2);
         }
     }
 
-    &.#{$gallery-grid-namespace}gallery-grid--gutter--medium {
+    &.#{$gallery-grid-namespace}gallery-grid--gutter--medium,
+    &.#{$gallery-grid-namespace}gallery-grid--gutter--m {
         margin-left: -($gallery-grid-spacing-unit / 2);
         margin-right: -($gallery-grid-spacing-unit / 2);
 
@@ -74,12 +76,13 @@ $gallery-grid-bases: (
     }
 
 
-    &.#{$gallery-grid-namespace}gallery-grid--gutter--large {
-        margin-left: -($gallery-grid-spacing-unit--large / 2);
-        margin-right: -($gallery-grid-spacing-unit--large / 2);
+    &.#{$gallery-grid-namespace}gallery-grid--gutter--large,
+    &.#{$gallery-grid-namespace}gallery-grid--gutter--l {
+        margin-left: -($gallery-grid-spacing-unit--l / 2);
+        margin-right: -($gallery-grid-spacing-unit--l / 2);
 
         > * {
-            padding: 0 ($gallery-grid-spacing-unit--large / 2) $gallery-grid-spacing-unit--large ($gallery-grid-spacing-unit--large / 2);
+            padding: 0 ($gallery-grid-spacing-unit--l / 2) $gallery-grid-spacing-unit--l ($gallery-grid-spacing-unit--l / 2);
         }
     }
 
@@ -99,7 +102,7 @@ $gallery-grid-bases: (
         &#{&} {
             display: grid;        
 
-            > * {
+            & > * {
                 max-width: none;
             }
         }
@@ -114,30 +117,33 @@ $gallery-grid-bases: (
 
         /* Gutters */
 
-        &.#{$gallery-grid-namespace}gallery-grid--gutter--small {
+        &.#{$gallery-grid-namespace}gallery-grid--gutter--small,
+        &.#{$gallery-grid-namespace}gallery-grid--gutter--s {
             margin: 0;
-            grid-gap: $gallery-grid-spacing-unit--small;
+            grid-gap: $gallery-grid-spacing-unit--s;
 
-            > * {
+            & > * {
                 padding: 0;
             }
         }
 
-        &.#{$gallery-grid-namespace}gallery-grid--gutter--medium {
+        &.#{$gallery-grid-namespace}gallery-grid--gutter--medium,
+        &.#{$gallery-grid-namespace}gallery-grid--gutter--m {
             margin: 0;
             grid-gap: $gallery-grid-spacing-unit;
 
-            > * {
+            & > * {
                 padding: 0;
             }
         }
 
 
-        &.#{$gallery-grid-namespace}gallery-grid--gutter--large {
+        &.#{$gallery-grid-namespace}gallery-grid--gutter--large,
+        &.#{$gallery-grid-namespace}gallery-grid--gutter--l {
             margin: 0;
-            grid-gap: $gallery-grid-spacing-unit--large;
+            grid-gap: $gallery-grid-spacing-unit--l;
 
-            > * {
+            & > * {
                 padding: 0;
             }
         }

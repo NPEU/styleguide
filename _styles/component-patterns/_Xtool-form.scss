@@ -45,12 +45,8 @@ $theme-only: false !default;
                 border-radius: $tool-form--border-radius;
             }
 
-            display: -webkit-flex;
-            display: -ms-flexbox;
             display: flex;
-            -webkit-flex-wrap: wrap;
-                -ms-flex-wrap: wrap;
-                    flex-wrap: wrap;
+            flex-wrap: wrap;
         }
 
         #{&}__fieldset {

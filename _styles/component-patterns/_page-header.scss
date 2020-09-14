@@ -35,23 +35,23 @@ $theme-only: false !default;
 @if $theme-only == false {
 
     .#{$page-header-namespace}page-header {
-    
+
         /*
             If there's no CTA, we want the logo to behave differently.
-            Note the MQ width is a magic number here, if any of the logos change, this will need 
+            Note the MQ width is a magic number here, if any of the logos change, this will need
             changing too. However, it's unlikely to happen, and only affects the main site.
         */
         @media only screen and (min-width: 46.2em) {
-            &#{&}--no-cta #{&}__logo {
+            &#{&}--no-cta #{&}__logo,
+            & #{&}__logo:only-child {
                 margin-right: auto;
             }
         }
-    
+
         & #{&}__cta {
             margin: 0 auto;
         }
-        
-        
+
     }
 
     @include page-header-theme(
