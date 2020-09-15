@@ -4638,11 +4638,13 @@ $card-button--border-color: darken($card--base-color, 20%) !default;
 
 .c-contact-list.c-contact-list dd, .c-user-content [data-contains~="contact-details"] dd {
   margin-bottom: 0.6rem;
+  position: relative;
 }
 
 .c-contact-list .icon, .c-user-content [data-contains~="contact-details"] .icon {
   margin-left: -1.75em;
-  margin-right: 0.5em;
+  margin-top: 0.1em;
+  position: absolute;
 }
 
 .c-contact-avatar.c-contact-avatar {
