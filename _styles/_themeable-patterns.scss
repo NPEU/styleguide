@@ -114,7 +114,8 @@ $signs--base-color: $f__base-ui-color;
 
 @import "component-patterns/_thumbnail.scss";
 
-//@import "component-patterns/_tool-form.scss";
+$tool-form--spacing-unit: $f__base-rem-space-unit;
+@import "component-patterns/_tool-form.scss";
 
 @import "component-patterns/_utilitext.scss";
 

@@ -53,6 +53,8 @@ $ff__include_class_poem:     false;
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start-experimental.scss';
 
 
+// NEED A BETTER PLACE FOR THE FOLLOWING:
+
 // Reduce opacity of external link marker to make less overbearing.
 a[href][rel=external]::after {
     opacity: 0.6;
@@ -70,8 +72,7 @@ blockquote {
     @include bottom-space-fix();
 }
 
-
-blockquote :first-child:before, blockquote :last-child:after {
+blockquote > :first-child::before, blockquote > :last-child::after {
     display: block;
     font-family: times,serif;
     font-size: 60px;
@@ -80,7 +81,7 @@ blockquote :first-child:before, blockquote :last-child:after {
     opacity: 0.7;
 }
 
-blockquote :first-child:before {
+blockquote > :first-child::before {
     content: "“";
     content: open-quote;
     float: left;
@@ -88,7 +89,7 @@ blockquote :first-child:before {
     margin-top: 2.5rem;
 }
 
-blockquote :last-child:after {
+blockquote > :last-child::after {
     content: "”";
     content: close-quote;
     display: inline-block;
@@ -568,5 +569,3 @@ $theme: map-merge(
 }
 
 /* ---------------------------------------------------------------------------------------------- */
-
-

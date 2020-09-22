@@ -45,18 +45,34 @@ $theme-only: false !default;
                 border-radius: $tool-form--border-radius;
             }
 
-            display: flex;
-            flex-wrap: wrap;
         }
 
         #{&}__fieldset {
-            margin-right: $tool-form--spacing-unit / 2;
+            padding: 0;
+            margin: 0;
+            border: 0;
+            display: flex;
+            flex-wrap: wrap;
+
+            /*
+                1. Legends don't flex, this gets around that problem.
+            */
+            & legend {
+                float: left; /* [1] */
+                padding: ($f__base-rem-space-unit / 4) 0;
+                margin-right: $tool-form--spacing-unit / 2;
+            }
+
+            & > :not(:last-child):not(legend) {
+                margin-right: $tool-form--spacing-unit;
+            }
+
         }
 
             #{&}__group {
                 display: inline-block;
                 white-space: nowrap;
-                margin-right: $tool-form--spacing-unit / 2;
             }
+
     }
 }

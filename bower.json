@@ -1,5 +1,5 @@
 {
-    "name": "Fall-Back.github.io",
+    "name": "npeu-styleguide",
     "description": "This file lists all the front-end packages required for the project.",
     "homepage": "http://fall-back.github.io/",
     "dependencies": {

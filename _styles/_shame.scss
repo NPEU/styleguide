@@ -173,7 +173,7 @@ img[height] {
 
 .dl-2-col dd {
     flex: 1 0 66%;
-     align-self: flex-end;
+    align-self: flex-end;
 
     margin: 0;
     padding-left: 1em;
@@ -291,7 +291,7 @@ summary + * {
 }
 
 
-// This is for the details polyfill - I removed the styles there so adding esssential back here.
+// This is for the details polyfill - I removed the styles there so adding essential back here.
 // May move this to StartCSS
 
 details:not([open]) > *:not(summary) {
@@ -317,7 +317,7 @@ details:not([open]) > *:not(summary) {
 }
 */
 
-
+/*
 .recruitment {
     padding: $panel--padding;
         
@@ -354,4 +354,4 @@ details:not([open]) > *:not(summary) {
 .filelist li {
     margin-left: 0;
     margin-bottom: 2.4rem;
-}
+}*/
