@@ -15,7 +15,7 @@ $pagination-spacing-unit: 2rem !default;
 // Pagination outer:
 
 $pagination--text-color: #333 !default;
-$pagination--text-color--disabled: lighten($pagination--text-color, 30%) !default;
+$pagination--text-color--disabled: lighten($pagination--text-color, 20%) !default;
 
 $pagination--background-color: $pagination--base-color !default;
 
@@ -204,6 +204,10 @@ $pagination-button--border-color: darken($pagination--base-color, 20%) !default;
                 }
 
                 .#{$pagination-namespace}pagination a.#{$pagination-namespace}pagination__link {
+                    span {
+                        text-decoration: underline;
+                    }
+
                     &:hover {
                         border: 0;
                         @if $pagination--link-background-color--alt != false {
