@@ -1,6 +1,9 @@
 @import "_settings.scss";
 
 @import "_core_themes.scss";
+
+
+
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start_settings.scss';
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start_functions.scss';
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start_mixins.scss';
@@ -37,7 +40,22 @@ $theme-only: true;
 @import "utility-patterns/_text-align.scss";
 */
 
-$theme-only: true;
+//$theme-only: true;
+$theme-only: false;
+
+// Note these are needed by component-patterns/_user_content so this is duplication of the same
+// in _themeable-patterns. This duplication should be unnecessary in V2.
+$theme-name: neutral;
+$panel--padding: $f__base-rem-space-unit;
+@import "component-patterns/_contact-list.scss";
+@import "component-patterns/_thumbnail.scss";
+@import "layout-patterns/_distribute.scss";
+@import "utility-patterns/_padding.scss";
+@import "utility-patterns/_space.scss";
+@import "utility-patterns/_text-align.scss";
+
+
+
 @import "component-patterns/_user_content";
 
 
@@ -62,6 +80,10 @@ img {
 }
 
 
+ul, ol, dl {
+    width: 100%;
+}
+
 .cke_widget_wrapper.cke_widget_block{
 
     &::before,
@@ -75,6 +97,7 @@ img {
     }
 }
 
+/*
 [data-display-is~="pulled-left"],
 [data-position="left"] {
     float: left;
@@ -164,7 +187,7 @@ img {
     // No - extend is too messy. Maybe create a mixin, but duplicate it here for now:
     display: block;
     vertical-align: middle;
-    position: relative; /* [1] */
+    position: relative; /* [1] * /
 
 
     svg {
@@ -178,21 +201,21 @@ img {
             3. Center in container.
             4. This prevents long-thin images appearing huge an narrow (100% width) sizes.
                However, it's a bit of a magic number, so may not work in all cases.
-        */
+        * /
 
-        position: relative; /* [1] */
+        position: relative; /* [1] * /
 
-        display: block; /* [2] */
+        display: block; /* [2] * /
 
         height: auto;
         width: auto;
 
         max-width: 100%;
-        max-height: 50vw; /* [4] */
+        max-height: 50vw; /* [4] * /
 
         border-style: none;
 
-        margin: 0 auto; /* [3] */
+        margin: 0 auto; /* [3] * /
 
     }
 }
@@ -261,7 +284,7 @@ img {
 [data-contains~="logo-xxxlarge"] {
     height: 21.6erm;
 }
-
+*/
 
 
 .u-text-align--left {

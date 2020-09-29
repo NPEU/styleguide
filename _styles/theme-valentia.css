@@ -54,7 +54,7 @@
 |-------------------------------------------------------------------------------------------------*/
 /*
     Colour contrast from https://gist.github.com/FStop/8959422
-    
+
     Usage:
     @if f__color_contrast($colour, #fff) < 2 {
         color: #333;
@@ -206,6 +206,7 @@
        scrollbars naturally. (I)
 
     4. Convert the value to a percentage so as not to override user font settings.
+       This needs to be on the root node.
 
     5. Prevent font size adjustments after orientation changes in IE and iOS. (N)
     
@@ -307,6 +308,7 @@ _:-ms-lang(x), html {
 
 /*
     1. Ensure that absolutely positioned child elements expand to the full height of the body.
+    2. Reset any FOUC font match fallback. @TODO Make these vars.
 */
 body {
   position: relative;
@@ -321,7 +323,9 @@ body {
   font-size: 1.6em;
   line-height: 2.4rem;
   letter-spacing: initial;
+  /* 2 */
   word-spacing: initial;
+  /* 2 */
   background-color: transparent;
   color: #333;
 }
@@ -10674,6 +10678,153 @@ input:not([type]):focus,
     background: linear-gradient(to right, #ffffff 0%,#ffffff 50%,map-get($theme, background-color) 50%,map-get($theme, background-color) 100%);
 }
 */
+.d-background--very-light.t-neutral--alt {
+  background-color: #f7f6f6 !important;
+  color: #333 !important;
+}
+
+.d-background--very-light.t-neutral--alt a[href] {
+  color: #333 !important;
+}
+
+.d-background--very-light.t-neutral--alt a[href]:hover,
+.d-background--very-light.t-neutral--alt a[href]:active,
+.d-background--very-light.t-neutral--alt a[href]:focus {
+  color: #333 !important;
+}
+
+.d-background--very-light.t-neutral--alt a[href].c-cta {
+  border-color: #333 !important;
+  color: #333 !important;
+  background-color: transparent !important;
+}
+
+.d-background--very-light.t-neutral--alt a[href].c-cta:hover,
+.d-background--very-light.t-neutral--alt a[href].c-cta:active,
+.d-background--very-light.t-neutral--alt a[href].c-cta:focus {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.d-background--light.t-neutral--alt {
+  background-color: #e0dcda !important;
+  color: #333 !important;
+}
+
+.d-background--light.t-neutral--alt a[href] {
+  color: #333 !important;
+}
+
+.d-background--light.t-neutral--alt a[href]:hover,
+.d-background--light.t-neutral--alt a[href]:active,
+.d-background--light.t-neutral--alt a[href]:focus {
+  color: #333 !important;
+}
+
+.d-background--light.t-neutral--alt a[href].c-cta {
+  border-color: #333 !important;
+  color: #333 !important;
+  background-color: transparent !important;
+}
+
+.d-background--light.t-neutral--alt a[href].c-cta:hover,
+.d-background--light.t-neutral--alt a[href].c-cta:active,
+.d-background--light.t-neutral--alt a[href].c-cta:focus {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.d-background.t-neutral--alt {
+  background-color: #8e8279 !important;
+  color: #333 !important;
+}
+
+.d-background.t-neutral--alt a[href] {
+  color: #333 !important;
+}
+
+.d-background.t-neutral--alt a[href]:hover,
+.d-background.t-neutral--alt a[href]:active,
+.d-background.t-neutral--alt a[href]:focus {
+  color: #333 !important;
+}
+
+.d-background.t-neutral--alt a[href].c-cta {
+  border-color: #333 !important;
+  color: #333 !important;
+  background-color: transparent !important;
+}
+
+.d-background.t-neutral--alt a[href].c-cta:hover,
+.d-background.t-neutral--alt a[href].c-cta:active,
+.d-background.t-neutral--alt a[href].c-cta:focus {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.d-background--dark.t-neutral--alt {
+  background-color: #736961 !important;
+  color: #fff !important;
+}
+
+.d-background--dark.t-neutral--alt a[href] {
+  color: #fff !important;
+}
+
+.d-background--dark.t-neutral--alt a[href]:hover,
+.d-background--dark.t-neutral--alt a[href]:active,
+.d-background--dark.t-neutral--alt a[href]:focus {
+  color: #fff !important;
+}
+
+.d-background--dark.t-neutral--alt a[href].c-cta {
+  border-color: #fff !important;
+  color: #fff !important;
+  background-color: transparent !important;
+}
+
+.d-background--dark.t-neutral--alt a[href].c-cta:hover,
+.d-background--dark.t-neutral--alt a[href].c-cta:active,
+.d-background--dark.t-neutral--alt a[href].c-cta:focus {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.d-background--very-dark.t-neutral--alt {
+  background-color: #57504a !important;
+  color: #fff !important;
+}
+
+.d-background--very-dark.t-neutral--alt a[href] {
+  color: #fff !important;
+}
+
+.d-background--very-dark.t-neutral--alt a[href]:hover,
+.d-background--very-dark.t-neutral--alt a[href]:active,
+.d-background--very-dark.t-neutral--alt a[href]:focus {
+  color: #fff !important;
+}
+
+.d-background--very-dark.t-neutral--alt a[href].c-cta {
+  border-color: #fff !important;
+  color: #fff !important;
+  background-color: transparent !important;
+}
+
+.d-background--very-dark.t-neutral--alt a[href].c-cta:hover,
+.d-background--very-dark.t-neutral--alt a[href].c-cta:active,
+.d-background--very-dark.t-neutral--alt a[href].c-cta:focus {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.d-background--sloped.t-neutral--alt {
+  background: -moz-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
+  background: -webkit-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
+  background: linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
+}
+
+.c-sign.t-neutral--alt {
+  background: -moz-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
+  background: -webkit-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
+  background: linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
+}
+
 .c-panel.c-panel--very-light.t-neutral {
   color: #333;
   background: #f7f6f6;
@@ -10899,6 +11050,147 @@ input:not([type]):focus,
 }
 
 .over-panel__contents {
+  background: -moz-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
+  background: -webkit-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
+  background: linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
+}
+
+.d-background--very-light.t-neutral--alt {
+  background-color: #f7f6f6 !important;
+  color: #333 !important;
+}
+
+.d-background--very-light.t-neutral--alt a[href] {
+  color: #333 !important;
+}
+
+.d-background--very-light.t-neutral--alt a[href]:hover,
+.d-background--very-light.t-neutral--alt a[href]:active,
+.d-background--very-light.t-neutral--alt a[href]:focus {
+  color: #333 !important;
+}
+
+.d-background--very-light.t-neutral--alt a[href].c-cta {
+  border-color: #333 !important;
+  color: #333 !important;
+  background-color: transparent !important;
+}
+
+.d-background--very-light.t-neutral--alt a[href].c-cta:hover,
+.d-background--very-light.t-neutral--alt a[href].c-cta:active,
+.d-background--very-light.t-neutral--alt a[href].c-cta:focus {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.d-background--light.t-neutral--alt {
+  background-color: #e0dcda !important;
+  color: #333 !important;
+}
+
+.d-background--light.t-neutral--alt a[href] {
+  color: #333 !important;
+}
+
+.d-background--light.t-neutral--alt a[href]:hover,
+.d-background--light.t-neutral--alt a[href]:active,
+.d-background--light.t-neutral--alt a[href]:focus {
+  color: #333 !important;
+}
+
+.d-background--light.t-neutral--alt a[href].c-cta {
+  border-color: #333 !important;
+  color: #333 !important;
+  background-color: transparent !important;
+}
+
+.d-background--light.t-neutral--alt a[href].c-cta:hover,
+.d-background--light.t-neutral--alt a[href].c-cta:active,
+.d-background--light.t-neutral--alt a[href].c-cta:focus {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.d-background.t-neutral--alt {
+  background-color: #8e8279 !important;
+  color: #333 !important;
+}
+
+.d-background.t-neutral--alt a[href] {
+  color: #333 !important;
+}
+
+.d-background.t-neutral--alt a[href]:hover,
+.d-background.t-neutral--alt a[href]:active,
+.d-background.t-neutral--alt a[href]:focus {
+  color: #333 !important;
+}
+
+.d-background.t-neutral--alt a[href].c-cta {
+  border-color: #333 !important;
+  color: #333 !important;
+  background-color: transparent !important;
+}
+
+.d-background.t-neutral--alt a[href].c-cta:hover,
+.d-background.t-neutral--alt a[href].c-cta:active,
+.d-background.t-neutral--alt a[href].c-cta:focus {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.d-background--dark.t-neutral--alt {
+  background-color: #736961 !important;
+  color: #fff !important;
+}
+
+.d-background--dark.t-neutral--alt a[href] {
+  color: #fff !important;
+}
+
+.d-background--dark.t-neutral--alt a[href]:hover,
+.d-background--dark.t-neutral--alt a[href]:active,
+.d-background--dark.t-neutral--alt a[href]:focus {
+  color: #fff !important;
+}
+
+.d-background--dark.t-neutral--alt a[href].c-cta {
+  border-color: #fff !important;
+  color: #fff !important;
+  background-color: transparent !important;
+}
+
+.d-background--dark.t-neutral--alt a[href].c-cta:hover,
+.d-background--dark.t-neutral--alt a[href].c-cta:active,
+.d-background--dark.t-neutral--alt a[href].c-cta:focus {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.d-background--very-dark.t-neutral--alt {
+  background-color: #57504a !important;
+  color: #fff !important;
+}
+
+.d-background--very-dark.t-neutral--alt a[href] {
+  color: #fff !important;
+}
+
+.d-background--very-dark.t-neutral--alt a[href]:hover,
+.d-background--very-dark.t-neutral--alt a[href]:active,
+.d-background--very-dark.t-neutral--alt a[href]:focus {
+  color: #fff !important;
+}
+
+.d-background--very-dark.t-neutral--alt a[href].c-cta {
+  border-color: #fff !important;
+  color: #fff !important;
+  background-color: transparent !important;
+}
+
+.d-background--very-dark.t-neutral--alt a[href].c-cta:hover,
+.d-background--very-dark.t-neutral--alt a[href].c-cta:active,
+.d-background--very-dark.t-neutral--alt a[href].c-cta:focus {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.d-background--sloped.t-neutral--alt {
   background: -moz-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
   background: -webkit-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
   background: linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
