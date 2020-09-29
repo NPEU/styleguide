@@ -184,11 +184,49 @@ $content-breakpoint: 60em !default;
         UGGGGH - needs it in the banner badges, but not badge list badges.
     */
 
-    @media only all and (-ms-high-contrast: none), only all and (-ms-high-contrast: active) {
+    @media #{$f__ie10-11} {
 
-        .#{$badge-namespace}badge img {
-            height: auto; /* [1] */
+        .#{$badge-namespace}badge {
+            img {
+                height: auto; /* [1] */
+            }
+        
+            
+            /*
+                For some reason flex images size differently in IE1, so we need to multiply these
+                values by 1.666 !!! but only in the header. Footer logos behave properly.
+                I can't figure out what's causing the difference, so scoping to the header for now.
+            */
+            .c-page-header__affiliate_logos &#{&}--limit-height,
+            .c-page-header__affiliate_logos &#{&}--limit-height--8 {
+                img {
+                    max-height: 8rem * 1.666;
+                }
+            }
+            
+            .c-page-header__affiliate_logos &#{&}--limit-height--4 {
+                img {
+                    max-height: 4rem * 1.666;
+                }
+            }
+            
+            .c-page-header__affiliate_logos &#{&}--limit-height--6 {
+                img {
+                    max-height: 6rem * 1.666;
+                }
+            }
+            
+            .c-page-header__affiliate_logos &#{&}--limit-height--10 {
+                img {
+                    max-height: 10rem * 1.666;
+                }
+            }
+            
+            .c-page-header__affiliate_logos &#{&}--limit-height--12 {
+                img {
+                    max-height: 12rem * 1.666;
+                }
+            }
         }
-
     }
 }

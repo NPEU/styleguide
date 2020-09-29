@@ -55,48 +55,7 @@ $ff__include_class_poem:     false;
 
 // NEED A BETTER PLACE FOR THE FOLLOWING:
 
-// Reduce opacity of external link marker to make less overbearing.
-a[href][rel=external]::after {
-    opacity: 0.6;
-}
-
-// Note these styles will be moved to vars (above) when StartCSS Blockquote is finished.
-blockquote {
-    border-top: 1px dotted map-get(map-get($themes, neutral), primary-color);
-    border-bottom: 1px dotted map-get(map-get($themes, neutral), primary-color);
-    //background-color: scale-color(map-get(map-get($themes, neutral), primary-color), $lightness: 90%);
-    background-color: rgba(0,0,0,0.1);
-
-    padding: $f__base-rem-space-unit $f__base-rem-space-unit * 2;
-
-    @include bottom-space-fix();
-}
-
-blockquote > :first-child::before, blockquote > :last-child::after {
-    display: block;
-    font-family: times,serif;
-    font-size: 60px;
-    font-size: 6rem;
-    line-height: 0;
-    opacity: 0.7;
-}
-
-blockquote > :first-child::before {
-    content: "“";
-    content: open-quote;
-    float: left;
-    margin-left: -3.6rem;
-    margin-top: 2.5rem;
-}
-
-blockquote > :last-child::after {
-    content: "”";
-    content: close-quote;
-    display: inline-block;
-    position: relative;
-    top: 2.5rem;
-}
-
+@import "_start_tweaks.scss";
 
 
 @import "_sizes";

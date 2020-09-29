@@ -224,7 +224,6 @@ html {
   background-color: #57504a;
   font-size: 62.5%;
   /* 4 */
-  font-family: "Lato", sans-serif;
   -ms-text-size-adjust: 100%;
   /* 5 */
   -webkit-text-size-adjust: 100%;
@@ -318,8 +317,11 @@ body {
   max-width: none;
   margin: 0;
   padding: 0;
+  font-family: "Lato", sans-serif;
   font-size: 1.6em;
   line-height: 2.4rem;
+  letter-spacing: initial;
+  word-spacing: initial;
   background-color: transparent;
   color: #333;
 }
@@ -4334,10 +4336,33 @@ a[href][rel=external].c-badge::after {
         ... Or, maybe not!?!?! Weird. 03/09/2020 - taken this out.
         UGGGGH - needs it in the banner badges, but not badge list badges.
     */
-@media only all and (-ms-high-contrast: none), only all and (-ms-high-contrast: active) {
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .c-badge {
+    /*
+                For some reason flex images size differently in IE1, so we need to multiply these
+                values by 1.666 !!! but only in the header. Footer logos behave properly.
+                I can't figure out what's causing the difference, so scoping to the header for now.
+            */
+  }
   .c-badge img {
     height: auto;
     /* [1] */
+  }
+  .c-page-header__affiliate_logos .c-badge.c-badge--limit-height img,
+  .c-page-header__affiliate_logos .c-badge.c-badge--limit-height--8 img {
+    max-height: 13.328rem;
+  }
+  .c-page-header__affiliate_logos .c-badge.c-badge--limit-height--4 img {
+    max-height: 6.664rem;
+  }
+  .c-page-header__affiliate_logos .c-badge.c-badge--limit-height--6 img {
+    max-height: 9.996rem;
+  }
+  .c-page-header__affiliate_logos .c-badge.c-badge--limit-height--10 img {
+    max-height: 16.66rem;
+  }
+  .c-page-header__affiliate_logos .c-badge.c-badge--limit-height--12 img {
+    max-height: 19.992rem;
   }
 }
 
@@ -7106,6 +7131,36 @@ _:-webkit-any-link, :root .l-col-to-row__item.l-col-to-row__item {
 /*
 
 */
+/*
+    I'm considering using grid for this.
+    It is already necessary for IE11
+*/
+.l-center {
+  /*
+        IE10-11
+
+        1. IE11- seems to need this.
+        ... Or, maybe not!?!?! Weird. 03/09/2020 - taken this out.
+        UGGGGH - needs it in the banner badges, but not badge list badges.
+    */
+  /* NEEDS WORK
+    @media only all and (-ms-high-contrast: none), only all and (-ms-high-contrast: active) {
+
+        &.l-center {
+            display: -ms-grid;
+            -ms-grid-columns: 100%;
+            -ms-grid-rows: 100%;
+        }
+
+        & > * {            
+            -ms-grid-column-align: center;
+            -ms-grid-row-align: center;
+        }
+
+    }
+    */
+}
+
 .l-center.l-center {
   display: flex;
   align-items: center;

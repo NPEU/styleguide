@@ -1,20 +1,7 @@
 @import "_settings.scss";
 
-@import "_core_themes.scss";
-@import '../bower_components/Fall-Back-Start-CSS/scss/_start_settings.scss';
-@import '../bower_components/Fall-Back-Start-CSS/scss/_start_functions.scss';
-@import '../bower_components/Fall-Back-Start-CSS/scss/_start_mixins.scss';
-@import '../bower_components/Fall-Back-Start-CSS/scss/_start.scss';
-@import '../bower_components/Fall-Back-Start-CSS/scss/_start-classes.scss';
-@import '../bower_components/Fall-Back-Start-CSS/scss/_start-accessibility.scss';
-@import '../bower_components/Fall-Back-Start-CSS/scss/_start-utilities.scss';
-@import '../bower_components/Fall-Back-Start-CSS/scss/_start-icons.scss';
-@import '../bower_components/Fall-Back-Start-CSS/scss/_start-experimental.scss';
+//@import "_core_themes.scss";
 
-
-// NEED A BETTER PLACE FOR THE FOLLOWING:
-
-@import "_start_tweaks.scss";
 @import "_sizes";
 
 $ff-breakpoints: ();
@@ -41,28 +28,8 @@ $theme-only: true;
 @import "component-patterns/_user_content";
 
 
-/*
-    Override contents.css body margin, because it messes with Magicline:
-*/
-body
-{
-	//margin: 0 20px;
-	margin: 0;
-    padding: 10px 20px;
-}
 
-
-/*
-    Make images more manageable inside the editor
-*/
-img {
-    max-width: 100%;
-    max-height: 50vw;
-    width: auto;
-}
-
-
-.cke_widget_wrapper.cke_widget_block{
+.cke_widget_wrapper.cke_widget_block{ 
 
     &::before,
     &::after {
@@ -198,7 +165,7 @@ img {
 }
 
 // Scale 16, 18, 24, 30, 36, 48, 60, 72  *3 =
-// 48, 54, 72, 90, 108, 144, 180, 216
+// 48, 54, 72, 90, 108, 144, 180, 216 
 
 [data-contains~="logo"] img {
     background-color: transparent;
@@ -260,22 +227,4 @@ img {
 
 [data-contains~="logo-xxxlarge"] {
     height: 21.6erm;
-}
-
-
-
-.u-text-align--left {
-    text-align: left;
-}
-
-.u-text-align--center {
-    text-align: center;
-}
-
-.u-text-align--right {
-    text-align: right;
-}
-
-.u-text-align--left {
-    text-align: left;
 }
