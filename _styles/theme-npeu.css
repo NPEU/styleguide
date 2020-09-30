@@ -9432,6 +9432,10 @@ main :target {
   margin-top: 1.2rem;
 }
 
+.c-user-content [data-contains~="download"] {
+  display: inline-block;
+}
+
 .c-user-content a[href$=".pdf"]:not([data-contains="thumbnail"])::before,
 .c-user-content a[href$=".pdf"] br + span::before,
 .c-user-content a[href$=".doc"]:not([data-contains="thumbnail"])::before,
