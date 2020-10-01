@@ -4550,6 +4550,10 @@ $card-button--border-color: darken($card--base-color, 20%) !default;
   cursor: pointer;
 }
 
+.c-card .c-card__title:only-child {
+  margin-bottom: 0;
+}
+
 .c-card.c-card--stub .c-card__title {
   font-size: 2.4rem;
   line-height: 1;
@@ -6640,7 +6644,7 @@ _:-webkit-any-link, :root .l-col-to-row__item.l-col-to-row__item {
 }
 
 /*    Distribute items inside a container.*/
-/*    IE11 needs this wrapper to behave properly.    If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.*.l-distribute-wrap {    display: -ms-flexbox;    display: flex;    width: 100%;    & > .l-distribute {        -webkit-flex-basis: 100%;        -ms-flex-preferred-size: 100%;         flex-basis: 100%;    }}*/
+/*    IE11 needs this wrapper to behave properly.    If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.*.l-distribute-wrap {    display: -ms-flexbox;    display: flex;    width: 100%;    & > .l-distribute {        -webkit-flex-basis: 100%;        -ms-flex-preferred-size: 100%;        flex-basis: 100%;    }}*/
 /*    1. This is a hack for IE11, otherwise the container goes as wide as the children in a row.*/
 .l-distribute.l-distribute, .c-user-content [data-display-as~="blocks"] > * {
   margin: 0;
@@ -6717,8 +6721,8 @@ _:-webkit-any-link, :root .l-col-to-row__item.l-col-to-row__item {
 .l-distribute.l-distribute--gutter--s, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--s,
 .l-distribute.l-distribute--gutter--s > *,
 .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--s > * {
-  padding: 0.5rem;
-  --s: 1rem;
+  padding: 0.6rem;
+  --s: 1.2rem;
 }
 
 .l-distribute.l-distribute--gutter, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter,
@@ -6726,15 +6730,15 @@ _:-webkit-any-link, :root .l-col-to-row__item.l-col-to-row__item {
 .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter > *, .l-distribute.l-distribute--gutter--m, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--m,
 .l-distribute.l-distribute--gutter--m > *,
 .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--m > * {
-  padding: 1rem;
-  --s: 2rem;
+  padding: 1.2rem;
+  --s: 2.4rem;
 }
 
 .l-distribute.l-distribute--gutter--l, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--l,
 .l-distribute.l-distribute--gutter--l > *,
 .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--l > * {
-  padding: 2rem;
-  --s: 4rem;
+  padding: 2.4rem;
+  --s: 4.8rem;
 }
 
 /*            1. This is a hack for IE11, otherwise the container goes as wide as the children in a               row.            2. Note we ONLY want this on the outermost container, so we need to turn off this hack               for the main distribute container.        */
@@ -6755,18 +6759,18 @@ _:-webkit-any-link, :root .l-col-to-row__item.l-col-to-row__item {
 }
 
 .l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter--s, .l-distribute--flush-edge-gutters .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--s, .c-user-content .l-distribute--flush-edge-gutters [data-display-as~="blocks"] > .l-distribute--gutter--s {
-  margin: -1rem;
+  margin: -1.2rem;
 }
 
 .l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter, .l-distribute--flush-edge-gutters .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter, .c-user-content .l-distribute--flush-edge-gutters [data-display-as~="blocks"] > .l-distribute--gutter,
 .l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter--m,
 .l-distribute--flush-edge-gutters .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--m,
 .c-user-content .l-distribute--flush-edge-gutters [data-display-as~="blocks"] > .l-distribute--gutter--m {
-  margin: -2rem;
+  margin: -2.4rem;
 }
 
 .l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter--l, .l-distribute--flush-edge-gutters .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--l, .c-user-content .l-distribute--flush-edge-gutters [data-display-as~="blocks"] > .l-distribute--gutter--l {
-  margin: -4rem;
+  margin: -4.8rem;
 }
 
 .l-distribute.l-distribute--balance-bottom > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-bottom > * {

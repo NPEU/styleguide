@@ -2884,7 +2884,7 @@ $theme-only: true;
     want to apply the styles because it makes editing hard.
 */
 /*    Distribute items inside a container.*/
-/*    IE11 needs this wrapper to behave properly.    If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.*.l-distribute-wrap {    display: -ms-flexbox;    display: flex;    width: 100%;    & > .l-distribute {        -webkit-flex-basis: 100%;        -ms-flex-preferred-size: 100%;         flex-basis: 100%;    }}*/
+/*    IE11 needs this wrapper to behave properly.    If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.*.l-distribute-wrap {    display: -ms-flexbox;    display: flex;    width: 100%;    & > .l-distribute {        -webkit-flex-basis: 100%;        -ms-flex-preferred-size: 100%;        flex-basis: 100%;    }}*/
 /*    1. This is a hack for IE11, otherwise the container goes as wide as the children in a row.*/
 .l-distribute.l-distribute, .c-user-content [data-display-as~="blocks"] > * {
   margin: 0;

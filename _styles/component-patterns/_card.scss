@@ -350,6 +350,10 @@ $theme-only: false !default;
                     cursor: pointer;
 
                 }
+                
+                &:only-child {
+                    margin-bottom: 0;
+                }
             }
 
             &#{&}--stub #{&}__title {

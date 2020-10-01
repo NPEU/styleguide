@@ -255,7 +255,7 @@ $primary-content-pull-out-side-space: 0 $primary-content-spacing-unit;
 }
 
 //@import "layout-patterns/_balance.scss";
-
+$distribute-spacing-unit: $f__base-rem-space-unit;
 @import "layout-patterns/_distribute.scss";
 
 $gallery-grid-spacing-unit: $f__base-rem-space-unit;
