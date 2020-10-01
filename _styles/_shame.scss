@@ -228,7 +228,7 @@ h1 {
     @extend .u-word-wrap;
     
     //@include fluid-type(250px, 672px, 16px, (strip-unit($f__h1-height) * 16px));
-    @include fluid-type(250px, 672px, 24px, 52px);
+    @include fluid-type(250px, 672px, 26px, 52px);
     
 }
 
@@ -236,9 +236,26 @@ h2 {
     @extend .u-word-wrap;
     
     //@include fluid-type(250px, 672px, 16px, (strip-unit($f__h1-height) * 16px));
-    @include fluid-type(250px, 672px, 20px, 40px);
+    @include fluid-type(250px, 672px, 24px, 40px);
     
 }
+
+h3 {
+    @extend .u-word-wrap;
+    
+    //@include fluid-type(250px, 672px, 16px, (strip-unit($f__h1-height) * 16px));
+    @include fluid-type(250px, 672px, 22px, 30px);
+    
+}
+
+h4 {
+    @extend .u-word-wrap;
+    
+    //@include fluid-type(250px, 672px, 16px, (strip-unit($f__h1-height) * 16px));
+    @include fluid-type(250px, 672px, 20px, 22px);
+    
+}
+
 
 @media screen and (max-width: 672px) {
     h1 {

@@ -23,7 +23,8 @@
     <style>
         /* FOUC font match fallback */
         /* Match your final body webfont with this tool: https://meowni.ca/font-style-matcher/ */
-        body{font-size:15px;line-height:1.6;font-family:Arial,sans-serif;letter-spacing:.35px;word-spacing:-.4px}
+        /*body{font-size:15px;line-height:1.6;font-family:Arial,sans-serif;letter-spacing:.35px;word-spacing:-.4px}*/
+        /*body{font-family:sans-serif;}*/
 
         /* Tiny fallback styles */
         /* (https://github.com/Fall-Back/Patterns/edit/master/Page/README.md) */
@@ -40,25 +41,18 @@
         Accessible font loading. FOUT is a lesser evil than FOIT.
         (https://keithclark.co.uk/articles/loading-css-without-blocking-render/)
     -->
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,700,900&display=swap" rel="stylesheet" media="none" onload="if(media!='all')media='all'">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet" media="none" onload="if(media!='all')media='all'">
 
 
     <!--
         Print (Edge doesn't apply to print otherwise)
         Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser 11.8+
         FF 47+
-        
-        //only print, screen and (min-width: 1vmin),
-        //only all and (pointer: fine), only all and (pointer: coarse), only all and (pointer: none),       
-        //only all and (color-gamut: srgb), only all and (color-gamut: p3), only all and (color-gamut: rec2020),
-        //only all and (min- -moz-device-pixel-ratio:0) and (display-mode:browser), (min- -moz-device-pixel-ratio:0) and (display-mode:fullscreen)
-
     -->
     <link rel="stylesheet" href="/css/theme-npeu.min.{{ site.data.cache_bust_css.date }}.css" media="
         only print, screen and (min-width: 1vm),
         only all and (color-gamut: srgb), only all and (color-gamut: p3), only all and (color-gamut: rec2020),
         only all and (min--moz-device-pixel-ratio:0) and (display-mode:browser), (min--moz-device-pixel-ratio:0) and (display-mode:fullscreen)
-
     ">
 
     <!-- Load styles for IE11 -->
@@ -86,6 +80,12 @@
     }
     </script>
     -->
+    
+    {% if head_style != false %}
+    <style>
+    {{ head_style }}
+    </style>
+    {% endif %}
 
     <script src="/js/script.min.js"></script>
     

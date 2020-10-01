@@ -1,7 +1,6 @@
 ---
 layout: structure--basic
 title: NPEU Mockups
-project_base_url: styleguide
 ---
 
 * [Component](component)

@@ -8111,7 +8111,7 @@ $pagination-button--border-color: darken($pagination--base-color, 20%) !default;
     Attempts to improve where text wraps.
 
 */
-.u-word-wrap, h1, h2,
+.u-word-wrap, h1, h2, h3, h4,
 .u-word-wrap--inside * {
   /* These are technically the same, but use both */
   overflow-wrap: break-word;
@@ -12769,12 +12769,12 @@ legend h6 {
 }
 */
 h1 {
-  font-size: 24px;
+  font-size: 26px;
 }
 
 @media screen and (min-width: 250px) {
   h1 {
-    font-size: calc(24px + 28 * ((100vw - 250px) / 422));
+    font-size: calc(26px + 26 * ((100vw - 250px) / 422));
   }
 }
 
@@ -12785,18 +12785,50 @@ h1 {
 }
 
 h2 {
-  font-size: 20px;
+  font-size: 24px;
 }
 
 @media screen and (min-width: 250px) {
   h2 {
-    font-size: calc(20px + 20 * ((100vw - 250px) / 422));
+    font-size: calc(24px + 16 * ((100vw - 250px) / 422));
   }
 }
 
 @media screen and (min-width: 672px) {
   h2 {
     font-size: 40px;
+  }
+}
+
+h3 {
+  font-size: 22px;
+}
+
+@media screen and (min-width: 250px) {
+  h3 {
+    font-size: calc(22px + 8 * ((100vw - 250px) / 422));
+  }
+}
+
+@media screen and (min-width: 672px) {
+  h3 {
+    font-size: 30px;
+  }
+}
+
+h4 {
+  font-size: 20px;
+}
+
+@media screen and (min-width: 250px) {
+  h4 {
+    font-size: calc(20px + 2 * ((100vw - 250px) / 422));
+  }
+}
+
+@media screen and (min-width: 672px) {
+  h4 {
+    font-size: 22px;
   }
 }
 
