@@ -91,6 +91,8 @@ body
 	//margin: 0 20px;
 	margin: 0;
     padding: 10px 20px;
+    background-color: #fff;
+    min-width: auto;
 }
 
 
@@ -146,4 +148,50 @@ ul, ol, dl {
 
 .u-text-align--left {
     text-align: left;
+}
+
+
+
+/*
+    Unfortunately this stylesheet is loaded into toolbar dropdown selection frames, so we need 
+    reset all these styles:
+*/
+
+.cke_panel_grouptitle {
+    line-height: 1 !important;
+    font-family: sans-serif, Arial, Verdana, "Trebuchet MS", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+}
+
+.cke_panel_listItem a,
+.cke_panel_listItem a:hover,
+.cke_panel_listItem a:active,
+.cke_panel_listItem a:focus {
+    border: 0;
+    padding: 0 2px;
+    margin: 0;
+}
+
+.cke_panel_listItem * {
+    line-height: 1.7 !important;
+    font-size: 0.9em !important;
+}
+
+.cke_panel_listItem h2 {
+    font-size: 1.1em !important;
+}
+
+.cke_panel_listItem h3 {
+    font-size: 1.05em !important;
+}
+
+.cke_panel_listItem h4 {
+    font-size: 1em !important;
+}
+
+.cke_panel_listItem h5 {
+    font-size: 0.9em !important;
+}
+
+.cke_panel_listItem h6 {
+    font-size: 0.8em !important;
 }

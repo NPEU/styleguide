@@ -4542,7 +4542,6 @@ $card-button--border-color: darken($card--base-color, 20%) !default;
 }
 
 .c-card .c-card__title a {
-  all: initial;
   font-size: inherit;
   line-height: inherit;
   font-weight: inherit;
