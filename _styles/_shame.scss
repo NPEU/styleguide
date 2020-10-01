@@ -229,6 +229,7 @@ h1 {
     
     //@include fluid-type(250px, 672px, 16px, (strip-unit($f__h1-height) * 16px));
     @include fluid-type(250px, 672px, 26px, 52px);
+    line-height: 1.4;
     
 }
 
@@ -237,7 +238,7 @@ h2 {
     
     //@include fluid-type(250px, 672px, 16px, (strip-unit($f__h1-height) * 16px));
     @include fluid-type(250px, 672px, 24px, 40px);
-    
+    line-height: 1.4;
 }
 
 h3 {
@@ -245,7 +246,7 @@ h3 {
     
     //@include fluid-type(250px, 672px, 16px, (strip-unit($f__h1-height) * 16px));
     @include fluid-type(250px, 672px, 22px, 30px);
-    
+    line-height: 1.4;
 }
 
 h4 {
@@ -253,7 +254,7 @@ h4 {
     
     //@include fluid-type(250px, 672px, 16px, (strip-unit($f__h1-height) * 16px));
     @include fluid-type(250px, 672px, 20px, 22px);
-    
+    line-height: 1.4;
 }
 
 

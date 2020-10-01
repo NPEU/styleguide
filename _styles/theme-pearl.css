@@ -12769,6 +12769,10 @@ legend h6 {
 }
 */
 h1 {
+  line-height: 1.4;
+}
+
+h1 {
   font-size: 26px;
 }
 
@@ -12782,6 +12786,10 @@ h1 {
   h1 {
     font-size: 52px;
   }
+}
+
+h2 {
+  line-height: 1.4;
 }
 
 h2 {
@@ -12801,6 +12809,10 @@ h2 {
 }
 
 h3 {
+  line-height: 1.4;
+}
+
+h3 {
   font-size: 22px;
 }
 
@@ -12814,6 +12826,10 @@ h3 {
   h3 {
     font-size: 30px;
   }
+}
+
+h4 {
+  line-height: 1.4;
 }
 
 h4 {
