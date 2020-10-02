@@ -15,9 +15,6 @@
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start-experimental.scss';
 
 
-// NEED A BETTER PLACE FOR THE FOLLOWING:
-
-@import "_start_tweaks.scss";
 @import "_sizes";
 
 $ff-breakpoints: ();
@@ -77,11 +74,15 @@ $panel--padding: $f__base-rem-space-unit;
 @import "utility-patterns/_padding.scss";
 @import "utility-patterns/_space.scss";
 @import "utility-patterns/_text-align.scss";
+@import "utility-patterns/_word-wrap.scss";
 
 
 
 @import "component-patterns/_user_content.scss";
 
+
+
+@import "_start_tweaks.scss";
 
 /*
     Override contents.css body margin, because it messes with Magicline:

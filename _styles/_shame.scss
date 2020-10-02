@@ -1,3 +1,7 @@
+/// Try to incorporate these into StartCSS or put somewhere more sensible.
+
+@import "_start_tweaks.scss";
+
 // Hmmm. THere's way too much in here already. Needs sorting.
 
 // 'Invisible form' Need to add this as a pattern.
@@ -224,97 +228,7 @@ legend h6 {
 }
 */
 // ($min-vw, $max-vw, $min-font-size, $max-font-size)
-h1 {
-    @extend .u-word-wrap;
-    
-    //@include fluid-type(250px, 672px, 16px, (strip-unit($f__h1-height) * 16px));
-    @include fluid-type(250px, 672px, 26px, 52px);
-    line-height: 1.4;
-    
-}
 
-h2 {
-    @extend .u-word-wrap;
-    
-    //@include fluid-type(250px, 672px, 16px, (strip-unit($f__h1-height) * 16px));
-    @include fluid-type(250px, 672px, 24px, 40px);
-    line-height: 1.4;
-}
-
-h3 {
-    @extend .u-word-wrap;
-    
-    //@include fluid-type(250px, 672px, 16px, (strip-unit($f__h1-height) * 16px));
-    @include fluid-type(250px, 672px, 22px, 30px);
-    line-height: 1.4;
-}
-
-h4 {
-    @extend .u-word-wrap;
-    
-    //@include fluid-type(250px, 672px, 16px, (strip-unit($f__h1-height) * 16px));
-    @include fluid-type(250px, 672px, 20px, 22px);
-    line-height: 1.4;
-}
-
-
-@media screen and (max-width: 672px) {
-    h1 {
-        line-height: 1.15384615385;
-    }
-}
-
-table {
-    @include fluid-type(250px, 672px, 10px, 14px);
-    line-height: 1.4;
-    
-    a {
-        padding-bottom: 1px;
-    }
-}
-
-th:first-child {
-    text-align: left;
-}
-
-tfoot {
-    font-weight: bold;
-}
-
-td, th {
-    padding-top: 0.6rem;
-    padding-right: 0.6rem;
-    padding-bottom: calc(0.6rem - 1px);
-    padding-left: 0.6rem;
-}
-
-table[data-contains="numbers"] {
-    
-    thead th:not(:first-child),
-    td {
-        text-align: right;
-    }
-
-}
-
-
-
-
-
-
-// Shouldn't this be in StartCSS?
-
-summary + * {
-    margin-top: $f__base-rem-space-unit;
-}
-
-
-// This is for the details polyfill - I removed the styles there so adding essential back here.
-// May move this to StartCSS
-
-details:not([open]) > *:not(summary) {
-    display: none;
-}
 
 
 /*
