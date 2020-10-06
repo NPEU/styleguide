@@ -54,8 +54,16 @@ blockquote > p:last-child::after {
 
 
 h1, h2, h3, h4 {
-    line-height: unquote("max(2.4rem, min(3.6rem, ((20px - 100%) * -999)), min(4.8rem, ((32px - 100%) * -999)), min(6rem, ((44px - 100%) * -999)), min(7.2rem, ((56px - 100%) * -999)))");
     @extend .u-word-wrap;
+    line-height: 1.4;
+}
+
+// Extra overscroll-behavior check to exclude Safari 13 because although it reports it supports
+// min/max it doesn't work properly with line-height.
+@supports (width: unquote("max(1px, 1px)")) and (overscroll-behavior: auto) {
+    h1, h2, h3, h4 {
+        line-height: unquote("max(2.4rem, min(3.6rem, ((20px - 100%) * -999)), min(4.8rem, ((32px - 100%) * -999)), min(6rem, ((44px - 100%) * -999)), min(7.2rem, ((56px - 100%) * -999)))");
+    }
 }
 
 h1 {
@@ -84,7 +92,7 @@ h4 {
 table {
     @include fluid-type(250px, 672px, 10px, 14px);
     line-height: 1.4;
-    
+
     a {
         padding-bottom: 1px;
     }
@@ -106,7 +114,7 @@ td, th {
 }
 
 table[data-contains="numbers"] {
-    
+
     thead th:not(:first-child),
     td {
         text-align: right;

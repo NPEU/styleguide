@@ -12642,7 +12642,13 @@ blockquote > p:last-child::after {
 }
 
 h1, h2, h3, h4 {
-  line-height: max(2.4rem, min(3.6rem, ((20px - 100%) * -999)), min(4.8rem, ((32px - 100%) * -999)), min(6rem, ((44px - 100%) * -999)), min(7.2rem, ((56px - 100%) * -999)));
+  line-height: 1.4;
+}
+
+@supports (width: max(1px, 1px)) and (overscroll-behavior: auto) {
+  h1, h2, h3, h4 {
+    line-height: max(2.4rem, min(3.6rem, ((20px - 100%) * -999)), min(4.8rem, ((32px - 100%) * -999)), min(6rem, ((44px - 100%) * -999)), min(7.2rem, ((56px - 100%) * -999)));
+  }
 }
 
 h1 {
