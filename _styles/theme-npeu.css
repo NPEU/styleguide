@@ -2863,7 +2863,7 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
   display: flex;
 }
 
-@media only screen and (max-width: 64.9375em) {
+@media only screen and (max-width: 67.9375em) {
   /*
 			1. Make sure the over-panel is on top.
 		*/
@@ -3264,7 +3264,7 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
 
 .nav-bar .nav-bar__link {
   color: #fff;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .nav-bar__link--centered {
@@ -3277,7 +3277,7 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
 
 .nav-bar .subnav__link {
   color: #fff;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 /*
@@ -3304,7 +3304,7 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
 .nav-bar .subnav__link:focus,
 .nav-bar .subnav__link:active {
   color: #fff;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: transparent;
   border: 0;
   box-shadow: none;
 }
@@ -3315,14 +3315,14 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
 
 /* -------------------------------------------------------------------------------------------*/
 /* -----------------------------------------------------------------------------------------------*/
-@media only screen and (max-width: 65em) {
+@media only screen and (max-width: 68em) {
   .nav-bar .subnav__items--stacked--only-narrow .subnav__item,
   .nav-bar .subnav__items--stacked--only-narrow .subnav__link {
     float: none;
   }
 }
 
-@media only screen and (min-width: 65em) {
+@media only screen and (min-width: 68em) {
   .nav-bar .subnav__items--stacked--only-wide .subnav__item,
   .nav-bar .subnav__items--stacked--only-wide .subnav__link {
     float: none;
@@ -3336,7 +3336,7 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
     (CSS only attempts weren't good enough)
     So, scoping these styles to the 'js-nav-bar' class.
 */
-@media only screen and (max-width: 65em) and (min-width: 0\0) and (min-resolution: 0.001dpcm) {
+@media only screen and (max-width: 68em) and (min-width: 0\0) and (min-resolution: 0.001dpcm) {
   /* This is all for IE9: */
   .js-nav-bar .nav-bar,
   .js-nav-bar .nav-bar__start {
@@ -3357,7 +3357,7 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
   }
 }
 
-@media only screen and (max-width: 65em) {
+@media only screen and (max-width: 68em) {
   /*
             1. FF8-21 needs this or is increases the height of this box for some reason.
             2. FF8-21 needs this.
@@ -3409,7 +3409,7 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
   }
 }
 
-@media only screen and (min-width: 65em) {
+@media only screen and (min-width: 68em) {
   /*.js-nav-bar .nav-bar {
 
         }*/
@@ -3420,18 +3420,14 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
   .js-nav-bar .nav-bar__title,
   .js-nav-bar .nav-bar__item {
     border-style: solid;
-    border-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(0, 0, 0, 0.2);
     border-top-width: 0;
     border-bottom-width: 0;
     border-left-width: 0;
     border-right-width: 1px;
   }
-  .js-nav-bar .nav-bar__title:first-child,
-  .js-nav-bar .nav-bar__item:first-child {
-    border-left-width: 1px;
-  }
   .js-nav-bar .nav-bar__link[href] + * {
-    border-style: dashed;
+    border-style: solid;
     border-color: rgba(255, 255, 255, 0.3);
     border-top-width: 0;
     border-bottom-width: 0;
@@ -3574,6 +3570,14 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
   background: transparent;
 }
 
+.js-nav-bar .nav-bar__items .nav-bar__item {
+  border-left-width: 1px;
+}
+
+.js-nav-bar .nav-bar__items .nav-bar__item {
+  margin-left: 1.2rem;
+}
+
 /*------------------------------------------------------------------------------------------------*\
 
     Designed for use with the basic [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
@@ -3654,7 +3658,7 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__button {
 
 .dropdown .dropdown__button {
   color: #fff;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 /*
@@ -3694,8 +3698,21 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__button {
     (CSS only attempts weren't good enough)
     So, scoping these styles to the 'js-dropdown' class.
 */
+/*
+            Sometimes we want the dropdown to be positioned relative to a parent container.
+            Add the `dropdown-container` class to that container.
+        */
+.js-dropdown .dropdown-container--all-widths {
+  position: relative;
+}
+
+.js-dropdown .dropdown-container--all-widths .dropdown--all-widths {
+  position: static;
+}
+
 .js-dropdown .dropdown--all-widths .dropdown__area {
   position: absolute;
+  left: 0;
   visibility: hidden;
   opacity: 0;
   -webkit-transition: opacity ease 0.8s, visibility 0s 0.8s ease;
@@ -3727,9 +3744,20 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__button {
   transition: opacity ease 0.8s;
 }
 
-@media only screen and (max-width: 65em) {
+@media only screen and (max-width: 68em) {
+  /*
+            Sometimes we want the dropdown to be positioned relative to a parent container.
+            Add the `dropdown-container` class to that container.
+        */
+  .js-dropdown .dropdown-container--only-narrow {
+    position: relative;
+  }
+  .js-dropdown .dropdown-container--only-narrow .dropdown--only-narrow {
+    position: static;
+  }
   .js-dropdown .dropdown--only-narrow .dropdown__area {
     position: absolute;
+    left: 0;
     visibility: hidden;
     opacity: 0;
     -webkit-transition: opacity ease 0.8s, visibility 0s 0.8s ease;
@@ -3758,9 +3786,20 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__button {
   }
 }
 
-@media only screen and (min-width: 65em) {
+@media only screen and (min-width: 68em) {
+  /*
+            Sometimes we want the dropdown to be positioned relative to a parent container.
+            Add the `dropdown-container` class to that container.
+        */
+  .js-dropdown .dropdown-container--only-wide {
+    position: relative;
+  }
+  .js-dropdown .dropdown-container--only-wide .dropdown--only-wide {
+    position: static;
+  }
   .js-dropdown .dropdown--only-wide .dropdown__area {
     position: absolute;
+    left: 0;
     visibility: hidden;
     opacity: 0;
     -webkit-transition: opacity ease 0.8s, visibility 0s 0.8s ease;
@@ -3790,6 +3829,10 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__button {
 }
 
 /* -----------------------------------------------------------------------------------------------*/
+.dropdown.js-dropdown {
+  position: static;
+}
+
 /*------------------------------------------------------------------------------------------------*\
 
     Designed for use with the basic [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
@@ -3839,7 +3882,7 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__button {
 }
 
 .search-form---restrict-width {
-  max-width: 25em;
+  max-width: 35em;
 }
 
 /* -------------------------------------------------------------------------------------------*/
@@ -3922,13 +3965,13 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__button {
 /* -------------------------------------------------------------------------------------------*/
 /* -----------------------------------------------------------------------------------------------*/
 /* -- Enhanced layout --------------------------------------------------------------------------- */
-@media only screen and (max-width: 64.9375em) {
+@media only screen and (max-width: 67.9375em) {
   .search-form .search-form__collapse {
     width: 100%;
   }
 }
 
-@media only screen and (min-width: 65em) {
+@media only screen and (min-width: 68em) {
   /*
             1. Reinstate all flexbox for enhanced view as no wrapping needs to occure
             (FF8-27 issue describbed above)
@@ -5180,39 +5223,73 @@ $glimpse--link-border-bottom--hover: false !default;*/
 
 .c-info-overlay.c-info-overlay {
   position: absolute;
-  font-size: 0.75em;
+  left: 0;
+  top: 0;
   color: #fff;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 0 0.6rem;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0;
   margin: 0;
+}
+
+.c-info-overlay.c-info-overlay a[href],
+.c-info-overlay.c-info-overlay a[href]:hover,
+.c-info-overlay.c-info-overlay a[href]:focus,
+.c-info-overlay.c-info-overlay a[href]:active {
+  color: #fff;
+}
+
+.c-info-overlay > summary {
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.c-info-overlay > summary > :first-child {
+  display: inline;
+}
+
+.c-info-overlay > summary > :last-child {
+  display: none;
+}
+
+.c-info-overlay > summary::before {
+  display: none;
+}
+
+.c-info-overlay > summary:hover, .c-info-overlay > summary:focus, .c-info-overlay > summary:active {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.c-info-overlay[open] > summary > :first-child {
+  display: none;
+}
+
+.c-info-overlay[open] > summary > :last-child {
+  display: inline;
+}
+
+.c-info-overlay > summary + * {
+  position: relative;
+  left: 2.4rem;
+  margin-top: -2.4rem;
+  max-width: calc(100% - 2.4rem);
+  padding: 0.6rem 2.4rem;
+  font-size: 0.875em;
 }
 
 .c-info-overlay * {
   margin: 0;
 }
 
-.c-info-overlay--full-width {
+.c-info-overlay--full-width[open] {
   width: 100%;
 }
 
-.c-info-overlay--tl {
-  top: 0;
-  left: 0;
-}
-
-.c-info-overlay--tr {
-  top: 0;
-  right: 0;
-}
-
-.c-info-overlay--bl {
-  bottom: 0;
-  left: 0;
-}
-
-.c-info-overlay--br {
-  bottom: 0;
-  right: 0;
+.c-info-overlay--half-width[open] {
+  width: 50%;
 }
 
 /*
@@ -9723,9 +9800,9 @@ $patterns: (
 }
 
 .c-sign.t-white {
-  background: -moz-linear-gradient(45deg, #f2f2f2 0%, whitesmoke 50%, #fafafa 50%, #f7f7f7 100%) !important;
-  background: -webkit-linear-gradient(45deg, #f2f2f2 0%, whitesmoke 50%, #fafafa 50%, #f7f7f7 100%) !important;
-  background: linear-gradient(45deg, #f2f2f2 0%, whitesmoke 50%, #fafafa 50%, #f7f7f7 100%) !important;
+  background: -moz-linear-gradient(45deg, #ededed 0%, #f2f2f2 50%, #f7f7f7 50%, #f2f2f2 100%) !important;
+  background: -webkit-linear-gradient(45deg, #ededed 0%, #f2f2f2 50%, #f7f7f7 50%, #f2f2f2 100%) !important;
+  background: linear-gradient(45deg, #ededed 0%, #f2f2f2 50%, #f7f7f7 50%, #f2f2f2 100%) !important;
 }
 
 /*.t-white.t-color {
@@ -9790,9 +9867,7 @@ table.t-white tr:nth-child(odd) > th,
 }
 
 .t-white.nav-bar {
-  background: -moz-linear-gradient(45deg, #f2f2f2 0%, whitesmoke 50%, #fafafa 50%, #f7f7f7 100%) !important;
-  background: -webkit-linear-gradient(45deg, #f2f2f2 0%, whitesmoke 50%, #fafafa 50%, #f7f7f7 100%) !important;
-  background: linear-gradient(45deg, #f2f2f2 0%, whitesmoke 50%, #fafafa 50%, #f7f7f7 100%) !important;
+  background: #ffffff;
 }
 
 .t-white.subnav__items {
@@ -9800,16 +9875,13 @@ table.t-white tr:nth-child(odd) > th,
 }
 
 .t-white.over-panel__contents {
-  background: -moz-linear-gradient(45deg, #f2f2f2 0%, whitesmoke 50%, #fafafa 50%, #f7f7f7 100%) !important;
-  background: -webkit-linear-gradient(45deg, #f2f2f2 0%, whitesmoke 50%, #fafafa 50%, #f7f7f7 100%) !important;
-  background: linear-gradient(45deg, #f2f2f2 0%, whitesmoke 50%, #fafafa 50%, #f7f7f7 100%) !important;
+  background-color: #f2f2f2;
 }
 
-/*
 .t-white.search-form {
-    background-color: map-get($theme, background-color);
+  padding-left: 1.2rem;
 }
-*/
+
 .t-white.search-form .search-form__submit {
   background-color: #f2f2f2;
   /*&:hover,
@@ -10429,9 +10501,9 @@ $patterns: (
 }
 
 .c-sign.t-neutral {
-  background: -moz-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
-  background: -webkit-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
-  background: linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
+  background: -moz-linear-gradient(45deg, #7b7068 0%, #81756d 50%, #867a71 50%, #81756d 100%) !important;
+  background: -webkit-linear-gradient(45deg, #7b7068 0%, #81756d 50%, #867a71 50%, #81756d 100%) !important;
+  background: linear-gradient(45deg, #7b7068 0%, #81756d 50%, #867a71 50%, #81756d 100%) !important;
 }
 
 /*.t-neutral.t-color {
@@ -10496,9 +10568,7 @@ table.t-neutral tr:nth-child(odd) > th,
 }
 
 .t-neutral.nav-bar {
-  background: -moz-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
-  background: -webkit-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
-  background: linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
+  background: #8e8279;
 }
 
 .t-neutral.subnav__items {
@@ -10506,16 +10576,13 @@ table.t-neutral tr:nth-child(odd) > th,
 }
 
 .t-neutral.over-panel__contents {
-  background: -moz-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
-  background: -webkit-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
-  background: linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
+  background-color: #81756d;
 }
 
-/*
 .t-neutral.search-form {
-    background-color: map-get($theme, background-color);
+  padding-left: 1.2rem;
 }
-*/
+
 .t-neutral.search-form .search-form__submit {
   background-color: #81756d;
   /*&:hover,
@@ -10782,9 +10849,9 @@ input:not([type]):focus,
 }
 
 .c-sign.t-neutral--alt {
-  background: -moz-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
-  background: -webkit-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
-  background: linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
+  background: -moz-linear-gradient(45deg, #7b7068 0%, #81756d 50%, #867a71 50%, #81756d 100%) !important;
+  background: -webkit-linear-gradient(45deg, #7b7068 0%, #81756d 50%, #867a71 50%, #81756d 100%) !important;
+  background: linear-gradient(45deg, #7b7068 0%, #81756d 50%, #867a71 50%, #81756d 100%) !important;
 }
 
 .c-panel.c-panel--very-light.t-neutral {
@@ -11005,18 +11072,14 @@ input:not([type]):focus,
   color: #333;
 }
 
+/*
 .nav-bar {
-  background: -moz-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
-  background: -webkit-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
-  background: linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
+    @include sloped-background(map-get($theme, primary-color));
 }
-
-.over-panel__contents {
-  background: -moz-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
-  background: -webkit-linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
-  background: linear-gradient(45deg, #81756d 0%, #84786f 50%, #897d74 50%, #867a71 100%) !important;
-}
-
+*/
+/*.over-panel__contents {
+    @include sloped-background(map-get($theme, primary-color));
+}*/
 .d-background--very-light.t-neutral--alt {
   background-color: #f7f6f6 !important;
   color: #333 !important;
@@ -11982,9 +12045,9 @@ $patterns: (
 }
 
 .c-sign.t-npeu {
-  background: -moz-linear-gradient(45deg, #513d67 0%, #533f6a 50%, #584371 50%, #56416d 100%) !important;
-  background: -webkit-linear-gradient(45deg, #513d67 0%, #533f6a 50%, #584371 50%, #56416d 100%) !important;
-  background: linear-gradient(45deg, #513d67 0%, #533f6a 50%, #584371 50%, #56416d 100%) !important;
+  background: -moz-linear-gradient(45deg, #4c3a61 0%, #513d67 50%, #56416d 50%, #513d67 100%) !important;
+  background: -webkit-linear-gradient(45deg, #4c3a61 0%, #513d67 50%, #56416d 50%, #513d67 100%) !important;
+  background: linear-gradient(45deg, #4c3a61 0%, #513d67 50%, #56416d 50%, #513d67 100%) !important;
 }
 
 /*.t-npeu.t-color {
@@ -12049,9 +12112,7 @@ table.t-npeu tr:nth-child(odd) > th,
 }
 
 .t-npeu.nav-bar {
-  background: -moz-linear-gradient(45deg, #513d67 0%, #533f6a 50%, #584371 50%, #56416d 100%) !important;
-  background: -webkit-linear-gradient(45deg, #513d67 0%, #533f6a 50%, #584371 50%, #56416d 100%) !important;
-  background: linear-gradient(45deg, #513d67 0%, #533f6a 50%, #584371 50%, #56416d 100%) !important;
+  background: #5d4777;
 }
 
 .t-npeu.subnav__items {
@@ -12059,16 +12120,13 @@ table.t-npeu tr:nth-child(odd) > th,
 }
 
 .t-npeu.over-panel__contents {
-  background: -moz-linear-gradient(45deg, #513d67 0%, #533f6a 50%, #584371 50%, #56416d 100%) !important;
-  background: -webkit-linear-gradient(45deg, #513d67 0%, #533f6a 50%, #584371 50%, #56416d 100%) !important;
-  background: linear-gradient(45deg, #513d67 0%, #533f6a 50%, #584371 50%, #56416d 100%) !important;
+  background-color: #513d67;
 }
 
-/*
 .t-npeu.search-form {
-    background-color: map-get($theme, background-color);
+  padding-left: 1.2rem;
 }
-*/
+
 .t-npeu.search-form .search-form__submit {
   background-color: #513d67;
   /*&:hover,
@@ -12335,9 +12393,9 @@ input:not([type]):focus,
 }
 
 .c-sign.t-npeu--alt {
-  background: -moz-linear-gradient(45deg, #b08b4b 0%, #b38e4d 50%, #b69254 50%, #b49050 100%) !important;
-  background: -webkit-linear-gradient(45deg, #b08b4b 0%, #b38e4d 50%, #b69254 50%, #b49050 100%) !important;
-  background: linear-gradient(45deg, #b08b4b 0%, #b38e4d 50%, #b69254 50%, #b49050 100%) !important;
+  background: -moz-linear-gradient(45deg, #a88648 0%, #b08b4b 50%, #b49050 50%, #b08b4b 100%) !important;
+  background: -webkit-linear-gradient(45deg, #a88648 0%, #b08b4b 50%, #b49050 50%, #b08b4b 100%) !important;
+  background: linear-gradient(45deg, #a88648 0%, #b08b4b 50%, #b49050 50%, #b08b4b 100%) !important;
 }
 
 .c-panel.c-panel--very-light.t-npeu {
@@ -12850,7 +12908,7 @@ img[height] {
   display: none;
 }
 
-@media only screen and (min-width: 65em) {
+@media only screen and (min-width: 68em) {
   .nav-bar.d-bands--bottom {
     border: 0;
   }

@@ -84,16 +84,24 @@ $f__over-panel__overlay--background-color: #000;
 
 $f__nav-bar--background-color:             $f__base-ui-color;
 $f__nav-bar__link--color:                  #fff;//#333;
-$f__nav-bar__link--background-color:       transparent;
+//$f__nav-bar__link--background-color:       transparent;
+$f__nav-bar__link--background-color:       rgba(255,255,255,0.05);
 $f__nav-bar__link--background-color--alt:  rgba(0,0,0,0.3);
 $f__nav-bar__link--background-color--alt2: rgba(0,0,0,0.3);
 
+//$f__nav-bar__link--border-width: 0;
+$f__nav-bar__link--border-color:           rgba(0,0,0,0.2);
+
 $f__sub-nav--background-color:             $f__base-ui-color;
 $f__sub-nav__link--color:                  $f__nav-bar__link--color;
-$f__sub-nav__link--background-color:       transparent;
-$f__sub-nav__link--background-color--alt:  rgba(0,0,0,0.3);
+//$f__sub-nav__link--background-color:       transparent;
+//$f__sub-nav__link--background-color--alt:  rgba(0,0,0,0.3);
+$f__sub-nav__link--background-color:       rgba(0,0,0,0.3);
+$f__sub-nav__link--background-color--alt:  transparent;
+$f__sub-nav__link--border-style:           solid;
 
-$f__nav-bar-divider-first-item:            true;
+
+//$f__nav-bar-divider-first-item:            true;
 
 @import "../bower_components/Fall-Back-Patterns/Nav Bar/scss/_nav-bar";
 // Not sure about this. It allows the sloped background set up in the theme to show through, but
@@ -102,7 +110,15 @@ $f__nav-bar-divider-first-item:            true;
 // applied to the ::before instead.
 
 .js-nav-bar .nav-bar::before {
-    background: transparent
+    background: transparent;
+}
+
+.js-nav-bar .nav-bar__items .nav-bar__item {
+    border-left-width: $f__nav-bar__link--border-width;
+}
+
+.js-nav-bar .nav-bar__items .nav-bar__item {
+    margin-left: 1.2rem;
 }
 
 
@@ -118,9 +134,17 @@ $f__dropdown__button--background-color--alt2: $f__nav-bar__link--background-colo
 @import "../bower_components/Fall-Back-Patterns/Dropdown/scss/_dropdown";
 
 
+.dropdown.js-dropdown {
+    position: static;
+}
+
+
+
 $f__search-form--background-color:              transparent;
 $f__search-form__submit--background-color:      darken($f__base-ui-color, 5%);
 $f__search-form__submit--background-color--alt: darken($f__base-ui-color, 15%);
+$f__search-form-max-width:                      35em;
+
 @import "../bower_components/Fall-Back-Patterns/Search Form/scss/_search-form";
 
 
@@ -416,15 +440,17 @@ $theme: map_get($themes, $theme-name);
 //@import "_theme";
 
 // Navbar:
+/*
 .nav-bar {
     @include sloped-background(map-get($theme, primary-color));
 }
+*/
 
 
 // Overpanel:
-.over-panel__contents {
+/*.over-panel__contents {
     @include sloped-background(map-get($theme, primary-color));
-}
+}*/
 
 // Alternate colours:
 @if map-has-key($theme, "secondary-color") {

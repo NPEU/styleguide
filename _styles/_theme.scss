@@ -151,27 +151,32 @@ table.#{$theme-namespace}#{$theme-name} tr:nth-child(odd) > th,
 
 // Navbar:
 .#{$theme-namespace}#{$theme-name}.nav-bar {
-    @include sloped-background(map-get($theme, primary-color));
+    //@include sloped-background(map-get($theme, primary-color));
+    background: map-get($theme, primary-color);
 }
 
 .#{$theme-namespace}#{$theme-name}.subnav__items {
-    background-color: map-get($theme, background-color);
+    background-color: map-get($theme, primary-color);
 }
 
 
 // Overpanel:
 .#{$theme-namespace}#{$theme-name}.over-panel__contents {
-    @include sloped-background(map-get($theme, primary-color));
+    //@include sloped-background(map-get($theme, primary-color));
+    //background: map-get($theme, primary-color);
+    background-color: darken(map-get($theme, primary-color), 5%);
+    //padding-left: 1.2rem;
 }
 
 
 
 // Search form
-/*
+
 .#{$theme-namespace}#{$theme-name}.search-form {
-    background-color: map-get($theme, background-color);
+    //background-color: map-get($theme, background-color);
+    padding-left: 1.2rem;
 }
-*/
+
 
 
 // Search form button:
