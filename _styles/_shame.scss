@@ -176,7 +176,7 @@ img[height] {
 }
 
 .dl-2-col dd {
-    flex: 1 0 66%;
+    flex: 1 0 calc(100% - 9em);
     align-self: flex-end;
 
     margin: 0;
