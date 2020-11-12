@@ -1,10 +1,6 @@
 /* --| SETTINGS |-------------------------------------------------------------------------------- */
 
-//@import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i|Nunito:400,700');
-//@import url("https://fonts.googleapis.com/css?family=Lato:300,700,900");
-//@import url('https://fonts.googleapis.com/css?family=Lato:300,300i|Nunito:400,700');
-//font-family: 'Lato', sans-serif;
-//font-family: 'Nunito', sans-serif;
+// NOTE - Needs an overhauls because of updated StartCSS
 
 @import "_settings.scss";
 @import "_core_themes.scss";
@@ -141,6 +137,7 @@ $f__dropdown__button--background-color--alt2: $f__nav-bar__link--background-colo
 
 
 $f__search-form--background-color:              transparent;
+$f__search-form--base-text-color:               #fff;
 $f__search-form__submit--background-color:      darken($f__base-ui-color, 5%);
 $f__search-form__submit--background-color--alt: darken($f__base-ui-color, 15%);
 $f__search-form-max-width:                      35em;
