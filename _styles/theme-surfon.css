@@ -12920,7 +12920,13 @@ img[height] {
   position: relative;
 }
 
-.nav-bar__item--current::before {
+.nav-bar__item a,
+.nav-bar__item span {
+  position: relative;
+}
+
+.nav-bar__item--current > a::before,
+.subnav__item--current > a::before {
   content: "";
   display: block;
   position: absolute;
@@ -12932,6 +12938,15 @@ img[height] {
   height: 100%;
   background-color: #000;
   opacity: 0.4;
+}
+
+.nav-bar__item--current > a:hover::before,
+.nav-bar__item--current > a:active::before,
+.nav-bar__item--current > a:focus::before,
+.subnav__item--current > a:hover::before,
+.subnav__item--current > a:active::before,
+.subnav__item--current > a:focus::before {
+  display: none;
 }
 
 .search-form .search-form__field.search-form__field {
