@@ -5334,6 +5334,10 @@ $glimpse--link-border-bottom--hover: false !default;*/
   margin: 0 auto;
 }
 
+.c-page-header .c-page-header__cta .c-primary-cta[href], .c-page-header .c-page-header__cta .c-user-content a[href][data-display-as~="primary-cta"], .c-user-content .c-page-header .c-page-header__cta a[href][data-display-as~="primary-cta"] {
+  margin-left: 1.2rem;
+}
+
 /*.c-page-header {
 		color: map-get($theme, text-color);
 		background-color: map-get($theme, page-header-color);
@@ -5596,7 +5600,7 @@ $glimpse--link-border-bottom--hover: false !default;*/
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.c-primary-cta[href] {
+.c-primary-cta[href], .c-user-content a[href][data-display-as~="primary-cta"] {
   display: inline-block;
   padding: 0.6rem;
   border: 0;
@@ -5604,19 +5608,18 @@ $glimpse--link-border-bottom--hover: false !default;*/
   font-size: 1.375em;
   text-align: center;
   margin-bottom: 0;
-  margin-left: 1.2rem;
 }
 
-.c-primary-cta[href]:hover, .c-primary-cta[href]:active, .c-primary-cta[href]:focus {
+.c-primary-cta[href]:hover, .c-user-content a[href]:hover[data-display-as~="primary-cta"], .c-primary-cta[href]:active, .c-user-content a[href]:active[data-display-as~="primary-cta"], .c-primary-cta[href]:focus, .c-user-content a[href]:focus[data-display-as~="primary-cta"] {
   border: 0;
 }
 
-.c-primary-cta[href] {
+.c-primary-cta[href], .c-user-content a[href][data-display-as~="primary-cta"] {
   color: #fff;
   background-color: #614776;
 }
 
-.c-primary-cta[href]:hover, .c-primary-cta[href]:active, .c-primary-cta[href]:focus {
+.c-primary-cta[href]:hover, .c-user-content a[href]:hover[data-display-as~="primary-cta"], .c-primary-cta[href]:active, .c-user-content a[href]:active[data-display-as~="primary-cta"], .c-primary-cta[href]:focus, .c-user-content a[href]:focus[data-display-as~="primary-cta"] {
   color: #fff;
   /*@if is-int($f__button-background-color--alt) {
                 @if $f__button-background-color--alt > 0 {
@@ -9082,6 +9085,83 @@ main :target {
   clear: both;
 }
 
+.c-user-content a[href][data-display-as~="cta"] {
+  display: inline-block;
+  /* AK. IE9 needs this. Hmmm, for what exactly?*/
+  min-height: 3rem;
+  overflow: visible;
+  /* S: Internet Explorer 11-, N: Show the overflow in Edge, Firefox, and IE. */
+  margin: 0.3rem 0;
+  padding-top: 0.3rem;
+  padding-top: -moz-calc(0);
+  padding-top: calc(0.3rem - 1px);
+  padding-right: 0.6rem;
+  padding-bottom: 0.3rem;
+  padding-bottom: -moz-calc(0);
+  padding-bottom: calc(0.3rem - 1px);
+  padding-left: 0.6rem;
+  border-color: #614776;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 3px;
+  color: #333;
+  background-color: #fff;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: 2.4rem;
+  vertical-align: middle;
+  text-transform: none;
+  /* [N0], N: Remove the inheritance of text transform in Edge, Firefox, and IE. */
+  cursor: pointer;
+  -ms-touch-action: manipulation;
+  /* 1 (IE10) */
+  touch-action: manipulation;
+  /* 1 */
+  -webkit-appearance: none;
+  /*@if $f__button-focus-outline-width != false {
+        &:hover,
+        &:active,
+        &:focus {
+            outline-width: $f__button-focus-outline-width;
+            outline-style: $f__button-focus-outline-style;
+            outline-color: $f__button-focus-outline-color;
+            outline-offset: $f__button-focus-outline-offset;
+        }
+    }*/
+}
+
+.c-user-content a[href][data-display-as~="cta"]:hover, .c-user-content a[href][data-display-as~="cta"]:active {
+  background-color: #ebe6f0;
+}
+
+.c-user-content a[href][data-display-as~="cta"]:focus {
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+.c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-pru-mnhc[href], .c-user-content a[href][data-display-as~="primary-cta"] a.t-pru-mnhc[href][data-display-as~="primary-cta"] {
+  color: #ffffff;
+  background-color: #5d4777;
+}
+
+.c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-pru-mnhc[href]:hover, .c-user-content a[href][data-display-as~="primary-cta"] a.t-pru-mnhc[href]:hover[data-display-as~="primary-cta"], .c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-pru-mnhc[href]:active, .c-user-content a[href][data-display-as~="primary-cta"] a.t-pru-mnhc[href]:active[data-display-as~="primary-cta"], .c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-pru-mnhc[href]:focus, .c-user-content a[href][data-display-as~="primary-cta"] a.t-pru-mnhc[href]:focus[data-display-as~="primary-cta"] {
+  color: #ffffff;
+  /*@if is-int($f__button-background-color--alt) {
+                @if $f__button-background-color--alt > 0 {
+                    $f__button-background-color--alt_percent: $f__button-background-color--alt * 1%;
+                    background-color: lighten(map-get($theme, cta-background-color), $f__button-background-color--alt_percent);
+                }
+                @if $f__button-background-color--alt < 0 {
+                    $f__button-background-color--alt_percent: $f__button-background-color--alt * -1%;
+                    background-color: darken(map-get($theme, cta-background-color), $f__button-background-color--alt_percent);
+                }
+            }
+            */
+  background-color: #443457;
+}
+
 .c-user-content [data-display-as~="box"],
 .c-user-content [data-display-as~="pale-box"],
 .c-user-content [data-display-as~="themed-box--background"],
@@ -9135,7 +9215,8 @@ main :target {
 }
 
 .c-user-content [data-display-as~="themed-box--background"] {
-  background: currentColor;
+  color: #fff;
+  background: #5d4777;
 }
 
 .c-user-content [data-display-as~="themed-box--background"] a[href] {
@@ -9148,16 +9229,23 @@ main :target {
   color: #fff;
 }
 
-.c-user-content [data-display-as~="themed-box--background"] a[href].c-cta {
+.c-user-content [data-display-as~="themed-box--background"] a[href][data-display-as~="cta"] {
   border-color: #fff;
   color: #fff;
   background-color: transparent;
 }
 
-.c-user-content [data-display-as~="themed-box--background"] a[href].c-cta:hover,
-.c-user-content [data-display-as~="themed-box--background"] a[href].c-cta:active,
-.c-user-content [data-display-as~="themed-box--background"] a[href].c-cta:focus {
+.c-user-content [data-display-as~="themed-box--background"] a[href][data-display-as~="cta"]:hover,
+.c-user-content [data-display-as~="themed-box--background"] a[href][data-display-as~="cta"]:active,
+.c-user-content [data-display-as~="themed-box--background"] a[href][data-display-as~="cta"]:focus {
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+.c-user-content [data-display-as~="themed-box--background"] a[href][data-display-as~="primary-cta"] {
+  border-color: #fff;
+  border-width: 2px;
+  border-style: solid;
+  padding: calc(0.6rem - 4px) 0.6rem;
 }
 
 .c-user-content [data-display-as~="themed-box--border"] {
@@ -9171,9 +9259,9 @@ main :target {
   background: #faf8f4;
 }
 
-.c-user-content [data-display-as~="notice-box"] a[href].c-cta:hover,
-.c-user-content [data-display-as~="notice-box"] a[href].c-cta:active,
-.c-user-content [data-display-as~="notice-box"] a[href].c-cta:focus {
+.c-user-content [data-display-as~="notice-box"] a[href][data-display-as~="cta"]:hover,
+.c-user-content [data-display-as~="notice-box"] a[href][data-display-as~="cta"]:active,
+.c-user-content [data-display-as~="notice-box"] a[href][data-display-as~="cta"]:focus {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -9778,13 +9866,13 @@ $patterns: (
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.c-primary-cta.t-white[href] {
-  color: #333;
+.c-primary-cta.t-white[href], .c-user-content a.t-white[href][data-display-as~="primary-cta"] {
+  color: #333333;
   background-color: #ffffff;
 }
 
-.c-primary-cta.t-white[href]:hover, .c-primary-cta.t-white[href]:active, .c-primary-cta.t-white[href]:focus {
-  color: #333;
+.c-primary-cta.t-white[href]:hover, .c-user-content a.t-white[href]:hover[data-display-as~="primary-cta"], .c-primary-cta.t-white[href]:active, .c-user-content a.t-white[href]:active[data-display-as~="primary-cta"], .c-primary-cta.t-white[href]:focus, .c-user-content a.t-white[href]:focus[data-display-as~="primary-cta"] {
+  color: #333333;
   /*@if is-int($f__button-background-color--alt) {
                 @if $f__button-background-color--alt > 0 {
                     $f__button-background-color--alt_percent: $f__button-background-color--alt * 1%;
@@ -9820,7 +9908,7 @@ a[href].button.t-white:not(.over-panel__overlay):not(.dropdown__button),
 a[href].c-cta.t-white:not(.over-panel__overlay):not(.dropdown__button),
 .cookie_notice__action button {
   border-color: #ffffff !important;
-  color: #333 !important;
+  color: #333333 !important;
   background-color: #ffffff !important;
 }
 
@@ -10479,13 +10567,13 @@ $patterns: (
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.c-primary-cta.t-neutral[href] {
-  color: #333;
-  background-color: #8e8279;
+.c-primary-cta.t-neutral[href], .c-user-content a.t-neutral[href][data-display-as~="primary-cta"] {
+  color: #333333;
+  background-color: #ffffff;
 }
 
-.c-primary-cta.t-neutral[href]:hover, .c-primary-cta.t-neutral[href]:active, .c-primary-cta.t-neutral[href]:focus {
-  color: #333;
+.c-primary-cta.t-neutral[href]:hover, .c-user-content a.t-neutral[href]:hover[data-display-as~="primary-cta"], .c-primary-cta.t-neutral[href]:active, .c-user-content a.t-neutral[href]:active[data-display-as~="primary-cta"], .c-primary-cta.t-neutral[href]:focus, .c-user-content a.t-neutral[href]:focus[data-display-as~="primary-cta"] {
+  color: #333333;
   /*@if is-int($f__button-background-color--alt) {
                 @if $f__button-background-color--alt > 0 {
                     $f__button-background-color--alt_percent: $f__button-background-color--alt * 1%;
@@ -10497,7 +10585,7 @@ $patterns: (
                 }
             }
             */
-  background-color: #736961;
+  background-color: #e6e6e6;
 }
 
 .c-sign.t-neutral {
@@ -10521,7 +10609,7 @@ a[href].button.t-neutral:not(.over-panel__overlay):not(.dropdown__button),
 a[href].c-cta.t-neutral:not(.over-panel__overlay):not(.dropdown__button),
 .cookie_notice__action button {
   border-color: #8e8279 !important;
-  color: #333 !important;
+  color: #333333 !important;
   background-color: #8e8279 !important;
 }
 
@@ -12023,12 +12111,12 @@ $patterns: (
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.c-primary-cta.t-pru-mnhc[href] {
+.c-primary-cta.t-pru-mnhc[href], .c-user-content a.t-pru-mnhc[href][data-display-as~="primary-cta"] {
   color: #ffffff;
   background-color: #5d4777;
 }
 
-.c-primary-cta.t-pru-mnhc[href]:hover, .c-primary-cta.t-pru-mnhc[href]:active, .c-primary-cta.t-pru-mnhc[href]:focus {
+.c-primary-cta.t-pru-mnhc[href]:hover, .c-user-content a.t-pru-mnhc[href]:hover[data-display-as~="primary-cta"], .c-primary-cta.t-pru-mnhc[href]:active, .c-user-content a.t-pru-mnhc[href]:active[data-display-as~="primary-cta"], .c-primary-cta.t-pru-mnhc[href]:focus, .c-user-content a.t-pru-mnhc[href]:focus[data-display-as~="primary-cta"] {
   color: #ffffff;
   /*@if is-int($f__button-background-color--alt) {
                 @if $f__button-background-color--alt > 0 {

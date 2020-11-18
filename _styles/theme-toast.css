@@ -5334,6 +5334,10 @@ $glimpse--link-border-bottom--hover: false !default;*/
   margin: 0 auto;
 }
 
+.c-page-header .c-page-header__cta .c-primary-cta[href], .c-page-header .c-page-header__cta .c-user-content a[href][data-display-as~="primary-cta"], .c-user-content .c-page-header .c-page-header__cta a[href][data-display-as~="primary-cta"] {
+  margin-left: 1.2rem;
+}
+
 /*.c-page-header {
 		color: map-get($theme, text-color);
 		background-color: map-get($theme, page-header-color);
@@ -5596,7 +5600,7 @@ $glimpse--link-border-bottom--hover: false !default;*/
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.c-primary-cta[href] {
+.c-primary-cta[href], .c-user-content a[href][data-display-as~="primary-cta"] {
   display: inline-block;
   padding: 0.6rem;
   border: 0;
@@ -5604,19 +5608,18 @@ $glimpse--link-border-bottom--hover: false !default;*/
   font-size: 1.375em;
   text-align: center;
   margin-bottom: 0;
-  margin-left: 1.2rem;
 }
 
-.c-primary-cta[href]:hover, .c-primary-cta[href]:active, .c-primary-cta[href]:focus {
+.c-primary-cta[href]:hover, .c-user-content a[href]:hover[data-display-as~="primary-cta"], .c-primary-cta[href]:active, .c-user-content a[href]:active[data-display-as~="primary-cta"], .c-primary-cta[href]:focus, .c-user-content a[href]:focus[data-display-as~="primary-cta"] {
   border: 0;
 }
 
-.c-primary-cta[href] {
+.c-primary-cta[href], .c-user-content a[href][data-display-as~="primary-cta"] {
   color: #fff;
   background-color: #614776;
 }
 
-.c-primary-cta[href]:hover, .c-primary-cta[href]:active, .c-primary-cta[href]:focus {
+.c-primary-cta[href]:hover, .c-user-content a[href]:hover[data-display-as~="primary-cta"], .c-primary-cta[href]:active, .c-user-content a[href]:active[data-display-as~="primary-cta"], .c-primary-cta[href]:focus, .c-user-content a[href]:focus[data-display-as~="primary-cta"] {
   color: #fff;
   /*@if is-int($f__button-background-color--alt) {
                 @if $f__button-background-color--alt > 0 {
@@ -9082,6 +9085,83 @@ main :target {
   clear: both;
 }
 
+.c-user-content a[href][data-display-as~="cta"] {
+  display: inline-block;
+  /* AK. IE9 needs this. Hmmm, for what exactly?*/
+  min-height: 3rem;
+  overflow: visible;
+  /* S: Internet Explorer 11-, N: Show the overflow in Edge, Firefox, and IE. */
+  margin: 0.3rem 0;
+  padding-top: 0.3rem;
+  padding-top: -moz-calc(0);
+  padding-top: calc(0.3rem - 1px);
+  padding-right: 0.6rem;
+  padding-bottom: 0.3rem;
+  padding-bottom: -moz-calc(0);
+  padding-bottom: calc(0.3rem - 1px);
+  padding-left: 0.6rem;
+  border-color: #614776;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 3px;
+  color: #333;
+  background-color: #fff;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: 2.4rem;
+  vertical-align: middle;
+  text-transform: none;
+  /* [N0], N: Remove the inheritance of text transform in Edge, Firefox, and IE. */
+  cursor: pointer;
+  -ms-touch-action: manipulation;
+  /* 1 (IE10) */
+  touch-action: manipulation;
+  /* 1 */
+  -webkit-appearance: none;
+  /*@if $f__button-focus-outline-width != false {
+        &:hover,
+        &:active,
+        &:focus {
+            outline-width: $f__button-focus-outline-width;
+            outline-style: $f__button-focus-outline-style;
+            outline-color: $f__button-focus-outline-color;
+            outline-offset: $f__button-focus-outline-offset;
+        }
+    }*/
+}
+
+.c-user-content a[href][data-display-as~="cta"]:hover, .c-user-content a[href][data-display-as~="cta"]:active {
+  background-color: #ebe6f0;
+}
+
+.c-user-content a[href][data-display-as~="cta"]:focus {
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+.c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-toast[href], .c-user-content a[href][data-display-as~="primary-cta"] a.t-toast[href][data-display-as~="primary-cta"] {
+  color: #ffffff;
+  background-color: #FF9E18;
+}
+
+.c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-toast[href]:hover, .c-user-content a[href][data-display-as~="primary-cta"] a.t-toast[href]:hover[data-display-as~="primary-cta"], .c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-toast[href]:active, .c-user-content a[href][data-display-as~="primary-cta"] a.t-toast[href]:active[data-display-as~="primary-cta"], .c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-toast[href]:focus, .c-user-content a[href][data-display-as~="primary-cta"] a.t-toast[href]:focus[data-display-as~="primary-cta"] {
+  color: #ffffff;
+  /*@if is-int($f__button-background-color--alt) {
+                @if $f__button-background-color--alt > 0 {
+                    $f__button-background-color--alt_percent: $f__button-background-color--alt * 1%;
+                    background-color: lighten(map-get($theme, cta-background-color), $f__button-background-color--alt_percent);
+                }
+                @if $f__button-background-color--alt < 0 {
+                    $f__button-background-color--alt_percent: $f__button-background-color--alt * -1%;
+                    background-color: darken(map-get($theme, cta-background-color), $f__button-background-color--alt_percent);
+                }
+            }
+            */
+  background-color: #e48400;
+}
+
 .c-user-content [data-display-as~="box"],
 .c-user-content [data-display-as~="pale-box"],
 .c-user-content [data-display-as~="themed-box--background"],
@@ -9135,7 +9215,8 @@ main :target {
 }
 
 .c-user-content [data-display-as~="themed-box--background"] {
-  background: currentColor;
+  color: #fff;
+  background: #8C827A;
 }
 
 .c-user-content [data-display-as~="themed-box--background"] a[href] {
@@ -9148,16 +9229,23 @@ main :target {
   color: #fff;
 }
 
-.c-user-content [data-display-as~="themed-box--background"] a[href].c-cta {
+.c-user-content [data-display-as~="themed-box--background"] a[href][data-display-as~="cta"] {
   border-color: #fff;
   color: #fff;
   background-color: transparent;
 }
 
-.c-user-content [data-display-as~="themed-box--background"] a[href].c-cta:hover,
-.c-user-content [data-display-as~="themed-box--background"] a[href].c-cta:active,
-.c-user-content [data-display-as~="themed-box--background"] a[href].c-cta:focus {
+.c-user-content [data-display-as~="themed-box--background"] a[href][data-display-as~="cta"]:hover,
+.c-user-content [data-display-as~="themed-box--background"] a[href][data-display-as~="cta"]:active,
+.c-user-content [data-display-as~="themed-box--background"] a[href][data-display-as~="cta"]:focus {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.c-user-content [data-display-as~="themed-box--background"] a[href][data-display-as~="primary-cta"] {
+  border-color: #fff;
+  border-width: 2px;
+  border-style: solid;
+  padding: calc(0.6rem - 4px) 0.6rem;
 }
 
 .c-user-content [data-display-as~="themed-box--border"] {
@@ -9171,9 +9259,9 @@ main :target {
   background: #fff8ef;
 }
 
-.c-user-content [data-display-as~="notice-box"] a[href].c-cta:hover,
-.c-user-content [data-display-as~="notice-box"] a[href].c-cta:active,
-.c-user-content [data-display-as~="notice-box"] a[href].c-cta:focus {
+.c-user-content [data-display-as~="notice-box"] a[href][data-display-as~="cta"]:hover,
+.c-user-content [data-display-as~="notice-box"] a[href][data-display-as~="cta"]:active,
+.c-user-content [data-display-as~="notice-box"] a[href][data-display-as~="cta"]:focus {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -9778,13 +9866,13 @@ $patterns: (
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.c-primary-cta.t-white[href] {
-  color: #333;
+.c-primary-cta.t-white[href], .c-user-content a.t-white[href][data-display-as~="primary-cta"] {
+  color: #333333;
   background-color: #ffffff;
 }
 
-.c-primary-cta.t-white[href]:hover, .c-primary-cta.t-white[href]:active, .c-primary-cta.t-white[href]:focus {
-  color: #333;
+.c-primary-cta.t-white[href]:hover, .c-user-content a.t-white[href]:hover[data-display-as~="primary-cta"], .c-primary-cta.t-white[href]:active, .c-user-content a.t-white[href]:active[data-display-as~="primary-cta"], .c-primary-cta.t-white[href]:focus, .c-user-content a.t-white[href]:focus[data-display-as~="primary-cta"] {
+  color: #333333;
   /*@if is-int($f__button-background-color--alt) {
                 @if $f__button-background-color--alt > 0 {
                     $f__button-background-color--alt_percent: $f__button-background-color--alt * 1%;
@@ -9820,7 +9908,7 @@ a[href].button.t-white:not(.over-panel__overlay):not(.dropdown__button),
 a[href].c-cta.t-white:not(.over-panel__overlay):not(.dropdown__button),
 .cookie_notice__action button {
   border-color: #ffffff !important;
-  color: #333 !important;
+  color: #333333 !important;
   background-color: #ffffff !important;
 }
 
@@ -10479,13 +10567,13 @@ $patterns: (
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.c-primary-cta.t-neutral[href] {
-  color: #333;
-  background-color: #8e8279;
+.c-primary-cta.t-neutral[href], .c-user-content a.t-neutral[href][data-display-as~="primary-cta"] {
+  color: #333333;
+  background-color: #ffffff;
 }
 
-.c-primary-cta.t-neutral[href]:hover, .c-primary-cta.t-neutral[href]:active, .c-primary-cta.t-neutral[href]:focus {
-  color: #333;
+.c-primary-cta.t-neutral[href]:hover, .c-user-content a.t-neutral[href]:hover[data-display-as~="primary-cta"], .c-primary-cta.t-neutral[href]:active, .c-user-content a.t-neutral[href]:active[data-display-as~="primary-cta"], .c-primary-cta.t-neutral[href]:focus, .c-user-content a.t-neutral[href]:focus[data-display-as~="primary-cta"] {
+  color: #333333;
   /*@if is-int($f__button-background-color--alt) {
                 @if $f__button-background-color--alt > 0 {
                     $f__button-background-color--alt_percent: $f__button-background-color--alt * 1%;
@@ -10497,7 +10585,7 @@ $patterns: (
                 }
             }
             */
-  background-color: #736961;
+  background-color: #e6e6e6;
 }
 
 .c-sign.t-neutral {
@@ -10521,7 +10609,7 @@ a[href].button.t-neutral:not(.over-panel__overlay):not(.dropdown__button),
 a[href].c-cta.t-neutral:not(.over-panel__overlay):not(.dropdown__button),
 .cookie_notice__action button {
   border-color: #8e8279 !important;
-  color: #333 !important;
+  color: #333333 !important;
   background-color: #8e8279 !important;
 }
 
@@ -11789,246 +11877,246 @@ $patterns: (
 @each $pattern in $patterns {
     @include $pattern (
         (
-            name  : toad,
+            name  : toast,
             theme : $theme
         )
     );
 }
 */
-.d-background--very-light.t-toad {
+.d-background--very-light.t-toast {
   background-color: #f6f6f5 !important;
   color: #333 !important;
 }
 
-.d-background--very-light.t-toad a[href] {
+.d-background--very-light.t-toast a[href] {
   color: #333 !important;
 }
 
-.d-background--very-light.t-toad a[href]:hover,
-.d-background--very-light.t-toad a[href]:active,
-.d-background--very-light.t-toad a[href]:focus {
+.d-background--very-light.t-toast a[href]:hover,
+.d-background--very-light.t-toast a[href]:active,
+.d-background--very-light.t-toast a[href]:focus {
   color: #333 !important;
 }
 
-.d-background--very-light.t-toad a[href].c-cta {
+.d-background--very-light.t-toast a[href].c-cta {
   border-color: #333 !important;
   color: #333 !important;
   background-color: transparent !important;
 }
 
-.d-background--very-light.t-toad a[href].c-cta:hover,
-.d-background--very-light.t-toad a[href].c-cta:active,
-.d-background--very-light.t-toad a[href].c-cta:focus {
+.d-background--very-light.t-toast a[href].c-cta:hover,
+.d-background--very-light.t-toast a[href].c-cta:active,
+.d-background--very-light.t-toast a[href].c-cta:focus {
   background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-.d-background--light.t-toad {
+.d-background--light.t-toast {
   background-color: #dfdcda !important;
   color: #333 !important;
 }
 
-.d-background--light.t-toad a[href] {
+.d-background--light.t-toast a[href] {
   color: #333 !important;
 }
 
-.d-background--light.t-toad a[href]:hover,
-.d-background--light.t-toad a[href]:active,
-.d-background--light.t-toad a[href]:focus {
+.d-background--light.t-toast a[href]:hover,
+.d-background--light.t-toast a[href]:active,
+.d-background--light.t-toast a[href]:focus {
   color: #333 !important;
 }
 
-.d-background--light.t-toad a[href].c-cta {
+.d-background--light.t-toast a[href].c-cta {
   border-color: #333 !important;
   color: #333 !important;
   background-color: transparent !important;
 }
 
-.d-background--light.t-toad a[href].c-cta:hover,
-.d-background--light.t-toad a[href].c-cta:active,
-.d-background--light.t-toad a[href].c-cta:focus {
+.d-background--light.t-toast a[href].c-cta:hover,
+.d-background--light.t-toast a[href].c-cta:active,
+.d-background--light.t-toast a[href].c-cta:focus {
   background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-.d-background.t-toad {
+.d-background.t-toast {
   background-color: #8C827A !important;
   color: #333 !important;
 }
 
-.d-background.t-toad a[href] {
+.d-background.t-toast a[href] {
   color: #333 !important;
 }
 
-.d-background.t-toad a[href]:hover,
-.d-background.t-toad a[href]:active,
-.d-background.t-toad a[href]:focus {
+.d-background.t-toast a[href]:hover,
+.d-background.t-toast a[href]:active,
+.d-background.t-toast a[href]:focus {
   color: #333 !important;
 }
 
-.d-background.t-toad a[href].c-cta {
+.d-background.t-toast a[href].c-cta {
   border-color: #333 !important;
   color: #333 !important;
   background-color: transparent !important;
 }
 
-.d-background.t-toad a[href].c-cta:hover,
-.d-background.t-toad a[href].c-cta:active,
-.d-background.t-toad a[href].c-cta:focus {
+.d-background.t-toast a[href].c-cta:hover,
+.d-background.t-toast a[href].c-cta:active,
+.d-background.t-toast a[href].c-cta:focus {
   background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-.d-background--dark.t-toad {
+.d-background--dark.t-toast {
   background-color: #716962 !important;
   color: #fff !important;
 }
 
-.d-background--dark.t-toad a[href] {
+.d-background--dark.t-toast a[href] {
   color: #fff !important;
 }
 
-.d-background--dark.t-toad a[href]:hover,
-.d-background--dark.t-toad a[href]:active,
-.d-background--dark.t-toad a[href]:focus {
+.d-background--dark.t-toast a[href]:hover,
+.d-background--dark.t-toast a[href]:active,
+.d-background--dark.t-toast a[href]:focus {
   color: #fff !important;
 }
 
-.d-background--dark.t-toad a[href].c-cta {
+.d-background--dark.t-toast a[href].c-cta {
   border-color: #fff !important;
   color: #fff !important;
   background-color: transparent !important;
 }
 
-.d-background--dark.t-toad a[href].c-cta:hover,
-.d-background--dark.t-toad a[href].c-cta:active,
-.d-background--dark.t-toad a[href].c-cta:focus {
+.d-background--dark.t-toast a[href].c-cta:hover,
+.d-background--dark.t-toast a[href].c-cta:active,
+.d-background--dark.t-toast a[href].c-cta:focus {
   background-color: rgba(0, 0, 0, 0.1) !important;
 }
 
-.d-background--very-dark.t-toad {
+.d-background--very-dark.t-toast {
   background-color: #564f4a !important;
   color: #fff !important;
 }
 
-.d-background--very-dark.t-toad a[href] {
+.d-background--very-dark.t-toast a[href] {
   color: #fff !important;
 }
 
-.d-background--very-dark.t-toad a[href]:hover,
-.d-background--very-dark.t-toad a[href]:active,
-.d-background--very-dark.t-toad a[href]:focus {
+.d-background--very-dark.t-toast a[href]:hover,
+.d-background--very-dark.t-toast a[href]:active,
+.d-background--very-dark.t-toast a[href]:focus {
   color: #fff !important;
 }
 
-.d-background--very-dark.t-toad a[href].c-cta {
+.d-background--very-dark.t-toast a[href].c-cta {
   border-color: #fff !important;
   color: #fff !important;
   background-color: transparent !important;
 }
 
-.d-background--very-dark.t-toad a[href].c-cta:hover,
-.d-background--very-dark.t-toad a[href].c-cta:active,
-.d-background--very-dark.t-toad a[href].c-cta:focus {
+.d-background--very-dark.t-toast a[href].c-cta:hover,
+.d-background--very-dark.t-toast a[href].c-cta:active,
+.d-background--very-dark.t-toast a[href].c-cta:focus {
   background-color: rgba(0, 0, 0, 0.1) !important;
 }
 
-.d-background--sloped.t-toad {
+.d-background--sloped.t-toast {
   background: -moz-linear-gradient(45deg, #7f756e 0%, #827870 50%, #877d75 50%, #847a72 100%) !important;
   background: -webkit-linear-gradient(45deg, #7f756e 0%, #827870 50%, #877d75 50%, #847a72 100%) !important;
   background: linear-gradient(45deg, #7f756e 0%, #827870 50%, #877d75 50%, #847a72 100%) !important;
 }
 
-.d-bands.t-toad,
-.d-bands--left.t-toad,
-.d-bands--right.t-toad,
-.d-bands--sides.t-toad,
-.d-bands--top.t-toad,
-.d-bands--above.t-toad,
-.d-bands--bottom.t-toad,
-.d-bands--below.t-toad {
+.d-bands.t-toast,
+.d-bands--left.t-toast,
+.d-bands--right.t-toast,
+.d-bands--sides.t-toast,
+.d-bands--top.t-toast,
+.d-bands--above.t-toast,
+.d-bands--bottom.t-toast,
+.d-bands--below.t-toast {
   border-color: #8C827A !important;
 }
 
-.c-card .c-card__full-link.t-toad,
-.c-card .c-card__full-link.t-toad:hover {
+.c-card .c-card__full-link.t-toast,
+.c-card .c-card__full-link.t-toast:hover {
   background: #797069;
 }
 
-.c-card.t-toad,
-.c-card.t-toad .c-card__main {
+.c-card.t-toast,
+.c-card.t-toast .c-card__main {
   background-color: #8C827A;
 }
 
-.c-card.t-toad .c-card__main .c-card__title,
-.c-card.t-toad .c-card__main .c-card__body,
-.c-card.t-toad .c-card__main .c-card__footer {
+.c-card.t-toast .c-card__main .c-card__title,
+.c-card.t-toast .c-card__main .c-card__body,
+.c-card.t-toast .c-card__main .c-card__footer {
   color: #fff;
   background-color: #8C827A;
 }
 
-.c-card.t-toad .c-card__main .c-card__title a[href],
-.c-card.t-toad .c-card__main .c-card__body a[href],
-.c-card.t-toad .c-card__main .c-card__footer a[href] {
+.c-card.t-toast .c-card__main .c-card__title a[href],
+.c-card.t-toast .c-card__main .c-card__body a[href],
+.c-card.t-toast .c-card__main .c-card__footer a[href] {
   background-color: #8C827A;
   color: #fff;
 }
 
-.c-card.t-toad .c-card__main .c-card__title a[href]:hover, .c-card.t-toad .c-card__main .c-card__title a[href]:active, .c-card.t-toad .c-card__main .c-card__title a[href]:focus,
-.c-card.t-toad .c-card__main .c-card__body a[href]:hover,
-.c-card.t-toad .c-card__main .c-card__body a[href]:active,
-.c-card.t-toad .c-card__main .c-card__body a[href]:focus,
-.c-card.t-toad .c-card__main .c-card__footer a[href]:hover,
-.c-card.t-toad .c-card__main .c-card__footer a[href]:active,
-.c-card.t-toad .c-card__main .c-card__footer a[href]:focus {
+.c-card.t-toast .c-card__main .c-card__title a[href]:hover, .c-card.t-toast .c-card__main .c-card__title a[href]:active, .c-card.t-toast .c-card__main .c-card__title a[href]:focus,
+.c-card.t-toast .c-card__main .c-card__body a[href]:hover,
+.c-card.t-toast .c-card__main .c-card__body a[href]:active,
+.c-card.t-toast .c-card__main .c-card__body a[href]:focus,
+.c-card.t-toast .c-card__main .c-card__footer a[href]:hover,
+.c-card.t-toast .c-card__main .c-card__footer a[href]:active,
+.c-card.t-toast .c-card__main .c-card__footer a[href]:focus {
   background-color: #8C827A;
   color: #fff;
 }
 
-.c-card.t-toad {
+.c-card.t-toast {
   border-color: #564f4a;
 }
 
-.c-featurette.t-toad,
-.c-featurette.t-toad * {
+.c-featurette.t-toast,
+.c-featurette.t-toast * {
   background-color: #8C827A;
   color: #fff;
 }
 
-/*.c-page-header.t-toad {
+/*.c-page-header.t-toast {
 		color: map-get($theme, text-color);
 		background-color: map-get($theme, page-header-color);
 	}*/
-.c-panel.c-panel.t-toad {
+.c-panel.c-panel.t-toast {
   color: #333;
   background: #8C827A;
 }
 
-.c-panel.c-panel.t-toad a[href] {
+.c-panel.c-panel.t-toast a[href] {
   color: #333;
 }
 
-.c-panel.c-panel.t-toad a[href]:hover,
-.c-panel.c-panel.t-toad a[href]:active,
-.c-panel.c-panel.t-toad a[href]:focus {
+.c-panel.c-panel.t-toast a[href]:hover,
+.c-panel.c-panel.t-toast a[href]:active,
+.c-panel.c-panel.t-toast a[href]:focus {
   color: #333;
 }
 
-.c-panel.c-panel.t-toad a[href].c-cta {
+.c-panel.c-panel.t-toast a[href].c-cta {
   border-color: #333;
   color: #333;
   background-color: transparent;
 }
 
-.c-panel.c-panel.t-toad a[href].c-cta:hover,
-.c-panel.c-panel.t-toad a[href].c-cta:active,
-.c-panel.c-panel.t-toad a[href].c-cta:focus {
+.c-panel.c-panel.t-toast a[href].c-cta:hover,
+.c-panel.c-panel.t-toast a[href].c-cta:active,
+.c-panel.c-panel.t-toast a[href].c-cta:focus {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.c-primary-cta.t-toad[href] {
+.c-primary-cta.t-toast[href], .c-user-content a.t-toast[href][data-display-as~="primary-cta"] {
   color: #ffffff;
   background-color: #FF9E18;
 }
 
-.c-primary-cta.t-toad[href]:hover, .c-primary-cta.t-toad[href]:active, .c-primary-cta.t-toad[href]:focus {
+.c-primary-cta.t-toast[href]:hover, .c-user-content a.t-toast[href]:hover[data-display-as~="primary-cta"], .c-primary-cta.t-toast[href]:active, .c-user-content a.t-toast[href]:active[data-display-as~="primary-cta"], .c-primary-cta.t-toast[href]:focus, .c-user-content a.t-toast[href]:focus[data-display-as~="primary-cta"] {
   color: #ffffff;
   /*@if is-int($f__button-background-color--alt) {
                 @if $f__button-background-color--alt > 0 {
@@ -12044,90 +12132,90 @@ $patterns: (
   background-color: #e48400;
 }
 
-.c-sign.t-toad {
+.c-sign.t-toast {
   background: -moz-linear-gradient(45deg, #797069 0%, #7f756e 50%, #847a72 50%, #7f756e 100%) !important;
   background: -webkit-linear-gradient(45deg, #797069 0%, #7f756e 50%, #847a72 50%, #7f756e 100%) !important;
   background: linear-gradient(45deg, #797069 0%, #7f756e 50%, #847a72 50%, #7f756e 100%) !important;
 }
 
-/*.t-toad.t-color {
+/*.t-toast.t-color {
     color: #fff;
 }*/
 /*
-.t-toad button,
-.t-toad button.over-panel-control,
-.t-toad button.over-panel-control[aria-expanded=true] {*
-.t-toad button:not(.over-panel__overlay):not(.dropdown__button),
-.t-toad button:not(.over-panel__overlay)[aria-expanded=true] {
+.t-toast button,
+.t-toast button.over-panel-control,
+.t-toast button.over-panel-control[aria-expanded=true] {*
+.t-toast button:not(.over-panel__overlay):not(.dropdown__button),
+.t-toast button:not(.over-panel__overlay)[aria-expanded=true] {
 */
-button.t-toad:not(.over-panel__overlay):not(.dropdown__button),
-a[href].button.t-toad:not(.over-panel__overlay):not(.dropdown__button),
-a[href].c-cta.t-toad:not(.over-panel__overlay):not(.dropdown__button),
+button.t-toast:not(.over-panel__overlay):not(.dropdown__button),
+a[href].button.t-toast:not(.over-panel__overlay):not(.dropdown__button),
+a[href].c-cta.t-toast:not(.over-panel__overlay):not(.dropdown__button),
 .cookie_notice__action button {
   border-color: #8C827A !important;
   color: #ffffff !important;
   background-color: #8C827A !important;
 }
 
-button.t-toad:not(.over-panel__overlay):not(.dropdown__button):hover, button.t-toad:not(.over-panel__overlay):not(.dropdown__button):active,
-a[href].button.t-toad:not(.over-panel__overlay):not(.dropdown__button):hover,
-a[href].button.t-toad:not(.over-panel__overlay):not(.dropdown__button):active,
-a[href].c-cta.t-toad:not(.over-panel__overlay):not(.dropdown__button):hover,
-a[href].c-cta.t-toad:not(.over-panel__overlay):not(.dropdown__button):active,
+button.t-toast:not(.over-panel__overlay):not(.dropdown__button):hover, button.t-toast:not(.over-panel__overlay):not(.dropdown__button):active,
+a[href].button.t-toast:not(.over-panel__overlay):not(.dropdown__button):hover,
+a[href].button.t-toast:not(.over-panel__overlay):not(.dropdown__button):active,
+a[href].c-cta.t-toast:not(.over-panel__overlay):not(.dropdown__button):hover,
+a[href].c-cta.t-toast:not(.over-panel__overlay):not(.dropdown__button):active,
 .cookie_notice__action button:hover,
 .cookie_notice__action button:active {
   background-color: #716962 !important;
 }
 
-button.t-toad:not(.over-panel__overlay):not(.dropdown__button):focus,
-a[href].button.t-toad:not(.over-panel__overlay):not(.dropdown__button):focus,
-a[href].c-cta.t-toad:not(.over-panel__overlay):not(.dropdown__button):focus,
+button.t-toast:not(.over-panel__overlay):not(.dropdown__button):focus,
+a[href].button.t-toast:not(.over-panel__overlay):not(.dropdown__button):focus,
+a[href].c-cta.t-toast:not(.over-panel__overlay):not(.dropdown__button):focus,
 .cookie_notice__action button:focus {
   outline: 0;
   box-shadow: 0 0 0 3px rgba(140, 130, 122, 0.5);
 }
 
-table.t-toad caption,
-.t-toad + .highcharts-data-table caption {
+table.t-toast caption,
+.t-toast + .highcharts-data-table caption {
   background-color: #8C827A;
 }
 
-table.t-toad th,
-.t-toad + .highcharts-data-table th {
+table.t-toast th,
+.t-toast + .highcharts-data-table th {
   background-color: white;
 }
 
-table.t-toad td,
-.t-toad + .highcharts-data-table td,
-table.t-toad th,
-.t-toad + .highcharts-data-table th {
+table.t-toast td,
+.t-toast + .highcharts-data-table td,
+table.t-toast th,
+.t-toast + .highcharts-data-table th {
   border: 1px solid #8C827A;
 }
 
-table.t-toad tr:nth-child(odd) > td,
-.t-toad + .highcharts-data-table tr:nth-child(odd) > td,
-table.t-toad tr:nth-child(odd) > th,
-.t-toad + .highcharts-data-table tr:nth-child(odd) > th {
+table.t-toast tr:nth-child(odd) > td,
+.t-toast + .highcharts-data-table tr:nth-child(odd) > td,
+table.t-toast tr:nth-child(odd) > th,
+.t-toast + .highcharts-data-table tr:nth-child(odd) > th {
   background-color: white;
 }
 
-.t-toad.nav-bar {
+.t-toast.nav-bar {
   background: #8C827A;
 }
 
-.t-toad.subnav__items {
+.t-toast.subnav__items {
   background-color: #8C827A;
 }
 
-.t-toad.over-panel__contents {
+.t-toast.over-panel__contents {
   background-color: #7f756e;
 }
 
-.t-toad.search-form {
+.t-toast.search-form {
   padding-left: 1.2rem;
 }
 
-.t-toad.search-form .search-form__submit {
+.t-toast.search-form .search-form__submit {
   background-color: #7f756e;
   /*&:hover,
     &:active,
@@ -12145,11 +12233,11 @@ table.t-toad tr:nth-child(odd) > th,
     }*/
 }
 
-.t-toad.search-form .search-form__submit:hover, .t-toad.search-form .search-form__submit:focus {
+.t-toast.search-form .search-form__submit:hover, .t-toast.search-form .search-form__submit:focus {
   background-color: #635c56;
 }
 
-.t-toad.search-form .search-form__field {
+.t-toast.search-form .search-form__field {
   /*&:hover,
     &:active,
     &:focus {
@@ -12166,7 +12254,7 @@ table.t-toad tr:nth-child(odd) > th,
     }*/
 }
 
-.t-toad.search-form .search-form__field:hover, .t-toad.search-form .search-form__field:focus {
+.t-toast.search-form .search-form__field:hover, .t-toast.search-form .search-form__field:focus {
   background-color: #f7f6f6;
 }
 
@@ -12200,7 +12288,7 @@ input:not([type]):focus,
 
 /* - Don't do this, it's too generic and results in equal specificity that's resolved in source
     order, thus later themes win out, causing problems.
-.t-toad a[href] {
+.t-toast a[href] {
 
     border-color: map-get($theme, border-color);
     color: #fff;
@@ -12214,13 +12302,13 @@ input:not([type]):focus,
 }
 */
 /*
-:not(.overpanel) .t-toad a[href].c-cta {
+:not(.overpanel) .t-toast a[href].c-cta {
 
     border-color: map-get($theme, border-color);
     color: #fff;
     background-color: transparent;
     //background-color: map-get($theme, background-color);
-    content: "toad";
+    content: "toast";
 
     &:hover,
     &:active,
@@ -12237,382 +12325,382 @@ input:not([type]):focus,
 }
 */
 /*
-.t-toad.d-50-50-background {
+.t-toast.d-50-50-background {
     background: #FFFFFF;
     background: -moz-linear-gradient(left, map-get($theme, background-color) 0%, map-get($theme, background-color) 50%, #ffffff 50%, #ffffff 100%);
     background: -webkit-linear-gradient(left, map-get($theme, background-color) 0%,map-get($theme, background-color) 50%,#ffffff 50%,#ffffff 100%);
     background: linear-gradient(to right, map-get($theme, background-color) 0%,map-get($theme, background-color) 50%,#ffffff 50%,#ffffff 100%);
 }
 
-.t-toad.d-50-50-background--flipped {
+.t-toast.d-50-50-background--flipped {
     background: #FFFFFF;
     background: -moz-linear-gradient(left, #ffffff 0%, #ffffff 50%, map-get($theme, background-color) 50%, map-get($theme, background-color) 100%);
     background: -webkit-linear-gradient(left, #ffffff 0%,#ffffff 50%,map-get($theme, background-color) 50%,map-get($theme, background-color) 100%);
     background: linear-gradient(to right, #ffffff 0%,#ffffff 50%,map-get($theme, background-color) 50%,map-get($theme, background-color) 100%);
 }
 */
-.d-background--very-light.t-toad--alt {
+.d-background--very-light.t-toast--alt {
   background-color: #fffefe !important;
   color: #333 !important;
 }
 
-.d-background--very-light.t-toad--alt a[href] {
+.d-background--very-light.t-toast--alt a[href] {
   color: #333 !important;
 }
 
-.d-background--very-light.t-toad--alt a[href]:hover,
-.d-background--very-light.t-toad--alt a[href]:active,
-.d-background--very-light.t-toad--alt a[href]:focus {
+.d-background--very-light.t-toast--alt a[href]:hover,
+.d-background--very-light.t-toast--alt a[href]:active,
+.d-background--very-light.t-toast--alt a[href]:focus {
   color: #333 !important;
 }
 
-.d-background--very-light.t-toad--alt a[href].c-cta {
+.d-background--very-light.t-toast--alt a[href].c-cta {
   border-color: #333 !important;
   color: #333 !important;
   background-color: transparent !important;
 }
 
-.d-background--very-light.t-toad--alt a[href].c-cta:hover,
-.d-background--very-light.t-toad--alt a[href].c-cta:active,
-.d-background--very-light.t-toad--alt a[href].c-cta:focus {
+.d-background--very-light.t-toast--alt a[href].c-cta:hover,
+.d-background--very-light.t-toast--alt a[href].c-cta:active,
+.d-background--very-light.t-toast--alt a[href].c-cta:focus {
   background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-.d-background--light.t-toad--alt {
+.d-background--light.t-toast--alt {
   background-color: #ffe9cb !important;
   color: #333 !important;
 }
 
-.d-background--light.t-toad--alt a[href] {
+.d-background--light.t-toast--alt a[href] {
   color: #333 !important;
 }
 
-.d-background--light.t-toad--alt a[href]:hover,
-.d-background--light.t-toad--alt a[href]:active,
-.d-background--light.t-toad--alt a[href]:focus {
+.d-background--light.t-toast--alt a[href]:hover,
+.d-background--light.t-toast--alt a[href]:active,
+.d-background--light.t-toast--alt a[href]:focus {
   color: #333 !important;
 }
 
-.d-background--light.t-toad--alt a[href].c-cta {
+.d-background--light.t-toast--alt a[href].c-cta {
   border-color: #333 !important;
   color: #333 !important;
   background-color: transparent !important;
 }
 
-.d-background--light.t-toad--alt a[href].c-cta:hover,
-.d-background--light.t-toad--alt a[href].c-cta:active,
-.d-background--light.t-toad--alt a[href].c-cta:focus {
+.d-background--light.t-toast--alt a[href].c-cta:hover,
+.d-background--light.t-toast--alt a[href].c-cta:active,
+.d-background--light.t-toast--alt a[href].c-cta:focus {
   background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-.d-background.t-toad--alt {
+.d-background.t-toast--alt {
   background-color: #FF9E18 !important;
   color: #333 !important;
 }
 
-.d-background.t-toad--alt a[href] {
+.d-background.t-toast--alt a[href] {
   color: #333 !important;
 }
 
-.d-background.t-toad--alt a[href]:hover,
-.d-background.t-toad--alt a[href]:active,
-.d-background.t-toad--alt a[href]:focus {
+.d-background.t-toast--alt a[href]:hover,
+.d-background.t-toast--alt a[href]:active,
+.d-background.t-toast--alt a[href]:focus {
   color: #333 !important;
 }
 
-.d-background.t-toad--alt a[href].c-cta {
+.d-background.t-toast--alt a[href].c-cta {
   border-color: #333 !important;
   color: #333 !important;
   background-color: transparent !important;
 }
 
-.d-background.t-toad--alt a[href].c-cta:hover,
-.d-background.t-toad--alt a[href].c-cta:active,
-.d-background.t-toad--alt a[href].c-cta:focus {
+.d-background.t-toast--alt a[href].c-cta:hover,
+.d-background.t-toast--alt a[href].c-cta:active,
+.d-background.t-toast--alt a[href].c-cta:focus {
   background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-.d-background--dark.t-toad--alt {
+.d-background--dark.t-toast--alt {
   background-color: #e48400 !important;
   color: #333 !important;
 }
 
-.d-background--dark.t-toad--alt a[href] {
+.d-background--dark.t-toast--alt a[href] {
   color: #333 !important;
 }
 
-.d-background--dark.t-toad--alt a[href]:hover,
-.d-background--dark.t-toad--alt a[href]:active,
-.d-background--dark.t-toad--alt a[href]:focus {
+.d-background--dark.t-toast--alt a[href]:hover,
+.d-background--dark.t-toast--alt a[href]:active,
+.d-background--dark.t-toast--alt a[href]:focus {
   color: #333 !important;
 }
 
-.d-background--dark.t-toad--alt a[href].c-cta {
+.d-background--dark.t-toast--alt a[href].c-cta {
   border-color: #333 !important;
   color: #333 !important;
   background-color: transparent !important;
 }
 
-.d-background--dark.t-toad--alt a[href].c-cta:hover,
-.d-background--dark.t-toad--alt a[href].c-cta:active,
-.d-background--dark.t-toad--alt a[href].c-cta:focus {
+.d-background--dark.t-toast--alt a[href].c-cta:hover,
+.d-background--dark.t-toast--alt a[href].c-cta:active,
+.d-background--dark.t-toast--alt a[href].c-cta:focus {
   background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-.d-background--very-dark.t-toad--alt {
+.d-background--very-dark.t-toast--alt {
   background-color: #b16700 !important;
   color: #333 !important;
 }
 
-.d-background--very-dark.t-toad--alt a[href] {
+.d-background--very-dark.t-toast--alt a[href] {
   color: #333 !important;
 }
 
-.d-background--very-dark.t-toad--alt a[href]:hover,
-.d-background--very-dark.t-toad--alt a[href]:active,
-.d-background--very-dark.t-toad--alt a[href]:focus {
+.d-background--very-dark.t-toast--alt a[href]:hover,
+.d-background--very-dark.t-toast--alt a[href]:active,
+.d-background--very-dark.t-toast--alt a[href]:focus {
   color: #333 !important;
 }
 
-.d-background--very-dark.t-toad--alt a[href].c-cta {
+.d-background--very-dark.t-toast--alt a[href].c-cta {
   border-color: #333 !important;
   color: #333 !important;
   background-color: transparent !important;
 }
 
-.d-background--very-dark.t-toad--alt a[href].c-cta:hover,
-.d-background--very-dark.t-toad--alt a[href].c-cta:active,
-.d-background--very-dark.t-toad--alt a[href].c-cta:focus {
+.d-background--very-dark.t-toast--alt a[href].c-cta:hover,
+.d-background--very-dark.t-toast--alt a[href].c-cta:active,
+.d-background--very-dark.t-toast--alt a[href].c-cta:focus {
   background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-.d-background--sloped.t-toad--alt {
+.d-background--sloped.t-toast--alt {
   background: -moz-linear-gradient(45deg, #fe9300 0%, #ff9504 50%, #ff9a0e 50%, #ff9809 100%) !important;
   background: -webkit-linear-gradient(45deg, #fe9300 0%, #ff9504 50%, #ff9a0e 50%, #ff9809 100%) !important;
   background: linear-gradient(45deg, #fe9300 0%, #ff9504 50%, #ff9a0e 50%, #ff9809 100%) !important;
 }
 
-.c-sign.t-toad--alt {
+.c-sign.t-toast--alt {
   background: -moz-linear-gradient(45deg, #f38d00 0%, #fe9300 50%, #ff9809 50%, #fe9300 100%) !important;
   background: -webkit-linear-gradient(45deg, #f38d00 0%, #fe9300 50%, #ff9809 50%, #fe9300 100%) !important;
   background: linear-gradient(45deg, #f38d00 0%, #fe9300 50%, #ff9809 50%, #fe9300 100%) !important;
 }
 
-.c-panel.c-panel--very-light.t-toad {
+.c-panel.c-panel--very-light.t-toast {
   color: #333;
   background: #f6f6f5;
 }
 
-.c-panel.c-panel--very-light.t-toad a[href] {
+.c-panel.c-panel--very-light.t-toast a[href] {
   color: #333;
 }
 
-.c-panel.c-panel--very-light.t-toad a[href]:hover,
-.c-panel.c-panel--very-light.t-toad a[href]:active,
-.c-panel.c-panel--very-light.t-toad a[href]:focus {
+.c-panel.c-panel--very-light.t-toast a[href]:hover,
+.c-panel.c-panel--very-light.t-toast a[href]:active,
+.c-panel.c-panel--very-light.t-toast a[href]:focus {
   color: #333;
 }
 
-.c-panel.c-panel--very-light.t-toad a[href].c-cta {
+.c-panel.c-panel--very-light.t-toast a[href].c-cta {
   border-color: #333;
   color: #333;
   background-color: transparent;
 }
 
-.c-panel.c-panel--very-light.t-toad a[href].c-cta:hover,
-.c-panel.c-panel--very-light.t-toad a[href].c-cta:active,
-.c-panel.c-panel--very-light.t-toad a[href].c-cta:focus {
+.c-panel.c-panel--very-light.t-toast a[href].c-cta:hover,
+.c-panel.c-panel--very-light.t-toast a[href].c-cta:active,
+.c-panel.c-panel--very-light.t-toast a[href].c-cta:focus {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.c-card--very-light .c-card__full-link.t-toad,
-.c-card--very-light .c-card__full-link.t-toad:hover {
+.c-card--very-light .c-card__full-link.t-toast,
+.c-card--very-light .c-card__full-link.t-toast:hover {
   background: #797069;
 }
 
-.c-card--very-light.t-toad,
-.c-card--very-light.t-toad .c-card__main {
+.c-card--very-light.t-toast,
+.c-card--very-light.t-toast .c-card__main {
   background-color: #8C827A;
 }
 
-.c-card--very-light.t-toad .c-card__main .c-card__title,
-.c-card--very-light.t-toad .c-card__main .c-card__body,
-.c-card--very-light.t-toad .c-card__main .c-card__footer {
+.c-card--very-light.t-toast .c-card__main .c-card__title,
+.c-card--very-light.t-toast .c-card__main .c-card__body,
+.c-card--very-light.t-toast .c-card__main .c-card__footer {
   color: #333;
   background-color: #8C827A;
 }
 
-.c-card--very-light.t-toad .c-card__main .c-card__title a[href],
-.c-card--very-light.t-toad .c-card__main .c-card__body a[href],
-.c-card--very-light.t-toad .c-card__main .c-card__footer a[href] {
+.c-card--very-light.t-toast .c-card__main .c-card__title a[href],
+.c-card--very-light.t-toast .c-card__main .c-card__body a[href],
+.c-card--very-light.t-toast .c-card__main .c-card__footer a[href] {
   background-color: #8C827A;
   color: #333;
 }
 
-.c-card--very-light.t-toad .c-card__main .c-card__title a[href]:hover, .c-card--very-light.t-toad .c-card__main .c-card__title a[href]:active, .c-card--very-light.t-toad .c-card__main .c-card__title a[href]:focus,
-.c-card--very-light.t-toad .c-card__main .c-card__body a[href]:hover,
-.c-card--very-light.t-toad .c-card__main .c-card__body a[href]:active,
-.c-card--very-light.t-toad .c-card__main .c-card__body a[href]:focus,
-.c-card--very-light.t-toad .c-card__main .c-card__footer a[href]:hover,
-.c-card--very-light.t-toad .c-card__main .c-card__footer a[href]:active,
-.c-card--very-light.t-toad .c-card__main .c-card__footer a[href]:focus {
+.c-card--very-light.t-toast .c-card__main .c-card__title a[href]:hover, .c-card--very-light.t-toast .c-card__main .c-card__title a[href]:active, .c-card--very-light.t-toast .c-card__main .c-card__title a[href]:focus,
+.c-card--very-light.t-toast .c-card__main .c-card__body a[href]:hover,
+.c-card--very-light.t-toast .c-card__main .c-card__body a[href]:active,
+.c-card--very-light.t-toast .c-card__main .c-card__body a[href]:focus,
+.c-card--very-light.t-toast .c-card__main .c-card__footer a[href]:hover,
+.c-card--very-light.t-toast .c-card__main .c-card__footer a[href]:active,
+.c-card--very-light.t-toast .c-card__main .c-card__footer a[href]:focus {
   background-color: #8C827A;
   color: #333;
 }
 
-.c-card--very-light.t-toad {
+.c-card--very-light.t-toast {
   border-color: #564f4a;
 }
 
-.c-panel.c-panel--light.t-toad {
+.c-panel.c-panel--light.t-toast {
   color: #333;
   background: #dfdcda;
 }
 
-.c-panel.c-panel--light.t-toad a[href] {
+.c-panel.c-panel--light.t-toast a[href] {
   color: #333;
 }
 
-.c-panel.c-panel--light.t-toad a[href]:hover,
-.c-panel.c-panel--light.t-toad a[href]:active,
-.c-panel.c-panel--light.t-toad a[href]:focus {
+.c-panel.c-panel--light.t-toast a[href]:hover,
+.c-panel.c-panel--light.t-toast a[href]:active,
+.c-panel.c-panel--light.t-toast a[href]:focus {
   color: #333;
 }
 
-.c-panel.c-panel--light.t-toad a[href].c-cta {
+.c-panel.c-panel--light.t-toast a[href].c-cta {
   border-color: #333;
   color: #333;
   background-color: transparent;
 }
 
-.c-panel.c-panel--light.t-toad a[href].c-cta:hover,
-.c-panel.c-panel--light.t-toad a[href].c-cta:active,
-.c-panel.c-panel--light.t-toad a[href].c-cta:focus {
+.c-panel.c-panel--light.t-toast a[href].c-cta:hover,
+.c-panel.c-panel--light.t-toast a[href].c-cta:active,
+.c-panel.c-panel--light.t-toast a[href].c-cta:focus {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.c-card--light .c-card__full-link.t-toad,
-.c-card--light .c-card__full-link.t-toad:hover {
+.c-card--light .c-card__full-link.t-toast,
+.c-card--light .c-card__full-link.t-toast:hover {
   background: #797069;
 }
 
-.c-card--light.t-toad,
-.c-card--light.t-toad .c-card__main {
+.c-card--light.t-toast,
+.c-card--light.t-toast .c-card__main {
   background-color: #8C827A;
 }
 
-.c-card--light.t-toad .c-card__main .c-card__title,
-.c-card--light.t-toad .c-card__main .c-card__body,
-.c-card--light.t-toad .c-card__main .c-card__footer {
+.c-card--light.t-toast .c-card__main .c-card__title,
+.c-card--light.t-toast .c-card__main .c-card__body,
+.c-card--light.t-toast .c-card__main .c-card__footer {
   color: #333;
   background-color: #8C827A;
 }
 
-.c-card--light.t-toad .c-card__main .c-card__title a[href],
-.c-card--light.t-toad .c-card__main .c-card__body a[href],
-.c-card--light.t-toad .c-card__main .c-card__footer a[href] {
+.c-card--light.t-toast .c-card__main .c-card__title a[href],
+.c-card--light.t-toast .c-card__main .c-card__body a[href],
+.c-card--light.t-toast .c-card__main .c-card__footer a[href] {
   background-color: #8C827A;
   color: #333;
 }
 
-.c-card--light.t-toad .c-card__main .c-card__title a[href]:hover, .c-card--light.t-toad .c-card__main .c-card__title a[href]:active, .c-card--light.t-toad .c-card__main .c-card__title a[href]:focus,
-.c-card--light.t-toad .c-card__main .c-card__body a[href]:hover,
-.c-card--light.t-toad .c-card__main .c-card__body a[href]:active,
-.c-card--light.t-toad .c-card__main .c-card__body a[href]:focus,
-.c-card--light.t-toad .c-card__main .c-card__footer a[href]:hover,
-.c-card--light.t-toad .c-card__main .c-card__footer a[href]:active,
-.c-card--light.t-toad .c-card__main .c-card__footer a[href]:focus {
+.c-card--light.t-toast .c-card__main .c-card__title a[href]:hover, .c-card--light.t-toast .c-card__main .c-card__title a[href]:active, .c-card--light.t-toast .c-card__main .c-card__title a[href]:focus,
+.c-card--light.t-toast .c-card__main .c-card__body a[href]:hover,
+.c-card--light.t-toast .c-card__main .c-card__body a[href]:active,
+.c-card--light.t-toast .c-card__main .c-card__body a[href]:focus,
+.c-card--light.t-toast .c-card__main .c-card__footer a[href]:hover,
+.c-card--light.t-toast .c-card__main .c-card__footer a[href]:active,
+.c-card--light.t-toast .c-card__main .c-card__footer a[href]:focus {
   background-color: #8C827A;
   color: #333;
 }
 
-.c-card--light.t-toad {
+.c-card--light.t-toast {
   border-color: #564f4a;
 }
 
-.c-panel.c-panel--dark.t-toad {
+.c-panel.c-panel--dark.t-toast {
   color: #fff;
   background: #716962;
 }
 
-.c-panel.c-panel--dark.t-toad a[href] {
+.c-panel.c-panel--dark.t-toast a[href] {
   color: #fff;
 }
 
-.c-panel.c-panel--dark.t-toad a[href]:hover,
-.c-panel.c-panel--dark.t-toad a[href]:active,
-.c-panel.c-panel--dark.t-toad a[href]:focus {
+.c-panel.c-panel--dark.t-toast a[href]:hover,
+.c-panel.c-panel--dark.t-toast a[href]:active,
+.c-panel.c-panel--dark.t-toast a[href]:focus {
   color: #fff;
 }
 
-.c-panel.c-panel--dark.t-toad a[href].c-cta {
+.c-panel.c-panel--dark.t-toast a[href].c-cta {
   border-color: #fff;
   color: #fff;
   background-color: transparent;
 }
 
-.c-panel.c-panel--dark.t-toad a[href].c-cta:hover,
-.c-panel.c-panel--dark.t-toad a[href].c-cta:active,
-.c-panel.c-panel--dark.t-toad a[href].c-cta:focus {
+.c-panel.c-panel--dark.t-toast a[href].c-cta:hover,
+.c-panel.c-panel--dark.t-toast a[href].c-cta:active,
+.c-panel.c-panel--dark.t-toast a[href].c-cta:focus {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.c-panel.c-panel--very-dark.t-toad {
+.c-panel.c-panel--very-dark.t-toast {
   color: #fff;
   background: #564f4a;
 }
 
-.c-panel.c-panel--very-dark.t-toad a[href] {
+.c-panel.c-panel--very-dark.t-toast a[href] {
   color: #fff;
 }
 
-.c-panel.c-panel--very-dark.t-toad a[href]:hover,
-.c-panel.c-panel--very-dark.t-toad a[href]:active,
-.c-panel.c-panel--very-dark.t-toad a[href]:focus {
+.c-panel.c-panel--very-dark.t-toast a[href]:hover,
+.c-panel.c-panel--very-dark.t-toast a[href]:active,
+.c-panel.c-panel--very-dark.t-toast a[href]:focus {
   color: #fff;
 }
 
-.c-panel.c-panel--very-dark.t-toad a[href].c-cta {
+.c-panel.c-panel--very-dark.t-toast a[href].c-cta {
   border-color: #fff;
   color: #fff;
   background-color: transparent;
 }
 
-.c-panel.c-panel--very-dark.t-toad a[href].c-cta:hover,
-.c-panel.c-panel--very-dark.t-toad a[href].c-cta:active,
-.c-panel.c-panel--very-dark.t-toad a[href].c-cta:focus {
+.c-panel.c-panel--very-dark.t-toast a[href].c-cta:hover,
+.c-panel.c-panel--very-dark.t-toast a[href].c-cta:active,
+.c-panel.c-panel--very-dark.t-toast a[href].c-cta:focus {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.t-toad img[src*="/img/avatars/"],
-.t-toad [data-contains~="portrait"] img {
+.t-toast img[src*="/img/avatars/"],
+.t-toast [data-contains~="portrait"] img {
   border-color: #8C827A !important;
 }
 
-.t-toad div[data-display-as="themed-box"] {
+.t-toast div[data-display-as="themed-box"] {
   background: #8C827A;
 }
 
-.t-toad div[data-display-as="themed-box"] a[href].c-cta:hover,
-.t-toad div[data-display-as="themed-box"] a[href].c-cta:active,
-.t-toad div[data-display-as="themed-box"] a[href].c-cta:focus {
+.t-toast div[data-display-as="themed-box"] a[href].c-cta:hover,
+.t-toast div[data-display-as="themed-box"] a[href].c-cta:active,
+.t-toast div[data-display-as="themed-box"] a[href].c-cta:focus {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.t-toad summary:focus {
+.t-toast summary:focus {
   outline: 2px solid rgba(0, 0, 0, 0.5);
 }
 
-[data-brand="toad"] [data-display-as~="themed-box--background"],
-[data-brand="toad"] [data-display-as~="themed-box--border"] {
+[data-brand="toast"] [data-display-as~="themed-box--background"],
+[data-brand="toast"] [data-display-as~="themed-box--border"] {
   color: #8C827A;
 }
 
-[data-brand="toad"] [data-display-as~="themed-box--background"] > * {
+[data-brand="toast"] [data-display-as~="themed-box--background"] > * {
   color: #fff;
 }
 
-[data-brand="toad"] [data-display-as~="themed-box--border"] > * {
+[data-brand="toast"] [data-display-as~="themed-box--border"] > * {
   color: #333;
 }
 

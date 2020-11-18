@@ -48,6 +48,10 @@ $panel--padding: $f__base-rem-space-unit;
 @import "component-patterns/_thumbnail.scss";
 
 
+$theme-only: true;
+@import "component-patterns/_primary-cta.scss";
+
+
 /*
     We need to load _distribute.scss because _user_content.scss required it, but we don't actually
     want to apply the styles because it makes editing hard.
