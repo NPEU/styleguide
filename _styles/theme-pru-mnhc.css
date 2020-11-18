@@ -4519,7 +4519,7 @@ $card-button--border-color: darken($card--base-color, 20%) !default;
 .c-card .c-card__main {
   position: relative;
   color: #fff;
-  background: #614776;
+  background-color: #614776;
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
