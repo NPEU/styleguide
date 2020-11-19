@@ -5600,18 +5600,43 @@ $glimpse--link-border-bottom--hover: false !default;*/
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+/*
+        1. To avoid lots of hover colour adjustments we're using a pseudo element to lighten or
+           darken the background colour. For that we need this to be postitionL relative, and ...
+         2. We also need to wrap the text in a span so it appears above the pseudo element.
+    */
 .c-primary-cta[href], .c-user-content a[href][data-display-as~="primary-cta"] {
   display: inline-block;
-  padding: 0.6rem;
+  padding: 0.6rem 1.2rem;
   border: 0;
   border-radius: 6px;
   font-size: 1.375em;
   text-align: center;
   margin-bottom: 0;
+  position: relative;
+  /* [1] */
+  overflow: hidden;
+  /* [1] */
+}
+
+.c-primary-cta[href]::before, .c-user-content a[data-display-as~="primary-cta"][href]::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: transparent;
 }
 
 .c-primary-cta[href]:hover, .c-user-content a[href]:hover[data-display-as~="primary-cta"], .c-primary-cta[href]:active, .c-user-content a[href]:active[data-display-as~="primary-cta"], .c-primary-cta[href]:focus, .c-user-content a[href]:focus[data-display-as~="primary-cta"] {
   border: 0;
+}
+
+.c-primary-cta[href] span, .c-user-content a[href][data-display-as~="primary-cta"] span {
+  position: relative;
+  /* [12 */
 }
 
 .c-primary-cta[href], .c-user-content a[href][data-display-as~="primary-cta"] {
@@ -5632,7 +5657,10 @@ $glimpse--link-border-bottom--hover: false !default;*/
                 }
             }
             */
-  background-color: #473456;
+}
+
+.c-primary-cta[href]:hover::before, .c-user-content a[data-display-as~="primary-cta"][href]:hover::before, .c-primary-cta[href]:active::before, .c-user-content a[data-display-as~="primary-cta"][href]:active::before, .c-primary-cta[href]:focus::before, .c-user-content a[data-display-as~="primary-cta"][href]:focus::before {
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
 /*
@@ -9100,12 +9128,12 @@ main :target {
   padding-bottom: -moz-calc(0);
   padding-bottom: calc(0.3rem - 1px);
   padding-left: 0.6rem;
-  border-color: #614776;
+  border-color: #333;
   border-style: solid;
   border-width: 1px;
   border-radius: 3px;
   color: #333;
-  background-color: #fff;
+  background-color: transparent;
   font-weight: inherit;
   font-style: inherit;
   font-size: inherit;
@@ -9138,7 +9166,7 @@ main :target {
 
 .c-user-content a[href][data-display-as~="cta"]:focus {
   outline: 0;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.5);
 }
 
 .c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-pru-mnhc[href], .c-user-content a[href][data-display-as~="primary-cta"] a.t-pru-mnhc[href][data-display-as~="primary-cta"] {
@@ -9159,7 +9187,10 @@ main :target {
                 }
             }
             */
-  background-color: #443457;
+}
+
+.c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-pru-mnhc[href]:hover::before, .c-user-content a[href][data-display-as~="primary-cta"] a.t-pru-mnhc[data-display-as~="primary-cta"][href]:hover::before, .c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-pru-mnhc[href]:active::before, .c-user-content a[href][data-display-as~="primary-cta"] a.t-pru-mnhc[data-display-as~="primary-cta"][href]:active::before, .c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-pru-mnhc[href]:focus::before, .c-user-content a[href][data-display-as~="primary-cta"] a.t-pru-mnhc[data-display-as~="primary-cta"][href]:focus::before {
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
 .c-user-content [data-display-as~="box"],
@@ -9232,7 +9263,6 @@ main :target {
 .c-user-content [data-display-as~="themed-box--background"] a[href][data-display-as~="cta"] {
   border-color: #fff;
   color: #fff;
-  background-color: transparent;
 }
 
 .c-user-content [data-display-as~="themed-box--background"] a[href][data-display-as~="cta"]:hover,
@@ -9245,7 +9275,7 @@ main :target {
   border-color: #fff;
   border-width: 2px;
   border-style: solid;
-  padding: calc(0.6rem - 4px) 0.6rem;
+  padding: calc(0.6rem - 2px) 1.2rem;
 }
 
 .c-user-content [data-display-as~="themed-box--border"] {
@@ -9263,6 +9293,10 @@ main :target {
 .c-user-content [data-display-as~="notice-box"] a[href][data-display-as~="cta"]:active,
 .c-user-content [data-display-as~="notice-box"] a[href][data-display-as~="cta"]:focus {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.c-user-content [data-display-as~="notice-box"] a[href][data-display-as~="primary-cta"] {
+  background-color: #b9975b;
 }
 
 .c-user-content [data-display-as~="blocks"] > * > * {
@@ -9884,7 +9918,10 @@ $patterns: (
                 }
             }
             */
-  background-color: #e6e6e6;
+}
+
+.c-primary-cta.t-white[href]:hover::before, .c-user-content a.t-white[data-display-as~="primary-cta"][href]:hover::before, .c-primary-cta.t-white[href]:active::before, .c-user-content a.t-white[data-display-as~="primary-cta"][href]:active::before, .c-primary-cta.t-white[href]:focus::before, .c-user-content a.t-white[data-display-as~="primary-cta"][href]:focus::before {
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
 .c-sign.t-white {
@@ -10585,7 +10622,10 @@ $patterns: (
                 }
             }
             */
-  background-color: #e6e6e6;
+}
+
+.c-primary-cta.t-neutral[href]:hover::before, .c-user-content a.t-neutral[data-display-as~="primary-cta"][href]:hover::before, .c-primary-cta.t-neutral[href]:active::before, .c-user-content a.t-neutral[data-display-as~="primary-cta"][href]:active::before, .c-primary-cta.t-neutral[href]:focus::before, .c-user-content a.t-neutral[data-display-as~="primary-cta"][href]:focus::before {
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
 .c-sign.t-neutral {
@@ -12129,7 +12169,10 @@ $patterns: (
                 }
             }
             */
-  background-color: #443457;
+}
+
+.c-primary-cta.t-pru-mnhc[href]:hover::before, .c-user-content a.t-pru-mnhc[data-display-as~="primary-cta"][href]:hover::before, .c-primary-cta.t-pru-mnhc[href]:active::before, .c-user-content a.t-pru-mnhc[data-display-as~="primary-cta"][href]:active::before, .c-primary-cta.t-pru-mnhc[href]:focus::before, .c-user-content a.t-pru-mnhc[data-display-as~="primary-cta"][href]:focus::before {
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
 .c-sign.t-pru-mnhc {

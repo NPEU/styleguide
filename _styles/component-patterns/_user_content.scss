@@ -54,18 +54,18 @@ $uc-breakpoint: 35em !default;
         a[href][data-display-as~="cta"] {
             @include f__button(
                 $f__base-text-color,
-                $f__base-background-color,
+                transparent,
                 lighten($f__button-background-color, 55%),
-                $f__button-background-color
+                $f__base-text-color
             );
         }
-        
+
         a[href][data-display-as~="primary-cta"] {
             @extend .c-primary-cta;
-            
+
             @include primary-cta-theme($theme-name, map-get($themes, $theme-name));
         }
-        
+
 
         // For theme-specific settings, see _themes.scss
         // Note this is identical to Panel, but that mixin can't be use because of the way it adds
@@ -123,7 +123,6 @@ $uc-breakpoint: 35em !default;
             a[href][data-display-as~="cta"] {
                 border-color: #fff;
                 color: #fff;
-                background-color: transparent;
             }
 
             a[href][data-display-as~="cta"]:hover,
@@ -135,12 +134,12 @@ $uc-breakpoint: 35em !default;
                     background-color: rgba(255,255,255,0.1);
                 }
             }
-            
+
             a[href][data-display-as~="primary-cta"] {
                 border-color: #fff;
                 border-width: 2px;
                 border-style: solid;
-                padding: calc(#{$primary-cta--padding / 2} - 4px) #{$primary-cta--padding / 2};
+                padding: calc(#{$primary-cta--padding / 2} - 2px) $primary-cta--padding;
             }
         }
 
@@ -162,6 +161,10 @@ $uc-breakpoint: 35em !default;
                 } @else {
                     background-color: rgba(255,255,255,0.1);
                 }
+            }
+            
+            a[href][data-display-as~="primary-cta"] {
+                background-color: map-get(map-get($themes, $theme-name), secondary-color);
             }
         }
 
