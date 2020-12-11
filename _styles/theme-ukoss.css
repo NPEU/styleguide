@@ -2863,7 +2863,7 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
   display: flex;
 }
 
-@media only screen and (max-width: 59.9375em) {
+@media only screen and (max-width: 82.9375em) {
   /*
 			1. Make sure the over-panel is on top.
 		*/
@@ -3315,14 +3315,14 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
 
 /* -------------------------------------------------------------------------------------------*/
 /* -----------------------------------------------------------------------------------------------*/
-@media only screen and (max-width: 60em) {
+@media only screen and (max-width: 83em) {
   .nav-bar .subnav__items--stacked--only-narrow .subnav__item,
   .nav-bar .subnav__items--stacked--only-narrow .subnav__link {
     float: none;
   }
 }
 
-@media only screen and (min-width: 60em) {
+@media only screen and (min-width: 83em) {
   .nav-bar .subnav__items--stacked--only-wide .subnav__item,
   .nav-bar .subnav__items--stacked--only-wide .subnav__link {
     float: none;
@@ -3336,7 +3336,7 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
     (CSS only attempts weren't good enough)
     So, scoping these styles to the 'js-nav-bar' class.
 */
-@media only screen and (max-width: 60em) and (min-width: 0\0) and (min-resolution: 0.001dpcm) {
+@media only screen and (max-width: 83em) and (min-width: 0\0) and (min-resolution: 0.001dpcm) {
   /* This is all for IE9: */
   .js-nav-bar .nav-bar,
   .js-nav-bar .nav-bar__start {
@@ -3357,7 +3357,7 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
   }
 }
 
-@media only screen and (max-width: 60em) {
+@media only screen and (max-width: 83em) {
   /*
             1. FF8-21 needs this or is increases the height of this box for some reason.
             2. FF8-21 needs this.
@@ -3409,7 +3409,7 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
   }
 }
 
-@media only screen and (min-width: 60em) {
+@media only screen and (min-width: 83em) {
   /*.js-nav-bar .nav-bar {
 
         }*/
@@ -3744,7 +3744,7 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__button {
   transition: opacity ease 0.8s;
 }
 
-@media only screen and (max-width: 60em) {
+@media only screen and (max-width: 83em) {
   /*
             Sometimes we want the dropdown to be positioned relative to a parent container.
             Add the `dropdown-container` class to that container.
@@ -3786,7 +3786,7 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__button {
   }
 }
 
-@media only screen and (min-width: 60em) {
+@media only screen and (min-width: 83em) {
   /*
             Sometimes we want the dropdown to be positioned relative to a parent container.
             Add the `dropdown-container` class to that container.
@@ -3965,13 +3965,13 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__button {
 /* -------------------------------------------------------------------------------------------*/
 /* -----------------------------------------------------------------------------------------------*/
 /* -- Enhanced layout --------------------------------------------------------------------------- */
-@media only screen and (max-width: 59.9375em) {
+@media only screen and (max-width: 82.9375em) {
   .search-form .search-form__collapse {
     width: 100%;
   }
 }
 
-@media only screen and (min-width: 60em) {
+@media only screen and (min-width: 83em) {
   /*
             1. Reinstate all flexbox for enhanced view as no wrapping needs to occure
             (FF8-27 issue describbed above)
@@ -13039,7 +13039,7 @@ img[height] {
   display: none;
 }
 
-@media only screen and (min-width: 60em) {
+@media only screen and (min-width: 83em) {
   .nav-bar.d-bands--bottom {
     border: 0;
   }
