@@ -1610,7 +1610,10 @@ sub {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: summary
+
+    START=CSS ELEMENT: summary
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Correct display in unsupported browsers (https://caniuse.com/#feat=details).
@@ -1639,11 +1642,16 @@ summary::-webkit-details-marker {
 details > summary::before {
   display: inline-block;
   content: '\25BA';
-  margin-right: 0.5em;
+  margin-left: -1.4em;
+  margin-right: 0.4em;
   font-size: 0.75em;
   font-family: serif;
   vertical-align: top;
   transition: transform 0.2s ease;
+}
+
+details[open] > summary {
+  margin-bottom: 2.4rem;
 }
 
 details[open] > summary::before {
