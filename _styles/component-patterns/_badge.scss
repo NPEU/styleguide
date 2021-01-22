@@ -184,7 +184,7 @@ $content-breakpoint: 60em !default;
         UGGGGH - needs it in the banner badges, but not badge list badges.
     */
 
-    @media #{$f__ie10-11} {
+    @media #{$s__ie10-11} {
 
         .#{$badge-namespace}badge {
             img {

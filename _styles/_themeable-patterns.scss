@@ -20,15 +20,15 @@
 
 @import "component-patterns/_badge.scss";
 
-/*$brochure-spacing-unit: $f__base-rem-space-unit;
+/*$brochure-spacing-unit: $s__base-rem-space-unit;
 $brochure--border-or-outline: false;
 @import "component-patterns/_brochure.scss";*/
 
 
 
-$card-spacing-unit: $f__base-rem-space-unit;
+$card-spacing-unit: $s__base-rem-space-unit;
 
-$card--base-color: $f__base-ui-color;
+$card--base-color: $s__base-ui-color;
 
 $card--text-color: #fff;
 
@@ -45,7 +45,7 @@ $card--border-or-outline: 'border';
 
 @import "component-patterns/_card.scss";
 /*@include card-theme("card", (
-    background-color: darken($f__base-ui-color, 20%),
+    background-color: darken($s__base-ui-color, 20%),
     text-color: #fff
     )
 );*/
@@ -53,23 +53,23 @@ $card--border-or-outline: 'border';
 
 @import "component-patterns/_contact-list.scss";
 
-$event-spacing-unit: $f__base-rem-space-unit;
+$event-spacing-unit: $s__base-rem-space-unit;
 $event--background-color: #fff;
-$event--border-color: $f__base-ui-color;
+$event--border-color: $s__base-ui-color;
 @import "component-patterns/_event.scss";
 
 
-$featurette-spacing-unit: $f__base-rem-space-unit;
+$featurette-spacing-unit: $s__base-rem-space-unit;
 @import "component-patterns/_featurette.scss";
 @include featurette-theme("featurette--dark", (
-    background-color: darken($f__base-ui-color, 20%),
+    background-color: darken($s__base-ui-color, 20%),
     text-color: #fff
     )
 );
 
 @include featurette-theme("featurette--light", (
-    background-color: lighten($f__base-ui-color, 30%),
-    text-color: $f__base-ui-color
+    background-color: lighten($s__base-ui-color, 30%),
+    text-color: $s__base-ui-color
     )
 );
 
@@ -78,7 +78,7 @@ $featurette-spacing-unit: $f__base-rem-space-unit;
 //@import "patterns/_funder-logo.scss";
 // Not sure why glimpse ever needs a max-width.
 $glimpse--max-width: none;
-$glimpse-spacing-unit: $f__base-rem-space-unit;
+$glimpse-spacing-unit: $s__base-rem-space-unit;
 @import "component-patterns/_glimpse.scss";
 
 //$hero-max-message-breakpoint: 100rem;
@@ -87,7 +87,7 @@ $glimpse-spacing-unit: $f__base-rem-space-unit;
 
 @import "component-patterns/_info-overlay.scss";
 
-$longform-content-max-width: $f__measure;
+$longform-content-max-width: $s__measure;
 @import "component-patterns/_longform-content.scss";
 
 @import "component-patterns/_page-header.scss";
@@ -97,24 +97,24 @@ $longform-content-max-width: $f__measure;
 @import "component-patterns/_page-wrap.scss";
 
 //$meter--text-color: #fff;
-$meter-spacing-unit: $f__base-rem-space-unit;
+$meter-spacing-unit: $s__base-rem-space-unit;
 @import "component-patterns/_meter.scss";
 
 
 @import "component-patterns/_map.scss";
 
-$panel--padding: $f__base-rem-space-unit;
+$panel--padding: $s__base-rem-space-unit;
 @import "component-patterns/_panel.scss";
 //@import "component-patterns/_panel--dark.scss";
 
 @import "component-patterns/_primary-cta.scss";
 
-$signs--base-color: $f__base-ui-color;
+$signs--base-color: $s__base-ui-color;
 @import "component-patterns/_signs.scss";
 
 @import "component-patterns/_thumbnail.scss";
 
-$tool-form--spacing-unit: $f__base-rem-space-unit;
+$tool-form--spacing-unit: $s__base-rem-space-unit;
 @import "component-patterns/_tool-form.scss";
 
 @import "component-patterns/_utilitext.scss";

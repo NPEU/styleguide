@@ -10,33 +10,33 @@ $themes: map-merge($themes, $theme-map);
 
 $experimental_checkradios: true;
 
-$f__base-background-color: #fff;
-$f__main-background-color: #fff;
+$s__base-background-color: #fff;
+$s__main-background-color: #fff;
 
-$f__html-background-color: darken(map-get(map-get($themes, neutral), primary-color), 20%);
+$s__html-background-color: darken(map-get(map-get($themes, neutral), primary-color), 20%);
 
-$f__body-padding: 0;
-$f__main-max-line-length: 0;
-$f__main-padding: 0;
+$s__body-padding: 0;
+$s__main-max-line-length: 0;
+$s__main-padding: 0;
 
-$f__anchor-text-color: #333;
+$s__anchor-text-color: #333;
 
 // I shouldn't have to set this as the !default should allow a cascade.
 // Investigate why this is happening. I don't think it's a SASS problem as it seems to work in a
 // reduced test-case (though to be fair this isn't using @import...)
 // https://codepen.io/akirk/pen/RmWKgy
-$f__anchor-text-color--alt: #333;
+$s__anchor-text-color--alt: #333;
 
 
 
-$f__selection-background-color: lighten(map-get(map-get($themes, neutral), primary-color), 10%) !default;
-$f__experimental_checkradios: true;
+$s__selection-background-color: lighten(map-get(map-get($themes, neutral), primary-color), 10%) !default;
+$s__experimental_checkradios: true;
 
 
-$f__class-namespace: c-;
-$ff__include_class_bordered: false;
-$ff__include_class_padded:   false;
-$ff__include_class_poem:     false;
+$s__class-namespace: c-;
+$fs__include_class_bordered: false;
+$fs__include_class_padded:   false;
+$fs__include_class_poem:     false;
 
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start_settings.scss';
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start_functions.scss';
@@ -57,7 +57,7 @@ $ff__include_class_poem:     false;
 
 
 $hover-effect-opacity: 0.2;
-$hover-effect-width: $f__base-rem-space-unit / 4;
+$hover-effect-width: $s__base-rem-space-unit / 4;
 
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -71,35 +71,35 @@ $hover-effect-width: $f__base-rem-space-unit / 4;
 
 /* --| FALL-BACK PATTERNS |---------------------------------------------------------------------- */
 
-//$f__over-panel__contents--offset-top: 3px;
-$f__over-panel__contents--padding: 0;
-$f__over-panel__overlay--background-color: #000;
-@import "../bower_components/Fall-Back-Patterns/Over Panel/scss/_over-panel";
+//$s__over-panel__contents--offset-top: 3px;
+$s__over-panel__contents--padding: 0;
+$s__over-panel__overlay--background-color: #000;
+@import "../bower_components/Fall-Back-Patterns/Over Panel/scss/_over-panel-v2";
 
 
 
-$f__nav-bar--background-color:             $f__base-ui-color;
-$f__nav-bar__link--color:                  #fff;//#333;
-//$f__nav-bar__link--background-color:       transparent;
-$f__nav-bar__link--background-color:       rgba(255,255,255,0.05);
-$f__nav-bar__link--background-color--alt:  rgba(0,0,0,0.3);
-$f__nav-bar__link--background-color--alt2: rgba(0,0,0,0.3);
+$s__nav-bar--background-color:             $s__base-ui-color;
+$s__nav-bar__link--color:                  #fff;//#333;
+//$s__nav-bar__link--background-color:       transparent;
+$s__nav-bar__link--background-color:       rgba(255,255,255,0.05);
+$s__nav-bar__link--background-color--alt:  rgba(0,0,0,0.3);
+$s__nav-bar__link--background-color--alt2: rgba(0,0,0,0.3);
 
-//$f__nav-bar__link--border-width: 0;
-$f__nav-bar__link--border-color:           rgba(0,0,0,0.2);
+//$s__nav-bar__link--border-width: 0;
+$s__nav-bar__link--border-color:           rgba(0,0,0,0.2);
 
-$f__sub-nav--background-color:             $f__base-ui-color;
-$f__sub-nav__link--color:                  $f__nav-bar__link--color;
-//$f__sub-nav__link--background-color:       transparent;
-//$f__sub-nav__link--background-color--alt:  rgba(0,0,0,0.3);
-$f__sub-nav__link--background-color:       rgba(0,0,0,0.3);
-$f__sub-nav__link--background-color--alt:  transparent;
-$f__sub-nav__link--border-style:           solid;
+$s__sub-nav--background-color:             $s__base-ui-color;
+$s__sub-nav__link--color:                  $s__nav-bar__link--color;
+//$s__sub-nav__link--background-color:       transparent;
+//$s__sub-nav__link--background-color--alt:  rgba(0,0,0,0.3);
+$s__sub-nav__link--background-color:       rgba(0,0,0,0.3);
+$s__sub-nav__link--background-color--alt:  transparent;
+$s__sub-nav__link--border-style:           solid;
 
 
-//$f__nav-bar-divider-first-item:            true;
+//$s__nav-bar-divider-first-item:            true;
 
-@import "../bower_components/Fall-Back-Patterns/Nav Bar/scss/_nav-bar";
+@import "../bower_components/Fall-Back-Patterns/Nav Bar/scss/_nav-bar-v2";
 // Not sure about this. It allows the sloped background set up in the theme to show through, but
 // if it's ok that this is transparent, why is it needed in the first place? May be missing
 // something here? Either it should be configurable or removed, really, or the sloped background
@@ -110,7 +110,7 @@ $f__sub-nav__link--border-style:           solid;
 }
 
 .js-nav-bar .nav-bar__items .nav-bar__item {
-    border-left-width: $f__nav-bar__link--border-width;
+    border-left-width: $s__nav-bar__link--border-width;
 }
 
 .js-nav-bar .nav-bar__items .nav-bar__item {
@@ -120,14 +120,14 @@ $f__sub-nav__link--border-style:           solid;
 
 
 
-$f__dropdown--background-color:               transparent;
-$f__dropdown--text-color:                     $f__nav-bar__link--color;
-$f__dropdown__button--color:                  $f__nav-bar__link--color;
-$f__dropdown__button--background-color:       $f__nav-bar__link--background-color;
-$f__dropdown__button--background-color--alt:  $f__nav-bar__link--background-color--alt;
-$f__dropdown__button--background-color--alt2: $f__nav-bar__link--background-color--alt;
+$s__dropdown--background-color:               transparent;
+$s__dropdown--text-color:                     $s__nav-bar__link--color;
+$s__dropdown__button--color:                  $s__nav-bar__link--color;
+$s__dropdown__button--background-color:       $s__nav-bar__link--background-color;
+$s__dropdown__button--background-color--alt:  $s__nav-bar__link--background-color--alt;
+$s__dropdown__button--background-color--alt2: $s__nav-bar__link--background-color--alt;
 
-@import "../bower_components/Fall-Back-Patterns/Dropdown/scss/_dropdown";
+@import "../bower_components/Fall-Back-Patterns/Dropdown/scss/_dropdown-v2";
 
 
 .dropdown.js-dropdown {
@@ -136,18 +136,17 @@ $f__dropdown__button--background-color--alt2: $f__nav-bar__link--background-colo
 
 
 
-$f__search-form--background-color:              transparent;
-$f__search-form__submit--text-color:            #fff;
-$f__search-form__submit--background-color:      darken($f__base-ui-color, 5%);
-$f__search-form__submit--background-color--alt: darken($f__base-ui-color, 15%);
-$f__search-form-max-width:                      35em;
+$s__search-form--background-color:              transparent;
+$s__search-form__submit--text-color:            #fff;
+$s__search-form__submit--background-color:      darken($s__base-ui-color, 5%);
+$s__search-form__submit--background-color--alt: darken($s__base-ui-color, 15%);
+$s__search-form-max-width:                      35em;
 
-@import "../bower_components/Fall-Back-Patterns/Search Form/scss/_search-form";
-
-
+@import "../bower_components/Fall-Back-Patterns/Search Form/scss/_search-form-v2";
 
 
-@import "../bower_components/Fall-Back-Patterns/Sticky Footer/scss/_sticky-footer";
+
+@import "../bower_components/Fall-Back-Patterns/Sticky Footer/scss/_sticky-footer-v2";
 /*
 $fallback-svg--fixed-height:      80px;
 $fallback-svg--padding:           calc-px-from-rem($sz-xs);
@@ -160,7 +159,7 @@ $fallback-svg--link-bg-color-alt: #fff;
 @include svg--fixed-height(120px, 'svg--fixed-height--logo--large', 0, 0);
 @include svg--fixed-height(80px, 'svg--fixed-height--logo', 0, 0);
 @include svg--fixed-height(60px, 'svg--fixed-height--parent-logo', 0, 0);
-@include svg--fixed-height(($f__base-rem-space-unit * 4), 'svg--fixed-height--funder-logo', ($f__base-rem-space-unit / 2), 0);
+@include svg--fixed-height(($s__base-rem-space-unit * 4), 'svg--fixed-height--funder-logo', ($s__base-rem-space-unit / 2), 0);
 */
 
 @import "../bower_components/Fall-Back-Cookie-Notice/_cookie-notice";
@@ -206,7 +205,7 @@ $ff-min-widths: (
 //@import "../bower_components/NPEU-layout-patterns/dist/scss/_scl--n-up.scss";
 
 
-//$gallery-grid-spacing-unit: $f__base-rem-space-unit;
+//$gallery-grid-spacing-unit: $s__base-rem-space-unit;
 //@import "../bower_components/NPEU-layout-patterns/dist/scss/_gallery-grid.scss";
 
 /* --| Themeable Patterns |---------------------------------------------------------------------- */
@@ -216,7 +215,7 @@ $thumbnail--border-color: lighten(map-get(map-get($themes, neutral), primary-col
 
 /* --| Component Patterns |---------------------------------------------------------------------- */
 // These patterns are themeable and so are included via '_themeable_patterns.scss' above.
-$system-message-spacing-unit: $f__base-rem-space-unit / 2;
+$system-message-spacing-unit: $s__base-rem-space-unit / 2;
 $system-message--color: #69b3e7;
 @import "component-patterns/_system-messages.scss";
 
@@ -258,11 +257,11 @@ $neutral-theme: map-get($themes, neutral);
 
 /* --| Layout Patterns |------------------------------------------------------------------------- */
 
-$col-to-row-spacing-unit: $f__base-rem-space-unit;
+$col-to-row-spacing-unit: $s__base-rem-space-unit;
 @import "layout-patterns/_col-to-row.scss";
 
 //$primary-content-max-width: 42em;
-$primary-content-spacing-unit: $f__base-rem-space-unit;
+$primary-content-spacing-unit: $s__base-rem-space-unit;
 $primary-content-pull-out-side: right;
 $primary-content-pull-out-side-space: 0 $primary-content-spacing-unit;
 @import "layout-patterns/_primary-content.scss";
@@ -275,10 +274,10 @@ $primary-content-pull-out-side-space: 0 $primary-content-spacing-unit;
 }
 
 //@import "layout-patterns/_balance.scss";
-$distribute-spacing-unit: $f__base-rem-space-unit;
+$distribute-spacing-unit: $s__base-rem-space-unit;
 @import "layout-patterns/_distribute.scss";
 
-$gallery-grid-spacing-unit: $f__base-rem-space-unit;
+$gallery-grid-spacing-unit: $s__base-rem-space-unit;
 @import "layout-patterns/_gallery-grid.scss";
 
 //@import "layout-patterns/_n-up.scss";
@@ -300,7 +299,7 @@ $gallery-grid-spacing-unit: $f__base-rem-space-unit;
 @import "navigation-patterns/_breadcrumbs.scss";
 
 
-$pagination-spacing-unit: $f__base-rem-space-unit;
+$pagination-spacing-unit: $s__base-rem-space-unit;
 $pagination--link-background-color--alt: lighten(map-get($neutral-theme, background-color), 25%);
 $pagination--background-color: #fff;
 $pagination--active-background-color: lighten(map-get($neutral-theme, background-color), 40%);
@@ -308,7 +307,7 @@ $pagination--active-background-color: lighten(map-get($neutral-theme, background
 
 
 
-$section-menu-spacing-unit: $f__base-rem-space-unit;
+$section-menu-spacing-unit: $s__base-rem-space-unit;
 $section-menu--text-color: inherit;
 $section-menu--background-color: inherit;
 $section-menu--link-background-color--alt: rgba(0,0,0,0.2);
@@ -318,8 +317,8 @@ $section-menu--border-width: 0;
 $section-menu--link-margin: 0;
 @import "navigation-patterns/_section-menu.scss";
 
-$search-results-spacing-unit: $f__base-rem-space-unit;
-$search-results-heading-font-size: $f__h4-font-size;
+$search-results-spacing-unit: $s__base-rem-space-unit;
+$search-results-heading-font-size: $s__h4-font-size;
 @import "navigation-patterns/_search-results.scss";
 /* ---------------------------------------------------------------------------------------------- */
 
@@ -332,7 +331,7 @@ $search-results-heading-font-size: $f__h4-font-size;
 @import "utility-patterns/_fill-width.scss";
 @import "utility-patterns/_image-cover.scss";
 @import "utility-patterns/_lists.scss";
-$max-measure-limit: $f__measure;
+$max-measure-limit: $s__measure;
 @import "utility-patterns/_max-measure.scss";
 @import "utility-patterns/_padding.scss";
 @import "utility-patterns/_space.scss";

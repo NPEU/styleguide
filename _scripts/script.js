@@ -234,9 +234,10 @@ var cookie_html                   =
                 
                 document.getElementById(cookie_button_id).onclick = function(){
                     createCookie(cookie_name, 'true', cookie_expire_days);
-                    document.getElementById(cookie_notice_id).className += '  ' + cookie_close_class;
+                    document.getElementById(cookie_notice_id).setAttribute('data-close', true);
+                    //document.getElementById(cookie_notice_id).className += '  ' + cookie_close_class;
                     /*
-                        Without CSS (or transition suport - IE9) the notice won't disappear, so wait until fade 
+                        Without CSS (or transition support - IE9) the notice won't disappear, so wait until fade 
                         has finished then remove:
                     */
                     setTimeout(function(){
@@ -252,38 +253,223 @@ var cookie_html                   =
 })();
 
 /*!
-    Fall-Back Nav-Bar v2.0.0
+    Fall-Back Content Min-row v1.0.0
     https://github.com/Fall-Back/Nav-Bar
-    Copyright (c) 2017, Andy Kirk
+    Copyright (c) 2021, Andy Kirk
     Released under the MIT license https://git.io/vwTVl
 */
+
+// Remove polyfill:
 (function() {
+  function remove() { this.parentNode && this.parentNode.removeChild(this); }
+  if (!Element.prototype.remove) Element.prototype.remove = remove;
+  if (Text && !Text.prototype.remove) Text.prototype.remove = remove;
+})();
+
+(function() {
+
+    var debug                                = true;
+    //var debug                                = false;
+    var ident                                = 'cmr';
+    var selector                             = '[data-js="' + ident + '"]';
+    var js_classname_prefix                  = 'js';
+    var container_js_classname_wide_suffix   = 'wide';
+    var container_js_classname_narrow_suffix = 'narrow';
+
+    var ready = function(fn) {
+        if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+            fn();
+        } else {
+            document.addEventListener('DOMContentLoaded', fn);
+        }
+    }
+
+	var $cmr = {
+
+        cmrs: null,
+
+        root_font_size: window.getComputedStyle(document.documentElement).getPropertyValue('font-size'),
+
+		set_style: function(element, style) {
+			Object.keys(style).forEach(function(key) {
+				element.style[key] = style[key];
+			});
+		},
+
+		switcher: function(cmr) {
+
+            // Check for browser font chnage and reset breakpoints if it has:
+            if ($cmr.root_font_size != window.getComputedStyle(document.documentElement).getPropertyValue('font-size')) {
+                $cmr.set_breakpoints($cmr.cmrs);
+            }
+
+            // Note using getAttribute('data-') instead of dataset so it doesn't fail on older
+            // browsers and leave behind the clone.
+            // May rethink this as I don't NEED to support older browsers witht this - I just don't
+            // want it broken. Maybe I should quit out of this if dataset isn't supported, but it's
+            // ok for now.
+			var wide = cmr.offsetWidth > cmr.getAttribute('data-js-breakpoint');
+			// Need to make these classnames dynamic
+			if (wide) {
+                cmr.classList.add(js_classname_prefix + '-' + ident + '--' + container_js_classname_wide_suffix);
+                cmr.classList.remove(js_classname_prefix + '-' + ident + '--' + container_js_classname_narrow_suffix);
+
+                if (debug) {
+                    cmr.style.outline = '3px solid red';
+                }
+			} else {
+                cmr.classList.add(js_classname_prefix + '-' + ident + '--' + container_js_classname_narrow_suffix);
+                cmr.classList.remove(js_classname_prefix + '-' + ident + '--' + container_js_classname_wide_suffix);
+
+                if (debug) {
+                    cmr.style.outline = '3px solid blue';
+                }
+			}
+		},
+
+        set_breakpoints: function(cmrs) {
+
+            Array.prototype.forEach.call(cmrs, function (cmr, i) {
+                var clone = cmr.cloneNode(true);
+                clone.classList.add(js_classname_prefix + '-' + ident + '--' + container_js_classname_wide_suffix);
+
+                $cmr.set_style(clone, {
+					position: 'absolute',
+					border: '0',
+					left: '0',
+					top: '0',
+				});
+                cmr.parentNode.appendChild(clone);
+
+                var children   = clone.children;
+                var breakpoint = 0;
+                Array.prototype.forEach.call(children, function (child, i) {
+                    // If this child is intended to be flexible, we need to add it's min-width,
+                    // rather than actual width:
+                    if (child.getAttribute('data-min-width')) {
+                        breakpoint += Math.ceil(child.getAttribute('data-min-width'));
+                    } else {
+                        breakpoint += Math.ceil(child.offsetWidth);
+                    }
+                });
+
+                cmr.setAttribute('data-js-breakpoint', breakpoint);
+
+                clone.remove();
+            });
+        },
+
+        init: function() {
+
+            if (debug) {
+                console.log('Initialising ' + ident);
+            }
+
+			var self = this;
+
+            // Get all the CMR's:
+            $cmr.cmrs = document.querySelectorAll(selector);
+
+            $cmr.set_breakpoints($cmr.cmrs);
+
+            var check = window.ResizeObserver;
+
+            if (check) {
+                var ro = new ResizeObserver(function (entries) {
+                    Array.prototype.forEach.call(entries, function (entry, i) {
+                        $cmr.switcher(entry.target);
+                    });
+                });
+
+                Array.prototype.forEach.call($cmr.cmrs, function (cmr, i) {
+                    ro.observe(cmr);
+                    $cmr.switcher(cmr);
+                });
+            } else {
+                if (debug) {
+                    console.log('No ResizeObserver support.');
+                }
+
+                var style = {
+                    position: 'absolute',
+                    display: 'block',
+                    border: '0',
+                    left: '0',
+                    top: '0',
+                    width: '100%',
+                    height: '100%',
+                    pointerEvents: 'none',
+                    zIndex: '-1'
+                };
+
+                // Note visibility: hidden prevents the resize event from occuring in FF.
+
+                Array.prototype.forEach.call($cmr.cmrs, function (cmr, i) {
+                    var detector = document.createElement('iframe');
+                    $cmr.set_style(detector, style);
+                    detector.setAttribute('aria-hidden', 'true');
+
+                    cmr.appendChild(detector);
+
+                    detector.contentWindow.addEventListener('resize', function() {
+                        $cmr.switcher(cmr);
+                    });
+                    $cmr.switcher(cmr);
+                });
+            }
+            return;
+        }
+	}
+
+	ready($cmr.init);
+})();
+
+/*!
+    Fall-Back Dropdown v2.0.0
+    https://github.com/Fall-Back/Dropdown
+    Copyright (c) 2021, Andy Kirk
+    Released under the MIT license https://git.io/vwTVl
+*/
+
+(function() {
+
+    var debug                 = true;
+    //var debug                 = false;
+    var ident                 = 'dropdown';
+    var selector              = '[data-js="' + ident + '"]';
+
+    var dropdown_js_has_classname = 'js-has--' + ident;
     
-    var nav_bar_js_classname = 'js-nav-bar'; 
+    var dropdown_is_open_classname      = ident + '__area--is-open';
+    var dropdown_is_animating_classname = ident + '__area--is-animating';
 
     var check_for_css = function(selector) {
-        
+
+        if (debug) {
+            console.log('Checking for CSS: ' + selector);
+        }
+
         var rules;
         var haveRule = false;
-        if (typeof document.styleSheets != "undefined") {// is this supported
+        if (typeof document.styleSheets != "undefined") { // is this supported
             var cssSheets = document.styleSheets;
-            
+
             // IE doesn't have document.location.origin, so fix that:
             if (!document.location.origin) {
                 document.location.origin = document.location.protocol + "//" + document.location.hostname + (document.location.port ? ':' + document.location.port: '');
             }
             var domain_regex  = RegExp('^' + document.location.origin);
-            
+
             outerloop:
             for (var i = 0; i < cssSheets.length; i++) {
                 var sheet = cssSheets[i];
-                
+
                 // Some browsers don't allow checking of rules if not on the same domain (CORS), so
                 // checking for that here:
                 if (sheet.href !== null && domain_regex.exec(sheet.href) === null) {
                     continue;
                 }
-                
+
                 // Check for IE or standards:
                 rules = (typeof sheet.cssRules != "undefined") ? sheet.cssRules : sheet.rules;
                 for (var j = 0; j < rules.length; j++) {
@@ -294,9 +480,14 @@ var cookie_html                   =
                 }
             }
         }
+
+        if (debug) {
+            console.log(selector + ' ' + (haveRule ? '' : 'not') + ' found');
+        }
+
         return haveRule;
     }
-    
+
     var ready = function(fn) {
         if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
             fn();
@@ -305,116 +496,136 @@ var cookie_html                   =
         }
     }
 
-	var navbar = {
+	var dropdown = {
 
         init: function() {
-            /*var nav_bar = document.querySelector('.nav-bar');
-            
-            // Note that `getComputedStyle` on pseudo elements doesn't work in Opera Mini, but in
-            // this case I'm happy to serve only the un-enhanced version to Opera Mini.
-            var css_is_loaded = (
-                window.getComputedStyle(nav_bar, ':before')
-                .getPropertyValue('content')
-                .replace(/(\"|\')/g, '')
-                == 'CSS Loaded'
-            );*/
+
+            if (debug) {
+                console.log('Initialising ' + ident);
+            }
 
             if (css_is_loaded) {
-                // Add the JS class names ...
-                /*if (nav_bar.classList) {
-                    nav_bar.classList.add(nav_bar_js_classname);
-                } else {
-                    nav_bar.className += ' ' + nav_bar_js_classname;
-                }*/
-                // ... and button actions:*/
-                // CSS all good, add button actions:
-                var buttons = document.querySelectorAll('[data-js="nav-bar__button"]');
-                Array.prototype.forEach.call(buttons, function(button, i) {
-                    var button_id = button.getAttribute('id');
 
-                    button.setAttribute('aria-expanded', 'false');
+                var dropdowns = document.querySelectorAll(selector);
 
-                    // Main button:
-                    button.addEventListener('click', function() {
+                // ... and control actions:
+                var controls = document.querySelectorAll('[data-js="dropdown__control"]');
+                Array.prototype.forEach.call(controls, function(control, i) {
+                    var control_id = control.getAttribute('id');
+                    var area       = document.getElementById(control_id + '--target');
+
+                    control.setAttribute('aria-expanded', 'false');
+
+                    // Main control:
+                    control.addEventListener('click', function() {
+
+                        area.classList.add(dropdown_is_animating_classname);
+
+
                         // Switch the `aria-expanded` attribute:
                         var expanded = this.getAttribute('aria-expanded') === 'true' || false;
 
-                        // Close any open submenu:
-                        var expanded_buttons = document.querySelectorAll('[data-js="nav-bar__button"][aria-expanded="true"]');
-                        Array.prototype.forEach.call(expanded_buttons, function(expanded_button, i) {
-                            expanded_button.setAttribute('aria-expanded', 'false');
+                        // Close any open dropdown:
+                        var expanded_controls = document.querySelectorAll('[data-js="dropdown__control"][aria-expanded="true"]');
+                        Array.prototype.forEach.call(expanded_controls, function(expanded_control, i) {
+                            expanded_control.setAttribute('aria-expanded', 'false');
+                            var expanded_area = document.getElementById(expanded_control.getAttribute('id') + '--target');
+                            expanded_area.classList.remove(dropdown_is_open_classname);
                         });
 
                         // Set the attribute:
                         this.setAttribute('aria-expanded', !expanded);
+                        
+                        // Toggle the `is_open` class:
+                        if (!expanded) {
+                            area.classList.add(dropdown_is_open_classname);
+                        } else {
+                            area.classList.remove(dropdown_is_open_classname);
+                        }
 
                         // Set the focus to the first link if submenu newly opened:
                         if (!expanded) {
-                            var first_link = document.querySelector('#' + button_id + '--target [data-js="nav-bar__focus-start"]');
+                            var first_link = document.querySelector('#' + control_id + '--target [data-js="dropdown__focus-start"]');
                             if (first_link) {
                                 first_link.focus();
                             }
                         }
                     });
 
+                    // Remove `animating` class at transition end.
+                    area.addEventListener('transitionend', function() {
+                        area.classList.remove(dropdown_is_animating_classname);
+                    });
+
                 });
+
             }
         }
 	}
 
-    // This is _here_ to mitigate a Flash of Basic Styled Navbar:
-    var css_is_loaded = check_for_css('.' + nav_bar_js_classname);
-    
+    // This is _here_ to mitigate a Flash of Basic Styled Dropdown:
+    var css_is_loaded = check_for_css('.' + dropdown_js_has_classname);
+
     if (css_is_loaded) {
         // Add the JS class name ...
         var html_el = document.querySelector('html');
-        
-        if (html_el.classList) {
-            html_el.classList.add(nav_bar_js_classname);
-        } else {
-            html_el.className += ' ' + nav_bar_js_classname;
-        }
+
+        html_el.classList.add(dropdown_js_has_classname);
     }
 
-	ready(navbar.init);
+	ready(dropdown.init);
 })();
 
 /*!
-    Fall-Back Over-Panel v2.0.0
+    Fall-Back Over-Panel v3.0.0
     https://github.com/Fall-Back/Over-Panel
-    Copyright (c) 2017, Andy Kirk
+    Copyright (c) 2021, Andy Kirk
     Released under the MIT license https://git.io/vwTVl
 */
+
 (function() {
 
-    var over_panel_js_classname           = 'js-over-panel';
-    var over_panel_control_js_classname   = 'js-over-panel-control';
-    var over_panel_is_open_classname      = 'js-over-panel_is-open';
-    var over_panel_is_animating_classname = 'js-over-panel_is-animating';
+    var debug             = true;
+    //var debug             = false;
+    var ident             = 'over-panel';
+    var selector          = '[data-js="' + ident + '"]';
+    var overlay_selector  = '[data-js="' + ident + '__overlay"]';
+    var control_selector  = '[data-js="' + ident + '__control"]';
+    var contents_selector = '[data-js="' + ident + '__contents"]';
+
+    var over_panel_js_has_classname       = 'js-has--' + ident;
+    //var over_panel_js_classname           = 'js-' + ident;
+    //var over_panel_control_js_classname   = 'js-' + ident + '-control';
+    var over_panel_is_open_classname      = ident + '--is-open';
+    var over_panel_is_animating_classname = ident + '--is-animating';
 
     var check_for_css = function(selector) {
-        
+
+        if (debug) {
+            console.log('Checking for CSS: ' + selector);
+        }
+
         var rules;
         var haveRule = false;
-        if (typeof document.styleSheets != "undefined") {// is this supported
+        if (typeof document.styleSheets != "undefined") { // is this supported
             var cssSheets = document.styleSheets;
-            
+
             // IE doesn't have document.location.origin, so fix that:
             if (!document.location.origin) {
                 document.location.origin = document.location.protocol + "//" + document.location.hostname + (document.location.port ? ':' + document.location.port: '');
             }
             var domain_regex  = RegExp('^' + document.location.origin);
-            
+
             outerloop:
             for (var i = 0; i < cssSheets.length; i++) {
                 var sheet = cssSheets[i];
-                
+
                 // Some browsers don't allow checking of rules if not on the same domain (CORS), so
                 // checking for that here:
                 if (sheet.href !== null && domain_regex.exec(sheet.href) === null) {
                     continue;
                 }
-                
+
                 // Check for IE or standards:
                 rules = (typeof sheet.cssRules != "undefined") ? sheet.cssRules : sheet.rules;
                 for (var j = 0; j < rules.length; j++) {
@@ -425,6 +636,11 @@ var cookie_html                   =
                 }
             }
         }
+
+        if (debug) {
+            console.log(selector + ' ' + (haveRule ? '' : 'not') + ' found');
+        }
+
         return haveRule;
     }
 
@@ -437,99 +653,40 @@ var cookie_html                   =
     }
 
 
-    /* From Modernizr */
-    var whichTransitionEvent = function() {
-        var t;
-        var el = document.createElement('fakeelement');
-        var transitions = {
-          'transition':'transitionend',
-          'OTransition':'oTransitionEnd',
-          'MozTransition':'transitionend',
-          'WebkitTransition':'webkitTransitionEnd'
-        }
-
-        for(t in transitions){
-            if( el.style[t] !== undefined ){
-                return transitions[t];
-            }
-        }
-    }
-
 	var over_panel = {
 
         init: function() {
 
+            if (debug) {
+                console.log('Initialising ' + ident);
+            }
+
             if (css_is_loaded) {
-                // Add the JS class name ...
-                /*
-                var html_el = document.querySelector('html');
 
-                if (html_el.classList) {
-                    html_el.classList.add(over_panel_js_classname);
-                } else {
-                    html_el.className += ' ' + over_panel_js_classname;
-                }
-                */
-
-                var over_panels = document.querySelectorAll('[data-js="over-panel"]');
-                /*var over_panel_js_classname           = 'js-over-panel';
-                var over_panel_control_js_classname   = 'js-over-panel-control';
-                var over_panel_is_open_classname      = 'js-over-panel_is-open';
-                var over_panel_is_animating_classname = 'js-over-panel_is-animating';*/
-
-                var transitionEvent = whichTransitionEvent();
-
-                // Note that `getComputedStyle` on psuedo elements doesn't work in Opera Mini, but in
-                // this case I'm happy to serve only the unenhanced version to Opera Mini.
-                /*var css_is_loaded = (
-                    window.getComputedStyle(over_panels[0], ':before')
-                    .getPropertyValue('content')
-                    .replace(/(\"|\')/g, '')
-                    == 'CSS Loaded'
-                );*/
-
+                var over_panels = document.querySelectorAll(selector);
 
                 Array.prototype.forEach.call(over_panels, function(over_panel, i) {
-
 
                     // Find corresponding controls:
                     var over_panel_id = over_panel.getAttribute('id');
                     var over_panel_control = document.querySelector('[aria-controls="' + over_panel_id + '"]');
-                    var over_panel_overlay = over_panel.querySelector('[data-js="over-panel__overlay"]');
+                    var over_panel_overlay = over_panel.querySelector(overlay_selector);
 
                     // Check we've got a corresponding control. If not we can't proceed so skip:
                     if (!over_panel_control) {
                         return;
                     }
 
-                    // Add the JS class names ...
-                    // ... to the panel: ...
-                    if (over_panel.classList) {
-                        over_panel.classList.add(over_panel_js_classname);
-                    } else {
-                        over_panel.className += ' ' + over_panel_js_classname;
-                    }
-                    // ... and the control:
-                    if (over_panel_control.classList) {
-                        over_panel_control.classList.add(over_panel_control_js_classname);
-                    } else {
-                        over_panel_control.className += ' ' + over_panel_control_js_classname;
-                    }
-
                     // Main toggle button:
                     over_panel_control.addEventListener('click', function() {
 
-                        if (over_panel.classList) {
-                            over_panel.classList.add(over_panel_is_animating_classname);
-                        } else {
-                            over_panel.className += ' ' + over_panel_is_animating_classname;
-                        }
+                        over_panel.classList.add(over_panel_is_animating_classname);
 
                         // Invert the `aria-expanded` attribute:
                         var expanded = this.getAttribute('aria-expanded') === 'true' || false;
 
                         // Close any open panels:
-                        var expanded_buttons = document.querySelectorAll('[data-js="overpanel__control"][aria-expanded="true"]');
+                        var expanded_buttons = document.querySelectorAll(control_selector + '[aria-expanded="true"]');
                         Array.prototype.forEach.call(expanded_buttons, function(expanded_button, i) {
                             //expanded_button.setAttribute('aria-expanded', 'false');
                             expanded_button.click();
@@ -540,17 +697,9 @@ var cookie_html                   =
 
                         // Toggle the `is_open` class:
                         if (!expanded) {
-                            if (over_panel.classList) {
-                                over_panel.classList.add(over_panel_is_open_classname);
-                            } else {
-                                over_panel.className += ' ' + over_panel_is_open_classname;
-                            }
+                            over_panel.classList.add(over_panel_is_open_classname);
                         } else {
-                            if (over_panel.classList) {
-                                over_panel.classList.remove(over_panel_is_open_classname);
-                            } else {
-                                over_panel.className = over_panel.className.replace(new RegExp('(^|\\b)' + over_panel_is_open_classname.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-                            }
+                            over_panel.classList.remove(over_panel_is_open_classname);
                         }
                     });
 
@@ -560,20 +709,15 @@ var cookie_html                   =
 					});
 
                     // Remove `animating` class at transition end.
-                    transitionEvent && over_panel.addEventListener(transitionEvent, function() {
-                        if (over_panel.classList) {
-                            over_panel.classList.remove(over_panel_is_animating_classname);
-                        } else {
-                            console.log('Animation ended');
-                            over_panel.className = over_panel.className.replace(new RegExp('(^|\\b)' + over_panel_is_animating_classname.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-                        }
+                    over_panel.addEventListener('transitionend', function() {
+                        over_panel.classList.remove(over_panel_is_animating_classname);
                     });
 
                     // Focus trap inspired by:
 					// http://heydonworks.com/practical_aria_examples/progressive-hamburger.html
-                    var over_panel_contents = over_panel.querySelector('[data-js="over-panel__contents"]');
+                    var over_panel_contents = over_panel.querySelector(contents_selector);
                     var focusables          = over_panel_contents.querySelectorAll('a, button, input, select, textarea');
-                    
+
                     if (focusables.length > 0) {
                         var first_focusable     = focusables[0];
                         var last_focusable      = focusables[focusables.length - 1];
@@ -600,150 +744,16 @@ var cookie_html                   =
 	}
 
     // This is _here_ to mitigate a Flash of Basic Styled OverPanel:
-    var css_is_loaded = check_for_css('.' + over_panel_js_classname);
-    
+    var css_is_loaded = check_for_css('.' + over_panel_js_has_classname);
+
     if (css_is_loaded) {
         // Add the JS class name ...
         var html_el = document.querySelector('html');
-        
-        if (html_el.classList) {
-            html_el.classList.add(over_panel_js_classname);
-        } else {
-            html_el.className += ' ' + over_panel_js_classname;
-        }
+
+        html_el.classList.add(over_panel_js_has_classname);
     }
 
 	ready(over_panel.init);
-})();
-
-/*!
-    Fall-Back Dropdown v1.0.0
-    https://github.com/Fall-Back/Dropdown
-    Copyright (c) 2017, Andy Kirk
-    Released under the MIT license https://git.io/vwTVl
-*/
-(function() {
-
-    var dropdown_js_classname = 'js-dropdown';
-
-    var check_for_css = function(selector) {
-
-        var rules;
-        var haveRule = false;
-        if (typeof document.styleSheets != "undefined") {// is this supported
-            var cssSheets = document.styleSheets;
-
-            // IE doesn't have document.location.origin, so fix that:
-            if (!document.location.origin) {
-                document.location.origin = document.location.protocol + "//" + document.location.hostname + (document.location.port ? ':' + document.location.port: '');
-            }
-            var domain_regex  = RegExp('^' + document.location.origin);
-
-            outerloop:
-            for (var i = 0; i < cssSheets.length; i++) {
-                var sheet = cssSheets[i];
-
-                // Some browsers don't allow checking of rules if not on the same domain (CORS), so
-                // checking for that here:
-                if (sheet.href !== null && domain_regex.exec(sheet.href) === null) {
-                    continue;
-                }
-
-                // Check for IE or standards:
-                rules = (typeof sheet.cssRules != "undefined") ? sheet.cssRules : sheet.rules;
-                for (var j = 0; j < rules.length; j++) {
-                    if (rules[j].selectorText == selector) {
-                        haveRule = true;
-                        break outerloop;
-                    }
-                }
-            }
-        }
-        return haveRule;
-    }
-
-    var ready = function(fn) {
-        if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-            fn();
-        } else {
-            document.addEventListener('DOMContentLoaded', fn);
-        }
-    }
-
-	var dropdown = {
-
-        init: function() {
-            var dropdowns = document.querySelectorAll('.dropdown');
-            /*var dropdown_js_classname = 'js-dropdown';
-            // Note that `getComputedStyle` on pseudo elements doesn't work in Opera Mini, but in
-            // this case I'm happy to serve only the un-enhanced version to Opera Mini.
-            var css_is_loaded = (
-                window.getComputedStyle(dropdown, ':before')
-                .getPropertyValue('content')
-                .replace(/(\"|\')/g, '')
-                == 'CSS Loaded'
-            );*/
-
-            if (css_is_loaded) {
-                Array.prototype.forEach.call(dropdowns, function(dropdown, i) {
-                    // Add the JS class names ...
-                    if (dropdown.classList) {
-                        dropdown.classList.add(dropdown_js_classname);
-                    } else {
-                        dropdown.className += ' ' + dropdown_js_classname;
-                    }
-                });
-                
-                // ... and button actions:
-                var buttons = document.querySelectorAll('[data-js="dropdown__button"]');
-                Array.prototype.forEach.call(buttons, function(button, i) {
-                    var button_id = button.getAttribute('id');
-
-                    button.setAttribute('aria-expanded', 'false');
-
-                    // Main button:
-                    button.addEventListener('click', function() {
-                        // Switch the `aria-expanded` attribute:
-                        var expanded = this.getAttribute('aria-expanded') === 'true' || false;
-
-                        // Close any open dropdown:
-                        var expanded_buttons = document.querySelectorAll('[data-js="dropdown__button"][aria-expanded="true"]');
-                        Array.prototype.forEach.call(expanded_buttons, function(expanded_button, i) {
-                            expanded_button.setAttribute('aria-expanded', 'false');
-                        });
-                        
-                        // Set the attribute:
-                        this.setAttribute('aria-expanded', !expanded);
-
-                        // Set the focus to the first link if submenu newly opened:
-                        if (!expanded) {
-                            var first_link = document.querySelector('#' + button_id + '--target [data-js="dropdown__focus-start"]');
-                            if (first_link) {
-                                first_link.focus();
-                            }
-                        }
-                    });
-                });
-                
-            }
-        }
-	}
-
-    // This is _here_ to mitigate a Flash of Basic Styled Dropdown:
-    var css_is_loaded = check_for_css('.' + dropdown_js_classname);
-
-    if (css_is_loaded) {
-        // Add the JS class name ...
-        var html_el = document.querySelector('html');
-
-        if (html_el.classList) {
-            html_el.classList.add(dropdown_js_classname);
-        } else {
-            html_el.className += ' ' + dropdown_js_classname;
-        }
-    }
-
-	ready(dropdown.init);
 })();
 
 /*

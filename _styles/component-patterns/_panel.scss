@@ -71,7 +71,7 @@ $theme-only: false !default;
         a[href].c-cta:hover,
         a[href].c-cta:active,
         a[href].c-cta:focus {
-            @if f__color_light_or_dark(map-get($theme, background-color)) == 'light' {
+            @if s__color_light_or_dark(map-get($theme, background-color)) == 'light' {
                 background-color: rgba(0,0,0,0.1);
             } @else {
                 background-color: rgba(255,255,255,0.1);
@@ -95,7 +95,7 @@ $theme-only: false !default;
 
             h1 {
                 border-bottom: 1px solid #bbb;
-                margin-bottom: calc(#{$f__base-rem-space-unit} - 1px);
+                margin-bottom: calc(#{$s__base-rem-space-unit} - 1px);
             }
 
         &__banner {
@@ -108,17 +108,17 @@ $theme-only: false !default;
         &__module {
             margin-bottom:0;
             width: 100%;
-            //margin-bottom: $f__base-rem-space-unit / 2;
+            //margin-bottom: $s__base-rem-space-unit / 2;
 
             h2 {
-                font-size: 24px / $f__base-font-size * 1em;
-                //margin-bottom: $f__base-rem-space-unit / 2;
+                font-size: 24px / $s__base-font-size * 1em;
+                //margin-bottom: $s__base-rem-space-unit / 2;
                 margin-bottom: 0;
             }
 
             h3 {
-                font-size: 20px / $f__base-font-size * 1em;
-                //margin-bottom: $f__base-rem-space-unit / 2;
+                font-size: 20px / $s__base-font-size * 1em;
+                //margin-bottom: $s__base-rem-space-unit / 2;
                 margin-bottom: 0;
             }
         }

@@ -188,9 +188,9 @@ function do_concat_js(cb) {
         './_scripts/js/layout-adjustments.js',
         './_scripts/js/image-cover.js',
         './bower_components/Fall-Back-Cookie-Notice/cookie-notice.js',
-        './bower_components/Fall-Back-Patterns/Nav Bar/js/nav-bar.js',
-        './bower_components/Fall-Back-Patterns/Over Panel/js/over-panel.js',
-        './bower_components/Fall-Back-Patterns/Dropdown/js/dropdown.js',
+        './bower_components/Fall-Back-Patterns/Content Min Row/js/content-min-row-v1.js',
+        './bower_components/Fall-Back-Patterns/Dropdown/js/dropdown-v2.js',
+        './bower_components/Fall-Back-Patterns/Over Panel/js/over-panel-v2.js',
         './bower_components/Details-Polyfill/dist/details-element-polyfill.js'
     ])
     .pipe(concat(js_filename))

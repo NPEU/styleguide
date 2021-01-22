@@ -21,7 +21,7 @@ $fill-height-namespace: u- !default;
     }
 }
 
-@media #{$f__ie10-11} {
+@media #{$s__ie10-11} {
     .#{$fill-height-namespace}fill-height {
         height: 100%;
     }

@@ -12,7 +12,7 @@ blockquote {
     //background-color: scale-color(map-get(map-get($themes, neutral), primary-color), $lightness: 90%);
     background-color: rgba(0,0,0,0.1);
 
-    padding: $f__base-rem-space-unit $f__base-rem-space-unit * 2;
+    padding: $s__base-rem-space-unit $s__base-rem-space-unit * 2;
 
     @include bottom-space-fix();
 }
@@ -48,7 +48,7 @@ blockquote > p:last-child::after {
 // IE11 doesn't support the math functions, and because of the way CSSMIN works it's gotten rid of
 // the default StartCSS h settings, thus removing the fallback line-height, so I need to redeclare
 // then here:
-@media #{$f__ie10-11} {
+@media #{$s__ie10-11} {
     @import '../bower_components/Fall-Back-Start-CSS/scss//elements/_h.scss';
 }
 
@@ -130,7 +130,7 @@ table[data-contains="numbers"] {
 // Shouldn't this be in StartCSS?
 
 summary + * {
-    margin-top: $f__base-rem-space-unit;
+    margin-top: $s__base-rem-space-unit;
 }
 
 

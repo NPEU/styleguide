@@ -43,7 +43,7 @@ $theme-only: false;
 // Note these are needed by component-patterns/_user_content so this is duplication of the same
 // in _themeable-patterns. This duplication should be unnecessary in V2.
 $theme-name: neutral;
-$panel--padding: $f__base-rem-space-unit;
+$panel--padding: $s__base-rem-space-unit;
 @import "component-patterns/_contact-list.scss";
 @import "component-patterns/_thumbnail.scss";
 

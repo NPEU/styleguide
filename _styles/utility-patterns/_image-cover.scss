@@ -141,7 +141,7 @@ $image-cover-namespace: u- !default;
 
 // ---Note this isn't great but it's easier to have this apply only at smaller sizes.
 // May need to change it causes problems, but current concern is NIHR funding baby image.
-/*@media (max-width: $f__breakpoint--enhanced) {
+/*@media (max-width: $s__breakpoint--enhanced) {
     .#{$image-cover-namespace}image-cover {
        
         &#{&}--min-10 {

@@ -9,7 +9,7 @@
 // rather than explicitly are the overrides to StartCSS, at the bottom.
 
 $theme-namespace: t- !default;
-$f__namespace: '';
+$s__namespace: '';
 /*
 Note - this won't work until SASS supports dynamic calling of mixins. It's close, but hasn't been
 merged yet. Hoping that will be done soon so I can change this.
@@ -99,23 +99,23 @@ a[href].c-cta.#{$theme-namespace}#{$theme-name}:not(.over-panel__overlay):not(.d
 
     &:hover,
     &:active {
-        @if is-int($f__button-background-color--alt) {
-            @if $f__button-background-color--alt > 0 {
-                $f__button-background-color--alt_percent: $f__button-background-color--alt * 1%;
-                background-color: lighten(map-get($theme, background-color), $f__button-background-color--alt_percent) !important;
+        @if is-int($s__button-background-color--alt) {
+            @if $s__button-background-color--alt > 0 {
+                $s__button-background-color--alt_percent: $s__button-background-color--alt * 1%;
+                background-color: lighten(map-get($theme, background-color), $s__button-background-color--alt_percent) !important;
             }
-            @if $f__button-background-color--alt < 0 {
-                $f__button-background-color--alt_percent: $f__button-background-color--alt * -1%;
-                background-color: darken(map-get($theme, background-color), $f__button-background-color--alt_percent) !important;
+            @if $s__button-background-color--alt < 0 {
+                $s__button-background-color--alt_percent: $s__button-background-color--alt * -1%;
+                background-color: darken(map-get($theme, background-color), $s__button-background-color--alt_percent) !important;
             }
         } @else {
-            background-color: $f__button-background-color--alt;
+            background-color: $s__button-background-color--alt;
         }
     }
 
     &:focus {
         outline: 0;
-        box-shadow: 0 0 0 $f__button-focus-shadow-width rgba(map-get($theme, background-color), 0.5);
+        box-shadow: 0 0 0 $s__button-focus-shadow-width rgba(map-get($theme, background-color), 0.5);
     }
 
 }
@@ -191,14 +191,14 @@ table.#{$theme-namespace}#{$theme-name} tr:nth-child(odd) > th,
     /*&:hover,
     &:active,
     &:focus {
-        @if is-int($f__button-background-color--alt) {
-            @if $f__button-background-color--alt > 0 {
-                $f__button-background-color--alt_percent: $f__button-background-color--alt * 1%;
-                background-color: lighten(map-get($theme, background-color), $f__button-background-color--alt_percent);
+        @if is-int($s__button-background-color--alt) {
+            @if $s__button-background-color--alt > 0 {
+                $s__button-background-color--alt_percent: $s__button-background-color--alt * 1%;
+                background-color: lighten(map-get($theme, background-color), $s__button-background-color--alt_percent);
             }
-            @if $f__button-background-color--alt < 0 {
-                $f__button-background-color--alt_percent: $f__button-background-color--alt * -1%;
-                background-color: darken(map-get($theme, background-color), $f__button-background-color--alt_percent);
+            @if $s__button-background-color--alt < 0 {
+                $s__button-background-color--alt_percent: $s__button-background-color--alt * -1%;
+                background-color: darken(map-get($theme, background-color), $s__button-background-color--alt_percent);
             }
         }
     }*/
@@ -215,47 +215,47 @@ table.#{$theme-namespace}#{$theme-name} tr:nth-child(odd) > th,
     /*&:hover,
     &:active,
     &:focus {
-        @if is-int($f__button-background-color--alt) {
-            @if $f__button-background-color--alt > 0 {
-                $f__button-background-color--alt_percent: $f__button-background-color--alt * 1%;
-                background-color: lighten(map-get($theme, background-color), $f__button-background-color--alt_percent);
+        @if is-int($s__button-background-color--alt) {
+            @if $s__button-background-color--alt > 0 {
+                $s__button-background-color--alt_percent: $s__button-background-color--alt * 1%;
+                background-color: lighten(map-get($theme, background-color), $s__button-background-color--alt_percent);
             }
-            @if $f__button-background-color--alt < 0 {
-                $f__button-background-color--alt_percent: $f__button-background-color--alt * -1%;
-                background-color: darken(map-get($theme, background-color), $f__button-background-color--alt_percent);
+            @if $s__button-background-color--alt < 0 {
+                $s__button-background-color--alt_percent: $s__button-background-color--alt * -1%;
+                background-color: darken(map-get($theme, background-color), $s__button-background-color--alt_percent);
             }
         }
     }*/
 }
 
 // Inputs
-@if $f__input-focus-shadow != false {
-    #{$f__namespace}input:not([type]):focus,
-    #{$f__namespace}[type="color"]:focus,
-    #{$f__namespace}[type="date"]:focus,
-    #{$f__namespace}[type="datetime"]:focus,
-    #{$f__namespace}[type="datetime-local"]:focus,
-    #{$f__namespace}[type="file"]:focus,
-    #{$f__namespace}[type="month"]:focus,
-    #{$f__namespace}[type="number"]:focus,
-    #{$f__namespace}[type="password"]:focus,
-    #{$f__namespace}[type="search"]:focus,
-    #{$f__namespace}[type="range"]:focus,
-    #{$f__namespace}[type="tel"]:focus,
-    #{$f__namespace}[type="text"]:focus,
-    #{$f__namespace}[type="time"]:focus,
-    #{$f__namespace}[type="url"]:focus,
-    #{$f__namespace}[type="week"]:focus {
-        box-shadow: 0 0 0 $f__input-focus-shadow-width rgba(lighten(map-get($theme, background-color), 3%), 1);
+@if $s__input-focus-shadow != false {
+    #{$s__namespace}input:not([type]):focus,
+    #{$s__namespace}[type="color"]:focus,
+    #{$s__namespace}[type="date"]:focus,
+    #{$s__namespace}[type="datetime"]:focus,
+    #{$s__namespace}[type="datetime-local"]:focus,
+    #{$s__namespace}[type="file"]:focus,
+    #{$s__namespace}[type="month"]:focus,
+    #{$s__namespace}[type="number"]:focus,
+    #{$s__namespace}[type="password"]:focus,
+    #{$s__namespace}[type="search"]:focus,
+    #{$s__namespace}[type="range"]:focus,
+    #{$s__namespace}[type="tel"]:focus,
+    #{$s__namespace}[type="text"]:focus,
+    #{$s__namespace}[type="time"]:focus,
+    #{$s__namespace}[type="url"]:focus,
+    #{$s__namespace}[type="week"]:focus {
+        box-shadow: 0 0 0 $s__input-focus-shadow-width rgba(lighten(map-get($theme, background-color), 3%), 1);
     }
 
     /*
         Without custom styling (appearance: none), Safari doesn't apply the shadow, so breaks
         accessibility ...
     */
-    #{$f__namespace}[type="checkbox"]:focus,
-    #{$f__namespace}[type="radio"]:focus {
-        box-shadow: 0 0 0 $f__input-focus-shadow-width rgba(map-get($theme, background-color), 0.5);
+    #{$s__namespace}[type="checkbox"]:focus,
+    #{$s__namespace}[type="radio"]:focus {
+        box-shadow: 0 0 0 $s__input-focus-shadow-width rgba(map-get($theme, background-color), 0.5);
     }
 }
 
@@ -410,7 +410,7 @@ $theme--very-dark: $theme;
         a[href].c-cta:hover,
         a[href].c-cta:active,
         a[href].c-cta:focus {
-            @if f__color_light_or_dark(map-get($theme, primary-color)) == 'light' {
+            @if s__color_light_or_dark(map-get($theme, primary-color)) == 'light' {
                 background-color: rgba(0,0,0,0.1);
             } @else {
                 background-color: rgba(255,255,255,0.1);
@@ -419,7 +419,7 @@ $theme--very-dark: $theme;
     }
     
     summary:focus {
-        @if f__color_light_or_dark(map-get($theme, primary-color)) == 'light' {
+        @if s__color_light_or_dark(map-get($theme, primary-color)) == 'light' {
             outline: 2px solid rgba(0,0,0,0.5);
         } @else {
             outline: 2px solid rgba(255,255,255,0.5);
@@ -446,6 +446,6 @@ $theme--very-dark: $theme;
     }
 
     [data-display-as~="themed-box--border"] > * {
-        color: $f__base-text-color;
+        color: $s__base-text-color;
     }
 }

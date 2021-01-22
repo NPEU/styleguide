@@ -52,11 +52,11 @@ $uc-breakpoint: 35em !default;
 
 
         a[href][data-display-as~="cta"] {
-            @include f__button(
-                $f__base-text-color,
+            @include s__button(
+                $s__base-text-color,
                 transparent,
-                lighten($f__button-background-color, 55%),
-                $f__base-text-color
+                lighten($s__button-background-color, 55%),
+                $s__base-text-color
             );
         }
 
@@ -128,7 +128,7 @@ $uc-breakpoint: 35em !default;
             a[href][data-display-as~="cta"]:hover,
             a[href][data-display-as~="cta"]:active,
             a[href][data-display-as~="cta"]:focus {
-                @if f__color_light_or_dark(map-get(map-get($themes, $theme-name), primary-color)) == 'light' {
+                @if s__color_light_or_dark(map-get(map-get($themes, $theme-name), primary-color)) == 'light' {
                     background-color: rgba(0,0,0,0.1);
                 } @else {
                     background-color: rgba(255,255,255,0.1);
@@ -156,7 +156,7 @@ $uc-breakpoint: 35em !default;
             a[href][data-display-as~="cta"]:hover,
             a[href][data-display-as~="cta"]:active,
             a[href][data-display-as~="cta"]:focus {
-                @if f__color_light_or_dark(map-get(map-get($themes, $theme-name), secondary-color)) == 'light' {
+                @if s__color_light_or_dark(map-get(map-get($themes, $theme-name), secondary-color)) == 'light' {
                     background-color: rgba(0,0,0,0.1);
                 } @else {
                     background-color: rgba(255,255,255,0.1);
@@ -554,14 +554,14 @@ $uc-breakpoint: 35em !default;
 
         // Reduce heading sizes (esp for sidebars)
         h2 {
-            font-size: 24px / $f__base-font-size * 1em;
-            //margin-bottom: $f__base-rem-space-unit / 2;
+            font-size: 24px / $s__base-font-size * 1em;
+            //margin-bottom: $s__base-rem-space-unit / 2;
             margin-bottom: 0;
         }
 
         h3 {
-            font-size: 20px / $f__base-font-size * 1em;
-            //margin-bottom: $f__base-rem-space-unit / 2;
+            font-size: 20px / $s__base-font-size * 1em;
+            //margin-bottom: $s__base-rem-space-unit / 2;
             margin-bottom: 0;
         }
 

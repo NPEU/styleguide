@@ -70,7 +70,7 @@ $theme-only: false !default;
             */
             & legend {
                 float: left; /* [1] */
-                padding: ($f__base-rem-space-unit / 4) 0;
+                padding: ($s__base-rem-space-unit / 4) 0;
                 margin-right: $tool-form--spacing-unit / 2;
                 margin-bottom: 0;
             }

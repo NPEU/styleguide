@@ -28,8 +28,9 @@ $theme-only: false !default;
             color: #fff;
             background: rgba(0,0,0,0.5);
             padding: 0;
-            margin: 0;       
-            
+            margin: 0;
+            border: 0;
+
             a[href],
             a[href]:hover,
             a[href]:focus,
@@ -37,48 +38,48 @@ $theme-only: false !default;
                 color: #fff;
             }
         }
-        
+
         & > summary {
-            
+
             width: 2.4rem;
             height: 2.4rem;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
- 
-            
+
+
             & > :first-child {
                 display: inline;
             }
-            
+
             & > :last-child {
                 display: none;
             }
-            
+
             &::before {
                 display: none;
             }
-            
+
             &:hover,
             &:focus,
             &:active {
                 background: rgba(255,255,255,0.4);
             }
         }
-        
+
         &[open] {
             & > summary {
                 & > :first-child {
                     display: none;
                 }
-                
+
                 & > :last-child {
                     display: inline;
                 }
             }
         }
-        
+
         & > summary + * {
             position: relative;
             left: 2.4rem;
@@ -95,7 +96,7 @@ $theme-only: false !default;
         &--full-width[open] {
             width: 100%;
         }
-        
+
         &--half-width[open] {
             width: 50%;
         }

@@ -88,12 +88,12 @@ $utilitext-namespace: c- !default;
         
         #{&}#{&}--pale,
         #{&}#{&}--pale a[href] {
-            color: lighten($f__base-text-color, 20%);            
+            color: lighten($s__base-text-color, 20%);            
         }
         
         #{&}#{&}--pale a[href] {
             &:hover span, &:active span, &:focus span {
-                color: $f__base-text-color;      
+                color: $s__base-text-color;      
             }
         }
         

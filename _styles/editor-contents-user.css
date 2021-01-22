@@ -119,8 +119,11 @@
     contain parapgraphs can result in double bottom margins, so flipping that around inside those
     containers.
 */
-/*! Fall-Back Start-CSS. See SCSS file for documentation. */
-/*
+/*! Start-CSS. See SCSS file for documentation. */
+/*-------------------------------------------------------------------------------------------------|
+
+    START-CSS
+    ============================================================================================
 
     Start-CSS is designed for use with the basic
     [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
@@ -152,13 +155,139 @@
 
     overflow-y makes element focussable in FireFox.
 
+|-------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------|
+
+    START-CSS TOKENS
+    ============================================================================================
+
+    Fall-Back is designed for use with the basic
+    [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
+
+    This determines a browser support base of:
+
+    IE 9+, FF 8+, Opera 12, [Chrome 29+, Android ~4.4+]
+    Chrome 29+, Opera 16+, Safari 6.1+, iOS 7+, Android ~4.4+
+
+
+    Any double-classing (e.g. `.class.class`) is deliberate and intended to increase specifity.
+    This allows any applicable Start-CSS declarations to be overidden.
+    E.g. `.{pattern} .{pattern}__child` would `a[href]`, but just `.{pattern}` wouldn't, so we use
+    `.{pattern}.{pattren}`
+
+    https://coolors.co/50514f-f25f5c-ffe066-247ba0-70c1b3
+
+|-------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------|
+
+    START-CSS SETTINGS
+    ============================================================================================
+
+    Fall-Back is designed for use with the basic
+    [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
+
+    This determines a browser support base of:
+
+    IE 9+, FF 8+, Opera 12, [Chrome 29+, Android ~4.4+]
+    Chrome 29+, Opera 16+, Safari 6.1+, iOS 7+, Android ~4.4+
+
+
+    Any double-classing (e.g. `.class.class`) is deliberate and intended to increase specifity.
+    This allows any applicable Start-CSS declarations to be overidden.
+    E.g. `.{pattern} .{pattern}__child` would `a[href]`, but just `.{pattern}` wouldn't, so we use
+    `.{pattern}.{pattren}`
+
+    https://coolors.co/50514f-f25f5c-ffe066-247ba0-70c1b3
+
+|-------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------|
+
+    START-CSS FUNCTIONS
+    ============================================================================================
+
+|-------------------------------------------------------------------------------------------------*/
+/*
+    Colour contrast from https://gist.github.com/FStop/8959422
+
+    Usage:
+    @if s__color_contrast($colour, #fff) < 2 {
+        color: #333;
+    }
+    @else{
+        color: #fff;
+    }
+*/
+/* Awesome contrast ratio function
+* via https://gist.github.com/voxpelli/6304812
+**/
+/*-------------------------------------------------------------------------------------------------|
+
+    START-CSS MIXINS
+    ============================================================================================
+
+|-------------------------------------------------------------------------------------------------*/
+/*
+    Apply a border and a padding that offsets the border-width from one spacing unit so as not to
+    affect the vertical rhythm.
+    Note the Opera Mini doesn't support `calc` so we need to include normal padding for that
+    browser.
+    Also, since we're supporting FF 8+, we're including -moz-calc for versions up to 16.
+    I may consider removing this as those browsers are dead, but I'm just being thorough for now.
+
+    Note on the 'last margin' issue/hack:
+    The pseudo element is intended to provide a collapsible margin to cancel out any 'trailing'
+    margins from content elements. However, since we're reducing the whole padding space by the
+    border-width to maintain the vertical rhythm, that margin is also less, BUT the content margin
+    is NOT being reduced, so that wins out - the reduction is ignored.
+    If the pseudo element bottom margin is adjusted to cancel out the height (1px) AS WELL AS
+    the amount of border-width, but the last element DOES NOT have a margin, then the space becomes
+    too small.
+    If pseudo-element height is 0, it doesn't work in IE, Chrome, Safari, without inline-block
+*/
+/*
+    This button mixin isn't really meant for generating specific/themed _types_ of button - there
+    would be too much code duplication for that.
+    Instead, this is intended to create buttons for new/custom selectors.
+    For example:
+
+    ```
+    [role="button"] {
+        @include s__button;
+    }
+    ```
+
+    rather than:
+
+    ```
+        .btn--affirmative {
+            @include s__button(<text-color>, <bg-color>);
+        }
+    ```
+
+    Note - because of this, think about removing parameters (it changed from my original intention -
+    I may change it back or split this into 2 mixins, or even just move things that are meant for
+    input[type="button"] to that ruleset - actually that's not a bad idea).
+
+*/
+/*
+    1. Remove the tapping delay from clickable elements.
+
+    Sort out the height of buttons. At 12px spacing, should be 30px high with 3px top/bottom margin.
+    Note Edge doesn't like: `line-height: calc(3rem - 2px)` if `display: inline-flex`
+    FF8 - ? doesn't like `line-height: -moz-calc()` and ignores
+    Need to make sure height is governed by line-height in case of breaks within buttons.
+*/
+/*
+    Uni-directional margins (bottom) is fine for most cases, but things like figcaptions that may
+    contain parapgraphs can result in double bottom margins, so flipping that around inside those
+    containers.
 */
 /* Output class for reference (tmp): */
 /*.ref {
-    flbk--base-rem-space-unit: $f__base-rem-space-unit;
-    flbk--base-rem-1px: $f__base-rem-1px;
-    flbk--root-font-size: $f__root-font-size;
-    flbk--root-font-size-percent: $f__root-font-size-percent;
+    flbk--base-rem-space-unit: $s__base-rem-space-unit;
+    flbk--base-rem-1px: $s__base-rem-1px;
+    flbk--root-font-size: $s__root-font-size;
+    flbk--root-font-size-percent: $s__root-font-size-percent;
 }*/
 /*------------------------------------------------------------------------------------------------*\
 
@@ -203,7 +332,7 @@
        This needs to be on the root node.
 
     5. Prevent font size adjustments after orientation changes in IE and iOS. (N)
-    
+
     6. Use a more readable tab size (opinionated).
 */
 html {
@@ -217,7 +346,7 @@ html {
   /* 3 */
   color: #333;
   background-color: #eee;
-  font-size: 62.5%;
+  font-size: 0.625em;
   /* 4 */
   -ms-text-size-adjust: 100%;
   /* 5 */
@@ -232,16 +361,12 @@ html {
 }
 
 /*
-    Fix font size for IE9,10 as it can't calculate % to 1 decimal place! Grrr.
+    Fix font size for IE9-11 as it can't calculate % to 1 decimal place! Grrr.
 */
-@media screen and (min-width: 0\0) and (min-resolution: 0.001dpcm) {
+@media screen and (min-width: 0\0) and (min-resolution: +72dpi) {
   html {
-    font-size: calc(0.625rem + 0.1px);
+    font-size: calc(62.5em / 100);
   }
-}
-
-_:-ms-lang(x), html {
-  font-size: calc(0.625rem + 0.1px) \9;
 }
 
 /*
@@ -331,13 +456,23 @@ body {
   }
 }
 
+/*
+    CSS only message
+*/
+[data-css-only="true"] {
+  display: none;
+}
+
 /*------------------------------------------------------------------------------------------------*\
 
     ALL ELEMENTS
 
 \*------------------------------------------------------------------------------------------------*/
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: a
+
+    START=CSS ELEMENT: a
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     a:link a:visited a:hover a:active a:focus
@@ -375,9 +510,10 @@ a[href]:focus {
 a[href][rel="external"]::after {
   display: inline;
   content: "";
-  padding-left: 1.25em;
+  padding-left: 1.16666666667em;
+  margin: 0 0.5em;
   background: linear-gradient(45deg, transparent 50%, currentColor 50%);
-  font-size: 0.4em;
+  font-size: 0.375em;
   line-height: 0;
   vertical-align: super;
 }
@@ -387,7 +523,10 @@ a[href][rel="external"]:hover::after {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: abbr
+
+    START=CSS ELEMENT: abbr
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Remove the bottom border in Firefox 39-.
@@ -407,14 +546,20 @@ abbr[title] {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: address
+
+    START=CSS ELEMENT: address
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 address {
   margin-bottom: 2.4rem;
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: article
+
+    START=CSS ELEMENT: article
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 article {
   display: block;
@@ -422,7 +567,10 @@ article {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: aside
+
+    START=CSS ELEMENT: aside
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 aside {
   display: block;
@@ -430,7 +578,10 @@ aside {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: audio
+
+    START=CSS ELEMENT: audio
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Add the correct display in IE 9-.
@@ -449,7 +600,10 @@ audio:not([controls]) {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: b
+
+    START=CSS ELEMENT: b
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1: Add the correct font weight in Chrome, Edge, and Safari.
@@ -462,7 +616,10 @@ b {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: blockquote
+
+    START=CSS ELEMENT: blockquote
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 blockquote {
   margin-bottom: 2.4rem;
@@ -475,7 +632,10 @@ blockquote {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: button
+
+    START=CSS ELEMENT: button
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 button {
   display: inline-block;
@@ -512,14 +672,14 @@ button {
   touch-action: manipulation;
   /* 1 */
   -webkit-appearance: none;
-  /*@if $f__button-focus-outline-width != false {
+  /*@if $s__button-focus-outline-width != false {
         &:hover,
         &:active,
         &:focus {
-            outline-width: $f__button-focus-outline-width;
-            outline-style: $f__button-focus-outline-style;
-            outline-color: $f__button-focus-outline-color;
-            outline-offset: $f__button-focus-outline-offset;
+            outline-width: $s__button-focus-outline-width;
+            outline-style: $s__button-focus-outline-style;
+            outline-color: $s__button-focus-outline-color;
+            outline-offset: $s__button-focus-outline-offset;
         }
     }*/
 }
@@ -531,6 +691,10 @@ button:hover, button:active {
 button:focus {
   outline: 0;
   box-shadow: 0 0 0 3px rgba(97, 71, 118, 0.5);
+}
+
+button svg {
+  vertical-align: text-bottom;
 }
 
 _:-o-prefocus, :root button {
@@ -560,7 +724,10 @@ _:-moz-meter-optimum, :root button::-moz-focus-inner {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: canvas
+
+    START=CSS ELEMENT: canvas
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Add the correct display in IE 9-.
@@ -572,7 +739,10 @@ canvas {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: caption
+
+    START=CSS ELEMENT: caption
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 caption {
   display: table-caption;
@@ -586,7 +756,10 @@ caption {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: code
+
+    START=CSS ELEMENT: code
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Correct the inheritance and scaling of font size in all browsers. (N)
@@ -603,18 +776,47 @@ code {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: dd
+
+    START=CSS ELEMENT: dd
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 dd {
   margin-left: 3.6rem;
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: details
+
+    START=CSS ELEMENT: details
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 details {
   display: block;
   /* N: IE 10/11 */
+  margin-bottom: 2.4rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #614776;
+  padding-top: 2.4rem;
+  padding-top: -moz-calc(2.4rem - 1px);
+  padding-top: calc(2.4rem - 1px);
+  padding-left: 2.4rem;
+  padding-left: -moz-calc(2.4rem - 1px);
+  padding-left: calc(2.4rem - 1px);
+  padding-right: 2.4rem;
+  padding-right: -moz-calc(2.4rem - 1px);
+  padding-right: calc(2.4rem - 1px);
+}
+
+details::after {
+  display: block;
+  content: "";
+  height: 1px;
+  margin-top: 2.4rem;
+  margin-bottom: -1px;
+  margin-bottom: -moz-calc(-1px - 1px);
+  margin-bottom: calc(-1px - 1px);
 }
 
 details > * {
@@ -622,7 +824,10 @@ details > * {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: dfn
+
+    START=CSS ELEMENT: dfn
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     Address styling not present in Safari and Chrome. (N)
@@ -632,7 +837,10 @@ dfn {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: dl
+
+    START=CSS ELEMENT: dl
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Either of these will make lists behave properly next to floated items.
@@ -654,14 +862,20 @@ dl {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: dt
+
+    START=CSS ELEMENT: dt
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 dt {
   font-weight: bold;
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: em
+
+    START=CSS ELEMENT: em
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. De-italicize nested ems
@@ -672,7 +886,10 @@ em em {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: fieldset
+
+    START=CSS ELEMENT: fieldset
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     Fieldsets and legends can be difficult to style so I'm keeping their appearance basically the
@@ -717,7 +934,10 @@ fieldset fieldset::after {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: figcaption
+
+    START=CSS ELEMENT: figcaption
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 figcaption {
   display: block;
@@ -733,7 +953,10 @@ figcaption * + * {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: figure
+
+    START=CSS ELEMENT: figure
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 figure {
   display: block;
@@ -741,7 +964,10 @@ figure {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: footer
+
+    START=CSS ELEMENT: footer
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 footer {
   display: block;
@@ -749,14 +975,20 @@ footer {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: form
+
+    START=CSS ELEMENT: form
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 form {
   margin-bottom: 2.4rem;
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: header
+
+    START=CSS ELEMENT: header
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 header {
   display: block;
@@ -764,14 +996,20 @@ header {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: hgroup
+
+    START=CSS ELEMENT: hgroup
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 hgroup {
   display: block;
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: h
+
+    START=CSS ELEMENT: h
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 h1 {
   margin-bottom: 2.4rem;
@@ -810,7 +1048,10 @@ h6 {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: hr
+
+    START=CSS ELEMENT: hr
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Show the overflow in Edge and IE. (N)
@@ -828,14 +1069,20 @@ hr {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: iframe
+
+    START=CSS ELEMENT: iframe
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 iframe {
   vertical-align: middle;
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: img
+
+    START=CSS ELEMENT: img
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Fluid images for responsive purposes.
@@ -874,7 +1121,10 @@ a img {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: input
+
+    START=CSS ELEMENT: input
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Allow inputs to contract to avoid braking containers:
@@ -1001,14 +1251,14 @@ _::-webkit-full-page-media, _:future, :root [type="radio"]:focus {
   touch-action: manipulation;
   /* 1 */
   -webkit-appearance: none;
-  /*@if $f__button-focus-outline-width != false {
+  /*@if $s__button-focus-outline-width != false {
         &:hover,
         &:active,
         &:focus {
-            outline-width: $f__button-focus-outline-width;
-            outline-style: $f__button-focus-outline-style;
-            outline-color: $f__button-focus-outline-color;
-            outline-offset: $f__button-focus-outline-offset;
+            outline-width: $s__button-focus-outline-width;
+            outline-style: $s__button-focus-outline-style;
+            outline-color: $s__button-focus-outline-color;
+            outline-offset: $s__button-focus-outline-offset;
         }
     }*/
 }
@@ -1138,7 +1388,10 @@ _:-ms-input-placeholder, :root [type="file"] {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: kbd
+
+    START=CSS ELEMENT: kbd
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Correct the inheritance and scaling of font size in all browsers. (N)
@@ -1155,7 +1408,10 @@ kbd {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: label
+
+    START=CSS ELEMENT: label
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Remove the tapping delay from clickable elements.
@@ -1174,7 +1430,10 @@ label {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: legend
+
+    START=CSS ELEMENT: legend
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     Fieldsets and legends can be difficult to style so I'm keep their appearance basically the same
@@ -1186,7 +1445,7 @@ label {
     2. Offset border width.
     3. Correct the color inheritance from `fieldset` elements in IE.
 
-    Note $fieldset-border-width used deliberately (not $f__legend-border-width)- this is to account for
+    Note $fieldset-border-width used deliberately (not $s__legend-border-width)- this is to account for
     the fact that fieldset top border width is ignored if there's a legend so the spacing is wrong.
 */
 legend {
@@ -1209,7 +1468,10 @@ legend {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: li
+
+    START=CSS ELEMENT: li
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 li {
   margin-left: 3.6rem;
@@ -1221,7 +1483,10 @@ li ol {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: main
+
+    START=CSS ELEMENT: main`
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Correct `block` display not defined for `main` in IE.
@@ -1242,7 +1507,10 @@ main {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: mark
+
+    START=CSS ELEMENT: mark
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     Address styling not present in IE 8/9.
@@ -1253,21 +1521,30 @@ mark {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: nav
+
+    START=CSS ELEMENT: nav
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 nav {
   display: block;
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: object
+
+    START=CSS ELEMENT: object
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 object {
   vertical-align: middle;
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: ol
+
+    START=CSS ELEMENT: ol
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Either of these will make lists behave properly next to floated items.
@@ -1289,7 +1566,10 @@ ol {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: optgroup
+
+    START=CSS ELEMENT: optgroup
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. The default cannot safely be changed in Chrome and Safari on OS X. ?? Not sure what this means now.
@@ -1305,7 +1585,10 @@ optgroup {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: option
+
+    START=CSS ELEMENT: option
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. This v-centers the text in FF and Chrome. Edge doesn't apply this but looks ok regardless.
@@ -1329,14 +1612,20 @@ option:hover {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: p
+
+    START=CSS ELEMENT: p
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 p {
   margin-bottom: 2.4rem;
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: pre
+
+    START=CSS ELEMENT: pre
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     Note: code is the most probable use for a `<pre>` tag. Other uses may occur (e.g. poem) but
@@ -1382,7 +1671,10 @@ pre code {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: progress
+
+    START=CSS ELEMENT: progress
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Add the correct vertical alignment in Chrome, Firefox, and Opera.
@@ -1396,7 +1688,10 @@ progress {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: samp
+
+    START=CSS ELEMENT: samp
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Address odd `em`-unit font size rendering in all browsers.
@@ -1413,7 +1708,10 @@ samp {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: section
+
+    START=CSS ELEMENT: section
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 section {
   display: block;
@@ -1421,7 +1719,10 @@ section {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: select
+
+    START=CSS ELEMENT: select
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Using height because min-height doesn't change the expand button height in FF.
@@ -1568,7 +1869,10 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[multip
 */
 /* Individual height fixes moved to '_start-experimental.scss' */
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: small
+
+    START=CSS ELEMENT: small
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Apply consistent small font size in all browsers.
@@ -1581,8 +1885,23 @@ small {
   /* 2 */
 }
 
+small a[href] {
+  margin-bottom: -1px;
+  padding-bottom: 1px;
+  border-bottom: 1px solid;
+}
+
+small a[href]:hover,
+small a[href]:focus,
+small a[href]:active {
+  border-bottom: 1px dashed;
+}
+
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: strong
+
+    START=CSS ELEMENT: strong
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Add the correct font weight in Chrome, Edge, and Safari.
@@ -1596,7 +1915,10 @@ strong {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: sub
+
+    START=CSS ELEMENT: sub
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     Prevent `sub` affecting `line-height` in all browsers.
@@ -1659,7 +1981,10 @@ details[open] > summary::before {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: sup
+
+    START=CSS ELEMENT: sup
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     Prevent `sup` affecting `line-height` in all browsers.
@@ -1673,7 +1998,10 @@ sup {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: svg
+
+    START=CSS ELEMENT: svg
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Change the fill color to match the text color in all browsers.
@@ -1697,7 +2025,10 @@ svg:not(:root) {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: table
+
+    START=CSS ELEMENT: table
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Opera Mini (no calc support).
@@ -1717,7 +2048,10 @@ table {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: td
+
+    START=CSS ELEMENT: td
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Opera Mini (no calc support).
@@ -1736,7 +2070,10 @@ td {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: template
+
+    START=CSS ELEMENT: template
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Hide `template` in unsupported browsers (https://caniuse.com/#feat=template)
@@ -1747,7 +2084,10 @@ template {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: textarea
+
+    START=CSS ELEMENT: textarea
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. For IE, mainly.
@@ -1792,7 +2132,10 @@ textarea:focus {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: th
+
+    START=CSS ELEMENT: th
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Opera Mini (no calc support).
@@ -1811,7 +2154,10 @@ th {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: ul
+
+    START=CSS ELEMENT: ul
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Either of these will make lists behave properly next to floated items.
@@ -1833,7 +2179,10 @@ ul {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: video
+
+    START=CSS ELEMENT: video
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Allow video to center if container larger than video.
@@ -1868,6 +2217,81 @@ video {
   text-shadow: none;
 }
 
+/*! Start-CSS Accessibility. See SCSS file for documentation. */
+/*-------------------------------------------------------------------------------------------------|
+
+    ACCESSIBILITY / ARIA
+    ============================================================================================
+
+|-------------------------------------------------------------------------------------------------*/
+[aria-busy="true"] {
+  cursor: progress;
+}
+
+/*
+    Specify the pointer cursor of trigger elements. (S)
+*/
+[aria-controls] {
+  cursor: pointer;
+}
+
+/*
+    Specify the un-styled cursor of disabled, not-editable, or otherwise inoperable elements. (S)
+*/
+[disabled],
+[aria-disabled] {
+  cursor: default;
+}
+
+/*
+    Address `[hidden]` styling not present in IE 8/9/10. (N)
+*/
+[hidden] {
+  display: none;
+}
+
+/*
+    Specify the style of visually hidden yet accessible elements. (S)
+*/
+[hidden="false"][aria-hidden="false"] {
+  clip: rect(0 0 0 0);
+  position: absolute;
+  display: inline;
+  /*border: 0;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    width: 1px;*/
+}
+
+a[hidden="false"][aria-hidden="false"]:focus,
+a[hidden="false"][aria-hidden="false"]:active {
+  clip: auto;
+  position: static;
+  /*height: auto;
+        margin: 0;
+        overflow: visible;
+        width: auto;*/
+}
+
+/*! Start-CSS Experimental. See SCSS file for documentation. */
+/*-------------------------------------------------------------------------------------------------|
+
+    EXPERIMENTAL
+    ============================================================================================
+
+|-------------------------------------------------------------------------------------------------*/
+/*
+    These may be experimental, but they actually make Safari usable with a keyboard, so long as
+    you enable an "Accessibility" setting located in the advanced tab of Safari preferences.
+    ("Press TAB to highlight each item on a web page.)
+    That is - the default outline focus style works, but shadows don't unless appearance: none
+    is used.
+    
+    1. Safari 9.1 doesn't recognize 'auto' but I suspect others won't recognize 'initial', so
+       keeping both for now.
+*/
 /*! End Start-CSS */
 /*! Start CSS Classes. See SCSS file for documentation. */
 /*------------------------------------------------------------------------------------------------*\
@@ -1919,14 +2343,14 @@ a[href].cta {
   touch-action: manipulation;
   /* 1 */
   -webkit-appearance: none;
-  /*@if $f__button-focus-outline-width != false {
+  /*@if $s__button-focus-outline-width != false {
         &:hover,
         &:active,
         &:focus {
-            outline-width: $f__button-focus-outline-width;
-            outline-style: $f__button-focus-outline-style;
-            outline-color: $f__button-focus-outline-color;
-            outline-offset: $f__button-focus-outline-offset;
+            outline-width: $s__button-focus-outline-width;
+            outline-style: $s__button-focus-outline-style;
+            outline-color: $s__button-focus-outline-color;
+            outline-offset: $s__button-focus-outline-offset;
         }
     }*/
 }
@@ -2005,14 +2429,14 @@ a[href].cta--has-icon .icon {
   touch-action: manipulation;
   /* 1 */
   -webkit-appearance: none;
-  /*@if $f__button-focus-outline-width != false {
+  /*@if $s__button-focus-outline-width != false {
         &:hover,
         &:active,
         &:focus {
-            outline-width: $f__button-focus-outline-width;
-            outline-style: $f__button-focus-outline-style;
-            outline-color: $f__button-focus-outline-color;
-            outline-offset: $f__button-focus-outline-offset;
+            outline-width: $s__button-focus-outline-width;
+            outline-style: $s__button-focus-outline-style;
+            outline-color: $s__button-focus-outline-color;
+            outline-offset: $s__button-focus-outline-offset;
         }
     }*/
 }
@@ -2319,12 +2743,13 @@ p.subtitle {
   margin-bottom: 2.4rem;
 }
 
-/*! Start CSS Accessibility. See SCSS file for documentation. */
-/*------------------------------------------------------------------------------------------------*\
+/*! Start-CSS Accessibility. See SCSS file for documentation. */
+/*-------------------------------------------------------------------------------------------------|
 
     ACCESSIBILITY / ARIA
+    ============================================================================================
 
-\*------------------------------------------------------------------------------------------------*/
+|-------------------------------------------------------------------------------------------------*/
 [aria-busy="true"] {
   cursor: progress;
 }
@@ -2354,7 +2779,7 @@ p.subtitle {
 /*
     Specify the style of visually hidden yet accessible elements. (S)
 */
-[hidden][aria-hidden="false"] {
+[hidden="false"][aria-hidden="false"] {
   clip: rect(0 0 0 0);
   position: absolute;
   display: inline;
@@ -2366,8 +2791,8 @@ p.subtitle {
     width: 1px;*/
 }
 
-a[hidden][aria-hidden="false"]:focus,
-a[hidden][aria-hidden="false"]:active {
+a[hidden="false"][aria-hidden="false"]:focus,
+a[hidden="false"][aria-hidden="false"]:active {
   clip: auto;
   position: static;
   /*height: auto;
@@ -2531,225 +2956,13 @@ _:-o-prefocus, :root .icon {
   justify-content: center;
 }
 
-/*! Start CSS Experimental. See SCSS file for documentation. */
-/*------------------------------------------------------------------------------------------------*\
+/*! Start-CSS Experimental. See SCSS file for documentation. */
+/*-------------------------------------------------------------------------------------------------|
 
-    Experimental
+    EXPERIMENTAL
+    ============================================================================================
 
-\*------------------------------------------------------------------------------------------------*/
-/*
-    From https://github.com/mozdevs/cssremedy/blob/master/remedy.css
-    Immediately jump any animation to the end point if the user has set their device to "prefers 
-    reduced motion".
-    This could create bad, unintended consequences. Remove as needed, and write your own appropriate
-    code for prefers-reduced-motion.
-    
-*/
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.001s !important;
-    transition-duration: 0.001s !important;
-  }
-}
-
-/*
-    MS pseudo-elements.
-
-    Note - there's some odd spacing issues between the containing element and the pseudo-elements,
-    where background colors can show through unexpectedly, so there are some tweaks to rectify
-    this.
-*/
-[type="file"]::-ms-value {
-  margin-right: 0;
-  margin-left: -6px;
-  padding-left: 0.5em;
-  border: 0;
-  border-radius: 3px;
-  background: #fff;
-}
-
-@supports (-ms-ime-align: auto) {
-  [type="file"]::-ms-value {
-    background: transparent;
-  }
-}
-
-[type="file"]:focus::-ms-value {
-  box-shadow: true;
-  outline: 0;
-}
-
-/*
-    1. IE10 doesn't like rem so convert to px.
-*/
-[type="file"]::-ms-browse {
-  min-height: 3rem;
-  padding-right: 0.6rem;
-  padding-right: 6px\9;
-  /* 1 */
-  padding-left: 0.6rem;
-  padding-left: 6px\9;
-  /* 1 */
-  border-width: 0 0 0 1px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0.2);
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  color: #fff;
-  background-color: #614776;
-  font-weight: inherit;
-  font-style: inherit;
-  font-size: inherit;
-  font-family: inherit;
-  text-transform: none;
-  cursor: pointer;
-}
-
-[type="file"]:hover::-ms-browse,
-[type="file"]:active::-ms-browse,
-[type="file"]:focus::-ms-browse {
-  box-shadow: true;
-  outline: 0;
-}
-
-/*
-    1. Spacing height + 2 sets of input padding, minus border width.
-*/
-[type="file"]::-webkit-file-upload-button {
-  height: calc(3rem - 2px);
-  /* 1 */
-  padding-top: 0;
-  padding-right: 0.6rem;
-  padding-bottom: 0;
-  padding-left: 0.6rem;
-  border-width: 0 1px 0 0;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0.2);
-  border-radius: 0;
-  color: #fff;
-  background-color: #614776;
-  font-weight: inherit;
-  font-style: inherit;
-  font-size: inherit;
-  font-family: inherit;
-  vertical-align: top;
-  text-transform: none;
-  cursor: pointer;
-  -webkit-appearance: none;
-}
-
-[type="file"]:hover::-webkit-file-upload-button,
-[type="file"]:active::-webkit-file-upload-button,
-[type="file"]:focus::-webkit-file-upload-button {
-  box-shadow: true;
-  outline: 0;
-}
-
-/*
-    Safari refuses to adjust the height of select[multiple] options.
-    The only way I've managed to get it to adhere to the vertical rhythm is by adjust the font-size
-    on the select:
-    select[multiple] {
-        font-size: 20px;
-        margin-bottom: 8px;
-    }
-
-    This is no good, of course as it makes the text HUGE. Scaling it back with transform works:
-
-        transform-origin: top;
-        transform: scale(0.7);
-
-    but of course the gaps around it are huge as well.
-
-    Hand-adjusting margins here so I can test the rest of the elements on grid properly and moving
-    on:
-*/
-/*
-_:scope, _:future, _:not(*:root), select[size="2"]  { margin-bottom: 0; }
-_:scope, _:future, _:not(*:root), select[size="3"]  { margin-bottom: 0; }
-_:scope, _:future, _:not(*:root), select[size="4"]  { margin-bottom: 0; }
-_:scope, _:future, _:not(*:root), select[size="5"]  { margin-bottom: calc(0.9rem - 2px); }
-_:scope, _:future, _:not(*:root), select[size="6"]  { margin-bottom: calc(0.4rem - 2px); }
-_:scope, _:future, _:not(*:root), select[size="7"]  { margin-bottom: calc(1.1rem - 2px); }
-_:scope, _:future, _:not(*:root), select[size="8"]  { margin-bottom: calc(0.6rem - 2px); }
-_:scope, _:future, _:not(*:root), select[size="9"]  { margin-bottom: calc(1.3rem - 2px); }
-_:scope, _:future, _:not(*:root), select[size="10"] { margin-bottom: calc(0.8rem - 2px); }
-*/
-_:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="2"] {
-  margin-bottom: calc(2.4rem - 0.6em - 2px);
-}
-
-_:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="3"] {
-  margin-bottom: calc(2.4rem - 0.6em - 2px);
-}
-
-_:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="4"] {
-  margin-bottom: calc(2.4rem - 0.6em - 2px);
-}
-
-_:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="5"] {
-  margin-bottom: calc(2.4rem - 1.1em - 2px);
-}
-
-_:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="6"] {
-  margin-bottom: calc(2.4rem - 0.85em - 2px);
-}
-
-_:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="7"] {
-  margin-bottom: calc(2.4rem - 0.6em - 2px);
-}
-
-_:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="8"] {
-  margin-bottom: calc(2.4rem - 1.1em - 2px);
-}
-
-_:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="9"] {
-  margin-bottom: calc(2.4rem - 0.85em - 2px);
-}
-
-_:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="10"] {
-  margin-bottom: calc(2.4rem - 0.6em - 2px);
-}
-
-/*
-@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
-    select[size] { margin-bottom: calc(0.9rem - 2px); }
-}
-*/
-/*
-    Similar problem with IE9-11:
-*/
-/* IE9-11 */
-@media screen and (min-width: 0\0) and (min-resolution: +72dpi) {
-  select[size="2"] {
-    margin-bottom: calc(2.4rem - 1.1em - 2px);
-  }
-  select[size="3"] {
-    margin-bottom: calc(2.4rem - 0.75em - 2px);
-  }
-  select[size="4"] {
-    margin-bottom: calc(2.4rem - 1.25em - 2px);
-  }
-  select[size="5"] {
-    margin-bottom: calc(2.4rem - 0.95em - 2px);
-  }
-  select[size="6"] {
-    margin-bottom: calc(2.4rem - 0.65em - 2px);
-  }
-  select[size="7"] {
-    margin-bottom: calc(2.4rem - 1.1em - 2px);
-  }
-  select[size="8"] {
-    margin-bottom: calc(2.4rem - 0.75em - 2px);
-  }
-  select[size="9"] {
-    margin-bottom: calc(2.4rem - 1.25em - 2px);
-  }
-  select[size="10"] {
-    margin-bottom: calc(2.4rem - 0.95em - 2px);
-  }
-}
-
+|-------------------------------------------------------------------------------------------------*/
 /*
     These may be experimental, but they actually make Safari usable with a keyboard, so long as
     you enable an "Accessibility" setting located in the advanced tab of Safari preferences.
@@ -3572,7 +3785,10 @@ blockquote > p:last-child::after {
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: h
+
+    START=CSS ELEMENT: h
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
   h1 {
     margin-bottom: 2.4rem;

@@ -122,8 +122,11 @@
     contain parapgraphs can result in double bottom margins, so flipping that around inside those
     containers.
 */
-/*! Fall-Back Start-CSS. See SCSS file for documentation. */
-/*
+/*! Start-CSS. See SCSS file for documentation. */
+/*-------------------------------------------------------------------------------------------------|
+
+    START-CSS
+    ============================================================================================
 
     Start-CSS is designed for use with the basic
     [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
@@ -155,13 +158,139 @@
 
     overflow-y makes element focussable in FireFox.
 
+|-------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------|
+
+    START-CSS TOKENS
+    ============================================================================================
+
+    Fall-Back is designed for use with the basic
+    [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
+
+    This determines a browser support base of:
+
+    IE 9+, FF 8+, Opera 12, [Chrome 29+, Android ~4.4+]
+    Chrome 29+, Opera 16+, Safari 6.1+, iOS 7+, Android ~4.4+
+
+
+    Any double-classing (e.g. `.class.class`) is deliberate and intended to increase specifity.
+    This allows any applicable Start-CSS declarations to be overidden.
+    E.g. `.{pattern} .{pattern}__child` would `a[href]`, but just `.{pattern}` wouldn't, so we use
+    `.{pattern}.{pattren}`
+
+    https://coolors.co/50514f-f25f5c-ffe066-247ba0-70c1b3
+
+|-------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------|
+
+    START-CSS SETTINGS
+    ============================================================================================
+
+    Fall-Back is designed for use with the basic
+    [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
+
+    This determines a browser support base of:
+
+    IE 9+, FF 8+, Opera 12, [Chrome 29+, Android ~4.4+]
+    Chrome 29+, Opera 16+, Safari 6.1+, iOS 7+, Android ~4.4+
+
+
+    Any double-classing (e.g. `.class.class`) is deliberate and intended to increase specifity.
+    This allows any applicable Start-CSS declarations to be overidden.
+    E.g. `.{pattern} .{pattern}__child` would `a[href]`, but just `.{pattern}` wouldn't, so we use
+    `.{pattern}.{pattren}`
+
+    https://coolors.co/50514f-f25f5c-ffe066-247ba0-70c1b3
+
+|-------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------|
+
+    START-CSS FUNCTIONS
+    ============================================================================================
+
+|-------------------------------------------------------------------------------------------------*/
+/*
+    Colour contrast from https://gist.github.com/FStop/8959422
+
+    Usage:
+    @if s__color_contrast($colour, #fff) < 2 {
+        color: #333;
+    }
+    @else{
+        color: #fff;
+    }
+*/
+/* Awesome contrast ratio function
+* via https://gist.github.com/voxpelli/6304812
+**/
+/*-------------------------------------------------------------------------------------------------|
+
+    START-CSS MIXINS
+    ============================================================================================
+
+|-------------------------------------------------------------------------------------------------*/
+/*
+    Apply a border and a padding that offsets the border-width from one spacing unit so as not to
+    affect the vertical rhythm.
+    Note the Opera Mini doesn't support `calc` so we need to include normal padding for that
+    browser.
+    Also, since we're supporting FF 8+, we're including -moz-calc for versions up to 16.
+    I may consider removing this as those browsers are dead, but I'm just being thorough for now.
+
+    Note on the 'last margin' issue/hack:
+    The pseudo element is intended to provide a collapsible margin to cancel out any 'trailing'
+    margins from content elements. However, since we're reducing the whole padding space by the
+    border-width to maintain the vertical rhythm, that margin is also less, BUT the content margin
+    is NOT being reduced, so that wins out - the reduction is ignored.
+    If the pseudo element bottom margin is adjusted to cancel out the height (1px) AS WELL AS
+    the amount of border-width, but the last element DOES NOT have a margin, then the space becomes
+    too small.
+    If pseudo-element height is 0, it doesn't work in IE, Chrome, Safari, without inline-block
+*/
+/*
+    This button mixin isn't really meant for generating specific/themed _types_ of button - there
+    would be too much code duplication for that.
+    Instead, this is intended to create buttons for new/custom selectors.
+    For example:
+
+    ```
+    [role="button"] {
+        @include s__button;
+    }
+    ```
+
+    rather than:
+
+    ```
+        .btn--affirmative {
+            @include s__button(<text-color>, <bg-color>);
+        }
+    ```
+
+    Note - because of this, think about removing parameters (it changed from my original intention -
+    I may change it back or split this into 2 mixins, or even just move things that are meant for
+    input[type="button"] to that ruleset - actually that's not a bad idea).
+
+*/
+/*
+    1. Remove the tapping delay from clickable elements.
+
+    Sort out the height of buttons. At 12px spacing, should be 30px high with 3px top/bottom margin.
+    Note Edge doesn't like: `line-height: calc(3rem - 2px)` if `display: inline-flex`
+    FF8 - ? doesn't like `line-height: -moz-calc()` and ignores
+    Need to make sure height is governed by line-height in case of breaks within buttons.
+*/
+/*
+    Uni-directional margins (bottom) is fine for most cases, but things like figcaptions that may
+    contain parapgraphs can result in double bottom margins, so flipping that around inside those
+    containers.
 */
 /* Output class for reference (tmp): */
 /*.ref {
-    flbk--base-rem-space-unit: $f__base-rem-space-unit;
-    flbk--base-rem-1px: $f__base-rem-1px;
-    flbk--root-font-size: $f__root-font-size;
-    flbk--root-font-size-percent: $f__root-font-size-percent;
+    flbk--base-rem-space-unit: $s__base-rem-space-unit;
+    flbk--base-rem-1px: $s__base-rem-1px;
+    flbk--root-font-size: $s__root-font-size;
+    flbk--root-font-size-percent: $s__root-font-size-percent;
 }*/
 /*------------------------------------------------------------------------------------------------*\
 
@@ -206,7 +335,7 @@
        This needs to be on the root node.
 
     5. Prevent font size adjustments after orientation changes in IE and iOS. (N)
-    
+
     6. Use a more readable tab size (opinionated).
 */
 html {
@@ -220,7 +349,7 @@ html {
   /* 3 */
   color: #333;
   background-color: #57504a;
-  font-size: 62.5%;
+  font-size: 0.625em;
   /* 4 */
   -ms-text-size-adjust: 100%;
   /* 5 */
@@ -235,16 +364,12 @@ html {
 }
 
 /*
-    Fix font size for IE9,10 as it can't calculate % to 1 decimal place! Grrr.
+    Fix font size for IE9-11 as it can't calculate % to 1 decimal place! Grrr.
 */
-@media screen and (min-width: 0\0) and (min-resolution: 0.001dpcm) {
+@media screen and (min-width: 0\0) and (min-resolution: +72dpi) {
   html {
-    font-size: calc(0.625rem + 0.1px);
+    font-size: calc(62.5em / 100);
   }
-}
-
-_:-ms-lang(x), html {
-  font-size: calc(0.625rem + 0.1px) \9;
 }
 
 /*
@@ -334,13 +459,23 @@ body {
   }
 }
 
+/*
+    CSS only message
+*/
+[data-css-only="true"] {
+  display: none;
+}
+
 /*------------------------------------------------------------------------------------------------*\
 
     ALL ELEMENTS
 
 \*------------------------------------------------------------------------------------------------*/
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: a
+
+    START=CSS ELEMENT: a
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     a:link a:visited a:hover a:active a:focus
@@ -377,9 +512,10 @@ a[href]:focus {
 a[href][rel="external"]::after {
   display: inline;
   content: "";
-  padding-left: 1.25em;
+  padding-left: 1.16666666667em;
+  margin: 0 0.5em;
   background: linear-gradient(45deg, transparent 50%, currentColor 50%);
-  font-size: 0.4em;
+  font-size: 0.375em;
   line-height: 0;
   vertical-align: super;
 }
@@ -389,7 +525,10 @@ a[href][rel="external"]:hover::after {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: abbr
+
+    START=CSS ELEMENT: abbr
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Remove the bottom border in Firefox 39-.
@@ -409,14 +548,20 @@ abbr[title] {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: address
+
+    START=CSS ELEMENT: address
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 address {
   margin-bottom: 2.4rem;
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: article
+
+    START=CSS ELEMENT: article
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 article {
   display: block;
@@ -424,7 +569,10 @@ article {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: aside
+
+    START=CSS ELEMENT: aside
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 aside {
   display: block;
@@ -432,7 +580,10 @@ aside {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: audio
+
+    START=CSS ELEMENT: audio
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Add the correct display in IE 9-.
@@ -451,7 +602,10 @@ audio:not([controls]) {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: b
+
+    START=CSS ELEMENT: b
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1: Add the correct font weight in Chrome, Edge, and Safari.
@@ -464,7 +618,10 @@ b {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: blockquote
+
+    START=CSS ELEMENT: blockquote
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 blockquote {
   margin-bottom: 2.4rem;
@@ -477,7 +634,10 @@ blockquote {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: button
+
+    START=CSS ELEMENT: button
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 button {
   display: inline-block;
@@ -514,14 +674,14 @@ button {
   touch-action: manipulation;
   /* 1 */
   -webkit-appearance: none;
-  /*@if $f__button-focus-outline-width != false {
+  /*@if $s__button-focus-outline-width != false {
         &:hover,
         &:active,
         &:focus {
-            outline-width: $f__button-focus-outline-width;
-            outline-style: $f__button-focus-outline-style;
-            outline-color: $f__button-focus-outline-color;
-            outline-offset: $f__button-focus-outline-offset;
+            outline-width: $s__button-focus-outline-width;
+            outline-style: $s__button-focus-outline-style;
+            outline-color: $s__button-focus-outline-color;
+            outline-offset: $s__button-focus-outline-offset;
         }
     }*/
 }
@@ -533,6 +693,10 @@ button:hover, button:active {
 button:focus {
   outline: 0;
   box-shadow: 0 0 0 3px rgba(97, 71, 118, 0.5);
+}
+
+button svg {
+  vertical-align: text-bottom;
 }
 
 _:-o-prefocus, :root button {
@@ -562,7 +726,10 @@ _:-moz-meter-optimum, :root button::-moz-focus-inner {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: canvas
+
+    START=CSS ELEMENT: canvas
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Add the correct display in IE 9-.
@@ -574,7 +741,10 @@ canvas {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: caption
+
+    START=CSS ELEMENT: caption
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 caption {
   display: table-caption;
@@ -588,7 +758,10 @@ caption {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: code
+
+    START=CSS ELEMENT: code
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Correct the inheritance and scaling of font size in all browsers. (N)
@@ -605,18 +778,47 @@ code {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: dd
+
+    START=CSS ELEMENT: dd
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 dd {
   margin-left: 3.6rem;
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: details
+
+    START=CSS ELEMENT: details
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 details {
   display: block;
   /* N: IE 10/11 */
+  margin-bottom: 2.4rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #614776;
+  padding-top: 2.4rem;
+  padding-top: -moz-calc(2.4rem - 1px);
+  padding-top: calc(2.4rem - 1px);
+  padding-left: 2.4rem;
+  padding-left: -moz-calc(2.4rem - 1px);
+  padding-left: calc(2.4rem - 1px);
+  padding-right: 2.4rem;
+  padding-right: -moz-calc(2.4rem - 1px);
+  padding-right: calc(2.4rem - 1px);
+}
+
+details::after {
+  display: block;
+  content: "";
+  height: 1px;
+  margin-top: 2.4rem;
+  margin-bottom: -1px;
+  margin-bottom: -moz-calc(-1px - 1px);
+  margin-bottom: calc(-1px - 1px);
 }
 
 details > * {
@@ -624,7 +826,10 @@ details > * {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: dfn
+
+    START=CSS ELEMENT: dfn
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     Address styling not present in Safari and Chrome. (N)
@@ -634,7 +839,10 @@ dfn {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: dl
+
+    START=CSS ELEMENT: dl
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Either of these will make lists behave properly next to floated items.
@@ -656,14 +864,20 @@ dl {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: dt
+
+    START=CSS ELEMENT: dt
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 dt {
   font-weight: bold;
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: em
+
+    START=CSS ELEMENT: em
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. De-italicize nested ems
@@ -674,7 +888,10 @@ em em {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: fieldset
+
+    START=CSS ELEMENT: fieldset
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     Fieldsets and legends can be difficult to style so I'm keeping their appearance basically the
@@ -719,7 +936,10 @@ fieldset fieldset::after {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: figcaption
+
+    START=CSS ELEMENT: figcaption
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 figcaption {
   display: block;
@@ -735,7 +955,10 @@ figcaption * + * {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: figure
+
+    START=CSS ELEMENT: figure
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 figure {
   display: block;
@@ -743,7 +966,10 @@ figure {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: footer
+
+    START=CSS ELEMENT: footer
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 footer {
   display: block;
@@ -751,14 +977,20 @@ footer {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: form
+
+    START=CSS ELEMENT: form
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 form {
   margin-bottom: 2.4rem;
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: header
+
+    START=CSS ELEMENT: header
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 header {
   display: block;
@@ -766,14 +998,20 @@ header {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: hgroup
+
+    START=CSS ELEMENT: hgroup
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 hgroup {
   display: block;
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: h
+
+    START=CSS ELEMENT: h
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 h1 {
   margin-bottom: 2.4rem;
@@ -812,7 +1050,10 @@ h6 {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: hr
+
+    START=CSS ELEMENT: hr
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Show the overflow in Edge and IE. (N)
@@ -830,14 +1071,20 @@ hr {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: iframe
+
+    START=CSS ELEMENT: iframe
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 iframe {
   vertical-align: middle;
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: img
+
+    START=CSS ELEMENT: img
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Fluid images for responsive purposes.
@@ -876,7 +1123,10 @@ a img {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: input
+
+    START=CSS ELEMENT: input
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Allow inputs to contract to avoid braking containers:
@@ -1003,14 +1253,14 @@ _::-webkit-full-page-media, _:future, :root [type="radio"]:focus {
   touch-action: manipulation;
   /* 1 */
   -webkit-appearance: none;
-  /*@if $f__button-focus-outline-width != false {
+  /*@if $s__button-focus-outline-width != false {
         &:hover,
         &:active,
         &:focus {
-            outline-width: $f__button-focus-outline-width;
-            outline-style: $f__button-focus-outline-style;
-            outline-color: $f__button-focus-outline-color;
-            outline-offset: $f__button-focus-outline-offset;
+            outline-width: $s__button-focus-outline-width;
+            outline-style: $s__button-focus-outline-style;
+            outline-color: $s__button-focus-outline-color;
+            outline-offset: $s__button-focus-outline-offset;
         }
     }*/
 }
@@ -1140,7 +1390,10 @@ _:-ms-input-placeholder, :root [type="file"] {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: kbd
+
+    START=CSS ELEMENT: kbd
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Correct the inheritance and scaling of font size in all browsers. (N)
@@ -1157,7 +1410,10 @@ kbd {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: label
+
+    START=CSS ELEMENT: label
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Remove the tapping delay from clickable elements.
@@ -1176,7 +1432,10 @@ label {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: legend
+
+    START=CSS ELEMENT: legend
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     Fieldsets and legends can be difficult to style so I'm keep their appearance basically the same
@@ -1188,7 +1447,7 @@ label {
     2. Offset border width.
     3. Correct the color inheritance from `fieldset` elements in IE.
 
-    Note $fieldset-border-width used deliberately (not $f__legend-border-width)- this is to account for
+    Note $fieldset-border-width used deliberately (not $s__legend-border-width)- this is to account for
     the fact that fieldset top border width is ignored if there's a legend so the spacing is wrong.
 */
 legend {
@@ -1211,7 +1470,10 @@ legend {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: li
+
+    START=CSS ELEMENT: li
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 li {
   margin-left: 3.6rem;
@@ -1223,7 +1485,10 @@ li ol {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: main
+
+    START=CSS ELEMENT: main`
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Correct `block` display not defined for `main` in IE.
@@ -1244,7 +1509,10 @@ main {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: mark
+
+    START=CSS ELEMENT: mark
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     Address styling not present in IE 8/9.
@@ -1255,21 +1523,30 @@ mark {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: nav
+
+    START=CSS ELEMENT: nav
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 nav {
   display: block;
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: object
+
+    START=CSS ELEMENT: object
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 object {
   vertical-align: middle;
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: ol
+
+    START=CSS ELEMENT: ol
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Either of these will make lists behave properly next to floated items.
@@ -1291,7 +1568,10 @@ ol {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: optgroup
+
+    START=CSS ELEMENT: optgroup
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. The default cannot safely be changed in Chrome and Safari on OS X. ?? Not sure what this means now.
@@ -1307,7 +1587,10 @@ optgroup {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: option
+
+    START=CSS ELEMENT: option
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. This v-centers the text in FF and Chrome. Edge doesn't apply this but looks ok regardless.
@@ -1331,14 +1614,20 @@ option:hover {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: p
+
+    START=CSS ELEMENT: p
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 p {
   margin-bottom: 2.4rem;
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: pre
+
+    START=CSS ELEMENT: pre
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     Note: code is the most probable use for a `<pre>` tag. Other uses may occur (e.g. poem) but
@@ -1384,7 +1673,10 @@ pre code {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: progress
+
+    START=CSS ELEMENT: progress
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Add the correct vertical alignment in Chrome, Firefox, and Opera.
@@ -1398,7 +1690,10 @@ progress {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: samp
+
+    START=CSS ELEMENT: samp
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Address odd `em`-unit font size rendering in all browsers.
@@ -1415,7 +1710,10 @@ samp {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: section
+
+    START=CSS ELEMENT: section
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 section {
   display: block;
@@ -1423,7 +1721,10 @@ section {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: select
+
+    START=CSS ELEMENT: select
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Using height because min-height doesn't change the expand button height in FF.
@@ -1570,7 +1871,10 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[multip
 */
 /* Individual height fixes moved to '_start-experimental.scss' */
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: small
+
+    START=CSS ELEMENT: small
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Apply consistent small font size in all browsers.
@@ -1583,8 +1887,23 @@ small {
   /* 2 */
 }
 
+small a[href] {
+  margin-bottom: -1px;
+  padding-bottom: 1px;
+  border-bottom: 1px solid;
+}
+
+small a[href]:hover,
+small a[href]:focus,
+small a[href]:active {
+  border-bottom: 1px dashed;
+}
+
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: strong
+
+    START=CSS ELEMENT: strong
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Add the correct font weight in Chrome, Edge, and Safari.
@@ -1598,7 +1917,10 @@ strong {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: sub
+
+    START=CSS ELEMENT: sub
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     Prevent `sub` affecting `line-height` in all browsers.
@@ -1661,7 +1983,10 @@ details[open] > summary::before {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: sup
+
+    START=CSS ELEMENT: sup
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     Prevent `sup` affecting `line-height` in all browsers.
@@ -1675,7 +2000,10 @@ sup {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: svg
+
+    START=CSS ELEMENT: svg
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Change the fill color to match the text color in all browsers.
@@ -1699,7 +2027,10 @@ svg:not(:root) {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: table
+
+    START=CSS ELEMENT: table
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Opera Mini (no calc support).
@@ -1719,7 +2050,10 @@ table {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: td
+
+    START=CSS ELEMENT: td
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Opera Mini (no calc support).
@@ -1738,7 +2072,10 @@ td {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: template
+
+    START=CSS ELEMENT: template
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Hide `template` in unsupported browsers (https://caniuse.com/#feat=template)
@@ -1749,7 +2086,10 @@ template {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: textarea
+
+    START=CSS ELEMENT: textarea
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. For IE, mainly.
@@ -1794,7 +2134,10 @@ textarea:focus {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: th
+
+    START=CSS ELEMENT: th
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Opera Mini (no calc support).
@@ -1813,7 +2156,10 @@ th {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: ul
+
+    START=CSS ELEMENT: ul
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Either of these will make lists behave properly next to floated items.
@@ -1835,7 +2181,10 @@ ul {
 }
 
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: video
+
+    START=CSS ELEMENT: video
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Allow video to center if container larger than video.
@@ -1868,6 +2217,155 @@ video {
   color: #fff;
   background-color: #ad96c0;
   text-shadow: none;
+}
+
+/*! Start-CSS Accessibility. See SCSS file for documentation. */
+/*-------------------------------------------------------------------------------------------------|
+
+    ACCESSIBILITY / ARIA
+    ============================================================================================
+
+|-------------------------------------------------------------------------------------------------*/
+[aria-busy="true"] {
+  cursor: progress;
+}
+
+/*
+    Specify the pointer cursor of trigger elements. (S)
+*/
+[aria-controls] {
+  cursor: pointer;
+}
+
+/*
+    Specify the un-styled cursor of disabled, not-editable, or otherwise inoperable elements. (S)
+*/
+[disabled],
+[aria-disabled] {
+  cursor: default;
+}
+
+/*
+    Address `[hidden]` styling not present in IE 8/9/10. (N)
+*/
+[hidden] {
+  display: none;
+}
+
+/*
+    Specify the style of visually hidden yet accessible elements. (S)
+*/
+[hidden="false"][aria-hidden="false"] {
+  clip: rect(0 0 0 0);
+  position: absolute;
+  display: inline;
+  /*border: 0;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    width: 1px;*/
+}
+
+a[hidden="false"][aria-hidden="false"]:focus,
+a[hidden="false"][aria-hidden="false"]:active {
+  clip: auto;
+  position: static;
+  /*height: auto;
+        margin: 0;
+        overflow: visible;
+        width: auto;*/
+}
+
+/*! Start-CSS Experimental. See SCSS file for documentation. */
+/*-------------------------------------------------------------------------------------------------|
+
+    EXPERIMENTAL
+    ============================================================================================
+
+|-------------------------------------------------------------------------------------------------*/
+/*
+    These may be experimental, but they actually make Safari usable with a keyboard, so long as
+    you enable an "Accessibility" setting located in the advanced tab of Safari preferences.
+    ("Press TAB to highlight each item on a web page.)
+    That is - the default outline focus style works, but shadows don't unless appearance: none
+    is used.
+    
+    1. Safari 9.1 doesn't recognize 'auto' but I suspect others won't recognize 'initial', so
+       keeping both for now.
+*/
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+  input[type="checkbox"],
+  input[type="radio"] {
+    position: relative;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    min-height: auto;
+    /* 1 */
+    min-height: initial;
+    /* 1 */
+    border-width: 1px;
+    border-style: solid;
+    border-color: #333;
+    background-color: #fff;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  input[type="radio"] {
+    border-radius: 50%;
+  }
+  input[type="radio"]:checked {
+    background-image: -moz-radial-gradient(center, ellipse cover, #333333 0%, #333333 35%, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0) 100%);
+    /* FF3.6-15 */
+    background-image: -webkit-radial-gradient(center, ellipse cover, #333333 0%, #333333 35%, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background-image: radial-gradient(ellipse at center, #333333 0%, #333333 35%, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  }
+  input[type="checkbox"]:checked::after {
+    content: "";
+    display: inline-block;
+    width: 0.6em;
+    height: 0.3em;
+    border: solid #333;
+    border-width: 0 0 0.125em 0.125em;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -70%) rotate(-50deg);
+    -ms-transform: translate(-50%, -70%) rotate(-50deg);
+    transform: translate(-50%, -70%) rotate(-50deg);
+  }
+  /*
+            Turn off the outline we reinstated for non-experimental styles in Safari:
+        */
+  _::-webkit-full-page-media, _:future, :root [type="checkbox"]:focus,
+  _::-webkit-full-page-media, _:future, :root [type="radio"]:focus {
+    outline: 0;
+  }
+}
+
+/*
+        Turn off checkbox styling for Edge for now.
+    */
+@supports (-ms-ime-align: auto) {
+  input[type="checkbox"] {
+    -webkit-appearance: checkbox;
+  }
+}
+
+/*
+        Turn off checkradio styling for UCBrowser for now.
+    */
+.ucbrowser input[type="checkbox"] {
+  min-height: 0;
+  -webkit-appearance: checkbox;
+}
+
+.ucbrowser input[type="radio"] {
+  min-height: 0;
+  -webkit-appearance: radio;
 }
 
 /*! End Start-CSS */
@@ -1921,14 +2419,14 @@ a[href].c-cta {
   touch-action: manipulation;
   /* 1 */
   -webkit-appearance: none;
-  /*@if $f__button-focus-outline-width != false {
+  /*@if $s__button-focus-outline-width != false {
         &:hover,
         &:active,
         &:focus {
-            outline-width: $f__button-focus-outline-width;
-            outline-style: $f__button-focus-outline-style;
-            outline-color: $f__button-focus-outline-color;
-            outline-offset: $f__button-focus-outline-offset;
+            outline-width: $s__button-focus-outline-width;
+            outline-style: $s__button-focus-outline-style;
+            outline-color: $s__button-focus-outline-color;
+            outline-offset: $s__button-focus-outline-offset;
         }
     }*/
 }
@@ -2007,14 +2505,14 @@ a[href].c-cta--has-icon .icon {
   touch-action: manipulation;
   /* 1 */
   -webkit-appearance: none;
-  /*@if $f__button-focus-outline-width != false {
+  /*@if $s__button-focus-outline-width != false {
         &:hover,
         &:active,
         &:focus {
-            outline-width: $f__button-focus-outline-width;
-            outline-style: $f__button-focus-outline-style;
-            outline-color: $f__button-focus-outline-color;
-            outline-offset: $f__button-focus-outline-offset;
+            outline-width: $s__button-focus-outline-width;
+            outline-style: $s__button-focus-outline-style;
+            outline-color: $s__button-focus-outline-color;
+            outline-offset: $s__button-focus-outline-offset;
         }
     }*/
 }
@@ -2264,12 +2762,13 @@ p.c-subtitle {
   }
 }
 
-/*! Start CSS Accessibility. See SCSS file for documentation. */
-/*------------------------------------------------------------------------------------------------*\
+/*! Start-CSS Accessibility. See SCSS file for documentation. */
+/*-------------------------------------------------------------------------------------------------|
 
     ACCESSIBILITY / ARIA
+    ============================================================================================
 
-\*------------------------------------------------------------------------------------------------*/
+|-------------------------------------------------------------------------------------------------*/
 [aria-busy="true"] {
   cursor: progress;
 }
@@ -2299,7 +2798,7 @@ p.c-subtitle {
 /*
     Specify the style of visually hidden yet accessible elements. (S)
 */
-[hidden][aria-hidden="false"] {
+[hidden="false"][aria-hidden="false"] {
   clip: rect(0 0 0 0);
   position: absolute;
   display: inline;
@@ -2311,8 +2810,8 @@ p.c-subtitle {
     width: 1px;*/
 }
 
-a[hidden][aria-hidden="false"]:focus,
-a[hidden][aria-hidden="false"]:active {
+a[hidden="false"][aria-hidden="false"]:focus,
+a[hidden="false"][aria-hidden="false"]:active {
   clip: auto;
   position: static;
   /*height: auto;
@@ -2476,225 +2975,13 @@ _:-o-prefocus, :root .icon {
   justify-content: center;
 }
 
-/*! Start CSS Experimental. See SCSS file for documentation. */
-/*------------------------------------------------------------------------------------------------*\
+/*! Start-CSS Experimental. See SCSS file for documentation. */
+/*-------------------------------------------------------------------------------------------------|
 
-    Experimental
+    EXPERIMENTAL
+    ============================================================================================
 
-\*------------------------------------------------------------------------------------------------*/
-/*
-    From https://github.com/mozdevs/cssremedy/blob/master/remedy.css
-    Immediately jump any animation to the end point if the user has set their device to "prefers 
-    reduced motion".
-    This could create bad, unintended consequences. Remove as needed, and write your own appropriate
-    code for prefers-reduced-motion.
-    
-*/
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.001s !important;
-    transition-duration: 0.001s !important;
-  }
-}
-
-/*
-    MS pseudo-elements.
-
-    Note - there's some odd spacing issues between the containing element and the pseudo-elements,
-    where background colors can show through unexpectedly, so there are some tweaks to rectify
-    this.
-*/
-[type="file"]::-ms-value {
-  margin-right: 0;
-  margin-left: -6px;
-  padding-left: 0.5em;
-  border: 0;
-  border-radius: 3px;
-  background: #fff;
-}
-
-@supports (-ms-ime-align: auto) {
-  [type="file"]::-ms-value {
-    background: transparent;
-  }
-}
-
-[type="file"]:focus::-ms-value {
-  box-shadow: true;
-  outline: 0;
-}
-
-/*
-    1. IE10 doesn't like rem so convert to px.
-*/
-[type="file"]::-ms-browse {
-  min-height: 3rem;
-  padding-right: 0.6rem;
-  padding-right: 6px\9;
-  /* 1 */
-  padding-left: 0.6rem;
-  padding-left: 6px\9;
-  /* 1 */
-  border-width: 0 0 0 1px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0.2);
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  color: #fff;
-  background-color: #614776;
-  font-weight: inherit;
-  font-style: inherit;
-  font-size: inherit;
-  font-family: inherit;
-  text-transform: none;
-  cursor: pointer;
-}
-
-[type="file"]:hover::-ms-browse,
-[type="file"]:active::-ms-browse,
-[type="file"]:focus::-ms-browse {
-  box-shadow: true;
-  outline: 0;
-}
-
-/*
-    1. Spacing height + 2 sets of input padding, minus border width.
-*/
-[type="file"]::-webkit-file-upload-button {
-  height: calc(3rem - 2px);
-  /* 1 */
-  padding-top: 0;
-  padding-right: 0.6rem;
-  padding-bottom: 0;
-  padding-left: 0.6rem;
-  border-width: 0 1px 0 0;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0.2);
-  border-radius: 0;
-  color: #fff;
-  background-color: #614776;
-  font-weight: inherit;
-  font-style: inherit;
-  font-size: inherit;
-  font-family: inherit;
-  vertical-align: top;
-  text-transform: none;
-  cursor: pointer;
-  -webkit-appearance: none;
-}
-
-[type="file"]:hover::-webkit-file-upload-button,
-[type="file"]:active::-webkit-file-upload-button,
-[type="file"]:focus::-webkit-file-upload-button {
-  box-shadow: true;
-  outline: 0;
-}
-
-/*
-    Safari refuses to adjust the height of select[multiple] options.
-    The only way I've managed to get it to adhere to the vertical rhythm is by adjust the font-size
-    on the select:
-    select[multiple] {
-        font-size: 20px;
-        margin-bottom: 8px;
-    }
-
-    This is no good, of course as it makes the text HUGE. Scaling it back with transform works:
-
-        transform-origin: top;
-        transform: scale(0.7);
-
-    but of course the gaps around it are huge as well.
-
-    Hand-adjusting margins here so I can test the rest of the elements on grid properly and moving
-    on:
-*/
-/*
-_:scope, _:future, _:not(*:root), select[size="2"]  { margin-bottom: 0; }
-_:scope, _:future, _:not(*:root), select[size="3"]  { margin-bottom: 0; }
-_:scope, _:future, _:not(*:root), select[size="4"]  { margin-bottom: 0; }
-_:scope, _:future, _:not(*:root), select[size="5"]  { margin-bottom: calc(0.9rem - 2px); }
-_:scope, _:future, _:not(*:root), select[size="6"]  { margin-bottom: calc(0.4rem - 2px); }
-_:scope, _:future, _:not(*:root), select[size="7"]  { margin-bottom: calc(1.1rem - 2px); }
-_:scope, _:future, _:not(*:root), select[size="8"]  { margin-bottom: calc(0.6rem - 2px); }
-_:scope, _:future, _:not(*:root), select[size="9"]  { margin-bottom: calc(1.3rem - 2px); }
-_:scope, _:future, _:not(*:root), select[size="10"] { margin-bottom: calc(0.8rem - 2px); }
-*/
-_:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="2"] {
-  margin-bottom: calc(2.4rem - 0.6em - 2px);
-}
-
-_:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="3"] {
-  margin-bottom: calc(2.4rem - 0.6em - 2px);
-}
-
-_:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="4"] {
-  margin-bottom: calc(2.4rem - 0.6em - 2px);
-}
-
-_:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="5"] {
-  margin-bottom: calc(2.4rem - 1.1em - 2px);
-}
-
-_:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="6"] {
-  margin-bottom: calc(2.4rem - 0.85em - 2px);
-}
-
-_:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="7"] {
-  margin-bottom: calc(2.4rem - 0.6em - 2px);
-}
-
-_:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="8"] {
-  margin-bottom: calc(2.4rem - 1.1em - 2px);
-}
-
-_:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="9"] {
-  margin-bottom: calc(2.4rem - 0.85em - 2px);
-}
-
-_:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="10"] {
-  margin-bottom: calc(2.4rem - 0.6em - 2px);
-}
-
-/*
-@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
-    select[size] { margin-bottom: calc(0.9rem - 2px); }
-}
-*/
-/*
-    Similar problem with IE9-11:
-*/
-/* IE9-11 */
-@media screen and (min-width: 0\0) and (min-resolution: +72dpi) {
-  select[size="2"] {
-    margin-bottom: calc(2.4rem - 1.1em - 2px);
-  }
-  select[size="3"] {
-    margin-bottom: calc(2.4rem - 0.75em - 2px);
-  }
-  select[size="4"] {
-    margin-bottom: calc(2.4rem - 1.25em - 2px);
-  }
-  select[size="5"] {
-    margin-bottom: calc(2.4rem - 0.95em - 2px);
-  }
-  select[size="6"] {
-    margin-bottom: calc(2.4rem - 0.65em - 2px);
-  }
-  select[size="7"] {
-    margin-bottom: calc(2.4rem - 1.1em - 2px);
-  }
-  select[size="8"] {
-    margin-bottom: calc(2.4rem - 0.75em - 2px);
-  }
-  select[size="9"] {
-    margin-bottom: calc(2.4rem - 1.25em - 2px);
-  }
-  select[size="10"] {
-    margin-bottom: calc(2.4rem - 0.95em - 2px);
-  }
-}
-
+|-------------------------------------------------------------------------------------------------*/
 /*
     These may be experimental, but they actually make Safari usable with a keyboard, so long as
     you enable an "Accessibility" setting located in the advanced tab of Safari preferences.
@@ -2788,11 +3075,28 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
 /* --| FALL-BACK PATTERNS |---------------------------------------------------------------------- */
 /*------------------------------------------------------------------------------------------------*\
 
-    Designed for use with the basic [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
-    IE 9+, FF 8+, Opera 12, Chrome 29+, Android ~4.4+
-    Chrome 29+, Opera 16+, Safari 6.1+, iOS 7+, Android ~4.4+
+    Designed for use with the EM2 [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
+    Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser ~11.8+
+    FF 47+
+
+    PLUS IE11
 
 \*------------------------------------------------------------------------------------------------*/
+/*
+    This is a bit of a hack, but it's a way of letting JS know that this CSS has loaded.
+    It doesn't work for Opera Mini, but I'm happy to provide this browser only with the
+    unenhanced version.
+    UPDATE: Due to problem with FOBP, now checking for existence of class in styesheet earlier
+    on, so this isn't needed:
+*/
+/*.nav-bar::before {
+    content: 'CSS Loaded';
+    display: none;
+}*/
+.js-has--over-panel {
+  border: 0;
+}
+
 /* -- Basic/fallback layout --------------------------------------------------------------------- */
 /*
         1. Helps compatibiliy with Nav-Bar. No down-sides I can see. May have to revise if some
@@ -2801,25 +3105,11 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
 .over-panel {
   width: 100%;
   /* [1] */
-}
-
-/*
-		This is a bit of a hack, but it's a way of letting JS know that this CSS has loaded.
-		It doesn't work for Opera Mini, but I'm happy to provide this browser only with the
-		unenhanced version.
-        UPDATE: Due to problem with FOBP, now checking for existence of class in styesheet earlier
-        on, so this isn't needed:
-	*/
-/*.over-panel::before {
-		content: 'CSS Loaded';
-        display: none;
-	}*/
-.js-over-panel {
-  border: 0;
+  position: relative;
 }
 
 .over-panel-control {
-  display: none;
+  display: none !important;
 }
 
 .over-panel__contents {
@@ -2837,8 +3127,6 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
 }
 
 .over-panel__contents > * {
-  -webkit-flex: 0 1 auto;
-  -ms-flex: 0 1 auto;
   flex: 0 1 auto;
 }
 
@@ -2855,288 +3143,209 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
 /* -----------------------------------------------------------------------------------------------*/
 /* ********************************************************************************************** */
 /* -- Enhanced layout --------------------------------------------------------------------------- */
-.js-over-panel .over-panel {
+.js-has--over-panel .over-panel {
   width: auto;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
   flex: 1 0 auto;
 }
 
-.js-over-panel .over-panel__contents {
-  display: -webkit-flex;
-  display: -ms-flexbox;
+.js-has--over-panel .over-panel__contents {
   display: flex;
 }
 
-@media only screen and (max-width: 59.9375em) {
+.js-has--over-panel .js-cmr--narrow {
   /*
-			1. Make sure the over-panel is on top.
-		*/
-  .js-over-panel .over-panel {
-    position: absolute;
-    /* [1] */
-    left: 0;
-    width: 100%;
-  }
-  .js-over-panel-control.over-panel-control {
-    display: inline-block;
-  }
+                1. Make sure the over-panel is on top.
+            */
   /*
-            This extra wrapper allows the content of the panel to be absolutely positioned so that the
-            container doesn't create a positioning context which would prevent the overlay from filling
-            the body.
-            The :target id needs to stay in actual position so the fall-back works, so everything
-            affected by the :target must come after or inside the element with the id, but we want to
-            allow the position of the controls to be as flexible as possible, so some trickery is
-            needed.
+                This extra wrapper allows the content of the panel to be absolutely positioned so that the
+                container doesn't create a positioning context which would prevent the overlay from filling
+                the body.
+                The :target id needs to stay in actual position so the fall-back works, so everything
+                affected by the :target must come after or inside the element with the id, but we want to
+                allow the position of the controls to be as flexible as possible, so some trickery is
+                needed.
 
 
-            1. Make the over-panel invisible in a way that's transition-able but also removes from tab
-               order.
-        */
-  .js-over-panel .over-panel__contents {
-    position: absolute;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    visibility: hidden;
-    /* [1] */
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-  /*
-            1. Make the over-panel visible in a way that's transition-able.
-        */
-  .js-over-panel_is-open .over-panel__contents {
-    visibility: visible;
-    /* [1] */
-  }
-  /* Slide effect: */
-  /*.js-over-panel .over-panel--slide .over-panel__contents {
-            -webkit-transform: translateY(-100%);
-            -moz-transform:    translateY(-100%);
-            -ms-transform:     translateY(-100%);
-            -o-transform:      translateY(-100%);
-            transform:         translateY(-100%);
-        }
-
-        .js-over-panel_is-animating.over-panel--slide .over-panel__contents {
-            -webkit-transition: -webkit-transform $td  $tf,
-                                visibility        0s   $tf  $td;
-            -moz-transition:    -moz-transform    $td  $tf,
-                                visibility        0s   $tf  $td;
-            -o-transition:      -o-transform      $td  $tf,
-                                visibility        0s   $tf  $td;
-            transition:         transform         $td  $tf,
-                                visibility        0s   $tf  $td;
-        }
-
-        .js-over-panel_is-open.over-panel--slide .over-panel__contents {
-            -webkit-transform: translateY(0);
-            -moz-transform:    translateY(0);
-            -ms-transform:     translateY(0);
-            -o-transform:      translateY(0);
-            transform:         translateY(0);
-
-            -webkit-transition: -webkit-transform $td  $tf;
-            -moz-transition:    -moz-transform    $td  $tf;
-            -o-transition:      -o-transform      $td  $tf;
-            transition:         transform         $td  $tf;
-        }*/
+                1. Make the over-panel invisible in a way that's transition-able but also removes from tab
+                   order.
+            */
   /* Fade effect: */
-  /*.js-over-panel .over-panel--fade .over-panel__contents {
-            opacity: 0;
-        }
-
-        .js-over-panel_is-animating.over-panel--fade .over-panel__contents {
-            -webkit-transition: opacity    $td  $tf,
-                                visibility 0s   $tf  $td;
-            -moz-transition:    opacity    $td  $tf,
-                                visibility 0s   $tf  $td;
-            -o-transition:      opacity    $td  $tf,
-                                visibility 0s   $tf  $td;
-            transition:         opacity    $td  $tf,
-                                visibility 0s   $tf  $td;
-        }
-
-        .js-over-panel_is-open.over-panel--fade .over-panel__contents {
-            opacity: 1;
-
-            -webkit-transition: opacity $td  $tf;
-            -moz-transition:    opacity $td  $tf;
-            -o-transition:      opacity $td  $tf;
-            transition:         opacity $td  $tf;
-        }*/
   /*
-            1. This necessary to collapse the element in cases where the page content without
-               the over-panel contents is shorter than the over-panel contents themselves.
-               Take, for example, where short-ish page that's part of a large site, which therefore 
-               has a long menu. When the menu is revealed in the over-panel contents, the end result
-               is higher than the page contents.
-               Without these declarations, the page (with over-panel closed) renders with a
-               scrollbar and what looks like mystery space at the bottom of the page (when in 
-               reality that space is just what's needed to display the over-panel contents).
-               This could be confusing for users (it was confusing for me!) and makes the page look
-               broken.
-               So, collapsing the contents while hidden prevents this space from appearing until
-               needed.
-        */
-  .js-over-panel .over-panel .over-panel__contents {
-    opacity: 0;
-    transform: scale(0);
-    /* [1] */
-  }
-  .js-over-panel_is-animating.over-panel .over-panel__contents {
-    -webkit-transition: opacity ease 0.8s, visibility 0s 0.8s ease, transform 0s 0.8s ease;
-    -moz-transition: opacity ease 0.8s, visibility 0s 0.8s ease, transform 0s 0.8s ease;
-    -o-transition: opacity ease 0.8s, visibility 0s 0.8s ease, transform 0s 0.8s ease;
-    transition: opacity ease 0.8s, visibility 0s 0.8s ease, transform 0s 0.8s ease;
-  }
-  .js-over-panel_is-open.over-panel .over-panel__contents {
-    opacity: 1;
-    transform: scale(1);
-    /* [1] */
-    -webkit-transition: opacity ease 0.8s;
-    -moz-transition: opacity ease 0.8s;
-    -o-transition: opacity ease 0.8s;
-    transition: opacity ease 0.8s;
-  }
+                2. Make the over-panel visible in a way that's transition-able.
+                1. This necessary to collapse the element in cases where the page content without
+                   the over-panel contents is shorter than the over-panel contents themselves.
+                   Take, for example, where short-ish page that's part of a large site, which therefore
+                   has a long menu. When the menu is revealed in the over-panel contents, the end result
+                   is higher than the page contents.
+                   Without these declarations, the page (with over-panel closed) renders with a
+                   scrollbar and what looks like mystery space at the bottom of the page (when in
+                   reality that space is just what's needed to display the over-panel contents).
+                   This could be confusing for users (it was confusing for me!) and makes the page look
+                   broken.
+                   So, collapsing the contents while hidden prevents this space from appearing until
+                   needed.
+            */
   /*
-            1. These override button styles defined as part of StartCSS. I may consider making these
-               customisable via more variables.
-			2. Ensure the control is above the overlay.
-        */
-  .js-over-panel-control.over-panel-control {
-    display: block;
-    margin: 0;
-    padding-left: 0.5625em;
-    padding-right: 0.5625em;
-    padding-bottom: 0;
-    /* 1 */
-    padding-top: 0;
-    /* 1 */
-    border: 0;
-    border-radius: 0;
-    line-height: 2.25em;
-    text-decoration: none;
-    outline: 0;
-    box-shadow: none;
-    /* 1 */
-    color: #fff;
-    background-color: #614776;
-    position: relative;
-    z-index: 0;
-  }
-  .js-over-panel-control.over-panel-control:hover,
-  .js-over-panel-control.over-panel-control:active,
-  .js-over-panel-control.over-panel-control:focus {
-    border: 0;
-  }
+                1. These override button styles defined as part of StartCSS. I may consider making these
+                   customisable via more variables.
+                2. Ensure the control is above the overlay.
+            */
   /*
-            1. Ensure the control is above the overlay.
-        */
-  .js-over-panel-control.over-panel-control[aria-expanded="true"] {
-    z-index: 1;
-    /* [1] */
-  }
-  .js-over-panel-control.over-panel-control:hover,
-  .js-over-panel-control.over-panel-control:active,
-  .js-over-panel-control.over-panel-control[aria-expanded="true"] {
-    color: #fff;
-    background-color: #3c2c49;
-  }
-  .js-over-panel-control.over-panel-control:focus {
-    color: #fff;
-    background-color: #4f3a60;
-  }
-  .js-over-panel-control.over-panel-control .icon--is-open,
-  .js-over-panel-control.over-panel-control[aria-expanded="true"] .icon--is-closed {
-    display: none;
-  }
-  .js-over-panel-control.over-panel-control .icon--is-closed,
-  .js-over-panel-control.over-panel-control[aria-expanded="true"] .icon--is-open {
-    display: inline;
-  }
-  /*.over-panel__open.over-panel__open {
-            display: block;
-        }*/
+                1. Ensure the control is above the overlay.
+            */
   /*
-            Fix for Opera Mini vertical centering:
-        */
-  /* Hide the open control: */
-  /*
-            Taking this out for now is leaving it visible doesn't seem to hurt (though accessibility?)
-            but hiding it can cause other elements to jump around due to flexbox.
-            Maybe use visibility, not sure.
-        */
-  /*.js-over-panel_is-open .over-panel__open.over-panel__open {
-            display: none;
-        }*/
-  /* Show the close control and move on above the overlay: */
-  /*.js-over-panel_is-open .over-panel__close.over-panel__close {
-            z-index: 1002; /* @var *
-            display: block;
-            position: absolute;
-            top: 0;
-            right: 0;
-        }*/
-  /*
-            1. This is the obvious place for this rule but there's a weird Chrome bug that means
-               the position/dimensions are ignore if it's initially hidden.
-               Moving to the is-open declaration fixes this, as it only gets applied when it's
-               visible.
-            2. Using absolute instead so that it still collapses, preventing it unintentionally
-               overlapping anything.
-        */
-  .js-over-panel .over-panel__overlay {
-    display: block;
-    position: absolute;
-    /* [2] */
-    z-index: -1;
-    left: 0;
-    top: 0;
-    width: 0;
-    height: 0;
-    padding: 0;
-    margin: 0;
-    border: 0;
-    text-decoration: none;
-    visibility: hidden;
-    background: #000;
-    opacity: 0;
-    -webkit-transition: opacity 0.5s ease;
-    -moz-transition: opacity 0.5s ease;
-    -o-transition: opacity 0.5s ease;
-    transition: opacity 0.5s ease;
-  }
+                1. This is the obvious place for this rule but there's a weird Chrome bug that means
+                   the position/dimensions are ignore if it's initially hidden.
+                   Moving to the is-open declaration fixes this, as it only gets applied when it's
+                   visible.
+                2. Using absolute instead so that it still collapses, preventing it unintentionally
+                   overlapping anything.
+            */
   /* Bring the overlay to the front and fade in when there's an over-panel target: */
-  .js-over-panel_is-open .over-panel__overlay {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    opacity: 0.6;
-    visibility: visible;
-  }
-  .js-over-panel-control .over-panel__overlay:hover,
-  .js-over-panel-control .over-panel__overlay:active,
-  .js-over-panel-control .over-panel__overlay:focus {
-    border: 0;
-    text-decoration: none;
-    background: #000;
-  }
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel {
+  position: absolute;
+  /* [1] */
+  left: 0;
+  width: 100%;
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel-control {
+  display: inline-block !important;
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel__contents {
+  position: absolute;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  visibility: hidden;
+  /* [1] */
+  flex-direction: column;
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel__contents {
+  opacity: 0;
+  transform: scale(0);
+  /* [2] */
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel--is-animating .over-panel__contents {
+  transition: opacity ease 0.8s, visibility 0s 0.8s ease, transform 0s 0.8s ease;
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel--is-open .over-panel__contents {
+  visibility: visible;
+  /* [1] */
+  opacity: 1;
+  transform: scale(1);
+  /* [2] */
+  transition: opacity ease 0.8s;
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel-control {
+  display: block;
+  margin: 0;
+  padding-left: 0.5625em;
+  padding-right: 0.5625em;
+  padding-bottom: 0;
+  /* 1 */
+  padding-top: 0;
+  /* 1 */
+  border: 0;
+  border-radius: 0;
+  line-height: 2.25em;
+  text-decoration: none;
+  outline: 0;
+  box-shadow: none;
+  /* 1 */
+  color: #fff;
+  background-color: #614776;
+  position: relative;
+  z-index: 0;
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel-control:hover,
+.js-has--over-panel .js-cmr--narrow .over-panel-control:active,
+.js-has--over-panel .js-cmr--narrow .over-panel-control:focus {
+  border: 0;
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel-control[aria-expanded="true"] {
+  z-index: 1;
+  /* [1] */
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel-control:hover,
+.js-has--over-panel .js-cmr--narrow .over-panel-control:active,
+.js-has--over-panel .js-cmr--narrow .over-panel-control[aria-expanded="true"] {
+  color: #fff;
+  background-color: #3c2c49;
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel-control:focus {
+  color: #fff;
+  background-color: #4f3a60;
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel-control .icon--is-open,
+.js-has--over-panel .js-cmr--narrow .over-panel-control[aria-expanded="true"] .icon--is-closed {
+  display: none;
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel-control .icon--is-closed,
+.js-has--over-panel .js-cmr--narrow .over-panel-control[aria-expanded="true"] .icon--is-open {
+  display: inline;
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel__overlay {
+  display: block;
+  position: absolute;
+  /* [2] */
+  z-index: -1;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  text-decoration: none;
+  visibility: hidden;
+  background: #000;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel--is-open .over-panel__overlay {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  opacity: 0.6;
+  visibility: visible;
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel__overlay:hover,
+.js-has--over-panel .js-cmr--narrow .over-panel__overlay:active,
+.js-has--over-panel .js-cmr--narrow .over-panel__overlay:focus {
+  border: 0;
+  text-decoration: none;
+  background: #000;
 }
 
 /* ---------------------------------------------------------------------------------------------- */
 /*------------------------------------------------------------------------------------------------*\
 
-    Designed for use with the basic [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
-    IE 9+, FF 8+, Opera 12, Chrome 29+, Android ~4.4+
-    Chrome 29+, Opera 16+, Safari 6.1+, iOS 7+, Android ~4.4+
+    Designed for use with the EM2 [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
+    Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser ~11.8+
+    FF 47+
+
+    PLUS IE11
 
 \*------------------------------------------------------------------------------------------------*/
 /*
@@ -3155,22 +3364,44 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
 }
 
 /* -- Basic/fallback layout --------------------------------------------------------------------- */
-/* -- Main wrapper ---------------------------------------------------------------------------*/
-/*
+.nav-bar {
+  /* -- Main wrapper ---------------------------------------------------------------------------*/
+  /*
         1. Helps to position above subsequent elements so subnavs sit on top.
+        There are problems with this, if z-index or position is declared it messes up positioning
+        if subsequent blocks also are nav-bars or similar.
     */
-.nav-bar.nav-bar {
-  background-color: #614776;
-  position: relative;
-  z-index: 9999;
-  /* [1] */
-}
-
-/* -------------------------------------------------------------------------------------------*/
-/* -- Layout ---------------------------------------------------------------------------------*/
-/*
+  /* -------------------------------------------------------------------------------------------*/
+  /* -- Layout ---------------------------------------------------------------------------------*/
+  /*
         iOS/OSX seem to apply mystery margins.
     */
+  /*
+    */
+  /* -------------------------------------------------------------------------------------------*/
+  /* -- Links and headings ---------------------------------------------------------------------*/
+  /*
+    */
+  /*
+		1. These override button styles defined as part of StartCSS. I may consider making these
+		   customisable via more variables.
+	*/
+  /*
+        FF15- fix button height.
+    */
+  /*
+        Provide interaction effects for nav-bar links that ARE links:
+        (this excludes submenu heading links - note that submenu links should never also be
+        submenu heading links)
+    */
+  /* -------------------------------------------------------------------------------------------*/
+}
+
+.nav-bar.nav-bar {
+  background-color: #614776;
+  width: 100%;
+}
+
 .nav-bar .nav-bar__end,
 .nav-bar .nav-bar__main,
 .nav-bar .nav-bar__start,
@@ -3183,8 +3414,6 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
   margin: 0;
 }
 
-/*
-    */
 .nav-bar .nav-bar__items,
 .nav-bar .subnav__items {
   display: block;
@@ -3198,34 +3427,11 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
   background-color: #614776;
 }
 
-.nav-bar .nav-bar__item {
-  margin: 0;
-}
-
+.nav-bar .nav-bar__item,
 .nav-bar .subnav__item {
   margin: 0;
-  float: left;
 }
 
-.nav-bar .subnav__items--stacked .subnav__item,
-.nav-bar .subnav__items--stacked .subnav__link {
-  float: none;
-}
-
-.nav-bar .subnav__items::before,
-.nav-bar .subnav__items::after {
-  content: " ";
-  display: table;
-}
-
-.nav-bar .subnav__items::after {
-  clear: both;
-}
-
-/* -------------------------------------------------------------------------------------------*/
-/* -- Links and headings ----------------- ---------------------------------------------------*/
-/*
-    */
 .nav-bar .nav-bar__title .nav-bar__link {
   height: 1.5em;
   line-height: 1.5em;
@@ -3236,10 +3442,6 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
   white-space: nowrap;
 }
 
-/*
-		1. These override button styles defined as part of StartCSS. I may consider making these
-		   customisable via more variables.
-	*/
 .nav-bar .nav-bar__link,
 .nav-bar .subnav__link,
 .nav-bar .subnav__heading {
@@ -3260,10 +3462,7 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
   /* 1 */
 }
 
-/*
-        FF15- fix button height.
-    */
-.nav-bar button.nav-bar__link {
+.nav-bar .nav-bar button.nav-bar__link {
   min-height: 2.25em;
 }
 
@@ -3272,7 +3471,7 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-.nav-bar__link--centered {
+.nav-bar .nav-bar__link--centered {
   text-align: center;
 }
 
@@ -3285,14 +3484,9 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-/*
-        Provide interaction effects for nav-bar links that ARE links:
-        (this excludes submenu heading links - note that submenu links should never also be
-        submenu heading links)
-    */
 .nav-bar .nav-bar__link:hover,
 .nav-bar .nav-bar__link:active,
-.nav-bar .nav-bar__link [aria-expanded="true"] {
+.nav-bar .nav-bar__link [aria-wide="true"] {
   color: #fff;
   background-color: rgba(0, 0, 0, 0.3);
   border: 0;
@@ -3318,22 +3512,6 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
   display: none;
 }
 
-/* -------------------------------------------------------------------------------------------*/
-/* -----------------------------------------------------------------------------------------------*/
-@media only screen and (max-width: 60em) {
-  .nav-bar .subnav__items--stacked--only-narrow .subnav__item,
-  .nav-bar .subnav__items--stacked--only-narrow .subnav__link {
-    float: none;
-  }
-}
-
-@media only screen and (min-width: 60em) {
-  .nav-bar .subnav__items--stacked--only-wide .subnav__item,
-  .nav-bar .subnav__items--stacked--only-wide .subnav__link {
-    float: none;
-  }
-}
-
 /* ********************************************************************************************** */
 /* -- Enhanced layout --------------------------------------------------------------------------- */
 /*
@@ -3341,235 +3519,171 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
     (CSS only attempts weren't good enough)
     So, scoping these styles to the 'js-nav-bar' class.
 */
-@media only screen and (max-width: 60em) and (min-width: 0\0) and (min-resolution: 0.001dpcm) {
-  /* This is all for IE9: */
-  .js-nav-bar .nav-bar,
-  .js-nav-bar .nav-bar__start {
-    width: 100%;
-  }
-  .js-nav-bar .nav-bar__start {
-    display: table;
-  }
-  .js-nav-bar .nav-bar__start > * {
-    display: table-cell;
-  }
-  .js-nav-bar .nav-bar__start .nav-bar__item:last-child {
-    text-align: right;
-  }
-  .js-nav-bar .nav-bar__start .nav-bar__item:last-child > * {
-    display: inline-block;
-    vertical-align: top;
-  }
+/*
+		Note we do only want these applied when JS is available, because it'll have adde buttons so
+		we need to adjust layout to that. In other words these styles break things in a no-js
+		scenario.
+
+	*/
+.js-cmr--narrow .nav-bar__start {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
-@media only screen and (max-width: 60em) {
-  /*
-            1. FF8-21 needs this or is increases the height of this box for some reason.
-            2. FF8-21 needs this.
-        */
-  .js-nav-bar .nav-bar__start {
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-justify-content: space-between;
-    -moz-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    vertical-align: middle;
-    /* [1] */
-    width: 100%;
-    /* [2] */
-  }
-  .js-nav-bar .nav-bar__start > * {
-    -webkit-flex: 0 0 auto;
-    -moz-box-flex: 0;
-    -ms-flex: 0 0 auto;
-    flex: 0 0 auto;
-  }
-  .js-nav-bar .nav-bar__title {
-    -webkit-flex: 1 0 auto;
-    -moz-box-flex: 1;
-    -ms-flex: 1 0 auto;
-    flex: 1 0 auto;
-    margin: 0 auto;
-  }
-  /*
-            FF21- doesn't distribute items even if the -moz properties are set.
-            This hack covers FF3.6+ though thias stylesheet will only be loaded by FF8 or greater
-            depending on the mustart cut.
-        */
-  _:-moz-locale-dir(ltr), .js-nav-bar .nav-bar__start .nav-bar__item + .nav-bar__item:last-child {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  /*
-            Reset properties for FF22+
-        */
-  @supports (display: flex) {
-    .js-nav-bar .nav-bar__start .nav-bar__item + .nav-bar__item:last-child {
-      position: static;
-    }
-  }
+.js-cmr--narrow .nav-bar__start > * {
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
-@media only screen and (min-width: 60em) {
-  /*.js-nav-bar .nav-bar {
+.js-cmr--narrow .nav-bar__title {
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  margin: 0 auto;
+}
 
-        }*/
+.js-cmr--wide {
   /*
             Add dividers.
             Dividers created by adding right borders to nav-bar__items.
         */
-  .js-nav-bar .nav-bar__title,
-  .js-nav-bar .nav-bar__item {
-    border-style: solid;
-    border-color: rgba(0, 0, 0, 0.2);
-    border-top-width: 0;
-    border-bottom-width: 0;
-    border-left-width: 0;
-    border-right-width: 1px;
-  }
-  .js-nav-bar .nav-bar__link[href] + * {
-    border-style: solid;
-    border-color: rgba(255, 255, 255, 0.3);
-    border-top-width: 0;
-    border-bottom-width: 0;
-    border-left-width: 1px;
-    border-right-width: 0;
-  }
   /* -- Layout -----------------------------------------------------------------------------*/
-  /*
-            1. Flex is only really needed for 'additional' to fill up the space.
-               I don't think this would actually do any harm...
-        */
-  .js-nav-bar .nav-bar {
-    display: -webkit-flex;
-    /* 1 */
-    display: -ms-flexbox;
-    /* 1 */
-    display: flex;
-    /* 1 */
-  }
-  .js-nav-bar .nav-bar > * {
-    -webkit-flex: 0 0 auto;
-    -ms-flex: 0 0 auto;
-    flex: 0 0 auto;
-  }
-  .js-nav-bar .nav-bar > .nav-bar__fill-at-wide {
-    -webkit-flex: 1 0 auto;
-    -ms-flex: 1 0 auto;
-    flex: 1 0 auto;
-  }
-  /*
-            1. Prevent content from increasing height of element.
-        */
-  .js-nav-bar .subnav__control[data-content]::before {
-    content: attr(data-content);
-    display: inline;
-    vertical-align: top;
-    /* 1 */
-  }
-  .js-nav-bar .nav-bar__items::before,
-  .js-nav-bar .nav-bar__items::after {
-    content: " ";
-    display: table;
-  }
-  .js-nav-bar .nav-bar__items::after {
-    clear: both;
-  }
-  .js-nav-bar .nav-bar::after {
-    content: " ";
-    display: table;
-    clear: both;
-  }
   /*
             Prevent anything wrapping (fixed height is crucial to making this work),
             and make things float
         */
-  .js-nav-bar .nav-bar__title,
-  .js-nav-bar .nav-bar__main,
-  .js-nav-bar .nav-bar__item,
-  .js-nav-bar .nav-bar__item > *,
-  .js-nav-bar .subnav__link,
-  .js-nav-bar .subnav__heading {
-    white-space: nowrap;
-    float: left;
-  }
-  .js-nav-bar .nav-bar__end {
-    white-space: nowrap;
-    float: right;
-    -webkit-flex: 1 1 auto;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-  }
+  /*
+            1. Prevent content from increasing height of element.
+        */
   /*
 			This pseudo element helps to cover any subnavs to stop them being visible in the main
 			nav-bar.
 		*/
-  .js-nav-bar .nav-bar::before {
-    content: "";
-    display: block;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: -1;
-    background-color: #614776;
-  }
   /* -- Behaviour: -------------------------------------------------------------------------*/
-  .js-nav-bar .subnav__heading {
-    display: none;
-  }
-  .js-nav-bar .subnav__control {
-    display: block;
-  }
-  .js-nav-bar .subnav__control .icon--is-open,
-  .js-nav-bar .subnav__control[aria-expanded="true"] .icon--is-closed {
-    display: none;
-  }
-  .js-nav-bar .subnav__control .icon--is-closed,
-  .js-nav-bar .subnav__control[aria-expanded="true"] .icon--is-open {
-    display: inline;
-  }
   /*
             Set-up slide toggling for subnavs:
 
 			1. This puts the subnav behind the covering pseudo element. See .nav-bar::before, above.
             2. OSX/iOS needs this:
 		*/
-  .js-nav-bar .subnav {
-    position: absolute;
-    visibility: hidden;
-    left: 0;
-    right: 0;
-    top: 0;
-    z-index: -2;
-    /* 1 */
-    height: 2.25em;
-    /* 2 */
-    -webkit-transition: margin-top 0.5s ease, visibility 0s   ease 0.5s;
-    -moz-transition: margin-top 0.5s ease, visibility 0s   ease 0.5s;
-    -o-transition: margin-top 0.5s ease, visibility 0s   ease 0.5s;
-    transition: margin-top 0.5s ease, visibility 0s   ease 0.5s;
-  }
-  .js-nav-bar .subnav__items {
-    margin: 0;
-    padding: 0;
-  }
-  .js-nav-bar .subnav__control[aria-expanded="true"] ~ .subnav {
-    visibility: visible;
-    margin-top: 2.25em;
-    -webkit-transition: margin-top 0.5s ease;
-    -moz-transition: margin-top 0.5s ease;
-    -o-transition: margin-top 0.5s ease;
-    transition: margin-top 0.5s ease;
-  }
-  /* -------------------------------------------------------------------------------------------*/
 }
 
+.js-cmr--wide .nav-bar__title,
+.js-cmr--wide .nav-bar__item {
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.2);
+  border-top-width: 0;
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-right-width: 1px;
+}
+
+.js-cmr--wide .nav-bar__link[href] + * {
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.3);
+  border-top-width: 0;
+  border-bottom-width: 0;
+  border-left-width: 1px;
+  border-right-width: 0;
+}
+
+.js-cmr--wide.nav-bar,
+.js-cmr--wide .nav-bar__title,
+.js-cmr--wide .nav-bar__main,
+.js-cmr--wide .nav-bar__items,
+.js-cmr--wide .nav-bar__item,
+.js-cmr--wide .nav-bar__item > *,
+.js-cmr--wide .subnav__link,
+.js-cmr--wide .subnav__heading {
+  display: -ms-flexbox;
+  display: flex;
+  white-space: nowrap;
+}
+
+.js-cmr--wide.nav-bar > * {
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+.js-cmr--wide.nav-bar > .nav-bar__fill-at-wide {
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+
+.js-cmr--wide .subnav__control[data-content]::before {
+  content: attr(data-content);
+  display: inline;
+  vertical-align: top;
+  /* 1 */
+}
+
+.js-cmr--wide .nav-bar__end {
+  white-space: nowrap;
+  margin-left: auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+.js-cmr--wide .nav-bar__end > * {
+  margin-left: auto !important;
+}
+
+.js-cmr--wide.nav-bar::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  background-color: #614776;
+}
+
+.js-cmr--wide .subnav__heading {
+  display: none;
+}
+
+.js-cmr--wide .subnav__control {
+  display: block;
+}
+
+.js-cmr--wide .subnav__control .icon--is-open,
+.js-cmr--wide .subnav__control[aria-wide="true"] .icon--is-closed {
+  display: none;
+}
+
+.js-cmr--wide .subnav__control .icon--is-closed,
+.js-cmr--wide .subnav__control[aria-wide="true"] .icon--is-open {
+  display: inline;
+}
+
+.js-cmr--wide .subnav {
+  position: absolute;
+  visibility: hidden;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: -2;
+  /* 1 */
+  height: 2.25em;
+  /* 2 */
+  transition: margin-top 0.5s ease, visibility 0s   ease 0.5s;
+}
+
+.js-cmr--wide .subnav__items {
+  margin: 0;
+  padding: 0;
+}
+
+.js-cmr--wide .subnav__control[aria-wide="true"] ~ .subnav {
+  visibility: visible;
+  margin-top: 2.25em;
+  transition: margin-top 0.5s ease;
+}
+
+/* -------------------------------------------------------------------------------------------*/
 /* -----------------------------------------------------------------------------------------------*/
 .js-nav-bar .nav-bar::before {
   background: transparent;
@@ -3585,20 +3699,36 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
 
 /*------------------------------------------------------------------------------------------------*\
 
-    Designed for use with the basic [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
-    IE 9+, FF 8+, Opera 12, Chrome 29+, Android ~4.4+
-    Chrome 29+, Opera 16+, Safari 6.1+, iOS 7+, Android ~4.4+
+    Designed for use with the EM2 [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
+    Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser ~11.8+
+    FF 47+
+
+    PLUS IE11
 
 \*------------------------------------------------------------------------------------------------*/
-/* -- Basic/fallback layout --------------------------------------------------------------------- */
-/* -- .dropdown -------------------------------------------------------------------------------*/
-.js-dropdown {
+/*
+    This is a bit of a hack, but it's a way of letting JS know that this CSS has loaded.
+    It doesn't work for Opera Mini, but I'm happy to provide this browser only with the
+    unenhanced version.
+    UPDATE: Due to problem with FOBP, now checking for existence of class in styesheet earlier
+    on, so this isn't needed:
+*/
+/*.nav-bar::before {
+    content: 'CSS Loaded';
+    display: none;
+}*/
+.js-has--dropdown {
   border: 0;
 }
 
-/* iOS, OSX */
+/* -- Basic/fallback layout --------------------------------------------------------------------- */
+/* -- .dropdown ------------------------------------------------------------------------------*/
+/*
+        1. iOS, OSX
+    */
 .dropdown {
   margin: 0;
+  /* 1 */
 }
 
 /* -------------------------------------------------------------------------------------------*/
@@ -3620,12 +3750,12 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
 }
 
 /* -------------------------------------------------------------------------------------------*/
-/* -- .dropdown__button ----------------------------------------------------------------------*/
+/* -- .dropdown__control ----------------------------------------------------------------------*/
 /*
-		1. These override button styles defined as part of StartCSS. I may consider making these
+		1. These override control styles defined as part of StartCSS. I may consider making these
 		   customisable via more variables.
 	*/
-.dropdown .dropdown__button {
+.dropdown .dropdown__control {
   display: block;
   margin: 0;
   padding-left: 0.5625em;
@@ -3643,13 +3773,13 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
   /* 1 */
 }
 
-.dropdown .dropdown__button:hover,
-.dropdown .dropdown__button:active,
-.dropdown .dropdown__button:focus {
+.dropdown .dropdown__control:hover,
+.dropdown .dropdown__control:active,
+.dropdown .dropdown__control:focus {
   border: 0;
 }
 
-.dropdown__button--centered {
+.dropdown__control--centered {
   text-align: center;
 }
 
@@ -3657,13 +3787,13 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[size="
         Fix for Opera Mini vertical centering:
         (affects Opera 12.10-16 as well)
     */
-_:-o-prefocus, body:last-child .dropdown .dropdown__button {
+_:-o-prefocus, body:last-child .dropdown .dropdown__control {
   line-height: 2.25em !important;
 }
 
-.dropdown .dropdown__button {
+.dropdown .dropdown__control {
   color: #fff;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: transparent;
 }
 
 /*
@@ -3671,19 +3801,19 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__button {
         (this excludes submenu heading links - note that submenu links should never also be
         submenu heading links)
     */
-.dropdown .dropdown__button:hover,
-.dropdown .dropdown__button:active,
-.dropdown .dropdown__button[aria-expanded="true"] {
+.dropdown .dropdown__control:hover,
+.dropdown .dropdown__control:active,
+.dropdown .dropdown__control[aria-expanded="true"] {
   color: #fff;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0);
 }
 
-.dropdown .dropdown__button:focus {
+.dropdown .dropdown__control:focus {
   color: #fff;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0);
 }
 
-.dropdown .dropdown__button {
+.dropdown .dropdown__control {
   display: none;
 }
 
@@ -3703,136 +3833,146 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__button {
     (CSS only attempts weren't good enough)
     So, scoping these styles to the 'js-dropdown' class.
 */
-/*
-            Sometimes we want the dropdown to be positioned relative to a parent container.
-            Add the `dropdown-container` class to that container.
-        */
-.js-dropdown .dropdown-container--all-widths {
-  position: relative;
+.dropdown.dropdown--all-widths {
+  display: block;
+  /*& .dropdown__control[aria-expanded="true"] ~ .dropdown__area {
+                visibility: visible;
+                opacity: 1;
+
+                transition: opacity $td  $tf;
+            }*/
 }
 
-.js-dropdown .dropdown-container--all-widths .dropdown--all-widths {
-  position: static;
-}
-
-.js-dropdown .dropdown--all-widths .dropdown__area {
+.dropdown.dropdown--all-widths .dropdown__area {
   position: absolute;
-  left: 0;
   visibility: hidden;
   opacity: 0;
-  -webkit-transition: opacity ease 0.8s, visibility 0s 0.8s ease;
-  -moz-transition: opacity ease 0.8s, visibility 0s 0.8s ease;
-  -o-transition: opacity ease 0.8s, visibility 0s 0.8s ease;
-  transition: opacity ease 0.8s, visibility 0s 0.8s ease;
+  transform: scale(0);
 }
 
-.js-dropdown .dropdown--all-widths .dropdown__button {
-  display: block;
+.dropdown.dropdown--all-widths .dropdown__area--is-animating {
+  transition: opacity ease 0.8s, visibility 0s 0.8s ease, transform 0s 0.8s ease;
 }
 
-.js-dropdown .dropdown--all-widths .dropdown__button .icon--is-open,
-.js-dropdown .dropdown--all-widths .dropdown__button[aria-expanded="true"] .icon--is-closed {
-  display: none;
-}
-
-.js-dropdown .dropdown--all-widths .dropdown__button .icon--is-closed,
-.js-dropdown .dropdown--all-widths .dropdown__button[aria-expanded="true"] .icon--is-open {
-  display: inline;
-}
-
-.js-dropdown .dropdown--all-widths .dropdown__button[aria-expanded="true"] ~ .dropdown__area {
+.dropdown.dropdown--all-widths .dropdown__area--is-open {
   visibility: visible;
   opacity: 1;
-  -webkit-transition: opacity ease 0.8s;
-  -moz-transition: opacity ease 0.8s;
-  -o-transition: opacity ease 0.8s;
+  transform: scale(1);
+  /* [1] */
   transition: opacity ease 0.8s;
 }
 
-@media only screen and (max-width: 60em) {
-  /*
-            Sometimes we want the dropdown to be positioned relative to a parent container.
-            Add the `dropdown-container` class to that container.
-        */
-  .js-dropdown .dropdown-container--only-narrow {
-    position: relative;
-  }
-  .js-dropdown .dropdown-container--only-narrow .dropdown--only-narrow {
-    position: static;
-  }
-  .js-dropdown .dropdown--only-narrow .dropdown__area {
-    position: absolute;
-    left: 0;
-    visibility: hidden;
-    opacity: 0;
-    -webkit-transition: opacity ease 0.8s, visibility 0s 0.8s ease;
-    -moz-transition: opacity ease 0.8s, visibility 0s 0.8s ease;
-    -o-transition: opacity ease 0.8s, visibility 0s 0.8s ease;
-    transition: opacity ease 0.8s, visibility 0s 0.8s ease;
-  }
-  .js-dropdown .dropdown--only-narrow .dropdown__button {
-    display: block;
-  }
-  .js-dropdown .dropdown--only-narrow .dropdown__button .icon--is-open,
-  .js-dropdown .dropdown--only-narrow .dropdown__button[aria-expanded="true"] .icon--is-closed {
-    display: none;
-  }
-  .js-dropdown .dropdown--only-narrow .dropdown__button .icon--is-closed,
-  .js-dropdown .dropdown--only-narrow .dropdown__button[aria-expanded="true"] .icon--is-open {
-    display: inline;
-  }
-  .js-dropdown .dropdown--only-narrow .dropdown__button[aria-expanded="true"] ~ .dropdown__area {
-    visibility: visible;
-    opacity: 1;
-    -webkit-transition: opacity ease 0.8s;
-    -moz-transition: opacity ease 0.8s;
-    -o-transition: opacity ease 0.8s;
-    transition: opacity ease 0.8s;
-  }
+.dropdown.dropdown--all-widths .dropdown__control {
+  display: block;
 }
 
-@media only screen and (min-width: 60em) {
-  /*
-            Sometimes we want the dropdown to be positioned relative to a parent container.
-            Add the `dropdown-container` class to that container.
-        */
-  .js-dropdown .dropdown-container--only-wide {
-    position: relative;
-  }
-  .js-dropdown .dropdown-container--only-wide .dropdown--only-wide {
-    position: static;
-  }
-  .js-dropdown .dropdown--only-wide .dropdown__area {
-    position: absolute;
-    left: 0;
-    visibility: hidden;
-    opacity: 0;
-    -webkit-transition: opacity ease 0.8s, visibility 0s 0.8s ease;
-    -moz-transition: opacity ease 0.8s, visibility 0s 0.8s ease;
-    -o-transition: opacity ease 0.8s, visibility 0s 0.8s ease;
-    transition: opacity ease 0.8s, visibility 0s 0.8s ease;
-  }
-  .js-dropdown .dropdown--only-wide .dropdown__button {
-    display: block;
-  }
-  .js-dropdown .dropdown--only-wide .dropdown__button .icon--is-open,
-  .js-dropdown .dropdown--only-wide .dropdown__button[aria-expanded="true"] .icon--is-closed {
-    display: none;
-  }
-  .js-dropdown .dropdown--only-wide .dropdown__button .icon--is-closed,
-  .js-dropdown .dropdown--only-wide .dropdown__button[aria-expanded="true"] .icon--is-open {
-    display: inline;
-  }
-  .js-dropdown .dropdown--only-wide .dropdown__button[aria-expanded="true"] ~ .dropdown__area {
-    visibility: visible;
-    opacity: 1;
-    -webkit-transition: opacity ease 0.8s;
-    -moz-transition: opacity ease 0.8s;
-    -o-transition: opacity ease 0.8s;
-    transition: opacity ease 0.8s;
-  }
+.dropdown.dropdown--all-widths .dropdown__control .icon--is-open,
+.dropdown.dropdown--all-widths .dropdown__control[aria-expanded="true"] .icon--is-closed {
+  display: none;
 }
 
+.dropdown.dropdown--all-widths .dropdown__control .icon--is-closed,
+.dropdown.dropdown--all-widths .dropdown__control[aria-expanded="true"] .icon--is-open {
+  display: inline;
+}
+
+.js-cmr--narrow .dropdown.dropdown--only-narrow {
+  display: block;
+  /*& .dropdown__control[aria-expanded="true"] ~ .dropdown__area {
+                visibility: visible;
+                opacity: 1;
+
+                transition: opacity $td  $tf;
+            }*/
+}
+
+.js-cmr--narrow .dropdown.dropdown--only-narrow .dropdown__area {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.js-cmr--narrow .dropdown.dropdown--only-narrow .dropdown__area--is-animating {
+  transition: opacity ease 0.8s, visibility 0s 0.8s ease, transform 0s 0.8s ease;
+}
+
+.js-cmr--narrow .dropdown.dropdown--only-narrow .dropdown__area--is-open {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+  /* [1] */
+  transition: opacity ease 0.8s;
+}
+
+.js-cmr--narrow .dropdown.dropdown--only-narrow .dropdown__control {
+  display: block;
+}
+
+.js-cmr--narrow .dropdown.dropdown--only-narrow .dropdown__control .icon--is-open,
+.js-cmr--narrow .dropdown.dropdown--only-narrow .dropdown__control[aria-expanded="true"] .icon--is-closed {
+  display: none;
+}
+
+.js-cmr--narrow .dropdown.dropdown--only-narrow .dropdown__control .icon--is-closed,
+.js-cmr--narrow .dropdown.dropdown--only-narrow .dropdown__control[aria-expanded="true"] .icon--is-open {
+  display: inline;
+}
+
+.js-cmr--wide .dropdown.dropdown--only-wide {
+  display: block;
+  /*& .dropdown__control[aria-expanded="true"] ~ .dropdown__area {
+                visibility: visible;
+                opacity: 1;
+
+                transition: opacity $td  $tf;
+            }*/
+}
+
+.js-cmr--wide .dropdown.dropdown--only-wide .dropdown__area {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.js-cmr--wide .dropdown.dropdown--only-wide .dropdown__area--is-animating {
+  transition: opacity ease 0.8s, visibility 0s 0.8s ease, transform 0s 0.8s ease;
+}
+
+.js-cmr--wide .dropdown.dropdown--only-wide .dropdown__area--is-open {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+  /* [1] */
+  transition: opacity ease 0.8s;
+}
+
+.js-cmr--wide .dropdown.dropdown--only-wide .dropdown__control {
+  display: block;
+}
+
+.js-cmr--wide .dropdown.dropdown--only-wide .dropdown__control .icon--is-open,
+.js-cmr--wide .dropdown.dropdown--only-wide .dropdown__control[aria-expanded="true"] .icon--is-closed {
+  display: none;
+}
+
+.js-cmr--wide .dropdown.dropdown--only-wide .dropdown__control .icon--is-closed,
+.js-cmr--wide .dropdown.dropdown--only-wide .dropdown__control[aria-expanded="true"] .icon--is-open {
+  display: inline;
+}
+
+/*@media only screen and (max-width:$s__dropdown--breakpoint--enhanced) {
+
+       @include activate-dropdown("--only-narrow");
+
+    }
+
+    @media only screen and (min-width:$s__dropdown--breakpoint--enhanced) {
+
+       @include activate-dropdown("--only-wide");
+
+    }*/
 /* -----------------------------------------------------------------------------------------------*/
 .dropdown.js-dropdown {
   position: static;
@@ -3840,9 +3980,11 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__button {
 
 /*------------------------------------------------------------------------------------------------*\
 
-    Designed for use with the basic [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
-    IE 9+, FF 8+, Opera 12, Chrome 29+, Android ~4.4+
-    Chrome 29+, Opera 16+, Safari 6.1+, iOS 7+, Android ~4.4+
+    Designed for use with the EM2 [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
+    Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser ~11.8+
+    FF 47+
+
+    PLUS IE11
 
 \*------------------------------------------------------------------------------------------------*/
 /* -- Basic/fallback layout --------------------------------------------------------------------- */
@@ -3852,28 +3994,11 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__button {
     */
 .search-form.search-form {
   background: transparent;
-  display: -moz-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
+  flex-wrap: wrap;
   margin: 0;
   width: 100%;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   vertical-align: top;
-}
-
-@media screen and (min--moz-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-  .search-form.search-form {
-    display: block;
-  }
-}
-
-@supports (-moz-appearance: none) and (list-style-type: japanese-formal) {
-  .search-form.search-form {
-    display: flex;
-  }
 }
 
 .search-form.search-form::before,
@@ -3907,10 +4032,6 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__button {
   line-height: 1.5em;
   margin: 0.1875em 0 0.1875em 0.1875em;
   padding: 0.1875em;
-  float: left;
-  -moz-box-flex: 1;
-  -webkit-flex: 1 1 auto;
-  -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   width: 1%;
   /* [1] */
@@ -3955,10 +4076,6 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__button {
   line-height: 0;
   margin: 0.1875em 0.1875em 0.1875em 0;
   padding: 0 0.375em;
-  float: left;
-  -moz-box-flex: 0;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
   flex: 0 0 auto;
 }
 
@@ -3967,32 +4084,32 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__button {
   background-color: #3a2a46;
 }
 
+.js-cmr--wide .serach-form--push-right--wide {
+  margin-left: auto;
+}
+
 /* -------------------------------------------------------------------------------------------*/
 /* -----------------------------------------------------------------------------------------------*/
 /* -- Enhanced layout --------------------------------------------------------------------------- */
-@media only screen and (max-width: 59.9375em) {
-  .search-form .search-form__collapse {
-    width: 100%;
-  }
+.js-cmr--narrow .search-form .search-form__collapse {
+  width: 100%;
 }
 
-@media only screen and (min-width: 60em) {
+.js-cmr--wide {
   /*
             1. Reinstate all flexbox for enhanced view as no wrapping needs to occure
             (FF8-27 issue describbed above)
         */
-  .search-form.search-form {
-    display: -moz-box;
-    /* [1] */
-    display: flex;
-    /* [1] */
-    -webkit-flex-wrap: nowrap;
-    -ms-flex-wrap: nowrap;
-    flex-wrap: nowrap;
-  }
-  .search-form .search-form__field {
-    width: auto;
-  }
+}
+
+.js-cmr--wide .search-form.search-form {
+  display: flex;
+  /* [1] */
+  flex-wrap: nowrap;
+}
+
+.js-cmr--wide .search-form .search-form__field {
+  width: auto;
 }
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -4077,7 +4194,7 @@ body {
 }
 
 /* Firefox 8-21 doesn't center the block if it has a max-width. *
-@if $f__sticky-footer--max-line-length > 0 {
+@if $s__sticky-footer--max-line-length > 0 {
     /* Firefox 8+ *
     @media screen and (min--moz-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
         .sticky-footer-wrap {
@@ -4108,10 +4225,14 @@ $fallback-svg--link-bg-color-alt: #fff;
 @include svg--fixed-height(120px, 'svg--fixed-height--logo--large', 0, 0);
 @include svg--fixed-height(80px, 'svg--fixed-height--logo', 0, 0);
 @include svg--fixed-height(60px, 'svg--fixed-height--parent-logo', 0, 0);
-@include svg--fixed-height(($f__base-rem-space-unit * 4), 'svg--fixed-height--funder-logo', ($f__base-rem-space-unit / 2), 0);
+@include svg--fixed-height(($s__base-rem-space-unit * 4), 'svg--fixed-height--funder-logo', ($s__base-rem-space-unit / 2), 0);
 */
-/*------------------------------------------------------------------------------------------------*\
-\*------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------|
+
+    COOKIE NOTICE
+    ============================================================================================
+
+|-------------------------------------------------------------------------------------------------*/
 /*------------------------------------------------------------------------------------------------*\
     Import Fall-Back vars:
 
@@ -4122,42 +4243,42 @@ $fallback-svg--link-bg-color-alt: #fff;
 \*------------------------------------------------------------------------------------------------*/
 /*------------------------------------------------------------------------------------------------*/
 /* -- Basic styles ------------------------------------------------------------------------------ */
-.cookie_notice {
+#cookie_notice {
   position: fixed;
   width: 100%;
   left: 0;
   bottom: 0;
   z-index: 2000;
+  display: flex;
+  align-items: flex-start;
   padding: 0.75em;
+  margin: 0;
   background-color: #000;
   color: #fff;
+  border: 0;
   opacity: 1;
   -webkit-transition: opacity 1s ease 0s, z-index 1s ease 1s;
   transition: opacity 1s ease 0s, z-index 1s ease 1s;
 }
 
-.cookie_notice--close {
+#cookie_notice[data-close="true"] {
   opacity: 0;
   z-index: 0;
 }
 
-.cookie_notice .cookie_notice__message {
-  display: table-cell;
-  width: 100%;
+#cookie_notice p {
+  padding: 0 0.75em;
+  margin: 0.375em 0;
 }
 
-.cookie_notice .cookie_notice__message a[href] {
+#cookie_notice p a[href] {
   color: white;
 }
 
-.cookie_notice .cookie_notice__message a[href]:hover,
-.cookie_notice .cookie_notice__message a[href]:active,
-.cookie_notice .cookie_notice__message a[href]:focus {
+#cookie_notice p a[href]:hover,
+#cookie_notice p a[href]:active,
+#cookie_notice p a[href]:focus {
   color: #cccccc;
-}
-
-.cookie_notice .cookie_notice__action {
-  display: table-cell;
 }
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -4373,7 +4494,7 @@ a[href][rel=external].c-badge::after {
   }
 }
 
-/*$brochure-spacing-unit: $f__base-rem-space-unit;
+/*$brochure-spacing-unit: $s__base-rem-space-unit;
 $brochure--border-or-outline: false;
 @import "component-patterns/_brochure.scss";*/
 /*
@@ -4661,7 +4782,7 @@ $card-button--border-color: darken($card--base-color, 20%) !default;
 }
 
 /*@include card-theme("card", (
-    background-color: darken($f__base-ui-color, 20%),
+    background-color: darken($s__base-ui-color, 20%),
     text-color: #fff
     )
 );*/
@@ -5234,6 +5355,7 @@ $glimpse--link-border-bottom--hover: false !default;*/
   background: rgba(0, 0, 0, 0.5);
   padding: 0;
   margin: 0;
+  border: 0;
 }
 
 .c-info-overlay.c-info-overlay a[href],
@@ -5352,8 +5474,8 @@ $glimpse--link-border-bottom--hover: false !default;*/
 /*.page-footer {
 
         & {
-            background-color: $f__base-ui-color;
-            padding: ($f__base-em-ratio * 1.5em) / 3;
+            background-color: $s__base-ui-color;
+            padding: ($s__base-em-ratio * 1.5em) / 3;
             font-size: 0.875em;
             text-align: center;
             color: #fff;
@@ -5363,13 +5485,13 @@ $glimpse--link-border-bottom--hover: false !default;*/
 
 
         a[href] {
-            color: lighten($f__base-ui-color, 40%);
+            color: lighten($s__base-ui-color, 40%);
         }
 
         a[href]:hover,
         a[href]:active,
         a[href]:focus {
-            color: lighten($f__base-ui-color, 20%);
+            color: lighten($s__base-ui-color, 20%);
         }
 
     }*/
@@ -5651,14 +5773,14 @@ $glimpse--link-border-bottom--hover: false !default;*/
 
 .c-primary-cta[href]:hover, .c-user-content a[href]:hover[data-display-as~="primary-cta"], .c-primary-cta[href]:active, .c-user-content a[href]:active[data-display-as~="primary-cta"], .c-primary-cta[href]:focus, .c-user-content a[href]:focus[data-display-as~="primary-cta"] {
   color: #fff;
-  /*@if is-int($f__button-background-color--alt) {
-                @if $f__button-background-color--alt > 0 {
-                    $f__button-background-color--alt_percent: $f__button-background-color--alt * 1%;
-                    background-color: lighten(map-get($theme, cta-background-color), $f__button-background-color--alt_percent);
+  /*@if is-int($s__button-background-color--alt) {
+                @if $s__button-background-color--alt > 0 {
+                    $s__button-background-color--alt_percent: $s__button-background-color--alt * 1%;
+                    background-color: lighten(map-get($theme, cta-background-color), $s__button-background-color--alt_percent);
                 }
-                @if $f__button-background-color--alt < 0 {
-                    $f__button-background-color--alt_percent: $f__button-background-color--alt * -1%;
-                    background-color: darken(map-get($theme, cta-background-color), $f__button-background-color--alt_percent);
+                @if $s__button-background-color--alt < 0 {
+                    $s__button-background-color--alt_percent: $s__button-background-color--alt * -1%;
+                    background-color: darken(map-get($theme, cta-background-color), $s__button-background-color--alt_percent);
                 }
             }
             */
@@ -7656,7 +7778,7 @@ $pagination-button--border-color: darken($pagination--base-color, 20%) !default;
   height: 50vh;
 }
 
-/*@media (max-width: $f__breakpoint--enhanced) {
+/*@media (max-width: $s__breakpoint--enhanced) {
     .u-image-cover {
        
         &--min-10 {
@@ -9153,14 +9275,14 @@ main :target {
   touch-action: manipulation;
   /* 1 */
   -webkit-appearance: none;
-  /*@if $f__button-focus-outline-width != false {
+  /*@if $s__button-focus-outline-width != false {
         &:hover,
         &:active,
         &:focus {
-            outline-width: $f__button-focus-outline-width;
-            outline-style: $f__button-focus-outline-style;
-            outline-color: $f__button-focus-outline-color;
-            outline-offset: $f__button-focus-outline-offset;
+            outline-width: $s__button-focus-outline-width;
+            outline-style: $s__button-focus-outline-style;
+            outline-color: $s__button-focus-outline-color;
+            outline-offset: $s__button-focus-outline-offset;
         }
     }*/
 }
@@ -9181,14 +9303,14 @@ main :target {
 
 .c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-neoclear[href]:hover, .c-user-content a[href][data-display-as~="primary-cta"] a.t-neoclear[href]:hover[data-display-as~="primary-cta"], .c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-neoclear[href]:active, .c-user-content a[href][data-display-as~="primary-cta"] a.t-neoclear[href]:active[data-display-as~="primary-cta"], .c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-neoclear[href]:focus, .c-user-content a[href][data-display-as~="primary-cta"] a.t-neoclear[href]:focus[data-display-as~="primary-cta"] {
   color: #ffffff;
-  /*@if is-int($f__button-background-color--alt) {
-                @if $f__button-background-color--alt > 0 {
-                    $f__button-background-color--alt_percent: $f__button-background-color--alt * 1%;
-                    background-color: lighten(map-get($theme, cta-background-color), $f__button-background-color--alt_percent);
+  /*@if is-int($s__button-background-color--alt) {
+                @if $s__button-background-color--alt > 0 {
+                    $s__button-background-color--alt_percent: $s__button-background-color--alt * 1%;
+                    background-color: lighten(map-get($theme, cta-background-color), $s__button-background-color--alt_percent);
                 }
-                @if $f__button-background-color--alt < 0 {
-                    $f__button-background-color--alt_percent: $f__button-background-color--alt * -1%;
-                    background-color: darken(map-get($theme, cta-background-color), $f__button-background-color--alt_percent);
+                @if $s__button-background-color--alt < 0 {
+                    $s__button-background-color--alt_percent: $s__button-background-color--alt * -1%;
+                    background-color: darken(map-get($theme, cta-background-color), $s__button-background-color--alt_percent);
                 }
             }
             */
@@ -9912,14 +10034,14 @@ $patterns: (
 
 .c-primary-cta.t-white[href]:hover, .c-user-content a.t-white[href]:hover[data-display-as~="primary-cta"], .c-primary-cta.t-white[href]:active, .c-user-content a.t-white[href]:active[data-display-as~="primary-cta"], .c-primary-cta.t-white[href]:focus, .c-user-content a.t-white[href]:focus[data-display-as~="primary-cta"] {
   color: #333333;
-  /*@if is-int($f__button-background-color--alt) {
-                @if $f__button-background-color--alt > 0 {
-                    $f__button-background-color--alt_percent: $f__button-background-color--alt * 1%;
-                    background-color: lighten(map-get($theme, cta-background-color), $f__button-background-color--alt_percent);
+  /*@if is-int($s__button-background-color--alt) {
+                @if $s__button-background-color--alt > 0 {
+                    $s__button-background-color--alt_percent: $s__button-background-color--alt * 1%;
+                    background-color: lighten(map-get($theme, cta-background-color), $s__button-background-color--alt_percent);
                 }
-                @if $f__button-background-color--alt < 0 {
-                    $f__button-background-color--alt_percent: $f__button-background-color--alt * -1%;
-                    background-color: darken(map-get($theme, cta-background-color), $f__button-background-color--alt_percent);
+                @if $s__button-background-color--alt < 0 {
+                    $s__button-background-color--alt_percent: $s__button-background-color--alt * -1%;
+                    background-color: darken(map-get($theme, cta-background-color), $s__button-background-color--alt_percent);
                 }
             }
             */
@@ -10017,14 +10139,14 @@ table.t-white tr:nth-child(odd) > th,
   /*&:hover,
     &:active,
     &:focus {
-        @if is-int($f__button-background-color--alt) {
-            @if $f__button-background-color--alt > 0 {
-                $f__button-background-color--alt_percent: $f__button-background-color--alt * 1%;
-                background-color: lighten(map-get($theme, background-color), $f__button-background-color--alt_percent);
+        @if is-int($s__button-background-color--alt) {
+            @if $s__button-background-color--alt > 0 {
+                $s__button-background-color--alt_percent: $s__button-background-color--alt * 1%;
+                background-color: lighten(map-get($theme, background-color), $s__button-background-color--alt_percent);
             }
-            @if $f__button-background-color--alt < 0 {
-                $f__button-background-color--alt_percent: $f__button-background-color--alt * -1%;
-                background-color: darken(map-get($theme, background-color), $f__button-background-color--alt_percent);
+            @if $s__button-background-color--alt < 0 {
+                $s__button-background-color--alt_percent: $s__button-background-color--alt * -1%;
+                background-color: darken(map-get($theme, background-color), $s__button-background-color--alt_percent);
             }
         }
     }*/
@@ -10038,14 +10160,14 @@ table.t-white tr:nth-child(odd) > th,
   /*&:hover,
     &:active,
     &:focus {
-        @if is-int($f__button-background-color--alt) {
-            @if $f__button-background-color--alt > 0 {
-                $f__button-background-color--alt_percent: $f__button-background-color--alt * 1%;
-                background-color: lighten(map-get($theme, background-color), $f__button-background-color--alt_percent);
+        @if is-int($s__button-background-color--alt) {
+            @if $s__button-background-color--alt > 0 {
+                $s__button-background-color--alt_percent: $s__button-background-color--alt * 1%;
+                background-color: lighten(map-get($theme, background-color), $s__button-background-color--alt_percent);
             }
-            @if $f__button-background-color--alt < 0 {
-                $f__button-background-color--alt_percent: $f__button-background-color--alt * -1%;
-                background-color: darken(map-get($theme, background-color), $f__button-background-color--alt_percent);
+            @if $s__button-background-color--alt < 0 {
+                $s__button-background-color--alt_percent: $s__button-background-color--alt * -1%;
+                background-color: darken(map-get($theme, background-color), $s__button-background-color--alt_percent);
             }
         }
     }*/
@@ -10616,14 +10738,14 @@ $patterns: (
 
 .c-primary-cta.t-neutral[href]:hover, .c-user-content a.t-neutral[href]:hover[data-display-as~="primary-cta"], .c-primary-cta.t-neutral[href]:active, .c-user-content a.t-neutral[href]:active[data-display-as~="primary-cta"], .c-primary-cta.t-neutral[href]:focus, .c-user-content a.t-neutral[href]:focus[data-display-as~="primary-cta"] {
   color: #333333;
-  /*@if is-int($f__button-background-color--alt) {
-                @if $f__button-background-color--alt > 0 {
-                    $f__button-background-color--alt_percent: $f__button-background-color--alt * 1%;
-                    background-color: lighten(map-get($theme, cta-background-color), $f__button-background-color--alt_percent);
+  /*@if is-int($s__button-background-color--alt) {
+                @if $s__button-background-color--alt > 0 {
+                    $s__button-background-color--alt_percent: $s__button-background-color--alt * 1%;
+                    background-color: lighten(map-get($theme, cta-background-color), $s__button-background-color--alt_percent);
                 }
-                @if $f__button-background-color--alt < 0 {
-                    $f__button-background-color--alt_percent: $f__button-background-color--alt * -1%;
-                    background-color: darken(map-get($theme, cta-background-color), $f__button-background-color--alt_percent);
+                @if $s__button-background-color--alt < 0 {
+                    $s__button-background-color--alt_percent: $s__button-background-color--alt * -1%;
+                    background-color: darken(map-get($theme, cta-background-color), $s__button-background-color--alt_percent);
                 }
             }
             */
@@ -10721,14 +10843,14 @@ table.t-neutral tr:nth-child(odd) > th,
   /*&:hover,
     &:active,
     &:focus {
-        @if is-int($f__button-background-color--alt) {
-            @if $f__button-background-color--alt > 0 {
-                $f__button-background-color--alt_percent: $f__button-background-color--alt * 1%;
-                background-color: lighten(map-get($theme, background-color), $f__button-background-color--alt_percent);
+        @if is-int($s__button-background-color--alt) {
+            @if $s__button-background-color--alt > 0 {
+                $s__button-background-color--alt_percent: $s__button-background-color--alt * 1%;
+                background-color: lighten(map-get($theme, background-color), $s__button-background-color--alt_percent);
             }
-            @if $f__button-background-color--alt < 0 {
-                $f__button-background-color--alt_percent: $f__button-background-color--alt * -1%;
-                background-color: darken(map-get($theme, background-color), $f__button-background-color--alt_percent);
+            @if $s__button-background-color--alt < 0 {
+                $s__button-background-color--alt_percent: $s__button-background-color--alt * -1%;
+                background-color: darken(map-get($theme, background-color), $s__button-background-color--alt_percent);
             }
         }
     }*/
@@ -10742,14 +10864,14 @@ table.t-neutral tr:nth-child(odd) > th,
   /*&:hover,
     &:active,
     &:focus {
-        @if is-int($f__button-background-color--alt) {
-            @if $f__button-background-color--alt > 0 {
-                $f__button-background-color--alt_percent: $f__button-background-color--alt * 1%;
-                background-color: lighten(map-get($theme, background-color), $f__button-background-color--alt_percent);
+        @if is-int($s__button-background-color--alt) {
+            @if $s__button-background-color--alt > 0 {
+                $s__button-background-color--alt_percent: $s__button-background-color--alt * 1%;
+                background-color: lighten(map-get($theme, background-color), $s__button-background-color--alt_percent);
             }
-            @if $f__button-background-color--alt < 0 {
-                $f__button-background-color--alt_percent: $f__button-background-color--alt * -1%;
-                background-color: darken(map-get($theme, background-color), $f__button-background-color--alt_percent);
+            @if $s__button-background-color--alt < 0 {
+                $s__button-background-color--alt_percent: $s__button-background-color--alt * -1%;
+                background-color: darken(map-get($theme, background-color), $s__button-background-color--alt_percent);
             }
         }
     }*/
@@ -11588,7 +11710,7 @@ input:not([type]):focus,
 /*
 
 */
-/*$brochure-spacing-unit: $f__base-rem-space-unit;
+/*$brochure-spacing-unit: $s__base-rem-space-unit;
 $brochure--border-or-outline: false;
 @import "component-patterns/_brochure.scss";*/
 /*
@@ -11655,7 +11777,7 @@ $card-button--border-color: darken($card--base-color, 20%) !default;
 }
 
 /*@include card-theme("card", (
-    background-color: darken($f__base-ui-color, 20%),
+    background-color: darken($s__base-ui-color, 20%),
     text-color: #fff
     )
 );*/
@@ -12163,14 +12285,14 @@ $patterns: (
 
 .c-primary-cta.t-neoclear[href]:hover, .c-user-content a.t-neoclear[href]:hover[data-display-as~="primary-cta"], .c-primary-cta.t-neoclear[href]:active, .c-user-content a.t-neoclear[href]:active[data-display-as~="primary-cta"], .c-primary-cta.t-neoclear[href]:focus, .c-user-content a.t-neoclear[href]:focus[data-display-as~="primary-cta"] {
   color: #ffffff;
-  /*@if is-int($f__button-background-color--alt) {
-                @if $f__button-background-color--alt > 0 {
-                    $f__button-background-color--alt_percent: $f__button-background-color--alt * 1%;
-                    background-color: lighten(map-get($theme, cta-background-color), $f__button-background-color--alt_percent);
+  /*@if is-int($s__button-background-color--alt) {
+                @if $s__button-background-color--alt > 0 {
+                    $s__button-background-color--alt_percent: $s__button-background-color--alt * 1%;
+                    background-color: lighten(map-get($theme, cta-background-color), $s__button-background-color--alt_percent);
                 }
-                @if $f__button-background-color--alt < 0 {
-                    $f__button-background-color--alt_percent: $f__button-background-color--alt * -1%;
-                    background-color: darken(map-get($theme, cta-background-color), $f__button-background-color--alt_percent);
+                @if $s__button-background-color--alt < 0 {
+                    $s__button-background-color--alt_percent: $s__button-background-color--alt * -1%;
+                    background-color: darken(map-get($theme, cta-background-color), $s__button-background-color--alt_percent);
                 }
             }
             */
@@ -12268,14 +12390,14 @@ table.t-neoclear tr:nth-child(odd) > th,
   /*&:hover,
     &:active,
     &:focus {
-        @if is-int($f__button-background-color--alt) {
-            @if $f__button-background-color--alt > 0 {
-                $f__button-background-color--alt_percent: $f__button-background-color--alt * 1%;
-                background-color: lighten(map-get($theme, background-color), $f__button-background-color--alt_percent);
+        @if is-int($s__button-background-color--alt) {
+            @if $s__button-background-color--alt > 0 {
+                $s__button-background-color--alt_percent: $s__button-background-color--alt * 1%;
+                background-color: lighten(map-get($theme, background-color), $s__button-background-color--alt_percent);
             }
-            @if $f__button-background-color--alt < 0 {
-                $f__button-background-color--alt_percent: $f__button-background-color--alt * -1%;
-                background-color: darken(map-get($theme, background-color), $f__button-background-color--alt_percent);
+            @if $s__button-background-color--alt < 0 {
+                $s__button-background-color--alt_percent: $s__button-background-color--alt * -1%;
+                background-color: darken(map-get($theme, background-color), $s__button-background-color--alt_percent);
             }
         }
     }*/
@@ -12289,14 +12411,14 @@ table.t-neoclear tr:nth-child(odd) > th,
   /*&:hover,
     &:active,
     &:focus {
-        @if is-int($f__button-background-color--alt) {
-            @if $f__button-background-color--alt > 0 {
-                $f__button-background-color--alt_percent: $f__button-background-color--alt * 1%;
-                background-color: lighten(map-get($theme, background-color), $f__button-background-color--alt_percent);
+        @if is-int($s__button-background-color--alt) {
+            @if $s__button-background-color--alt > 0 {
+                $s__button-background-color--alt_percent: $s__button-background-color--alt * 1%;
+                background-color: lighten(map-get($theme, background-color), $s__button-background-color--alt_percent);
             }
-            @if $f__button-background-color--alt < 0 {
-                $f__button-background-color--alt_percent: $f__button-background-color--alt * -1%;
-                background-color: darken(map-get($theme, background-color), $f__button-background-color--alt_percent);
+            @if $s__button-background-color--alt < 0 {
+                $s__button-background-color--alt_percent: $s__button-background-color--alt * -1%;
+                background-color: darken(map-get($theme, background-color), $s__button-background-color--alt_percent);
             }
         }
     }*/
@@ -12801,7 +12923,10 @@ blockquote > p:last-child::after {
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Element: h
+
+    START=CSS ELEMENT: h
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
   h1 {
     margin-bottom: 2.4rem;

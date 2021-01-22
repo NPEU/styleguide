@@ -2,14 +2,14 @@
 $backgrounds-namespace: d- !default;
 $theme-namespace: t- !default;
 
-$backgrounds--background-color : $f__base-ui-color !default;
+$backgrounds--background-color : $s__base-ui-color !default;
 
 $theme-only: false !default;
 
 @mixin text-theme ($new-color) {
 
     $text-color: #fff;
-    @if f__color_light_or_dark($new-color) == 'light' {
+    @if s__color_light_or_dark($new-color) == 'light' {
         $text-color: #333;
     }
     
@@ -34,7 +34,7 @@ $theme-only: false !default;
     a[href].c-cta:hover,
     a[href].c-cta:active,
     a[href].c-cta:focus {
-        @if f__color_light_or_dark($text-color) == 'light' {
+        @if s__color_light_or_dark($text-color) == 'light' {
             background-color: rgba(0,0,0,0.1) !important;
         } @else {
             background-color: rgba(255,255,255,0.1) !important;

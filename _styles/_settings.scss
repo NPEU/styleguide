@@ -2,32 +2,32 @@
 
 */
 
-$f__base-font-family: 'Lato', sans-serif;
+$s__base-font-family: 'Lato', sans-serif;
 
-$f__root-font-size: 10px;
+$s__root-font-size: 10px;
 
-$f__base-ui-color: #614776;
-//$f__breakpoint--enhanced: 42.5625em;
-//$f__breakpoint--enhanced: 51.875em;
-//$f__breakpoint--enhanced: 58em;
-$f__body-max-width: 0;
+$s__base-ui-color: #614776;
+//$s__breakpoint--enhanced: 42.5625em;
+//$s__breakpoint--enhanced: 51.875em;
+//$s__breakpoint--enhanced: 58em;
+$s__body-max-width: 0;
 
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start_settings.scss';
 
 
 $max-main-line-length: 0;
-$f__measure: 42em;
+$s__measure: 42em;
 $not-too-small: 18em;
 
-//$h1-font-size: 40px / $f__base-font-size * 1em;
-//$h2-font-size: 32px / $f__base-font-size * 1em;
-//$h3-font-size: 26px / $f__base-font-size * 1em;
+//$h1-font-size: 40px / $s__base-font-size * 1em;
+//$h2-font-size: 32px / $s__base-font-size * 1em;
+//$h3-font-size: 26px / $s__base-font-size * 1em;
 $hover-effect-opacity: 0.2;
-$hover-effect-width: $f__base-rem-space-unit / 4;
+$hover-effect-width: $s__base-rem-space-unit / 4;
 
 /* --| FUNCTIONS AND MIXINS |-------------------------------------------------------------------- */
 
-@mixin bottom-space-fix ($size: $f__base-rem-space-unit) {
+@mixin bottom-space-fix ($size: $s__base-rem-space-unit) {
 
 	padding-bottom: 0 !important;
 

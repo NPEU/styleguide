@@ -35,9 +35,9 @@ $theme-only: false !default;
         background: -webkit-linear-gradient(45deg, lighten(map-get($theme, system-message-color), 20%) 0%, lighten(map-get($theme, system-message-color), 21%) 50%, lighten(map-get($theme, system-message-color), 19%) 50%, lighten(map-get($theme, system-message-color), 18%) 100%) !important;
         background:         linear-gradient(45deg, lighten(map-get($theme, system-message-color), 20%) 0%, lighten(map-get($theme, system-message-color), 21%) 50%, lighten(map-get($theme, system-message-color), 19%) 50%, lighten(map-get($theme, system-message-color), 18%) 100%) !important;
         
-        //@if f__color_light_or_dark(lighten(map-get($theme, system-message-color), 20%)) == 'light' {
-        @if f__color_light_or_dark(map-get($theme, system-message-color)) == 'light' {
-            color: $f__base-text-color;
+        //@if s__color_light_or_dark(lighten(map-get($theme, system-message-color), 20%)) == 'light' {
+        @if s__color_light_or_dark(map-get($theme, system-message-color)) == 'light' {
+            color: $s__base-text-color;
         } @else {
             color: #fff;
         }
