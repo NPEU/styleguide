@@ -361,7 +361,7 @@ $uc-breakpoint: 35em !default;
             }
         }
 
-        a[href][rel=external][data-contains~="image"]::after {
+        a[href][rel~="external"][data-contains~="image"]::after {
             position: absolute;
             right: -1em;
             top: -1em;

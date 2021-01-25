@@ -4,10 +4,11 @@
 
 $image-cover-namespace: u- !default;
 
+/*
 .#{$image-cover-namespace} {
     margin-left: $sz-s !important;
 }
-
+*/
 
 
 /* Make the image fill the width and be vertically centered: */
@@ -119,23 +120,23 @@ $image-cover-namespace: u- !default;
     min-height: 100%;
     
     &#{&}--min-10 {
-       height: 10vh;
+       min-height: 10vh;
     }
 
     &#{&}--min-20 {
-        height: 20vh;
+        min-height: 20vh;
     }
 
     &#{&}--min-30 {
-        height: 30vh;
+        min-height: 30vh;
     }
 
     &#{&}--min-40 {
-        height: 40vh;
+        min-height: 40vh;
     }
 
     &#{&}--min-50 {
-        height: 50vh;
+        min-height: 50vh;
     }
 }
 

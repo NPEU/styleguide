@@ -1,7 +1,7 @@
 // NEED A BETTER PLACE FOR THE FOLLOWING:
 
 // Reduce opacity of external link marker to make less overbearing.
-a[href][rel=external]::after {
+a[href][rel~="external"]::after {
     opacity: 0.6;
 }
 

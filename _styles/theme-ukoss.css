@@ -4449,13 +4449,14 @@ a[href].c-badge:hover, a[href].c-badge:active, a[href].c-badge:focus {
   box-shadow: 0 0 0 0.6rem #fff, 0 0 0 1.2rem rgba(0, 0, 0, 0.2);
 }
 
-a[href][rel=external].c-badge::after {
+a[href][rel~="external"].c-badge::after {
   position: absolute;
   right: -1em;
   top: -1em;
   width: 1.25em;
   height: 1.25em;
   display: block;
+  margin: 0;
 }
 
 /*
@@ -7669,10 +7670,11 @@ $pagination-button--border-color: darken($pagination--base-color, 20%) !default;
 /*
     Fill and area with an image.
 */
+/*
 .u- {
-  margin-left: 1.2rem !important;
+    margin-left: $sz-s !important;
 }
-
+*/
 /* Make the image fill the width and be vertically centered: */
 /* (in portrait images this will leave gaps at the sides) */
 /*.u-image-cover {
@@ -7760,23 +7762,23 @@ $pagination-button--border-color: darken($pagination--base-color, 20%) !default;
 }
 
 .u-image-cover.u-image-cover--min-10 {
-  height: 10vh;
+  min-height: 10vh;
 }
 
 .u-image-cover.u-image-cover--min-20 {
-  height: 20vh;
+  min-height: 20vh;
 }
 
 .u-image-cover.u-image-cover--min-30 {
-  height: 30vh;
+  min-height: 30vh;
 }
 
 .u-image-cover.u-image-cover--min-40 {
-  height: 40vh;
+  min-height: 40vh;
 }
 
 .u-image-cover.u-image-cover--min-50 {
-  height: 50vh;
+  min-height: 50vh;
 }
 
 /*@media (max-width: $s__breakpoint--enhanced) {
@@ -7803,6 +7805,64 @@ $pagination-button--border-color: darken($pagination--base-color, 20%) !default;
         }
     }
 }---*/
+/*
+    Fill and area with an image.
+*/
+.u-image-natural {
+  /*
+        1. For positioned pseudo elements, e.g. External indicator.
+        2. For IE11
+    */
+}
+
+.u-image-natural.u-image-natural {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  /* [1] */
+  max-width: 100%;
+  /* [2] */
+}
+
+.u-image-natural .u-image-natural__image {
+  /*
+            1. This is to provide positioning context for the ::after pseudo-element.
+            2. This is so a broken image is still 100%.
+            3. Center in container.
+        */
+  position: relative;
+  /* [1] */
+  display: block;
+  /* [2] */
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  border-style: none;
+  background-color: transparent;
+  margin: 0 auto;
+  /* [3] */
+}
+
+a[href].u-image-natural {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+a[href].u-image-natural:hover, a[href].u-image-natural:active, a[href].u-image-natural:focus {
+  border: 0;
+  box-shadow: 0 0 0 1.2rem rgba(0, 0, 0, 0.2) inset;
+}
+
+a[href][rel~="external"].u-image-natural::after {
+  position: absolute;
+  right: -1em;
+  top: -1em;
+  width: 1.25em;
+  height: 1.25em;
+  display: block;
+}
+
 /*
     Text alignment.
 
@@ -9609,7 +9669,7 @@ main :target {
   box-shadow: 0 0 0 0.6rem #fff, 0 0 0 1.2rem rgba(0, 0, 0, 0.2);
 }
 
-.c-user-content a[href][rel=external][data-contains~="image"]::after {
+.c-user-content a[href][rel~="external"][data-contains~="image"]::after {
   position: absolute;
   right: -1em;
   top: -1em;
@@ -12877,7 +12937,7 @@ input:not([type]):focus,
 
 /* ---------------------------------------------------------------------------------------------- */
 /* --| SHAME |----------------------------------------------------------------------------------- */
-a[href][rel="external"]::after {
+a[href][rel~="external"]::after {
   opacity: 0.6;
 }
 
