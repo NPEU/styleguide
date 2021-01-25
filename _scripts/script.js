@@ -268,8 +268,8 @@ var cookie_html                   =
 
 (function() {
 
-    var debug                                = true;
-    //var debug                                = false;
+    //var debug                                = true;
+    var debug                                = false;
     var ident                                = 'cmr';
     var selector                             = '[data-js="' + ident + '"]';
     var js_classname_prefix                  = 'js';
