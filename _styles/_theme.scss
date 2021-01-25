@@ -86,12 +86,12 @@ $theme: map-merge(
 .#{$theme-namespace}#{$theme-name} button,
 .#{$theme-namespace}#{$theme-name} button.over-panel-control,
 .#{$theme-namespace}#{$theme-name} button.over-panel-control[aria-expanded=true] {*
-.#{$theme-namespace}#{$theme-name} button:not(.over-panel__overlay):not(.dropdown__button),
+.#{$theme-namespace}#{$theme-name} button:not(.over-panel__overlay):not(.dropdown__control),
 .#{$theme-namespace}#{$theme-name} button:not(.over-panel__overlay)[aria-expanded=true] {
 */
-button.#{$theme-namespace}#{$theme-name}:not(.over-panel__overlay):not(.dropdown__button),
-a[href].button.#{$theme-namespace}#{$theme-name}:not(.over-panel__overlay):not(.dropdown__button),
-a[href].c-cta.#{$theme-namespace}#{$theme-name}:not(.over-panel__overlay):not(.dropdown__button),
+button.#{$theme-namespace}#{$theme-name}:not(.over-panel__overlay):not(.dropdown__control),
+a[href].button.#{$theme-namespace}#{$theme-name}:not(.over-panel__overlay):not(.dropdown__control),
+a[href].c-cta.#{$theme-namespace}#{$theme-name}:not(.over-panel__overlay):not(.dropdown__control),
 .cookie_notice__action button {
     border-color: map-get($theme, border-color) !important;
     color: map-get($theme, cta-text-color) !important;

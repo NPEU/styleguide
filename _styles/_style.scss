@@ -106,15 +106,18 @@ $s__sub-nav__link--border-style:           solid;
 // something here? Either it should be configurable or removed, really, or the sloped background
 // applied to the ::before instead.
 
-.js-nav-bar .nav-bar::before {
+//.js-nav-bar .nav-bar::before {
+.nav-bar::before {
     background: transparent;
 }
 
-.js-nav-bar .nav-bar__items .nav-bar__item {
+//.js-nav-bar .nav-bar__items .nav-bar__item {
+.nav-bar__items .nav-bar__item {
     border-left-width: $s__nav-bar__link--border-width;
 }
 
-.js-nav-bar .nav-bar__items .nav-bar__item {
+//.js-nav-bar .nav-bar__items .nav-bar__item {
+.nav-bar__items .nav-bar__item {
     margin-left: 1.2rem;
 }
 
@@ -123,10 +126,10 @@ $s__sub-nav__link--border-style:           solid;
 
 $s__dropdown--background-color:               transparent;
 $s__dropdown--text-color:                     $s__nav-bar__link--color;
-$s__dropdown__button--color:                  $s__nav-bar__link--color;
-$s__dropdown__button--background-color:       $s__nav-bar__link--background-color;
-$s__dropdown__button--background-color--alt:  $s__nav-bar__link--background-color--alt;
-$s__dropdown__button--background-color--alt2: $s__nav-bar__link--background-color--alt;
+$s__dropdown__control--color:                  $s__nav-bar__link--color;
+$s__dropdown__control--background-color:       $s__nav-bar__link--background-color;
+$s__dropdown__control--background-color--alt:  $s__nav-bar__link--background-color--alt;
+$s__dropdown__control--background-color--alt2: $s__nav-bar__link--background-color--alt;
 
 @import "../bower_components/Fall-Back-Patterns/Dropdown/scss/_dropdown-v2";
 
