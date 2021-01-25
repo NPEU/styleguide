@@ -8,6 +8,10 @@ $text-size-namespace: u- !default;
 
 .#{$text-size-namespace}text-size--small {
     font-size: 0.875em !important;
+    
+    a[href] {
+        border-width: 1px;
+    }
 }
 
 .#{$text-size-namespace}text-size--large {
