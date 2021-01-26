@@ -53,7 +53,7 @@ a[href].#{$image-natural-namespace}image-natural {
     &:active,
     &:focus {
         border: 0;
-        
+
         &::before {
             content: "";
             display: block;
@@ -69,6 +69,12 @@ a[href].#{$image-natural-namespace}image-natural {
 }
 
 a[href][rel~="external"].#{$image-natural-namespace}image-natural::after {
+    display: none;
+}
+
+a[href][rel~="external"].#{$image-natural-namespace}image-natural:hover::after,
+a[href][rel~="external"].#{$image-natural-namespace}image-natural:active::after,
+a[href][rel~="external"].#{$image-natural-namespace}image-natural:focus::after {
     position: absolute;
     right: 1em;
     top: 1em;

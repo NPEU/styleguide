@@ -166,8 +166,14 @@ $content-breakpoint: 60em !default;
             box-shadow: 0 0 0 0.6rem #fff, 0 0 0 1.2rem rgba(0,0,0,.2);
         }
     }
-
+    
     a[href][rel~="external"].#{$badge-namespace}badge::after {
+        display: none;
+    }
+
+    a[href][rel~="external"].#{$badge-namespace}badge:hover::after,
+    a[href][rel~="external"].#{$badge-namespace}badge:active::after,
+    a[href][rel~="external"].#{$badge-namespace}badge:focus::after {
         position: absolute;
         right: -1em;
         top: -1em;

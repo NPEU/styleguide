@@ -4450,6 +4450,12 @@ a[href].c-badge:hover, a[href].c-badge:active, a[href].c-badge:focus {
 }
 
 a[href][rel~="external"].c-badge::after {
+  display: none;
+}
+
+a[href][rel~="external"].c-badge:hover::after,
+a[href][rel~="external"].c-badge:active::after,
+a[href][rel~="external"].c-badge:focus::after {
   position: absolute;
   right: -1em;
   top: -1em;
@@ -7867,6 +7873,12 @@ a[href].u-image-natural:hover::before, a[href].u-image-natural:active::before, a
 }
 
 a[href][rel~="external"].u-image-natural::after {
+  display: none;
+}
+
+a[href][rel~="external"].u-image-natural:hover::after,
+a[href][rel~="external"].u-image-natural:active::after,
+a[href][rel~="external"].u-image-natural:focus::after {
   position: absolute;
   right: 1em;
   top: 1em;
