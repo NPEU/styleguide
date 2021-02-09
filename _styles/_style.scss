@@ -72,6 +72,9 @@ $hover-effect-width: $s__base-rem-space-unit / 4;
 
 /* --| FALL-BACK PATTERNS |---------------------------------------------------------------------- */
 
+@import "../bower_components/Fall-Back-Patterns/Close Button/scss/_close-button";
+
+
 //$s__over-panel__contents--offset-top: 3px;
 $s__over-panel__contents--padding: 0;
 $s__over-panel__overlay--background-color: #000;

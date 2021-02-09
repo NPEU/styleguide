@@ -252,8 +252,90 @@ var cookie_html                   =
     ready(cookienotice.init);
 })();
 
+/*! --------------------------------------------------------------------------------------------- *\
+
+    Fall-Back Close Button v1.0.0
+    https://github.com/Fall-Back/Patterns/tree/master/Close%20Button
+    Copyright (c) 2021, Andy Kirk
+    Released under the MIT license https://git.io/vwTVl
+    
+    Designed for use with the EM2 [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
+    Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser ~11.8+
+    FF 47+
+
+    PLUS IE11
+
+\* ---------------------------------------------------------------------------------------------- */
+
+(function() {
+
+    var close_button_container_selector = '[data-js="close-button"]';
+    var close_button_class              = 'close-button';
+    var close_button_id                 = '';
+    var close_button_effect_duration    = 1000;
+
+    var close_button_container_class    = 'js-close-button-container';
+
+    var close_button_class_string = '';
+    if (close_button_class) {
+        close_button_class_string = ' class="' + close_button_class +'"';
+    }
+
+    var close_button_id_string = '';
+    if (close_button_id) {
+        close_button_id_string = ' class="' + close_button_id +'"';
+    }
+
+    var close_button_html  =
+'<button' + close_button_id_string + close_button_class_string + '">' +
+'    <span hidden="" aria-hidden="false">Close</span>' +
+'    <svg focusable="false" class="icon  icon--is-open"><use xlink:href="#icon-cross"></use></svg></button>' +
+'</button>' + "\n";
+
+    var ready = function(fn) {
+        if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+            fn();
+        } else {
+            document.addEventListener('DOMContentLoaded', fn);
+        }
+    }
+
+    var $close_button = {
+
+        close_buttons: null,
+        close_button_containers: null,
+
+        init: function() {
+			var self = this;
+
+            $close_button.close_button_containers = document.querySelectorAll(close_button_container_selector);
+
+            Array.prototype.forEach.call($close_button.close_button_containers, function (close_button_container, i) {
+
+                close_button_container.className += '  ' + close_button_container_class;
+
+                close_button_container.innerHTML += close_button_html;
+
+                var close_button = close_button_container.lastElementChild;
+
+                close_button.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    close_button_container.setAttribute('data-close', true);
+
+                    setTimeout(function(){
+                        close_button_container.parentNode.removeChild(close_button_container);
+                    }, close_button_effect_duration);
+                });
+            });
+        }
+    }
+
+    ready($close_button.init);
+})();
+
 /*!
-    Fall-Back Content Min-row v1.0.0
+    Fall-Back Content Min-row v1.0.1
     https://github.com/Fall-Back/Nav-Bar
     Copyright (c) 2021, Andy Kirk
     Released under the MIT license https://git.io/vwTVl
@@ -268,8 +350,8 @@ var cookie_html                   =
 
 (function() {
 
-    //var debug                                = true;
-    var debug                                = false;
+    var debug                                = true;
+    //var debug                                = false;
     var ident                                = 'cmr';
     var selector                             = '[data-js="' + ident + '"]';
     var js_classname_prefix                  = 'js';
@@ -283,20 +365,20 @@ var cookie_html                   =
             document.addEventListener('DOMContentLoaded', fn);
         }
     }
+    
+    var set_style = function(element, style) {
+        Object.keys(style).forEach(function(key) {
+            element.style[key] = style[key];
+        });
+    }
 
-	var $cmr = {
+    var $cmr = {
 
         cmrs: null,
 
         root_font_size: window.getComputedStyle(document.documentElement).getPropertyValue('font-size'),
 
-		set_style: function(element, style) {
-			Object.keys(style).forEach(function(key) {
-				element.style[key] = style[key];
-			});
-		},
-
-		switcher: function(cmr) {
+        switcher: function(cmr) {
 
             // Check for browser font chnage and reset breakpoints if it has:
             if ($cmr.root_font_size != window.getComputedStyle(document.documentElement).getPropertyValue('font-size')) {
@@ -308,24 +390,24 @@ var cookie_html                   =
             // May rethink this as I don't NEED to support older browsers witht this - I just don't
             // want it broken. Maybe I should quit out of this if dataset isn't supported, but it's
             // ok for now.
-			var wide = cmr.offsetWidth > cmr.getAttribute('data-js-breakpoint');
-			// Need to make these classnames dynamic
-			if (wide) {
+            var wide = cmr.offsetWidth > cmr.getAttribute('data-js-breakpoint');
+            // Need to make these classnames dynamic
+            if (wide) {
                 cmr.classList.add(js_classname_prefix + '-' + ident + '--' + container_js_classname_wide_suffix);
                 cmr.classList.remove(js_classname_prefix + '-' + ident + '--' + container_js_classname_narrow_suffix);
 
                 if (debug) {
                     cmr.style.outline = '3px solid red';
                 }
-			} else {
+            } else {
                 cmr.classList.add(js_classname_prefix + '-' + ident + '--' + container_js_classname_narrow_suffix);
                 cmr.classList.remove(js_classname_prefix + '-' + ident + '--' + container_js_classname_wide_suffix);
 
                 if (debug) {
                     cmr.style.outline = '3px solid blue';
                 }
-			}
-		},
+            }
+        },
 
         set_breakpoints: function(cmrs) {
 
@@ -333,12 +415,12 @@ var cookie_html                   =
                 var clone = cmr.cloneNode(true);
                 clone.classList.add(js_classname_prefix + '-' + ident + '--' + container_js_classname_wide_suffix);
 
-                $cmr.set_style(clone, {
-					position: 'absolute',
-					border: '0',
-					left: '0',
-					top: '0',
-				});
+                set_style(clone, {
+                    position: 'absolute',
+                    border: '0',
+                    left: '0',
+                    top: '0',
+                });
                 cmr.parentNode.appendChild(clone);
 
                 var children   = clone.children;
@@ -365,7 +447,7 @@ var cookie_html                   =
                 console.log('Initialising ' + ident);
             }
 
-			var self = this;
+            var self = this;
 
             // Get all the CMR's:
             $cmr.cmrs = document.querySelectorAll(selector);
@@ -406,7 +488,7 @@ var cookie_html                   =
 
                 Array.prototype.forEach.call($cmr.cmrs, function (cmr, i) {
                     var detector = document.createElement('iframe');
-                    $cmr.set_style(detector, style);
+                    set_style(detector, style);
                     detector.setAttribute('aria-hidden', 'true');
 
                     cmr.appendChild(detector);
@@ -419,17 +501,25 @@ var cookie_html                   =
             }
             return;
         }
-	}
+    }
 
-	ready($cmr.init);
+    ready($cmr.init);
 })();
 
-/*!
+/*! --------------------------------------------------------------------------------------------- *\
+    
     Fall-Back Dropdown v2.0.0
-    https://github.com/Fall-Back/Dropdown
+    https://github.com/Fall-Back/Patterns/tree/master/Dropdown
     Copyright (c) 2021, Andy Kirk
     Released under the MIT license https://git.io/vwTVl
-*/
+
+    Designed for use with the EM2 [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
+    Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser ~11.8+
+    FF 47+
+
+    PLUS IE11
+
+\* ---------------------------------------------------------------------------------------------- */
 
 (function() {
 
@@ -576,12 +666,20 @@ var cookie_html                   =
 	ready(dropdown.init);
 })();
 
-/*!
-    Fall-Back Over-Panel v3.0.0
-    https://github.com/Fall-Back/Over-Panel
+/*! --------------------------------------------------------------------------------------------- *\
+    
+    Fall-Back Over Panel v2.0.0
+    https://github.com/Fall-Back/Patterns/tree/master/Over%20Panel
     Copyright (c) 2021, Andy Kirk
     Released under the MIT license https://git.io/vwTVl
-*/
+
+    Designed for use with the EM2 [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
+    Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser ~11.8+
+    FF 47+
+
+    PLUS IE11
+
+\* ---------------------------------------------------------------------------------------------- */
 
 (function() {
 

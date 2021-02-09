@@ -2277,6 +2277,26 @@ a[hidden="false"][aria-hidden="false"]:active {
         width: auto;*/
 }
 
+/*
+    Elements with tabindex="-1" are NOT user focussable, but CAN be focussed via JS.
+    In this case elements focussed in such a way should not recieve focus styles to avoid confusion.
+    (https://inclusive-components.design/a-todo-list#focusmanagement)
+*/
+[tabindex="-1"] {
+  outline: none;
+}
+
+/*
+    A blanket attempt to respect prefers-reduced-motion.
+    (https://dev.to/alvaromontoro/consider-reducing-motions-1a13)
+*/
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 /*! Start-CSS Experimental. See SCSS file for documentation. */
 /*-------------------------------------------------------------------------------------------------|
 
@@ -2820,6 +2840,26 @@ a[hidden="false"][aria-hidden="false"]:active {
         width: auto;*/
 }
 
+/*
+    Elements with tabindex="-1" are NOT user focussable, but CAN be focussed via JS.
+    In this case elements focussed in such a way should not recieve focus styles to avoid confusion.
+    (https://inclusive-components.design/a-todo-list#focusmanagement)
+*/
+[tabindex="-1"] {
+  outline: none;
+}
+
+/*
+    A blanket attempt to respect prefers-reduced-motion.
+    (https://dev.to/alvaromontoro/consider-reducing-motions-1a13)
+*/
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 /*! Start CSS Utilities. See SCSS file for documentation. */
 /*------------------------------------------------------------------------------------------------*\
 
@@ -3073,7 +3113,93 @@ _:-o-prefocus, :root .icon {
 /* --| FUNCTIONS AND MIXINS |-------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------------------------------- */
 /* --| FALL-BACK PATTERNS |---------------------------------------------------------------------- */
-/*------------------------------------------------------------------------------------------------*\
+/*-------------------------------------------------------------------------------------------------|
+
+    CLOSE BUTTON
+    ============================================================================================
+
+|-------------------------------------------------------------------------------------------------*/
+/* -- Basic styles ------------------------------------------------------------------------------ */
+.close-button {
+  display: inline-block;
+  /* AK. IE9 needs this. Hmmm, for what exactly?*/
+  min-height: 3rem;
+  overflow: visible;
+  /* S: Internet Explorer 11-, N: Show the overflow in Edge, Firefox, and IE. */
+  margin: 0.3rem 0;
+  padding-top: 0.3rem;
+  padding-top: -moz-calc(0);
+  padding-top: calc(0.3rem - 1px);
+  padding-right: 0.6rem;
+  padding-bottom: 0.3rem;
+  padding-bottom: -moz-calc(0);
+  padding-bottom: calc(0.3rem - 1px);
+  padding-left: 0.6rem;
+  border-color: rgba(0, 0, 0, 0);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 3px;
+  color: #333;
+  background-color: rgba(0, 0, 0, 0);
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: 2.4rem;
+  vertical-align: middle;
+  text-transform: none;
+  /* [N0], N: Remove the inheritance of text transform in Edge, Firefox, and IE. */
+  cursor: pointer;
+  -ms-touch-action: manipulation;
+  /* 1 (IE10) */
+  touch-action: manipulation;
+  /* 1 */
+  -webkit-appearance: none;
+  /*@if $s__button-focus-outline-width != false {
+        &:hover,
+        &:active,
+        &:focus {
+            outline-width: $s__button-focus-outline-width;
+            outline-style: $s__button-focus-outline-style;
+            outline-color: $s__button-focus-outline-color;
+            outline-offset: $s__button-focus-outline-offset;
+        }
+    }*/
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0;
+  border-radius: 0;
+  opacity: 1;
+}
+
+.close-button:hover, .close-button:active {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.close-button:focus {
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.js-close-button-container {
+  position: relative;
+  -webkit-transition: opacity 1s ease 0s, z-index 1s ease 1s;
+  transition: opacity 1s ease 0s, z-index 1s ease 1s;
+}
+
+.js-close-button-container[data-close="true"] {
+  opacity: 0;
+  z-index: 0;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+/*! --------------------------------------------------------------------------------------------- *\
+    
+    Fall-Back Over Panel v2.0.0
+    https://github.com/Fall-Back/Patterns/tree/master/Over%20Panel
+    Copyright (c) 2021, Andy Kirk
+    Released under the MIT license https://git.io/vwTVl
 
     Designed for use with the EM2 [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
     Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser ~11.8+
@@ -3081,7 +3207,7 @@ _:-o-prefocus, :root .icon {
 
     PLUS IE11
 
-\*------------------------------------------------------------------------------------------------*/
+\* ---------------------------------------------------------------------------------------------- */
 /*
     This is a bit of a hack, but it's a way of letting JS know that this CSS has loaded.
     It doesn't work for Opera Mini, but I'm happy to provide this browser only with the
@@ -3339,7 +3465,12 @@ _:-o-prefocus, :root .icon {
 }
 
 /* ---------------------------------------------------------------------------------------------- */
-/*------------------------------------------------------------------------------------------------*\
+/*! --------------------------------------------------------------------------------------------- *\
+    
+    Fall-Back Nav Bar v2.0.0
+    https://github.com/Fall-Back/Patterns/tree/master/Nav%20Bar
+    Copyright (c) 2021, Andy Kirk
+    Released under the MIT license https://git.io/vwTVl
 
     Designed for use with the EM2 [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
     Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser ~11.8+
@@ -3347,7 +3478,7 @@ _:-o-prefocus, :root .icon {
 
     PLUS IE11
 
-\*------------------------------------------------------------------------------------------------*/
+\* ---------------------------------------------------------------------------------------------- */
 /*
     This is a bit of a hack, but it's a way of letting JS know that this CSS has loaded.
     It doesn't work for Opera Mini, but I'm happy to provide this browser only with the
@@ -3697,7 +3828,12 @@ _:-o-prefocus, :root .icon {
   margin-left: 1.2rem;
 }
 
-/*------------------------------------------------------------------------------------------------*\
+/*! --------------------------------------------------------------------------------------------- *\
+    
+    Fall-Back Dropdown v2.0.0
+    https://github.com/Fall-Back/Patterns/tree/master/Dropdown
+    Copyright (c) 2021, Andy Kirk
+    Released under the MIT license https://git.io/vwTVl
 
     Designed for use with the EM2 [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
     Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser ~11.8+
@@ -3705,7 +3841,7 @@ _:-o-prefocus, :root .icon {
 
     PLUS IE11
 
-\*------------------------------------------------------------------------------------------------*/
+\* ---------------------------------------------------------------------------------------------- */
 /*
     This is a bit of a hack, but it's a way of letting JS know that this CSS has loaded.
     It doesn't work for Opera Mini, but I'm happy to provide this browser only with the
@@ -3979,7 +4115,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   position: static;
 }
 
-/*------------------------------------------------------------------------------------------------*\
+/*! --------------------------------------------------------------------------------------------- *\
+    
+    Fall-Back Search Form v2.0.0
+    https://github.com/Fall-Back/Patterns/tree/master/Search%20Form
+    Copyright (c) 2021, Andy Kirk
+    Released under the MIT license https://git.io/vwTVl
 
     Designed for use with the EM2 [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
     Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser ~11.8+
@@ -3987,7 +4128,7 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
 
     PLUS IE11
 
-\*------------------------------------------------------------------------------------------------*/
+\* ---------------------------------------------------------------------------------------------- */
 /* -- Basic/fallback layout --------------------------------------------------------------------- */
 /* -- .search-form ---------------------------------------------------------------------------*/
 /*
