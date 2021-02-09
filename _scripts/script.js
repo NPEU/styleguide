@@ -258,7 +258,7 @@ var cookie_html                   =
     https://github.com/Fall-Back/Patterns/tree/master/Close%20Button
     Copyright (c) 2021, Andy Kirk
     Released under the MIT license https://git.io/vwTVl
-    
+
     Designed for use with the EM2 [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
     Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser ~11.8+
     FF 47+
@@ -269,12 +269,13 @@ var cookie_html                   =
 
 (function() {
 
-    var close_button_container_selector = '[data-js="close-button"]';
-    var close_button_class              = 'close-button';
-    var close_button_id                 = '';
-    var close_button_effect_duration    = 1000;
+    var close_button_container_selector    = '[data-js="close-button"]';
+    var close_button_focus_target_selector = 'h1[tabindex=\'-1\']';
+    var close_button_class                 = 'close-button';
+    var close_button_id                    = '';
+    var close_button_effect_duration       = 1000;
 
-    var close_button_container_class    = 'js-close-button-container';
+    var close_button_container_class       = 'js-close-button-container';
 
     var close_button_class_string = '';
     if (close_button_class) {
@@ -285,9 +286,17 @@ var cookie_html                   =
     if (close_button_id) {
         close_button_id_string = ' class="' + close_button_id +'"';
     }
+    
+    // Focus HAS to move somewhere so default to h1. May rethink this...
+    if (!close_button_focus_target_selector) {
+        close_button_focus_target_selector = 'h1';
+    }
+
+    var close_button_focus_target_selector_string = ' data-js-focus-target="' + close_button_focus_target_selector +'"';
+
 
     var close_button_html  =
-'<button' + close_button_id_string + close_button_class_string + '">' +
+'<button' + close_button_id_string + close_button_class_string + close_button_focus_target_selector_string + '>' +
 '    <span hidden="" aria-hidden="false">Close</span>' +
 '    <svg focusable="false" class="icon  icon--is-open"><use xlink:href="#icon-cross"></use></svg></button>' +
 '</button>' + "\n";
@@ -326,6 +335,8 @@ var cookie_html                   =
                     setTimeout(function(){
                         close_button_container.parentNode.removeChild(close_button_container);
                     }, close_button_effect_duration);
+                    
+                    document.querySelector(this.getAttribute('data-js-focus-target')).focus();
                 });
             });
         }
@@ -336,7 +347,7 @@ var cookie_html                   =
 
 /*!
     Fall-Back Content Min-row v1.0.1
-    https://github.com/Fall-Back/Nav-Bar
+    https://github.com/Fall-Back/Patterns/tree/master/Content%20Min%20Row
     Copyright (c) 2021, Andy Kirk
     Released under the MIT license https://git.io/vwTVl
 */
@@ -350,8 +361,8 @@ var cookie_html                   =
 
 (function() {
 
-    var debug                                = true;
-    //var debug                                = false;
+    //var debug                                = true;
+    var debug                                = false;
     var ident                                = 'cmr';
     var selector                             = '[data-js="' + ident + '"]';
     var js_classname_prefix                  = 'js';
