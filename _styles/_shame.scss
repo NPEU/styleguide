@@ -55,6 +55,58 @@
     }
 }
 
+
+// Form innput prefix. Not sure how best to handle this.
+
+.c-composite > span:first-child {
+    //@include s__button();
+    display: inline-block;
+    min-height: 3rem;
+    overflow: visible;
+    margin: .3rem 0;
+    padding-top: -moz-calc(0);
+    padding-top: calc(.3rem - 1px);
+    padding-bottom: .3rem;
+    padding-bottom: -moz-calc(0);
+    padding-bottom: calc(.3rem - 1px);
+    padding-right: .6rem;
+    padding-left: .6rem;
+    border-color: rgba(0,0,0,.2);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px;
+    color: #333;
+    background-color: #f7f6f6;
+    font-size: 0.875em;
+    line-height: 2.4rem;
+    vertical-align: middle;
+}
+//----------------------------------------------------------
+
+// This is a one-off for the WhatsOn prefs form.
+// Consider making 'details in forms' a thing.
+.sh-naked-details {
+    border: 0;
+    padding: 0;
+    margin-top: 2.4rem;
+    margin-bottom: 0;
+    
+    summary {
+        padding-left: 1.4em;
+        margin: 0;
+    }
+    
+    &[open] summary {
+        margin-bottom: 1.2rem;
+    }
+    
+    summary + p {
+        margin: 0;
+        font-size: 0.875em;
+    }
+}
+
+
 //----------------------------------------------------------
 
 

@@ -140,3 +140,12 @@ summary + * {
 details:not([open]) > *:not(summary) {
     display: none;
 }
+
+
+// Not sure if this would have a negative impact anywhere if not class-scoped. Used for Staff Profile view:
+.user-profile dd:not(:first-of-type),
+.user-profile dt:not(:first-of-type) {
+    margin-top: $s__base-rem-space-unit / 4;
+    padding-top: $s__base-rem-space-unit / 4;
+    border-top: 1px solid #eee;
+}

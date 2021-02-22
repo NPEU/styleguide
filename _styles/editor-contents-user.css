@@ -3995,6 +3995,13 @@ details:not([open]) > *:not(summary) {
   display: none;
 }
 
+.user-profile dd:not(:first-of-type),
+.user-profile dt:not(:first-of-type) {
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid #eee;
+}
+
 /*
     Override contents.css body margin, because it messes with Magicline:
 */

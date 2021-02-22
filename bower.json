@@ -8,6 +8,7 @@
         "Fall-Back-Cookie-Notice": "https://github.com/Fall-Back/Cookie-Notice.git",
         "Fall-Back-Filterability": "https://github.com/Fall-Back/Filterability.git",
         "Details-Polyfill":        "https://github.com/javan/details-element-polyfill.git",
-        "Mark-JS":                 "https://github.com/julmot/mark.js.git"
+        "Mark-JS":                 "https://github.com/julmot/mark.js.git",
+        "SlimSelect":              "https://github.com/brianvoe/slim-select.git"
     }
 }

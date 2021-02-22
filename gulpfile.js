@@ -167,11 +167,12 @@ exports.img = series(do_svg2png, do_imagemin, do_svgmin);
 /*------------------------------------------------------------------------------------------------*\
     JS
 \*------------------------------------------------------------------------------------------------*/
-const js_src             = './_scripts/';
-const js_dest            = './js/';
-const js_filename        = 'script.js';
-const js_map_filename    = 'map.js';
-const js_filter_filename = 'filter.js';
+const js_src                 = './_scripts/';
+const js_dest                = './js/';
+const js_filename            = 'script.js';
+const js_map_filename        = 'map.js';
+const js_filter_filename     = 'filter.js';
+const js_slimselect_filename = 'slimselect.js';
 
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
@@ -197,6 +198,7 @@ function do_concat_js(cb) {
     .pipe(concat(js_filename))
     .pipe(gulp.dest(js_src));
 
+
     // Separate map script:
     gulp.src([
         './_scripts/vendor/leaflet/leaflet-src.js',
@@ -208,6 +210,7 @@ function do_concat_js(cb) {
     .pipe(concat(js_map_filename))
     .pipe(gulp.dest(js_src));
 
+
     // Separate filter script:
     gulp.src([
         './bower_components/Mark-JS/dist/mark.js',
@@ -215,6 +218,16 @@ function do_concat_js(cb) {
     ])
 
     .pipe(concat(js_filter_filename))
+    .pipe(gulp.dest(js_src));
+
+
+    // Separate SlimSelect script:
+    gulp.src([
+        './bower_components/SlimSelect/dist/slimselect.js',
+        './_scripts/js/slimselect.js'
+    ])
+
+    .pipe(concat(js_slimselect_filename))
     .pipe(gulp.dest(js_src));
 
 
@@ -230,7 +243,8 @@ function do_uglify(cb) {
         gulp.src([
             js_src + js_filename,
             js_src + js_map_filename,
-            js_src + js_filter_filename
+            js_src + js_filter_filename,
+            js_src + js_slimselect_filename
         ]),
         uglify(),
         rename({extname: '.min.js'}),

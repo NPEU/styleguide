@@ -25,6 +25,13 @@ $not-too-small: 18em;
 $hover-effect-opacity: 0.2;
 $hover-effect-width: $s__base-rem-space-unit / 4;
 
+// System / UI messages:
+
+$system-message--color: #69b3e7;
+$system-message--color--success: #789d4a;
+$system-message--color--warning: #ff9e1b;
+$system-message--color--error: #9b3259;
+
 /* --| FUNCTIONS AND MIXINS |-------------------------------------------------------------------- */
 
 @mixin bottom-space-fix ($size: $s__base-rem-space-unit) {

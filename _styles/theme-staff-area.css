@@ -13324,6 +13324,13 @@ details:not([open]) > *:not(summary) {
   display: none;
 }
 
+.user-profile dd:not(:first-of-type),
+.user-profile dt:not(:first-of-type) {
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid #eee;
+}
+
 .c-single-link-form.c-single-link-form,
 .c-single-link-form * {
   display: inline;
@@ -13361,6 +13368,50 @@ details:not([open]) > *:not(summary) {
 
 .c-single-link-form button:hover span, .c-single-link-form button:active span, .c-single-link-form button:focus span {
   border-style: dashed;
+}
+
+.c-composite > span:first-child {
+  display: inline-block;
+  min-height: 3rem;
+  overflow: visible;
+  margin: .3rem 0;
+  padding-top: -moz-calc(0);
+  padding-top: calc(.3rem - 1px);
+  padding-bottom: .3rem;
+  padding-bottom: -moz-calc(0);
+  padding-bottom: calc(.3rem - 1px);
+  padding-right: .6rem;
+  padding-left: .6rem;
+  border-color: rgba(0, 0, 0, 0.2);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 3px;
+  color: #333;
+  background-color: #f7f6f6;
+  font-size: 0.875em;
+  line-height: 2.4rem;
+  vertical-align: middle;
+}
+
+.sh-naked-details {
+  border: 0;
+  padding: 0;
+  margin-top: 2.4rem;
+  margin-bottom: 0;
+}
+
+.sh-naked-details summary {
+  padding-left: 1.4em;
+  margin: 0;
+}
+
+.sh-naked-details[open] summary {
+  margin-bottom: 1.2rem;
+}
+
+.sh-naked-details summary + p {
+  margin: 0;
+  font-size: 0.875em;
 }
 
 .fluid-frame {
