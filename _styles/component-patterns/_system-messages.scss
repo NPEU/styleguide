@@ -25,7 +25,8 @@ $theme-only: false !default;
 	}
 	//@debug $theme-class;
 
-	.#{$system-message-namespace}system-message#{$theme-class} {
+	.#{$system-message-namespace}system-message#{$theme-class},
+	#{$theme-class} {
 
 		//background-color: map-get($theme, system-message-color);
 		//background-color: lighten(map-get($theme, system-message-color), 20%);

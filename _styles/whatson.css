@@ -413,29 +413,175 @@
   background-color: #fffb8c;
 }
 
-/*! Overrides: */
-.ss-main .ss-multi-selected .ss-values {
-  flex: 1 1 calc(100% - 2.4rem);
-  width: auto;
+/* To add to FallBack */
+[id] {
+  scroll-margin-top: 4.8em;
 }
 
-.ss-main .ss-multi-selected .ss-add {
-  flex: 0 1 2.4rem;
+/*****/
+/* To Add to Table Component --hmmm. Not sure yet because it doesn't work with scroll overflow */
+.table--sticky-header {
   margin: 0;
-  justify-content: center;
-  align-items: center;
 }
 
-.ss-content .ss-search.ss-hide,
-.ss-content .ss-search.ss-hide input {
-  padding: 0;
-  border: 0;
-  width: 0;
+.table--sticky-header thead th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.table--sticky-header thead th::before {
+  content: "";
   position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  bottom: -1px;
+  border-top: 1px solid #614776;
+  border-bottom: 1px solid #614776;
   z-index: -1;
 }
 
-.ss-main .ss-multi-selected .ss-values .ss-disabled {
-  margin: 2px 0;
-  line-height: 2.4rem;
+.table--sticky-header thead th::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 6px;
+  bottom: -6px;
+  box-shadow: 0 6px 3px -4px rgba(0, 0, 0, 0.3) inset;
+}
+
+/*****/
+.whatson-table {
+  width: 100%;
+  background: transparent;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.whatson-table th {
+  width: 12%;
+}
+
+.whatson-table th:first-child,
+.whatson-table th:last-child {
+  width: 5%;
+}
+
+.whatson-table td:first-child,
+.whatson-table td:last-child,
+.whatson-table th:first-child,
+.whatson-table th:last-child {
+  text-align: center;
+  padding: 0;
+}
+
+.whatson-table td:first-child a,
+.whatson-table td:last-child a,
+.whatson-table th:first-child a,
+.whatson-table th:last-child a,
+.whatson-table .m-nav a {
+  border: 0;
+  padding: 1em;
+}
+
+.whatson-table td:first-child a:hover,
+.whatson-table td:last-child a:hover,
+.whatson-table th:first-child a:hover,
+.whatson-table th:last-child a:hover,
+.whatson-table .m-nav a:hover {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.whatson-table td {
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+}
+
+.whatson-table tr[filterable_visible_item="even"] td {
+  background-color: #eee;
+}
+
+.whatson-table tr[filterable_visible_item="odd"] td {
+  background-color: #fff;
+}
+
+.whatson-table tr[filterable_visible_item]:target td,
+.whatson-table[filterable_visibile_items="1"] tr[filterable_visible_item] td {
+  /* CHANGE THIS COLOUR */
+  background-color: #fed;
+}
+
+.whatson-table p {
+  margin-bottom: 0.6em;
+}
+
+.whatson-table p:last-child {
+  margin-bottom: 0;
+}
+
+.whatson-table .m-nav {
+  display: none;
+}
+
+@media (max-width: 46em) {
+  .whatson-table,
+  .whatson-table tbody,
+  .whatson-table th,
+  .whatson-table td {
+    display: block;
+    font-size: 1em;
+  }
+  .whatson-table thead {
+    display: none;
+  }
+  .whatson-table td:first-child,
+  .whatson-table td:last-child {
+    display: none;
+  }
+  .whatson-table tr:not([hidden]) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .whatson-table td {
+    flex: 1 1 auto;
+    border: 0;
+  }
+  .whatson-table tr:not(:last-child) {
+    border-bottom: 1px solid #614776;
+  }
+  .whatson-table td:nth-child(2) {
+    width: 100%;
+  }
+  .whatson-table td::before {
+    content: attr(data-day);
+    display: block;
+    font-size: 0.875em;
+    font-weight: bold;
+  }
+  .whatson-table td:nth-child(2) ~ td {
+    padding-top: 0;
+  }
+  .whatson-table td.is-editing {
+    width: 100%;
+  }
+  .whatson-table .m-nav {
+    display: flex;
+    margin: -1.2rem -0.6rem 0.6rem -0.6rem;
+    background: rgba(0, 0, 0, 0.1);
+    line-height: 2.4rem;
+  }
+  .whatson-table .m-nav a {
+    flex: 1 0 auto;
+    max-width: 50%;
+    margin-bottom: 0;
+    padding: 0 0.6rem;
+  }
+  .whatson-table .m-nav a:last-child {
+    margin-left: auto;
+    text-align: right;
+  }
 }

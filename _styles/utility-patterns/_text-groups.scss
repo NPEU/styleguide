@@ -10,9 +10,9 @@ $text-group-namespace: u- !default;
 .#{$text-group-namespace}text-group {
     display: flex !important;
     flex-direction: row !important;
-    flex-wrap: wrap !important;           
+    flex-wrap: wrap !important;
     align-items: center;
- 
+
     max-width: 100%;
 }
 
@@ -26,7 +26,8 @@ $text-group-namespace: u- !default;
 }
 
 .#{$text-group-namespace}text-group > * {
-    margin: 0;
+    margin-left: 0;
+    margin-right: 0;
 
     flex: 0 1 auto !important;
 }

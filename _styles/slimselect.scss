@@ -30,3 +30,8 @@ $primary-color: darken($system-message--color, 24%);
     position: absolute;
     z-index: -1;
 }
+
+.ss-main .ss-multi-selected .ss-values .ss-disabled {
+    margin: 2px 0;
+    line-height: 2.4rem;
+}

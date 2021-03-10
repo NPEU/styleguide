@@ -1082,6 +1082,37 @@ return Mark;
         }
     };
 
+    var getSelectValues = function(select) {
+        var result = [];
+        var options = select && select.options;
+        var opt;
+
+        for (var i=0, iLen=options.length; i<iLen; i++) {
+            opt = options[i];
+
+            if (opt.selected) {
+                result.push(opt.value || opt.text);
+            }
+        }
+        return result;
+    };
+
+    var setSelectValues = function(select, values) {
+        var options = select && select.options;
+        var opt;
+
+        for (var i=0, iLen=options.length; i<iLen; i++) {
+            opt = options[i];
+
+            if (values.indexOf(opt.value) !== -1) {
+                opt.selected = true;
+            } else {
+                opt.selected = false;
+            }
+        }
+        return true;
+    };
+
     var getParameterByName = function(name, url) {
         url = (typeof url !== 'undefined') ?  url : window.location.href;
         name = name.replace(/[\[\]]/g, '\\$&');
@@ -1090,7 +1121,21 @@ return Mark;
         if (!results) return null;
         if (!results[2]) return '';
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    }
+    };
+
+    var resetPreset = function(form) {
+        els = form.querySelectorAll('[filterable_preset]');
+
+        Array.prototype.forEach.call(els, function(el, i) {
+            var el_tagName = el.tagName.toLowerCase();
+
+            if (el_tagName == 'select') {
+                setSelectValues(el, []);
+            } else if (el_tagName == 'input' && (el.getAttribute('type') == 'checkbox' || el.getAttribute('type') == 'radio')) {
+                el.checked = false;
+            }
+        });
+    };
 
     var filterability = {
 
@@ -1212,8 +1257,7 @@ return Mark;
                     // E.g. user may want to choose from a list of predefined options by which to filter
                     // the list(s) so a select or checkbox change should work as well.
 
-                    //filterable_input.addEventListener('keyup', function() {
-                    filterable_input.addEventListener('keyup', function() {
+                    filterable_input.addEventListener('keyup', function(e) {
                         // Add value to sessionStorage:
                         window.sessionStorage.setItem(filterable_input.id, this.value);
 
@@ -1227,18 +1271,6 @@ return Mark;
                     e.preventDefault();
                     return false;
                 });
-
-                 // Check for presence of a reset button:
-                var filterable_reset = filterable_form.querySelector('[filterable_reset]');
-                if (filterable_reset) {
-                    filterable_reset.addEventListener('click', function(e) {
-                        filterability.filterList(filterable_group, '');
-
-                        // Clear the sessionStorage:
-                        window.sessionStorage.removeItem(filterable_input.id);
-                        window.sessionStorage.removeItem(filterable_input.id + '.filterable_toggle');
-                    });
-                }
 
 
                 // Toggler stuff:
@@ -1264,10 +1296,12 @@ return Mark;
                              || filterable_toggle.getAttribute('filterable_toggle') === ''
                             ) {
                                 // Add the event listener:
-                                filterable_toggle.addEventListener('change', function() {
+                                filterable_toggle.addEventListener('change', function(e) {
                                     filterability.toggle_index(filterable_group, this.getAttribute('filterable_toggle'));
                                     filterability.generateIndex(filterable_group);
                                     filterability.filterList(filterable_group, filterable_input.value);
+
+                                    console.log(el_tagName + ' toggler ' + el_type);
 
                                     // Add value to sessionStorage:
                                     window.sessionStorage.setItem(filterable_input.id + '.filterable_toggle', this.getAttribute('filterable_toggle'));
@@ -1305,26 +1339,148 @@ return Mark;
                         }
                         // Check element is of valid / supported type:
                         if (el_tagName === 'input' && ['checkbox'].indexOf(el_type) > -1) {
-                            excludable_toggle.addEventListener('change', function() {
+                            excludable_toggle.addEventListener('change', function(e) {
                                 filterability.update_exclusions(filterable_group, filterable_form);
                             });
                         }
                     });
                 }
 
+                // Check for presence of a reset button:
+                var filterable_reset = filterable_form.querySelector('[filterable_reset]');
+                if (filterable_reset) {
+                    filterable_reset.addEventListener('click', function(e) {
+
+                        // We need this to happen AFTER reset has completed, so use a timeout:
+                        setTimeout(function() {
+                            // Clear the sessionStorage:
+                            window.sessionStorage.removeItem(filterable_input.id);
+                            window.sessionStorage.removeItem(filterable_input.id + '.filterable_toggle');
+
+                            // 'Reset' doesn't re-trigger the toggler stuff, so do that here:
+                            var event = document.createEvent('HTMLEvents');
+                            event.initEvent('change', true, false);
+
+                            var toggler_selects = filterable_form.querySelectorAll('select[filterable_toggle]');
+                            Array.prototype.forEach.call(toggler_selects, function(toggler_select, i) {
+                                toggler_select.dispatchEvent(event);
+                            });
+
+                            var toggler_checkradios = filterable_form.querySelectorAll('[filterable_toggle]:checked');
+                            Array.prototype.forEach.call(toggler_checkradios, function(toggler_checkradio, i) {
+
+                                console.log(toggler_checkradio);
+                                toggler_checkradio.dispatchEvent(event);
+                            });
+
+
+                            filterability.filterList(filterable_group, '');
+                        }, 1);
+                    });
+                }
+
                 // Allow values pre-filled by the browser to update the list:
                 window.setTimeout(function(){
-                    //filterability.filterList(filterable_group, filterable_input.value);
-                    if (filterable_submit) {
-                        filterable_submit.click();
-                    } else {
-                        //console.log(filterable_input);
-                        //filterable_input.focus();
-                        filterable_input.dispatchEvent(new KeyboardEvent('keyup',{'key':'13'}));
-                    }
+                    filterability.trigger_filter(filterable_submit, filterable_input);
                 }, 100);
+
+
+                // Add behaviour to preset inputs:
+                var preset_inputs = filterable_form.querySelectorAll('[filterable_preset]');
+
+                if (preset_inputs.length > 0) {
+
+                    /* I'm not sure I really need a form input for this, but leave here for reference:
+                    // Add a hidden input to store the preset origin so we can restore the form
+                    // element UI state accross page loads:
+                    var preset_origin = document.createElement('input');
+                    preset_origin.setAttribute('type', 'hidden');
+                    preset_origin.setAttribute('filterable_input_preset_origin', '');
+
+                    filterable_form.querySelector('form').appendChild(preset_origin);
+                    */
+
+                    Array.prototype.forEach.call(preset_inputs, function(preset_input, i) {
+
+                        preset_input.addEventListener('change', function(e) {
+                            e.preventDefault();
+
+                            var el = e.target;
+
+                            var el_tagName = preset_input.tagName.toLowerCase();
+
+                            if (el_tagName == 'select') {
+                                var selected_values = getSelectValues(el);
+
+                                resetPreset(el.form);
+                                setSelectValues(el, selected_values);
+
+                                filterable_input.value = selected_values.join('|');
+
+                            } else if (el_tagName == 'input' && el.getAttribute('type') == 'checkbox') {
+                                // Get all check boxes with the same name as they're series:
+                                var values = [];
+                                var el_name = el.getAttribute('name');
+
+                                var checkboxes = filterable_form.querySelectorAll('input[name="' + el_name + '"]:checked');
+                                Array.prototype.forEach.call(checkboxes, function(checkbox, i) {
+                                    values.push(checkbox.value);
+                                });
+
+                                resetPreset(el.form);
+                                Array.prototype.forEach.call(checkboxes, function(checkbox, i) {
+                                    if(values.indexOf(checkbox.value) !== -1) {
+                                        checkbox.checked = true;
+                                    }
+                                });
+
+
+                                filterable_input.value = values.join('|');
+                            } else {
+                                filterable_input.value = el.value;
+                            }
+
+                            // Store the preset origin:
+                            //preset_origin.value = el.name;
+                            window.sessionStorage.setItem(filterable_input.preset_origin, el.name);
+
+                            filterability.trigger_filter(filterable_submit, filterable_input);
+                        });
+
+                        // If the prest origin has been set, update the form UI:
+                        /*if (
+                            window.sessionStorage.getItem(filterable_input.preset_origin) == preset_input.name
+                         || preset_origin.value == preset_input.name
+                        ) {*/
+                        if (window.sessionStorage.getItem(filterable_input.preset_origin) == preset_input.name) {
+
+                            // This element was recorded as the preset origin.
+
+                            var existing_value = filterable_input.value;
+                            var existing_value_array = existing_value.split('|');
+                            var el_tagName = preset_input.tagName.toLowerCase();
+
+                            if (el_tagName == 'select') {
+                                setSelectValues(preset_input, existing_value_array);
+                            } else if (el_tagName == 'input' && preset_input.getAttribute('type') == 'checkbox') {
+                                if (existing_value_array.indexOf(preset_input.value) !== -1) {
+                                    preset_input.checked = true;
+                                }
+                            }
+                        }
+
+                    });
+                }
             });
 
+        },
+
+        trigger_filter: function(filterable_submit, filterable_input) {
+            if (filterable_submit) {
+                filterable_submit.click();
+            } else {
+                filterable_input.dispatchEvent(new KeyboardEvent('keyup',{'key':'13'}));
+            }
         },
 
         update_exclusions: function(group, form) {
@@ -1373,7 +1529,11 @@ return Mark;
                     });
                 }
 
-                item.setAttribute('filterable_index_string', index_string.toLowerCase().trim());
+                // Tidy index string:
+                index_string = index_string.toLowerCase().trim();
+                index_string = index_string.replace(/\s{2,}/g, '');
+
+                item.setAttribute('filterable_index_string', index_string);
             });
         },
 
@@ -1381,6 +1541,7 @@ return Mark;
 
             query = query.toLowerCase().trim();
             var items = group.items;
+            var odd_even = 'odd';
 
             Array.prototype.forEach.call(items, function(item, i) {
                 // Apply exclusions:
@@ -1399,19 +1560,29 @@ return Mark;
                 }
 
                 item.removeAttribute('hidden');
+                item.removeAttribute('filterable_visible_item');
                 if (skip) {
                     item.setAttribute('hidden', '');
                     return;
                 }
 
-                if (item.getAttribute('filterable_index_string').indexOf(query) > -1) {
+                // Tidy query in case it was entered in a more readable way:
+                query = query.replace(' |', '|');
+                query = query.replace('| ', '|');
+
+                var regex = new RegExp('(' + query + ')', 'g');
+                var str_to_test = item.getAttribute('filterable_index_string');
+
+                if (regex.test(str_to_test)) {
                     item.removeAttribute('hidden');
+
+                    item.setAttribute('filterable_visible_item', odd_even);
+                    odd_even = odd_even == 'odd' ? 'even' : 'odd';
 
                     // Check we want to highlight results:
                     if (group.getAttribute('filterable_mark_results') === '') {
-                        filterability.debounce(filterability.highlight_results(item, query), 250);
+                        filterability.debounce(filterability.highlight_results(item, regex, str_to_test), 250);
                     }
-
                 } else {
                     item.setAttribute('hidden', '');
                 }
@@ -1425,9 +1596,12 @@ return Mark;
             // After filtering, if a list is empty, show the 'empty' message:
             var lists = group.querySelectorAll('[filterable_list]');
             Array.prototype.forEach.call(lists, function(list, i) {
-                var list_is_empty = !list.querySelectorAll('[filterable_item]:not([hidden])').length;
+                var n_items       = list.querySelectorAll('[filterable_item]:not([hidden])').length;
+                var list_is_empty = !n_items;
                 var empty_message = list.nextElementSibling;
                 // @TODO: should probably check the we've really selected a `filterable_empty_list_message`
+
+                list.setAttribute('filterable_visibile_items', n_items);
 
                 if (list_is_empty) {
                     list.setAttribute('hidden', '');
@@ -1455,13 +1629,17 @@ return Mark;
             });
         },
 
-        highlight_results: function(item, query) {
+        //highlight_results: function(item, query) {
+        highlight_results: function(item, regex, str_to_test) {
             // Note this can be really slow on large lists.
             if (window.Mark) {
                 var markInstance = new Mark(item.querySelectorAll('[filterable_index], [filterable_index_name]'));
                 markInstance.unmark({
                     done: function(){
-                        markInstance.mark(query);
+                        var matches = str_to_test.match(regex);
+                        Array.prototype.forEach.call(matches, function(match, i) {
+                            markInstance.mark(match);
+                        });
                     }
                 });
             } else {

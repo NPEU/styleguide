@@ -20,7 +20,7 @@
         background: transparent;
         color: $s__base-text-color;
     }
-    
+
     & button {
         border-radius: 0;
         min-height: 0;
@@ -48,9 +48,9 @@
                 box-shadow: 0 0 0 $s__anchor-focus-shadow-width rgba($s__anchor-text-color, 0.5);
             }
         }
-        
+
         &:hover span, &:active span, &:focus span {
-            border-style: dashed;   
+            border-style: dashed;
         }
     }
 }
@@ -90,16 +90,16 @@
     padding: 0;
     margin-top: 2.4rem;
     margin-bottom: 0;
-    
+
     summary {
         padding-left: 1.4em;
         margin: 0;
     }
-    
+
     &[open] summary {
         margin-bottom: 1.2rem;
     }
-    
+
     summary + p {
         margin: 0;
         font-size: 0.875em;
@@ -119,8 +119,8 @@
 
 // User agent stylesheet makes cites italic by default, but that shouldn't be the case for
 // footnotes where italics is common to differentiate parts of the citation.
-// This should really go in the user stylesheet, but there I don't use classnames, so I'd have to 
-// change the CKEDITOR FOOTNOTES plugin to use the [data] attributes instead, and change all 
+// This should really go in the user stylesheet, but there I don't use classnames, so I'd have to
+// change the CKEDITOR FOOTNOTES plugin to use the [data] attributes instead, and change all
 // occurrences of that classname in the content database.
 // -- unless I make an exception which seems like the most sensible thing to do.
 
@@ -275,6 +275,16 @@ legend h6 {
 
 /*---------------------*/
 
+// For use on PRu homepage - not sure where this best fits in.
+.video-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #333;
+}
+
+/*---------------------*/
+
 
 
 
@@ -303,9 +313,9 @@ legend h6 {
 /*
     Really odd, but in normal Chrome (not canary, FF or Edge) .u-fill-height doesn't work properly in
     bespoke context.
-    
+
     E.g. https://www.npeu.ox.ac.uk/pru-mnhc
-    
+
     I really can't figure out why the behaviour is different, but taking off min-height works as expected.
     However, it's context-specific, I can't just remove that rule from everywhere.
 
@@ -321,9 +331,9 @@ legend h6 {
 /*
 .recruitment {
     padding: $panel--padding;
-        
+
     @include bottom-space-fix();
-    
+
     border: 1px solid #aaa;
 }
 
