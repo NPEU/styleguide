@@ -49,9 +49,9 @@
 
             // Get the image dimensions:
             var image_rect = img.getBoundingClientRect();
-            console.log(container_rect.height, image_rect.height, img.height < container_rect.height);
+            //console.log(container_rect.height, image_rect.height, img.height < container_rect.height);
 
-            // Remove the style. Not the behavior here isn't ideal, but it's better than the image
+            // Remove the style. Note the behaviour here isn't ideal, but it's better than the image
             // getting stuck at a small size which can happen otherwise.
             img.removeAttribute('style');
 

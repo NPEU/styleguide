@@ -5330,6 +5330,100 @@ $glimpse--link-border-bottom--hover: false !default;*/
 
 /*
 */
+.c-hero-wrap {
+  padding: 0;
+  margin: 0;
+  min-inline-size: auto;
+  border: 0;
+  width: 100%;
+}
+
+.c-hero-wrap::after {
+  display: none;
+}
+
+.c-hero-wrap > div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.c-hero-carousel .c-hero-carousel__nav {
+  padding: 0 0.6rem;
+  margin: -2.4rem 0 0 0;
+  z-index: 1;
+}
+
+.c-hero-carousel .c-hero-carousel__nav p {
+  margin: 0;
+}
+
+.c-hero-carousel .c-hero-carousel__nav a[href] {
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 0.6rem;
+  height: 1.2rem;
+  width: 1.2rem;
+  background: #bbb;
+  text-indent: 1.2rem;
+  border: 1px solid #333;
+  padding: 0;
+  margin: 0 0.3rem;
+}
+
+.c-hero-carousel .c-hero-carousel__nav a[href]:hover {
+  background: #888;
+}
+
+.c-hero-carousel hr {
+  display: none;
+}
+
+.c-hero-carousel .c-hero-carousel__scroll-area {
+  order: -1;
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  scroll-snap-type: mandatory;
+  /* [1] */
+  scroll-snap-points-x: repeat(100%);
+  /* [1] */
+  scroll-snap-type: x mandatory;
+  /* [2] */
+  -webkit-overflow-scrolling: touch;
+  /* [3] */
+  -ms-scroll-snap-type: mandatory;
+  /* [4] */
+  -ms-scroll-snap-points-x: repeat(100%);
+  /* [4] */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.c-hero-carousel .c-hero-carousel__scroll-area:focus {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+  outline: 0 none;
+}
+
+.c-hero-carousel .c-hero-carousel__scroll-area::-webkit-scrollbar {
+  display: none;
+}
+
+.c-hero-carousel .c-hero-carousel__scroll-area .c-hero {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /*
+                    Turn off :target highlighting animation.
+                */
+  -moz-animation: none;
+  -webkit-animation: none;
+  animation: none;
+}
+
 .c-hero.c-hero {
   position: relative;
   background: #fff;
@@ -5427,6 +5521,9 @@ $glimpse--link-border-bottom--hover: false !default;*/
                 */
     width: 100% !important;
     /* [1] */
+  }
+  .c-hero-carousel .c-hero-carousel__nav {
+    margin: 0;
   }
 }
 

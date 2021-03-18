@@ -26,6 +26,8 @@
         img{max-width:100%;-ms-interpolation-mode:bicubic;}
         [hidden]{display:none;}
         main{display:block;}
+        hr{border-top:1px solid;border-bottom:0 none;height:0px;}
+        fieldset{border:1px solid;}
         pre{overflow-x:scroll;overflow-y:auto;}
         button,input,select,textarea{vertical-align:middle;}
 
@@ -41,8 +43,8 @@
 
 
     <!--
-        Print (Edge doesn't apply to print otherwise)
-        Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser ~11.8+
+        Print, Edge 12? - 18
+        Edge 79+, Chrome 58+, Opera 45+, Safari 10+, iOS 10+, Android Webview/Chrome 58+, Samsung Internet
         FF 47+
     -->
     <link rel="stylesheet" href="/css/theme-npeu.min.{{ site.data.cache_bust_css.date }}.css" media="
@@ -50,8 +52,7 @@
         only all and (color-gamut: srgb), only all and (color-gamut: p3), only all and (color-gamut: rec2020),
         only all and (min--moz-device-pixel-ratio:0) and (display-mode:browser), (min--moz-device-pixel-ratio:0) and (display-mode:fullscreen)
     ">
-
-    <!-- Load styles for IE11 -->
+    <!-- Load styles for IE11, UC -->
     <script>
     if (
         (!!window.MSInputMethodContext && !!document.documentMode)
@@ -86,7 +87,11 @@
     <script src="/js/script.min.js"></script>
     
     {% if page.load_highlighter != false %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css" media="
+        only print, screen and (min-width: 1vm),
+        only all and (color-gamut: srgb), only all and (color-gamut: p3), only all and (color-gamut: rec2020),
+        only all and (min--moz-device-pixel-ratio:0) and (display-mode:browser), (min--moz-device-pixel-ratio:0) and (display-mode:fullscreen)
+    ">
     <!-- Load styles for IE11, UC -->
     <script>
     if (
@@ -125,7 +130,11 @@
     {% endcomment %}
 
     {% if page.has_map %}
-         <link href="/css/map.min.css" rel="stylesheet" />
+        <link href="/css/map.min.css" rel="stylesheet" media="
+            only print, screen and (min-width: 1vm),
+            only all and (color-gamut: srgb), only all and (color-gamut: p3), only all and (color-gamut: rec2020),
+            only all and (min--moz-device-pixel-ratio:0) and (display-mode:browser), (min--moz-device-pixel-ratio:0) and (display-mode:fullscreen)
+        ">
         <script src="/js/map.min.js"></script>
     {% endif %}
     
