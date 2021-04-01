@@ -54,152 +54,165 @@ $primary-color: darken($system-message--color, 24%);
 
 /*****/
 
-.whatson-table {
+table.whatson-table.whatson-table {
     width: 100%;
     background: transparent;
     table-layout: fixed;
-    border-collapse: collapse
+    border-collapse: collapse;
+    border-color: map-get(map-get($themes, 'neutral'), primary-color);
 }
 
-.whatson-table th {
+table.whatson-table.whatson-table thead tr:first-child th {
     width: 12%;
+    
+    background-color: map-get(map-get($themes, 'neutral'), primary-color);
+    color: #fff;
+    
+    border-color: map-get(map-get($themes, 'neutral'), primary-color);
 }
 
-.whatson-table th:first-child,
-.whatson-table th:last-child {
+table.whatson-table.whatson-table thead tr:first-child th:first-child,
+table.whatson-table.whatson-table thead tr:first-child th:last-child {
     width: 5%;
 }
 
-.whatson-table td:first-child,
-.whatson-table td:last-child,
-.whatson-table th:first-child,
-.whatson-table th:last-child {
+table.whatson-table.whatson-table td:first-child,
+table.whatson-table.whatson-table td:last-child,
+table.whatson-table.whatson-table th:first-child,
+table.whatson-table.whatson-table th:last-child {
     text-align: center;
     padding: 0;
 }
 
 
-.whatson-table td:first-child a,
-.whatson-table td:last-child a,
-.whatson-table th:first-child a,
-.whatson-table th:last-child a,
-.whatson-table .m-nav a {
+table.whatson-table.whatson-table td:first-child a,
+table.whatson-table.whatson-table td:last-child a,
+table.whatson-table.whatson-table th:first-child a,
+table.whatson-table.whatson-table th:last-child a,
+table.whatson-table.whatson-table .m-nav a {
     border: 0;
     padding: 1em;
 }
 
-.whatson-table td:first-child a:hover,
-.whatson-table td:last-child a:hover,
-.whatson-table th:first-child a:hover,
-.whatson-table th:last-child a:hover,
-.whatson-table .m-nav a:hover {
+table.whatson-table.whatson-table td:first-child a:hover,
+table.whatson-table.whatson-table td:last-child a:hover,
+table.whatson-table.whatson-table th:first-child a:hover,
+table.whatson-table.whatson-table th:last-child a:hover,
+table.whatson-table.whatson-table .m-nav a:hover {
     box-shadow: 0 0 0 3px rgba(0,0,0,0.3);
 }
 
-.whatson-table td {
+
+table.whatson-table.whatson-table th a[href] {
+    color: #fff;
+}
+
+table.whatson-table.whatson-table td {
     padding-top: 1.2rem;
     padding-bottom: 1.2rem;
     padding-left: 0.6rem;
     padding-right: 0.6rem;
+    
+    border-color: map-get(map-get($themes, 'neutral'), primary-color);
 }
 
 
-.whatson-table tr[filterable_visible_item="even"] td {
+table.whatson-table.whatson-table tr[filterable_visible_item="even"] td {
     background-color: #eee;
 }
 
-.whatson-table tr[filterable_visible_item="odd"] td {
+table.whatson-table.whatson-table tr[filterable_visible_item="odd"] td {
     background-color: #fff;
 }
 
-.whatson-table tr[filterable_visible_item]:target td,
-.whatson-table[filterable_visibile_items="1"] tr[filterable_visible_item] td {
+table.whatson-table.whatson-table tr[filterable_visible_item]:target td,
+table.whatson-table.whatson-table[filterable_visibile_items="1"] tr[filterable_visible_item] td {
     /* CHANGE THIS COLOUR */
     background-color: #fed;
 }
 
 
-.whatson-table p {
+table.whatson-table.whatson-table p {
     margin-bottom: 0.6em;
 }
 
-.whatson-table p:last-child {
+table.whatson-table.whatson-table p:last-child {
     margin-bottom: 0;
 }
 
-.whatson-table .m-nav {
+table.whatson-table.whatson-table .m-nav {
     display: none;
 }
 
 
 @media (max-width: 46em) {
 
-    .whatson-table,
-    .whatson-table tbody,
-    .whatson-table th,
-    .whatson-table td {
+    table.whatson-table.whatson-table,
+    table.whatson-table.whatson-table tbody,
+    table.whatson-table.whatson-table th,
+    table.whatson-table.whatson-table td {
         display: block;
         font-size: 1em;
     }
 
-    .whatson-table thead {
+    table.whatson-table.whatson-table thead {
         display: none;
     }
 
 
-    .whatson-table td:first-child,
-    .whatson-table td:last-child {
+    table.whatson-table.whatson-table td:first-child,
+    table.whatson-table.whatson-table td:last-child {
         display: none;
     }
 
-    .whatson-table tr:not([hidden]) {
+    table.whatson-table.whatson-table tr:not([hidden]) {
         display: flex;
         flex-wrap: wrap;
     }
 
-    .whatson-table td {
+    table.whatson-table.whatson-table td {
         flex: 1 1 auto;
         border: 0;
     }
 
-    .whatson-table tr:not(:last-child) {
+    table.whatson-table.whatson-table tr:not(:last-child) {
         border-bottom: 1px solid #614776;
     }
 
-    .whatson-table td:nth-child(2) {
+    table.whatson-table.whatson-table td:nth-child(2) {
         width: 100%;
     }
 
-    .whatson-table td::before {
+    table.whatson-table.whatson-table td::before {
         content: attr(data-day);
         display: block;
         font-size: 0.875em;
         font-weight: bold;
     }
 
-    .whatson-table td:nth-child(2) ~ td {
+    table.whatson-table.whatson-table td:nth-child(2) ~ td {
         padding-top: 0;
     }
     
-    .whatson-table td.is-editing {
+    table.whatson-table.whatson-table td.is-editing {
         width: 100%;
     }
     
-    .whatson-table .m-nav {
+    table.whatson-table.whatson-table .m-nav {
         display: flex;
         margin: -1.2rem -0.6rem 0.6rem -0.6rem;
         background: rgba(0,0,0,0.1);
         line-height: 2.4rem;
     }
 
-    .whatson-table .m-nav a {
+    table.whatson-table.whatson-table .m-nav a {
         flex: 1 0 auto;
         max-width: 50%;
         margin-bottom: 0;
         padding: 0 0.6rem;
     }
     
-    .whatson-table .m-nav a:last-child {
+    table.whatson-table.whatson-table .m-nav a:last-child {
         margin-left: auto;
         text-align: right;
     }
