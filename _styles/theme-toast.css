@@ -4808,8 +4808,8 @@ $card-button--border-color: darken($card--base-color, 20%) !default;
 
 .c-card .c-card__title {
   flex: 0 0 auto;
-  font-size: 2rem;
-  line-height: 1.2;
+  font-size: 2.2rem;
+  line-height: 3.6rem;
   width: 100%;
   margin-bottom: 2.4rem;
 }
