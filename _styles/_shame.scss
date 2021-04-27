@@ -2,6 +2,26 @@
 
 @import "_start_tweaks.scss";
 
+/*
+    Stuff from latest StartCSS update - needs properly sorting:
+*/
+
+
+main {
+    margin-bottom: 0;
+}
+
+header {
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    background-color: inherit;
+}
+/*
+header p {
+    margin: 0;
+}
+*/
 // Hmmm. THere's way too much in here already. Needs sorting.
 
 // 'Invisible form' Need to add this as a pattern.

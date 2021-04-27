@@ -28,6 +28,7 @@ $longform-content-max-width: 42em !default;
         
          details {
             margin-bottom: $sz-m;
+            border: 0;
             border-bottom: 1px solid #eee;
             padding: $sz-xs 0 $sz-xs $sz-m;
         }

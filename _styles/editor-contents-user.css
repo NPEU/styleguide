@@ -3,54 +3,16 @@
 
 */
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Settings
 
-    Fall-Back is designed for use with the basic
-    [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
+    START-CSS FUNCTIONS
+    ============================================================================================
 
-    This determines a browser support base of:
-
-    IE 9+, FF 8+, Opera 12, [Chrome 29+, Android ~4.4+]
-    Chrome 29+, Opera 16+, Safari 6.1+, iOS 7+, Android ~4.4+
-
-
-    Any double-classing (e.g. `.class.class`) is deliberate and intended to increase specifity.
-    This allows any applicable Start-CSS declarations to be overidden.
-    E.g. `.{pattern} .{pattern}__child` would `a[href]`, but just `.{pattern}` wouldn't, so we use
-    `.{pattern}.{pattren}`
-
-    https://coolors.co/50514f-f25f5c-ffe066-247ba0-70c1b3
-
-|-------------------------------------------------------------------------------------------------*/
-/* --| FUNCTIONS AND MIXINS |-------------------------------------------------------------------- */
-/*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Settings
-
-    Fall-Back is designed for use with the basic
-    [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
-
-    This determines a browser support base of:
-
-    IE 9+, FF 8+, Opera 12, [Chrome 29+, Android ~4.4+]
-    Chrome 29+, Opera 16+, Safari 6.1+, iOS 7+, Android ~4.4+
-
-
-    Any double-classing (e.g. `.class.class`) is deliberate and intended to increase specifity.
-    This allows any applicable Start-CSS declarations to be overidden.
-    E.g. `.{pattern} .{pattern}__child` would `a[href]`, but just `.{pattern}` wouldn't, so we use
-    `.{pattern}.{pattren}`
-
-    https://coolors.co/50514f-f25f5c-ffe066-247ba0-70c1b3
-
-|-------------------------------------------------------------------------------------------------*/
-/*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Functions
 |-------------------------------------------------------------------------------------------------*/
 /*
     Colour contrast from https://gist.github.com/FStop/8959422
 
     Usage:
-    @if f__color_contrast($colour, #fff) < 2 {
+    @if s__color_contrast($colour, #fff) < 2 {
         color: #333;
     }
     @else{
@@ -61,7 +23,10 @@
 * via https://gist.github.com/voxpelli/6304812
 **/
 /*-------------------------------------------------------------------------------------------------|
-    Fall-Back Start-CSS Mixins
+
+    START-CSS MIXINS
+    ============================================================================================
+
 |-------------------------------------------------------------------------------------------------*/
 /*
     Apply a border and a padding that offsets the border-width from one spacing unit so as not to
@@ -89,7 +54,7 @@
 
     ```
     [role="button"] {
-        @include f__button;
+        @include s__button;
     }
     ```
 
@@ -97,7 +62,7 @@
 
     ```
         .btn--affirmative {
-            @include f__button(<text-color>, <bg-color>);
+            @include s__button(<text-color>, <bg-color>);
         }
     ```
 
@@ -119,43 +84,6 @@
     contain parapgraphs can result in double bottom margins, so flipping that around inside those
     containers.
 */
-/*! Start-CSS. See SCSS file for documentation. */
-/*-------------------------------------------------------------------------------------------------|
-
-    START-CSS
-    ============================================================================================
-
-    Start-CSS is designed for use with the basic
-    [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
-
-    This determines a browser support base of:
-
-    IE 9+, FF 8+, Opera 12, [Chrome 29+, Android ~4.4+]
-    Chrome 29+, Opera 16+, Safari 6.1+, iOS 7+, Android ~4.4+
-
-    Notes:
-
-    -moz-calc because this supports FF8+ and I like to be thorough.
-
-    CSS hacks from http://browserstrangeness.com/css_hacks.html
-    (hack and browser support in comments above each usage)
-
-    !!! Maybe don't include custom properties in this, I think it over-complicates things and needs
-    gradient background overlays to lighten/darken background colors dynamically.
-    Possibly include a separate file to add custom property support that overrides what it needs,
-    all wrapped in an `@supports`.
-
-    Resources:
-    * http://www.smashingmagazine.com/2012/12/css-baseline-the-good-the-bad-and-the-ugly/
-    * https://24ways.org/2006/compose-to-a-vertical-rhythm
-
-    NOTE TO SELF.
-    Where borders are concerned, probably best to leave margins alone and use padding to maintain
-    baseline-grid. After all, if there's a border, there will have to be padding too.
-
-    overflow-y makes element focussable in FireFox.
-
-|-------------------------------------------------------------------------------------------------*/
 /*-------------------------------------------------------------------------------------------------|
 
     START-CSS TOKENS
@@ -198,6 +126,170 @@
     `.{pattern}.{pattren}`
 
     https://coolors.co/50514f-f25f5c-ffe066-247ba0-70c1b3
+
+|-------------------------------------------------------------------------------------------------*/
+/* --| FUNCTIONS AND MIXINS |-------------------------------------------------------------------- */
+/*-------------------------------------------------------------------------------------------------|
+
+    START-CSS FUNCTIONS
+    ============================================================================================
+
+|-------------------------------------------------------------------------------------------------*/
+/*
+    Colour contrast from https://gist.github.com/FStop/8959422
+
+    Usage:
+    @if s__color_contrast($colour, #fff) < 2 {
+        color: #333;
+    }
+    @else{
+        color: #fff;
+    }
+*/
+/* Awesome contrast ratio function
+* via https://gist.github.com/voxpelli/6304812
+**/
+/*-------------------------------------------------------------------------------------------------|
+
+    START-CSS MIXINS
+    ============================================================================================
+
+|-------------------------------------------------------------------------------------------------*/
+/*
+    Apply a border and a padding that offsets the border-width from one spacing unit so as not to
+    affect the vertical rhythm.
+    Note the Opera Mini doesn't support `calc` so we need to include normal padding for that
+    browser.
+    Also, since we're supporting FF 8+, we're including -moz-calc for versions up to 16.
+    I may consider removing this as those browsers are dead, but I'm just being thorough for now.
+
+    Note on the 'last margin' issue/hack:
+    The pseudo element is intended to provide a collapsible margin to cancel out any 'trailing'
+    margins from content elements. However, since we're reducing the whole padding space by the
+    border-width to maintain the vertical rhythm, that margin is also less, BUT the content margin
+    is NOT being reduced, so that wins out - the reduction is ignored.
+    If the pseudo element bottom margin is adjusted to cancel out the height (1px) AS WELL AS
+    the amount of border-width, but the last element DOES NOT have a margin, then the space becomes
+    too small.
+    If pseudo-element height is 0, it doesn't work in IE, Chrome, Safari, without inline-block
+*/
+/*
+    This button mixin isn't really meant for generating specific/themed _types_ of button - there
+    would be too much code duplication for that.
+    Instead, this is intended to create buttons for new/custom selectors.
+    For example:
+
+    ```
+    [role="button"] {
+        @include s__button;
+    }
+    ```
+
+    rather than:
+
+    ```
+        .btn--affirmative {
+            @include s__button(<text-color>, <bg-color>);
+        }
+    ```
+
+    Note - because of this, think about removing parameters (it changed from my original intention -
+    I may change it back or split this into 2 mixins, or even just move things that are meant for
+    input[type="button"] to that ruleset - actually that's not a bad idea).
+
+*/
+/*
+    1. Remove the tapping delay from clickable elements.
+
+    Sort out the height of buttons. At 12px spacing, should be 30px high with 3px top/bottom margin.
+    Note Edge doesn't like: `line-height: calc(3rem - 2px)` if `display: inline-flex`
+    FF8 - ? doesn't like `line-height: -moz-calc()` and ignores
+    Need to make sure height is governed by line-height in case of breaks within buttons.
+*/
+/*
+    Uni-directional margins (bottom) is fine for most cases, but things like figcaptions that may
+    contain parapgraphs can result in double bottom margins, so flipping that around inside those
+    containers.
+*/
+/*-------------------------------------------------------------------------------------------------|
+
+    START-CSS TOKENS
+    ============================================================================================
+
+    Fall-Back is designed for use with the basic
+    [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
+
+    This determines a browser support base of:
+
+    IE 9+, FF 8+, Opera 12, [Chrome 29+, Android ~4.4+]
+    Chrome 29+, Opera 16+, Safari 6.1+, iOS 7+, Android ~4.4+
+
+
+    Any double-classing (e.g. `.class.class`) is deliberate and intended to increase specifity.
+    This allows any applicable Start-CSS declarations to be overidden.
+    E.g. `.{pattern} .{pattern}__child` would `a[href]`, but just `.{pattern}` wouldn't, so we use
+    `.{pattern}.{pattren}`
+
+    https://coolors.co/50514f-f25f5c-ffe066-247ba0-70c1b3
+
+|-------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------|
+
+    START-CSS SETTINGS
+    ============================================================================================
+
+    Fall-Back is designed for use with the basic
+    [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
+
+    This determines a browser support base of:
+
+    IE 9+, FF 8+, Opera 12, [Chrome 29+, Android ~4.4+]
+    Chrome 29+, Opera 16+, Safari 6.1+, iOS 7+, Android ~4.4+
+
+
+    Any double-classing (e.g. `.class.class`) is deliberate and intended to increase specifity.
+    This allows any applicable Start-CSS declarations to be overidden.
+    E.g. `.{pattern} .{pattern}__child` would `a[href]`, but just `.{pattern}` wouldn't, so we use
+    `.{pattern}.{pattren}`
+
+    https://coolors.co/50514f-f25f5c-ffe066-247ba0-70c1b3
+
+|-------------------------------------------------------------------------------------------------*/
+/*! Start-CSS. See SCSS file for documentation. */
+/*-------------------------------------------------------------------------------------------------|
+
+    START-CSS
+    ============================================================================================
+
+    Start-CSS is designed for use with the basic
+    [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
+
+    This determines a browser support base of:
+
+    IE 9+, FF 8+, Opera 12, [Chrome 29+, Android ~4.4+]
+    Chrome 29+, Opera 16+, Safari 6.1+, iOS 7+, Android ~4.4+
+
+    Notes:
+
+    -moz-calc because this supports FF8+ and I like to be thorough.
+
+    CSS hacks from http://browserstrangeness.com/css_hacks.html
+    (hack and browser support in comments above each usage)
+
+    !!! Maybe don't include custom properties in this, I think it over-complicates things and needs
+    gradient background overlays to lighten/darken background colors dynamically.
+    Possibly include a separate file to add custom property support that overrides what it needs,
+    all wrapped in an `@supports`.
+
+    Resources:
+    * http://www.smashingmagazine.com/2012/12/css-baseline-the-good-the-bad-and-the-ugly/
+    * https://24ways.org/2006/compose-to-a-vertical-rhythm
+
+    NOTE TO SELF.
+    Where borders are concerned, probably best to leave margins alone and use padding to maintain
+    baseline-grid. After all, if there's a border, there will have to be padding too.
+
+    overflow-y makes element focussable in FireFox.
 
 |-------------------------------------------------------------------------------------------------*/
 /*-------------------------------------------------------------------------------------------------|
@@ -282,6 +374,50 @@
     contain parapgraphs can result in double bottom margins, so flipping that around inside those
     containers.
 */
+/*-------------------------------------------------------------------------------------------------|
+
+    START-CSS TOKENS
+    ============================================================================================
+
+    Fall-Back is designed for use with the basic
+    [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
+
+    This determines a browser support base of:
+
+    IE 9+, FF 8+, Opera 12, [Chrome 29+, Android ~4.4+]
+    Chrome 29+, Opera 16+, Safari 6.1+, iOS 7+, Android ~4.4+
+
+
+    Any double-classing (e.g. `.class.class`) is deliberate and intended to increase specifity.
+    This allows any applicable Start-CSS declarations to be overidden.
+    E.g. `.{pattern} .{pattern}__child` would `a[href]`, but just `.{pattern}` wouldn't, so we use
+    `.{pattern}.{pattren}`
+
+    https://coolors.co/50514f-f25f5c-ffe066-247ba0-70c1b3
+
+|-------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------|
+
+    START-CSS SETTINGS
+    ============================================================================================
+
+    Fall-Back is designed for use with the basic
+    [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
+
+    This determines a browser support base of:
+
+    IE 9+, FF 8+, Opera 12, [Chrome 29+, Android ~4.4+]
+    Chrome 29+, Opera 16+, Safari 6.1+, iOS 7+, Android ~4.4+
+
+
+    Any double-classing (e.g. `.class.class`) is deliberate and intended to increase specifity.
+    This allows any applicable Start-CSS declarations to be overidden.
+    E.g. `.{pattern} .{pattern}__child` would `a[href]`, but just `.{pattern}` wouldn't, so we use
+    `.{pattern}.{pattren}`
+
+    https://coolors.co/50514f-f25f5c-ffe066-247ba0-70c1b3
+
+|-------------------------------------------------------------------------------------------------*/
 /* Output class for reference (tmp): */
 /*.ref {
     flbk--base-rem-space-unit: $s__base-rem-space-unit;
@@ -345,7 +481,7 @@ html {
   overflow-y: scroll;
   /* 3 */
   color: #333;
-  background-color: #eee;
+  background-color: #201726;
   font-size: 0.625em;
   /* 4 */
   -ms-text-size-adjust: 100%;
@@ -437,7 +573,7 @@ body {
   min-height: 100%;
   max-width: none;
   margin: 0;
-  padding: 0 2.4rem;
+  padding: 2.4rem;
   font-family: "Lato", sans-serif;
   font-size: 1.6em;
   line-height: 2.4rem;
@@ -457,10 +593,34 @@ body {
 }
 
 /*
+    @DEPRECATED - use the clearer method below:
     CSS only message
 */
 [data-css-only="true"] {
   display: none;
+}
+
+/*
+    New method hide stuff if CSS has loaded:
+*/
+[data-if-css="hide"] {
+  display: none;
+}
+
+/*
+    This method duplicates [hidden="false"][aria-hidden="false"] in accessibilty.scss, but I'm
+    thinking of maybe deprecating that.
+*/
+[data-if-css="visually-hide"] {
+  clip: rect(0 0 0 0);
+  position: absolute;
+  display: inline;
+  /*border: 0;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    width: 1px;*/
 }
 
 /*------------------------------------------------------------------------------------------------*\
@@ -470,7 +630,7 @@ body {
 \*------------------------------------------------------------------------------------------------*/
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: a
+    START-CSS ELEMENT: a
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -524,7 +684,7 @@ a[href][rel~="external"]:hover::after {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: abbr
+    START-CSS ELEMENT: abbr
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -547,7 +707,7 @@ abbr[title] {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: address
+    START-CSS ELEMENT: address
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -557,7 +717,7 @@ address {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: article
+    START-CSS ELEMENT: article
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -568,18 +728,21 @@ article {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: aside
+    START-CSS ELEMENT: aside
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
 aside {
   display: block;
   margin-bottom: 2.4rem;
+  padding: 2.4rem;
+  background-color: #fff;
+  color: #333;
 }
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: audio
+    START-CSS ELEMENT: audio
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -601,7 +764,7 @@ audio:not([controls]) {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: b
+    START-CSS ELEMENT: b
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -617,7 +780,7 @@ b {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: blockquote
+    START-CSS ELEMENT: blockquote
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -633,7 +796,7 @@ blockquote {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: button
+    START-CSS ELEMENT: button
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -725,7 +888,7 @@ _:-moz-meter-optimum, :root button::-moz-focus-inner {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: canvas
+    START-CSS ELEMENT: canvas
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -740,7 +903,7 @@ canvas {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: caption
+    START-CSS ELEMENT: caption
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -757,7 +920,7 @@ caption {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: code
+    START-CSS ELEMENT: code
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -777,7 +940,7 @@ code {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: dd
+    START-CSS ELEMENT: dd
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -787,7 +950,7 @@ dd {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: details
+    START-CSS ELEMENT: details
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -799,13 +962,10 @@ details {
   border-style: solid;
   border-color: #614776;
   padding-top: 2.4rem;
-  padding-top: -moz-calc(2.4rem - 1px);
   padding-top: calc(2.4rem - 1px);
   padding-left: 2.4rem;
-  padding-left: -moz-calc(2.4rem - 1px);
   padding-left: calc(2.4rem - 1px);
   padding-right: 2.4rem;
-  padding-right: -moz-calc(2.4rem - 1px);
   padding-right: calc(2.4rem - 1px);
 }
 
@@ -815,7 +975,6 @@ details::after {
   height: 1px;
   margin-top: 2.4rem;
   margin-bottom: -1px;
-  margin-bottom: -moz-calc(-1px - 1px);
   margin-bottom: calc(-1px - 1px);
 }
 
@@ -825,7 +984,7 @@ details > * {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: dfn
+    START-CSS ELEMENT: dfn
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -838,7 +997,7 @@ dfn {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: dl
+    START-CSS ELEMENT: dl
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -863,7 +1022,7 @@ dl {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: dt
+    START-CSS ELEMENT: dt
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -873,7 +1032,7 @@ dt {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: em
+    START-CSS ELEMENT: em
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -887,7 +1046,7 @@ em em {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: fieldset
+    START-CSS ELEMENT: fieldset
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -903,13 +1062,10 @@ fieldset {
   border-style: solid;
   border-color: #614776;
   padding-top: 2.4rem;
-  padding-top: -moz-calc(2.4rem - 1px);
   padding-top: calc(2.4rem - 1px);
   padding-left: 2.4rem;
-  padding-left: -moz-calc(2.4rem - 1px);
   padding-left: calc(2.4rem - 1px);
   padding-right: 2.4rem;
-  padding-right: -moz-calc(2.4rem - 1px);
   padding-right: calc(2.4rem - 1px);
 }
 
@@ -919,7 +1075,6 @@ fieldset::after {
   height: 1px;
   margin-top: 2.4rem;
   margin-bottom: -1px;
-  margin-bottom: -moz-calc(-1px - 1px);
   margin-bottom: calc(-1px - 1px);
 }
 
@@ -935,7 +1090,7 @@ fieldset fieldset::after {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: figcaption
+    START-CSS ELEMENT: figcaption
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -954,7 +1109,7 @@ figcaption * + * {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: figure
+    START-CSS ELEMENT: figure
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -965,18 +1120,21 @@ figure {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: footer
+    START-CSS ELEMENT: footer
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
 footer {
   display: block;
   margin-bottom: 2.4rem;
+  padding: 2.4rem;
+  background-color: #fff;
+  color: #333;
 }
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: form
+    START-CSS ELEMENT: form
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -986,18 +1144,21 @@ form {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: header
+    START-CSS ELEMENT: header
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
 header {
   display: block;
   margin-bottom: 2.4rem;
+  padding: 2.4rem;
+  background-color: #fff;
+  color: #333;
 }
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: hgroup
+    START-CSS ELEMENT: hgroup
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1007,7 +1168,7 @@ hgroup {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: h
+    START-CSS ELEMENT: h
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1049,7 +1210,7 @@ h6 {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: hr
+    START-CSS ELEMENT: hr
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1070,7 +1231,7 @@ hr {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: iframe
+    START-CSS ELEMENT: iframe
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1080,7 +1241,7 @@ iframe {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: img
+    START-CSS ELEMENT: img
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1122,7 +1283,7 @@ a img {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: input
+    START-CSS ELEMENT: input
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1389,7 +1550,7 @@ _:-ms-input-placeholder, :root [type="file"] {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: kbd
+    START-CSS ELEMENT: kbd
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1409,7 +1570,7 @@ kbd {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: label
+    START-CSS ELEMENT: label
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1431,7 +1592,7 @@ label {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: legend
+    START-CSS ELEMENT: legend
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1469,7 +1630,7 @@ legend {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: li
+    START-CSS ELEMENT: li
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1484,7 +1645,7 @@ li ol {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: main`
+    START-CSS ELEMENT: main
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1497,18 +1658,15 @@ main {
   width: 100%;
   min-height: 100%;
   padding: 2.4rem;
-  background-color: #eee;
+  margin-bottom: 2.4rem;
+  background-color: #fff;
   color: #333;
   position: relative;
-  -webkit-flex: 1 0 auto;
-  -moz-box-flex: 1;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
 }
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: mark
+    START-CSS ELEMENT: mark
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1522,7 +1680,7 @@ mark {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: nav
+    START-CSS ELEMENT: nav
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1532,7 +1690,7 @@ nav {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: object
+    START-CSS ELEMENT: object
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1542,7 +1700,7 @@ object {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: ol
+    START-CSS ELEMENT: ol
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1567,7 +1725,7 @@ ol {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: optgroup
+    START-CSS ELEMENT: optgroup
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1586,7 +1744,7 @@ optgroup {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: option
+    START-CSS ELEMENT: option
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1613,7 +1771,7 @@ option:hover {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: p
+    START-CSS ELEMENT: p
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1623,7 +1781,7 @@ p {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: pre
+    START-CSS ELEMENT: pre
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1643,7 +1801,7 @@ pre {
   /* 1 */
   overflow-y: auto;
   /* 1 */
-  margin-bottom: calc-rem-from-px(31px);
+  margin-bottom: 3.1rem;
   /* 1 */
   background-color: #ebe6f0;
   /*1 */
@@ -1655,7 +1813,7 @@ pre {
 
 @supports (-ms-ime-align: auto) {
   pre {
-    margin-bottom: calc-rem-from-px(36px);
+    margin-bottom: 3.6rem;
     /* 1 */
   }
 }
@@ -1672,7 +1830,7 @@ pre code {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: progress
+    START-CSS ELEMENT: progress
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1689,7 +1847,7 @@ progress {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: samp
+    START-CSS ELEMENT: samp
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1709,7 +1867,7 @@ samp {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: section
+    START-CSS ELEMENT: section
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1720,7 +1878,7 @@ section {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: select
+    START-CSS ELEMENT: select
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1732,6 +1890,7 @@ section {
 select {
   height: 3rem;
   /* 1 */
+  min-height: auto;
   margin: 0.3rem 0;
   border-width: 1px;
   border-style: solid;
@@ -1870,7 +2029,7 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[multip
 /* Individual height fixes moved to '_start-experimental.scss' */
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: small
+    START-CSS ELEMENT: small
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1879,7 +2038,7 @@ _:-webkit-full-screen, _::-webkit-full-page-media, _:future, :root select[multip
     2. Prevent the element increasing the line-height of the parent.
 */
 small {
-  font-size: 80%;
+  font-size: 81.25%;
   /* 1 */
   line-height: normal;
   /* 2 */
@@ -1899,7 +2058,7 @@ small a[href]:active {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: strong
+    START-CSS ELEMENT: strong
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1916,7 +2075,7 @@ strong {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: sub
+    START-CSS ELEMENT: sub
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1933,7 +2092,7 @@ sub {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: summary
+    START-CSS ELEMENT: summary
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1982,7 +2141,7 @@ details[open] > summary::before {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: sup
+    START-CSS ELEMENT: sup
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -1999,7 +2158,7 @@ sup {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: svg
+    START-CSS ELEMENT: svg
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -2026,7 +2185,7 @@ svg:not(:root) {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: table
+    START-CSS ELEMENT: table
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -2049,7 +2208,7 @@ table {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: td
+    START-CSS ELEMENT: td
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -2071,7 +2230,7 @@ td {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: template
+    START-CSS ELEMENT: template
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -2085,7 +2244,7 @@ template {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: textarea
+    START-CSS ELEMENT: textarea
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -2133,7 +2292,7 @@ textarea:focus {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: th
+    START-CSS ELEMENT: th
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -2155,7 +2314,7 @@ th {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: ul
+    START-CSS ELEMENT: ul
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -2180,7 +2339,7 @@ ul {
 
 /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: video
+    START-CSS ELEMENT: video
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
@@ -2197,6 +2356,9 @@ video {
   background-color: #333;
 }
 
+/*
+    Utilities and other miscellaneous bits:
+*/
 /*
     1. Remove the tapping delay from clickable elements.
 */
@@ -2217,6 +2379,141 @@ video {
   text-shadow: none;
 }
 
+/*
+    Highlight :target-ed headings
+    Note I can't selected the whole section without it being wrapped in something, and I don't want
+    to mess around with that.
+*/
+main :target {
+  -moz-animation: target-fade 3s 1;
+  -webkit-animation: target-fade 3s 1;
+  animation: target-fade 3s 1;
+}
+
+@-moz-keyframes target-fade {
+  0% {
+    background-color: rgba(173, 150, 192, 0.4);
+    box-shadow: 0 0 0 1.2rem rgba(173, 150, 192, 0.4);
+  }
+  100% {
+    background-color: rgba(173, 150, 192, 0);
+    box-shadow: 0 0 0 1.2rem rgba(173, 150, 192, 0);
+  }
+}
+
+@-webkit-keyframes target-fade {
+  0% {
+    background-color: rgba(173, 150, 192, 0.4);
+    box-shadow: 0 0 0 1.2rem rgba(173, 150, 192, 0.4);
+  }
+  100% {
+    background-color: rgba(173, 150, 192, 0);
+    box-shadow: 0 0 0 1.2rem rgba(173, 150, 192, 0);
+  }
+}
+
+@keyframes target-fade {
+  0% {
+    background-color: rgba(173, 150, 192, 0.4);
+    box-shadow: 0 0 0 1.2rem rgba(173, 150, 192, 0.4);
+  }
+  100% {
+    background-color: rgba(173, 150, 192, 0);
+    box-shadow: 0 0 0 1.2rem rgba(173, 150, 192, 0);
+  }
+}
+
+/*
+    Give some space to elements targeted by fragments:
+*/
+[id] {
+  scroll-margin-top: 4.8rem;
+}
+
+/* Alt margins */
+/*
+Shelving this for now
+@if $s__procedural-margins == false {
+    /* this is too generic 
+    * + * {
+        margin-top: $s__base-rem-space-unit;
+    }
+    /
+    
+    /* This is the full list but it's not exactly what we want:
+    * + address,
+    * + article,
+    * + aside,
+    * + blockquote,
+    * + details,
+    * + dialog,
+    * + dd,
+    * + div,
+    * + dl,
+    * + dt,
+    * + fieldset,
+    * + figcaption,
+    * + figure,
+    * + footer,
+    * + form,
+    * + h1,
+    * + h2,
+    * + h3,
+    * + h4,
+    * + h5,
+    * + h6,
+    * + header,
+    * + hgroup,
+    * + hr,
+    * + li,
+    * + main,
+    * + nav,
+    * + ol,
+    * + p,
+    * + pre,
+    * + section,
+    * + table,
+    * + ul
+    /
+    
+    /*
+        Taking out list items, hr and div:
+    /
+    *:not(legend):not(figcaption) + address,
+    *:not(legend):not(figcaption) + article,
+    *:not(legend):not(figcaption) + aside,
+    *:not(legend):not(figcaption) + blockquote,
+    *:not(legend):not(figcaption) + details,
+    *:not(legend):not(figcaption) + dialog,
+    *:not(legend):not(figcaption) + dl,
+    *:not(legend):not(figcaption) + fieldset,
+    *:not(legend):not(figcaption) + figure,
+    *:not(legend):not(figcaption) + footer,
+    *:not(legend):not(figcaption) + form,
+    *:not(legend):not(figcaption) + h1,
+    *:not(legend):not(figcaption) + h2,
+    *:not(legend):not(figcaption) + h3,
+    *:not(legend):not(figcaption) + h4,
+    *:not(legend):not(figcaption) + h5,
+    *:not(legend):not(figcaption) + h6,
+    *:not(legend):not(figcaption) + header,
+    *:not(legend):not(figcaption) + hgroup,
+    *:not(legend):not(figcaption) + main,
+    *:not(legend):not(figcaption) + nav,
+    *:not(legend):not(figcaption) + ol,
+    *:not(legend):not(figcaption) + p,
+    *:not(legend):not(figcaption) + pre,
+    *:not(legend):not(figcaption) + section,
+    *:not(legend):not(figcaption) + table,
+    *:not(legend):not(figcaption) + ul {
+        margin-top: $s__base-rem-space-unit;
+    }
+    
+    hr {
+        margin-top: calc(2.4rem - 1px;
+    }
+} 
+*/
 /*! Start-CSS Accessibility. See SCSS file for documentation. */
 /*-------------------------------------------------------------------------------------------------|
 
@@ -2277,7 +2574,7 @@ a[hidden="false"][aria-hidden="false"]:active {
 
 /*
     Elements with tabindex="-1" are NOT user focussable, but CAN be focussed via JS.
-    In this case elements focussed in such a way should not recieve focus styles to avoid confusion.
+    In this case elements focussed in such a way should not receive focus styles to avoid confusion.
     (https://inclusive-components.design/a-todo-list#focusmanagement)
 */
 [tabindex="-1"] {
@@ -2479,13 +2776,10 @@ a[href].cta--has-icon .icon {
   border-style: solid;
   border-color: #614776;
   padding-top: 24px;
-  padding-top: -moz-calc(24px - 6px);
   padding-top: calc(24px - 6px);
   padding-left: 24px;
-  padding-left: -moz-calc(24px - 6px);
   padding-left: calc(24px - 6px);
   padding-right: 24px;
-  padding-right: -moz-calc(24px - 6px);
   padding-right: calc(24px - 6px);
 }
 
@@ -2495,7 +2789,6 @@ a[href].cta--has-icon .icon {
   height: 1px;
   margin-top: 24px;
   margin-bottom: -1px;
-  margin-bottom: -moz-calc(-1px - 6px);
   margin-bottom: calc(-1px - 6px);
 }
 
@@ -2504,13 +2797,10 @@ a[href].cta--has-icon .icon {
   border-style: solid;
   border-color: #614776;
   padding-top: 2.4rem;
-  padding-top: -moz-calc(2.4rem - 0px);
   padding-top: calc(2.4rem - 0px);
   padding-left: 2.4rem;
-  padding-left: -moz-calc(2.4rem - 0px);
   padding-left: calc(2.4rem - 0px);
   padding-right: 2.4rem;
-  padding-right: -moz-calc(2.4rem - 0px);
   padding-right: calc(2.4rem - 0px);
 }
 
@@ -2520,7 +2810,6 @@ a[href].cta--has-icon .icon {
   height: 1px;
   margin-top: 2.4rem;
   margin-bottom: -1px;
-  margin-bottom: -moz-calc(-1px - 0px);
   margin-bottom: calc(-1px - 0px);
 }
 
@@ -2823,7 +3112,7 @@ a[hidden="false"][aria-hidden="false"]:active {
 
 /*
     Elements with tabindex="-1" are NOT user focussable, but CAN be focussed via JS.
-    In this case elements focussed in such a way should not recieve focus styles to avoid confusion.
+    In this case elements focussed in such a way should not receive focus styles to avoid confusion.
     (https://inclusive-components.design/a-todo-list#focusmanagement)
 */
 [tabindex="-1"] {
@@ -2841,40 +3130,6 @@ a[hidden="false"][aria-hidden="false"]:active {
   }
 }
 
-/*! Start CSS Utilities. See SCSS file for documentation. */
-/*------------------------------------------------------------------------------------------------*\
-
-    UTILITIES
-
-\*------------------------------------------------------------------------------------------------*/
-/*
-    Clearfix: contain floats for modern browsers
-
-    1. The space content is one way to avoid an Opera bug when the `contenteditable` attribute is #
-       included anywhere else in the document.
-       Otherwise it causes space to appear at the top and bottom of elements that receive the#
-       `clearfix` class.
-
-    2. The use of `table` rather than `block` is only necessary if using
-       `:before` to contain the top-margins of child elements.
-*/
-.clearfix:before,
-.clearfix:after {
-  content: " ";
-  /* 1 */
-  display: table;
-  /* 2 */
-}
-
-.clearfix,
-.clearfix:after {
-  clear: both;
-}
-
-.no-css-only {
-  display: none;
-}
-
 /*! Start CSS Icons. See SCSS file for documentation. */
 /*------------------------------------------------------------------------------------------------*\
 
@@ -2886,70 +3141,144 @@ a[hidden="false"][aria-hidden="false"]:active {
     This default icon set used Feather Icons (https://feathericons.com/)
     If you want to use a different icon set, omit the @import declaration for this file and replace
     it with a custom one.
+    
+    The markup here is based on this article:
+    [Accessible SVG Icons with Inline Sprites](https://www.24a11y.com/2018/accessible-svg-icons-with-inline-sprites/)
 
     <!-- At the top of each page: -->
     <svg xmlns="http://www.w3.org/2000/svg" display="none">
-        <symbol id="icon-building" viewBox="0 0 24 24">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        <style>
+            svg[focusable="false"][role="img"][aria-labelledby],
+            svg[focusable="false"][aria-hidden="true"] {
+                fill: none;
+                fill-opacity: 0;
+                stroke: currentColor;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                width: 1.25em;
+                height: 1.25em;
+                margin: 0;
+                padding: 0;
+                vertical-align: text-bottom;
+            }
+        </style>
+        <symbol id="icon-building" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
         </symbol>
-        <symbol id="icon-calendar" viewBox="0 0 24 24">
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-            <line x1="16" y1="2" x2="16" y2="6"></line>
-            <line x1="8" y1="2" x2="8" y2="6"></line>
-            <line x1="3" y1="10" x2="21" y2="10"></line>
+        <symbol id="icon-calendar" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
         </symbol>
-        <symbol id="icon-chevron-down" viewBox="0 0 24 24">
-            <polyline points="6 9 12 15 18 9"></polyline>
+        <symbol id="icon-chevron-down" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <polyline points="6 9 12 15 18 9"/>
         </symbol>
-        <symbol id="icon-chevron-up" viewBox="0 0 24 24">
-            <polyline points="18 15 12 9 6 15"></polyline>
+        <symbol id="icon-chevron-up" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <polyline points="18 15 12 9 6 15"/>
         </symbol>
-        <symbol id="icon-chevron-left" viewBox="0 0 24 24">
-            <polyline points="15 18 9 12 15 6"></polyline>
+        <symbol id="icon-chevron-left" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <polyline points="15 18 9 12 15 6"/>
         </symbol>
-        <symbol id="icon-chevron-right" viewBox="0 0 24 24">
-            <polyline points="9 18 15 12 9 6"></polyline>
+        <symbol id="icon-chevron-right" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <polyline points="9 18 15 12 9 6"/>
         </symbol>
-        <symbol id="icon-cross" viewBox="0 0 24 24">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-			<line x1="6" y1="6" x2="18" y2="18"></line>
+        <symbol id="icon-cross" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
         </symbol>
-        <symbol id="icon-email" viewBox="0 0 24 24">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-            <polyline points="22,6 12,13 2,6"></polyline>
+        <symbol id="icon-edit" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
         </symbol>
-        <symbol id="icon-facebook" viewBox="0 0 24 24">
-            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+        <symbol id="icon-email" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
         </symbol>
-        <symbol id="icon-fax" viewBox="0 0 24 24">
+        <symbol id="icon-facebook" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+        </symbol>
+        <symbol id="icon-fax" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
             <path class="st0" d="M6,18H4c-1.1,0-2-0.7-2-1.6v-4c0-0.9,0.9-1.6,2-1.6h16c1.1,0,2,0.7,2,1.6v4c0,0.9-0.9,1.6-2,1.6h-2"/>
             <rect x="6" y="14" class="st0" width="12" height="8"/>
             <path class="st0" d="M6,7.4L4.8,6.2C4.4,5.7,4.4,5,4.8,4.6c0,0,0.1,0,0.1-0.1c1.4-1.1,3-1.9,4.7-2.2c1.6-0.4,3.2-0.4,4.8,0 c1.7,0.4,3.3,1.1,4.7,2.2c0.5,0.4,0.5,1.1,0.1,1.6c0,0,0,0.1-0.1,0.1L18,7.4c-0.4,0.4-1,0.5-1.5,0.1c-0.4-0.3-0.9-0.6-1.4-0.8 c-0.4-0.2-0.7-0.6-0.7-1v-1c-1.6-0.4-3.2-0.4-4.8,0v1c0,0.4-0.3,0.8-0.7,1C8.4,6.9,8,7.2,7.5,7.5C7.1,7.8,6.4,7.8,6,7.4z"/>
         </symbol>
-        <symbol id="icon-file" viewBox="0 0 24 24">
-            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
-            <polyline points="13 2 13 9 20 9"></polyline>
+        <symbol id="icon-file" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+            <polyline points="13 2 13 9 20 9"/>
         </symbol>
-        <symbol id="icon-linkedin" viewBox="0 0 24 24">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-            <rect x="2" y="9" width="4" height="12">
-            </rect><circle cx="4" cy="4" r="2"></circle>
+        <symbol id="icon-info" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12.01" y2="8"/>
         </symbol>
-        <symbol id="icon-menu" viewBox="0 0 24 24">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-			<line x1="3" y1="6" x2="21" y2="6"></line>
-			<line x1="3" y1="18" x2="21" y2="18"></line>
+        <symbol id="icon-linkedin" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >            
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
         </symbol>
-        <symbol id="icon-person" viewBox="0 0 24 24">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-            <circle cx="12" cy="7" r="4"></circle>
+        <symbol id="icon-menu" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
         </symbol>
-        <symbol id="icon-phone" viewBox="0 0 24 24">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        <symbol id="icon-person" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
         </symbol>
-        <symbol id="icon-twitter" viewBox="0 0 24 24">
-            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+        <symbol id="icon-phone" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </symbol>
+        <symbol id="icon-rss" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <path class="st0" d="M5.6,9.1c4,0,7.2,3.2,7.2,7.2"/><path class="st0" d="M5.6,3.5c7,0,12.8,5.7,12.8,12.8"/><circle class="st0" cx="6.4" cy="15.5" r="0.8"/>
+        </symbol>
+        <symbol id="icon-search" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <circle cx="10.5" cy="10.5" r="7.5"/>
+            <line x1="21" y1="21" x2="15.8" y2="15.8"/>
+        </symbol>
+        <symbol id="icon-twitter" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
         </symbol>
      </svg>
 
@@ -2957,7 +3286,7 @@ a[hidden="false"][aria-hidden="false"]:active {
 
     <!-- Where it's needed: -->
     <svg display="none" class="icon" aria-label="Spoken label"><use xlink:href="#icon-triangle-down"></use></svg>
-    <!-- Note the aria-label can be removed if equivelent text is already present or the icon is visual only -->
+    <!-- Note the aria-label can be removed if equivalent text is already present or the icon is visual only -->
 
 */
 /*
@@ -3826,7 +4155,7 @@ blockquote > p:last-child::after {
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   /*-------------------------------------------------------------------------------------------------|
 
-    START=CSS ELEMENT: h
+    START-CSS ELEMENT: h
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/

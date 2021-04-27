@@ -1969,7 +1969,9 @@ function ready(fn) {
 
 
 ready(function(){
-    document.querySelectorAll('select').forEach(function(select) {
+    var selects = document.querySelectorAll('select');
+    Array.prototype.forEach.call(selects, function(select, i){
+    //document.querySelectorAll('select').forEach(function(select) {
 
         // Set some useful, intelligent defaults:
         var options = {};

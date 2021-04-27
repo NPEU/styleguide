@@ -3,7 +3,8 @@
 
 $font-color: $s__base-text-color;
 $font-disabled-color: lighten($font-color, 26%);
-$primary-color: darken($system-message--color, 24%);
+//$primary-color: darken($system-message--color, 24%);
+$primary-color: #5F6DB2;
 
 @import '../bower_components/SlimSelect/src/slim-select/slimselect.scss';
 

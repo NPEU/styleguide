@@ -6,17 +6,20 @@
 $theme-name: staff-area;
 $theme: (
     cta-text-color       : #ffffff,
-    cta-background-color : #5f4776,
-    primary-color        : #007f6e,
-    secondary-color      : #5f4776,
+    cta-background-color : #BC955C,
+    primary-color        : #5F6DB2,
+    secondary-color      : #BC955C,
     page-header-color    : #ffffff
 );
-
 
 $s__breakpoint--enhanced: 60em;
 
 $theme-copy: $theme;
 $theme-name-copy: $theme-name;
+
+$s__base-ui-color: map-get($theme, 'primary-color');
+$s__th-background-color: lighten($s__base-ui-color, 30%);
+
 @import "_style";
 
 

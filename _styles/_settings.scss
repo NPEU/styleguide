@@ -6,13 +6,17 @@ $s__base-font-family: 'Lato', sans-serif;
 
 $s__root-font-size: 10px;
 
-$s__base-ui-color: #614776;
+$s__base-ui-color: #614776 !default;
 //$s__breakpoint--enhanced: 42.5625em;
 //$s__breakpoint--enhanced: 51.875em;
 //$s__breakpoint--enhanced: 58em;
 $s__body-max-width: 0;
 
-@import '../bower_components/Fall-Back-Start-CSS/scss/_start_settings.scss';
+//@import '../bower_components/Fall-Back-Start-CSS/scss/_start_settings.scss';
+@import '../bower_components/Fall-Back-Start-CSS/scss/_01-start-functions.scss';
+@import '../bower_components/Fall-Back-Start-CSS/scss/_02-start-mixins.scss';
+@import '../bower_components/Fall-Back-Start-CSS/scss/_03-start-tokens.scss';
+@import '../bower_components/Fall-Back-Start-CSS/scss/_04-start-settings.scss';
 
 
 $max-main-line-length: 0;

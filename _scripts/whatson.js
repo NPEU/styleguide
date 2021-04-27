@@ -32,6 +32,10 @@ function ready(fn) {
 ready(function(){
     var just_me = document.getElementById('whatson_filter_only_me');
 
+    if (!just_me) {
+        return;
+    }
+
     just_me.addEventListener('click', function(e) {
         //var slims = e.target.form.slims;
         

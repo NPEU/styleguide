@@ -1,3 +1,6 @@
+$s__base-ui-color: #5F6DB2;
+$s__secondary-ui-color: #BC955C;
+
 @import "_settings.scss";
 @import "_core_themes.scss";
 
@@ -20,23 +23,24 @@ $primary-color: darken($system-message--color, 24%);
     margin: 0;
 }
 
-.table--sticky-header thead th {
+.t-staff-area table.table--sticky-header thead th {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
+
+    background-color: lighten($s__base-ui-color, 30%);
 }
 
 .table--sticky-header thead th::before {
     content: "";
     position: absolute;
 
-    left: 0;
-    right: 0;
+    left: -1px;
+    right: -1px;
     top: -1px;
     bottom: -1px;
 
-    border-top: 1px solid #614776;
-    border-bottom: 1px solid #614776;
+    border: 1px solid #614776;
 
     z-index: -1;
 }
@@ -64,11 +68,11 @@ table.whatson-table.whatson-table {
 
 table.whatson-table.whatson-table thead tr:first-child th {
     width: 12%;
-    
-    background-color: map-get(map-get($themes, 'neutral'), primary-color);
-    color: #fff;
-    
-    border-color: map-get(map-get($themes, 'neutral'), primary-color);
+
+    //background-color: map-get(map-get($themes, 'neutral'), primary-color);
+    //color: #fff;
+
+    //border-color: map-get(map-get($themes, 'neutral'), primary-color);
 }
 
 table.whatson-table.whatson-table thead tr:first-child th:first-child,
@@ -102,17 +106,18 @@ table.whatson-table.whatson-table .m-nav a:hover {
     box-shadow: 0 0 0 3px rgba(0,0,0,0.3);
 }
 
-
+/*
 table.whatson-table.whatson-table th a[href] {
     color: #fff;
 }
+*/
 
 table.whatson-table.whatson-table td {
     padding-top: 1.2rem;
     padding-bottom: 1.2rem;
     padding-left: 0.6rem;
     padding-right: 0.6rem;
-    
+
     border-color: map-get(map-get($themes, 'neutral'), primary-color);
 }
 
@@ -125,10 +130,10 @@ table.whatson-table.whatson-table tr[filterable_visible_item="odd"] td {
     background-color: #fff;
 }
 
+
 table.whatson-table.whatson-table tr[filterable_visible_item]:target td,
 table.whatson-table.whatson-table[filterable_visibile_items="1"] tr[filterable_visible_item] td {
-    /* CHANGE THIS COLOUR */
-    background-color: #fed;
+    background-color: lighten($s__secondary-ui-color, 20%);
 }
 
 
@@ -143,6 +148,7 @@ table.whatson-table.whatson-table p:last-child {
 table.whatson-table.whatson-table .m-nav {
     display: none;
 }
+
 
 
 @media (max-width: 46em) {
@@ -193,11 +199,11 @@ table.whatson-table.whatson-table .m-nav {
     table.whatson-table.whatson-table td:nth-child(2) ~ td {
         padding-top: 0;
     }
-    
+
     table.whatson-table.whatson-table td.is-editing {
         width: 100%;
     }
-    
+
     table.whatson-table.whatson-table .m-nav {
         display: flex;
         margin: -1.2rem -0.6rem 0.6rem -0.6rem;
@@ -211,11 +217,11 @@ table.whatson-table.whatson-table .m-nav {
         margin-bottom: 0;
         padding: 0 0.6rem;
     }
-    
+
     table.whatson-table.whatson-table .m-nav a:last-child {
         margin-left: auto;
         text-align: right;
     }
-    
-    
+
+
 }

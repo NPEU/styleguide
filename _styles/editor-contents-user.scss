@@ -3,15 +3,16 @@
 @import "_core_themes.scss";
 
 
+@import '../bower_components/Fall-Back-Start-CSS/scss/_01-start-functions.scss';
+@import '../bower_components/Fall-Back-Start-CSS/scss/_02-start-mixins.scss';
+@import '../bower_components/Fall-Back-Start-CSS/scss/_03-start-tokens.scss';
+@import '../bower_components/Fall-Back-Start-CSS/scss/_04-start-settings.scss';
 
-@import '../bower_components/Fall-Back-Start-CSS/scss/_start_settings.scss';
-@import '../bower_components/Fall-Back-Start-CSS/scss/_start_functions.scss';
-@import '../bower_components/Fall-Back-Start-CSS/scss/_start_mixins.scss';
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start.scss';
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start-classes.scss';
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start-accessibility.scss';
-@import '../bower_components/Fall-Back-Start-CSS/scss/_start-utilities.scss';
-@import '../bower_components/Fall-Back-Start-CSS/scss/_start-icons.scss';
+//@import '../bower_components/Fall-Back-Start-CSS/scss/_start-utilities.scss';
+@import '../bower_components/Fall-Back-Start-CSS/scss/_Xstart-icons.scss';
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start-experimental.scss';
 
 

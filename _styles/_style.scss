@@ -1,7 +1,7 @@
 /* --| SETTINGS |-------------------------------------------------------------------------------- */
 
+// NOTE - Needs an overhaul because of updated StartCSS
 
-// NOTE - Needs an overhauls because of updated StartCSS
 
 @import "_settings.scss";
 @import "_core_themes.scss";
@@ -13,6 +13,11 @@ $experimental_checkradios: true;
 
 $s__base-background-color: #fff;
 $s__main-background-color: #fff;
+
+$s__use-last-child-margin-zero: true;
+
+
+//@debug $s__base-ui-color;
 
 $s__html-background-color: darken(map-get(map-get($themes, neutral), primary-color), 20%);
 
@@ -39,14 +44,14 @@ $fs__include_class_bordered: false;
 $fs__include_class_padded:   false;
 $fs__include_class_poem:     false;
 
-@import '../bower_components/Fall-Back-Start-CSS/scss/_start_settings.scss';
-@import '../bower_components/Fall-Back-Start-CSS/scss/_start_functions.scss';
-@import '../bower_components/Fall-Back-Start-CSS/scss/_start_mixins.scss';
+//@import '../bower_components/Fall-Back-Start-CSS/scss/_start_settings.scss';
+//@import '../bower_components/Fall-Back-Start-CSS/scss/_start_functions.scss';
+//@import '../bower_components/Fall-Back-Start-CSS/scss/_start_mixins.scss';
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start.scss';
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start-classes.scss';
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start-accessibility.scss';
-@import '../bower_components/Fall-Back-Start-CSS/scss/_start-utilities.scss';
-@import '../bower_components/Fall-Back-Start-CSS/scss/_start-icons.scss';
+//@import '../bower_components/Fall-Back-Start-CSS/scss/_start-utilities.scss';
+@import '../bower_components/Fall-Back-Start-CSS/scss/_Xstart-icons.scss';
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start-experimental.scss';
 
 
@@ -55,7 +60,6 @@ $fs__include_class_poem:     false;
 
 
 @import "_sizes";
-
 
 //$hover-effect-opacity: 0.2;
 //$hover-effect-width: $s__base-rem-space-unit / 4;
