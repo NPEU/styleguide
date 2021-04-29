@@ -17,6 +17,14 @@ header {
     color: inherit;
     background-color: inherit;
 }
+
+td span {
+    vertical-align: middle;
+}
+
+dd {
+    margin-bottom: $s__base-rem-space-unit;
+}
 /*
 header p {
     margin: 0;

@@ -96,6 +96,7 @@ $theme-only: false !default;
             h1 {
                 border-bottom: 1px solid #bbb;
                 margin-bottom: calc(#{$s__base-rem-space-unit} - 1px);
+                //margin-bottom: -1px;
             }
 
         &__banner {

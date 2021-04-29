@@ -43,7 +43,11 @@ $theme-only: false !default;
             color: #fff;
         }
         
-        a[href] {
+        a[href]:link,
+        a[href]:visited,
+        a[href]:hover,
+        a[href]:active,
+        a[href]:focus {
             color: inherit;
         }
 	}
@@ -60,7 +64,7 @@ $theme-only: false !default;
             //background-color: $system-message--background-color;
             padding: $system-message-spacing-unit;
             
-            @include bottom-space-fix($system-message-spacing-unit);
+            //@include bottom-space-fix($system-message-spacing-unit);
 
             /*
             @if $system-message--border-or-outline == 'outline' {
@@ -87,9 +91,9 @@ $theme-only: false !default;
                 }
             }*/
             
-            > * {
+            /*> * {
                 margin-bottom: $system-message-spacing-unit;
-            }
+            }*/
         }
     }
 

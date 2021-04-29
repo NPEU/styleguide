@@ -5597,7 +5597,7 @@ $glimpse--link-border-bottom--hover: false !default;*/
   left: 0;
   top: 0;
   border: 1px solid currentColor;
-  margin-right: 2rem;
+  margin-right: 2.4rem;
 }
 
 .c-glimpse .c-glimpse__image--rounded {
@@ -5609,12 +5609,12 @@ $glimpse--link-border-bottom--hover: false !default;*/
   margin: 0;
   max-width: 100%;
   width: calc((30em - 100%) * 1000);
-  min-width: calc(100% - 9.2rem);
+  min-width: calc(100% - 9.6rem);
 }
 
 .c-glimpse .c-glimpse__content .c-glimpse__heading {
   font-size: 1.8rem;
-  line-height: 3rem;
+  line-height: 3.6rem;
   margin: 0;
 }
 
@@ -5624,19 +5624,20 @@ $glimpse--link-border-bottom--hover: false !default;*/
 }
 
 .c-glimpse.c-glimpse--large-image .c-glimpse__content {
-  min-width: calc(100% - 19.2rem);
-  margin-left: 2rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  min-width: calc(100% - 19.6rem);
+  padding: 2.4rem;
+  /*margin-left: $glimpse--spacing-unit;
+            margin-top: $glimpse--spacing-unit;
+            margin-bottom: $glimpse--spacing-unit;*/
 }
 
 .c-glimpse.c-glimpse--large-image .c-glimpse__image {
   width: 17.2rem;
   height: 17.2rem;
   margin-right: 0;
-  margin-top: -2rem;
-  margin-bottom: -2rem;
-  margin-left: -1rem;
+  margin-top: -2.4rem;
+  margin-bottom: -2.4rem;
+  margin-left: -1.2rem;
 }
 
 /*
@@ -6870,7 +6871,6 @@ ul.c-utilitext li + li, ol.c-utilitext li + li {
 .c-system-message.c-system-message {
   color: #333;
   padding: 1.2rem;
-  padding-bottom: 0 !important;
   /*
             @if $system-message--border-or-outline == 'outline' {
                 outline: $system-message--border-width $system-message--border-style $system-message--color;
@@ -6895,18 +6895,9 @@ ul.c-utilitext li + li, ol.c-utilitext li + li {
                     color: #fff;
                 }
             }*/
-}
-
-.c-system-message.c-system-message::after {
-  content: "";
-  display: block;
-  height: 1px;
-  margin-top: calc(1.2rem - 1px);
-  clear: both;
-}
-
-.c-system-message.c-system-message > * {
-  margin-bottom: 1.2rem;
+  /*> * {
+                margin-bottom: $system-message-spacing-unit;
+            }*/
 }
 
 .c-system-message {
@@ -6916,7 +6907,11 @@ ul.c-utilitext li + li, ol.c-utilitext li + li {
   color: #333;
 }
 
-.c-system-message a[href] {
+.c-system-message a[href]:link,
+.c-system-message a[href]:visited,
+.c-system-message a[href]:hover,
+.c-system-message a[href]:active,
+.c-system-message a[href]:focus {
   color: inherit;
 }
 
@@ -6928,8 +6923,16 @@ ul.c-utilitext li + li, ol.c-utilitext li + li {
   color: #333;
 }
 
-.c-system-message.t-success a[href],
-.t-success a[href] {
+.c-system-message.t-success a[href]:link,
+.c-system-message.t-success a[href]:visited,
+.c-system-message.t-success a[href]:hover,
+.c-system-message.t-success a[href]:active,
+.c-system-message.t-success a[href]:focus,
+.t-success a[href]:link,
+.t-success a[href]:visited,
+.t-success a[href]:hover,
+.t-success a[href]:active,
+.t-success a[href]:focus {
   color: inherit;
 }
 
@@ -6941,8 +6944,16 @@ ul.c-utilitext li + li, ol.c-utilitext li + li {
   color: #333;
 }
 
-.c-system-message.t-warning a[href],
-.t-warning a[href] {
+.c-system-message.t-warning a[href]:link,
+.c-system-message.t-warning a[href]:visited,
+.c-system-message.t-warning a[href]:hover,
+.c-system-message.t-warning a[href]:active,
+.c-system-message.t-warning a[href]:focus,
+.t-warning a[href]:link,
+.t-warning a[href]:visited,
+.t-warning a[href]:hover,
+.t-warning a[href]:active,
+.t-warning a[href]:focus {
   color: inherit;
 }
 
@@ -6954,8 +6965,16 @@ ul.c-utilitext li + li, ol.c-utilitext li + li {
   color: #fff;
 }
 
-.c-system-message.t-error a[href],
-.t-error a[href] {
+.c-system-message.t-error a[href]:link,
+.c-system-message.t-error a[href]:visited,
+.c-system-message.t-error a[href]:hover,
+.c-system-message.t-error a[href]:active,
+.c-system-message.t-error a[href]:focus,
+.t-error a[href]:link,
+.t-error a[href]:visited,
+.t-error a[href]:hover,
+.t-error a[href]:active,
+.t-error a[href]:focus {
   color: inherit;
 }
 
@@ -14004,6 +14023,14 @@ header {
   padding: 0;
   color: inherit;
   background-color: inherit;
+}
+
+td span {
+  vertical-align: middle;
+}
+
+dd {
+  margin-bottom: 2.4rem;
 }
 
 /*
