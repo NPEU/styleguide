@@ -897,6 +897,12 @@ dl {
 |-------------------------------------------------------------------------------------------------*/
 dt {
   font-weight: bold;
+  margin-top: 2.4rem;
+}
+
+dt:first-child,
+dt + dt {
+  margin-top: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1016,6 +1022,10 @@ header {
   padding: 2.4rem;
   background-color: #fff;
   color: #333;
+}
+
+header h1, header h2, header h3, header h4, header h5, header h6 {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -6221,20 +6231,11 @@ $glimpse--link-border-bottom--hover: false !default;*/
 
 .c-panel.c-panel {
   padding: 2.4rem;
-  padding-bottom: 0 !important;
-}
-
-.c-panel.c-panel::after {
-  content: "";
-  display: block;
-  height: 1px;
-  margin-top: calc(2.4rem - 1px);
-  clear: both;
 }
 
 .c-panel h1 {
   border-bottom: 1px solid #bbb;
-  margin-bottom: calc(2.4rem - 1px);
+  margin-bottom: -1px;
 }
 
 .c-panel__banner {
