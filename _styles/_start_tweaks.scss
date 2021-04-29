@@ -14,7 +14,7 @@ blockquote {
 
     padding: $s__base-rem-space-unit $s__base-rem-space-unit * 2;
 
-    @include bottom-space-fix();
+    //@include bottom-space-fix();
 }
 
 // We're assuming that only paragraphs are in use here, so it's not ideal, but allowing * children
