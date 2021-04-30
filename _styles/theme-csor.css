@@ -6233,8 +6233,12 @@ $glimpse--link-border-bottom--hover: false !default;*/
   padding: 2.4rem;
 }
 
-.c-panel h1 {
+.c-panel.c-panel h1 {
   border-bottom: 1px solid #bbb;
+  margin-bottom: calc(2.4rem - 1px);
+}
+
+.c-panel.c-panel h1:only-child {
   margin-bottom: -1px;
 }
 
@@ -9997,11 +10001,15 @@ main :target {
   width: 100%;
 }
 
-.c-user-content [data-display-as~="box"]::before,
+.c-user-content [data-display-as~="box"]::before, .c-user-content [data-display-as~="box"]::after,
 .c-user-content [data-display-as~="pale-box"]::before,
+.c-user-content [data-display-as~="pale-box"]::after,
 .c-user-content [data-display-as~="themed-box--background"]::before,
+.c-user-content [data-display-as~="themed-box--background"]::after,
 .c-user-content [data-display-as~="themed-box--border"]::before,
-.c-user-content [data-display-as~="notice-box"]::before {
+.c-user-content [data-display-as~="themed-box--border"]::after,
+.c-user-content [data-display-as~="notice-box"]::before,
+.c-user-content [data-display-as~="notice-box"]::after {
   content: " ";
   display: table;
 }
@@ -14008,10 +14016,11 @@ td span {
   vertical-align: middle;
 }
 
+/*
 dd {
-  margin-bottom: 2.4rem;
+    margin-bottom: $s__base-rem-space-unit;
 }
-
+*/
 /*
 header p {
     margin: 0;

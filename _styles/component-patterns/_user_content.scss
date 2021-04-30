@@ -83,7 +83,8 @@ $uc-breakpoint: 35em !default;
 
             width: 100%;
 
-            &::before {
+            &::before,
+            &::after {
                 content: " ";
                 display: table;
             }

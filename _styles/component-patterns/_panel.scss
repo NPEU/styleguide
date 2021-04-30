@@ -91,13 +91,16 @@ $theme-only: false !default;
             padding: $panel--padding;
 
             //@include bottom-space-fix();
-        }
 
             h1 {
                 border-bottom: 1px solid #bbb;
-                //margin-bottom: calc(#{$s__base-rem-space-unit} - 1px);
+                margin-bottom: calc(#{$s__base-rem-space-unit} - 1px);
+            }
+
+            h1:only-child {
                 margin-bottom: -1px;
             }
+        }
 
         &__banner {
             margin-top: -$panel--padding;
