@@ -14,6 +14,10 @@ $text-size-namespace: u- !default;
     }
 }
 
+.#{$text-size-namespace}text-size--medium {
+    font-size: 1em !important;
+}
+
 .#{$text-size-namespace}text-size--large {
     font-size: 1.25em !important;
 }

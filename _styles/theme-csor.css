@@ -8962,6 +8962,10 @@ a[href][rel~="external"].u-image-natural:focus::after {
   border-width: 1px;
 }
 
+.u-text-size--medium {
+  font-size: 1em !important;
+}
+
 .u-text-size--large {
   font-size: 1.25em !important;
 }
@@ -14012,8 +14016,8 @@ header {
   background-color: inherit;
 }
 
-td span {
-  vertical-align: middle;
+td svg {
+  vertical-align: bottom;
 }
 
 /*
