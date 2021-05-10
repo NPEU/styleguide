@@ -14030,6 +14030,10 @@ header p {
     margin: 0;
 }
 */
+.c-glimpse:target {
+  background-color: #ffcb84 !important;
+}
+
 .c-single-link-form.c-single-link-form,
 .c-single-link-form * {
   display: inline;

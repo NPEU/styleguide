@@ -33,6 +33,12 @@ header p {
 */
 // Hmmm. THere's way too much in here already. Needs sorting.
 
+
+// Staff Area glimpse :target = not where where to best put this override to d-background:
+.c-glimpse:target {
+    background-color: #ffcb84 !important;
+}
+
 // 'Invisible form' Need to add this as a pattern.
 // Joomla's logout process needs to be a form (post) in order to redirect back to the current page.
 // Ideally this would just be a link with a URL parameter, but it doesn't work.
