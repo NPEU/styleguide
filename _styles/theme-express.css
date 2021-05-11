@@ -8990,6 +8990,10 @@ a[href][rel~="external"].u-image-natural:focus::after {
   hyphens: auto;
 }
 
+.u-no-wrap {
+  white-space: nowrap;
+}
+
 /* --| Special Patterns |------------------------------------------------------------------------ */
 /*
     Fab Four Widths

@@ -28,3 +28,7 @@ $word-wrap-namespace: u- !default;
     -webkit-hyphens: auto;
     hyphens: auto;
 }
+
+.#{$word-wrap-namespace}no-wrap {
+    white-space: nowrap;
+}

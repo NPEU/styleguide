@@ -4102,6 +4102,10 @@ $theme-only: true;
   hyphens: auto;
 }
 
+.u-no-wrap {
+  white-space: nowrap;
+}
+
 /*
     NOTE: data-width and data-position are currently unused.
     I'm considering their use. An (abandoned) attempt at customising the CKEditor div plugin
