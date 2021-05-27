@@ -18,17 +18,54 @@ function ready(fn) {
 
 ready(function(){
 
-    var filter_buttons = document.querySelectorAll('.whatson-filter-button');
-    var staff_select = document.getElementById('whatson_filter_staff');
+    var filters = [];
+
+    var filter_buttons    = document.querySelectorAll('.whatson-filter-button');
+    var staff_select      = document.getElementById('whatson_filter_staff');
+    var whatson_filter    = document.getElementById('whatson_filter');
+    var new_filter        = document.getElementById('new_filter');
+    //var new_filter_button = document.getElementById('add_new_filter');
 
     Array.prototype.forEach.call(filter_buttons, function(filter_button, i) {
 
-        filter_button.addEventListener('click', function(e) {
+        filters.push(filter_button.value);
 
+        filter_button.addEventListener('click', function(e) {
             var new_value = this.value.split('|');
-            
+
             staff_select.slim.set([]);
             staff_select.slim.set(new_value);
         });
+
+        var filter_delete_button = filter_button.nextElementSibling;
+
+        if (filter_delete_button !== null) {
+            filter_delete_button.addEventListener('click', function(e) {
+
+                if (window.confirm('Are you sure you want to delete this filter?')) {
+                    var filter_button = this.previousElementSibling;
+                    document.getElementById('whatson_filter').value = filter_button.value;
+                    return true;
+                } else {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+        }
+
+    });
+
+    whatson_filter.addEventListener('change', function(e) {
+
+        var filter_string = whatson_filter.value;
+        //console.log(filters.indexOf(filter_string));
+
+        if (filters.indexOf(filter_string) === -1) {
+            new_filter.removeAttribute('hidden');
+            //new_filter_button.value = filter_string;
+        } else {
+            new_filter.setAttribute('hidden', '');
+            //new_filter_button.value = '';
+        }
     });
 });

@@ -1137,6 +1137,18 @@ return Mark;
         });
     };
 
+    var triggerEvent = function(element, event_type) {
+
+        //console.log(element, event_type);
+        setTimeout(function() {
+            var event = document.createEvent('Event');
+            event.initEvent(event_type, true, false);
+            element.dispatchEvent(event);
+        }, 1);
+        
+
+    }
+
     var filterability = {
 
         markjs_error_raised: false,
@@ -1234,6 +1246,10 @@ return Mark;
                 if (input_val = getParameterByName(filterable_input.id)) {
                     filterable_input.value = input_val;
                 }
+                
+                // Trigger change event not natively fired:
+                triggerEvent(filterable_input, 'change');
+
 
                 // Check for presence of a submit button:
                 var filterable_submit = filterable_form.querySelector('[filterable_submit]');
@@ -1303,7 +1319,7 @@ return Mark;
                                     filterability.generateIndex(filterable_group);
                                     filterability.filterList(filterable_group, filterable_input.value);
 
-                                    console.log(el_tagName + ' toggler ' + el_type);
+                                    //console.log(el_tagName + ' toggler ' + el_type);
 
                                     // Add value to sessionStorage:
                                     window.sessionStorage.setItem(filterable_input.id + '.filterable_toggle', this.getAttribute('filterable_toggle'));
@@ -1371,7 +1387,7 @@ return Mark;
                             var toggler_checkradios = filterable_form.querySelectorAll('[filterable_toggle]:checked');
                             Array.prototype.forEach.call(toggler_checkradios, function(toggler_checkradio, i) {
 
-                                console.log(toggler_checkradio);
+                                //console.log(toggler_checkradio);
                                 toggler_checkradio.dispatchEvent(event);
                             });
 
@@ -1441,6 +1457,9 @@ return Mark;
                             } else {
                                 filterable_input.value = el.value;
                             }
+                            
+                            // Trigger change event not natively fired:
+                            triggerEvent(filterable_input, 'change');
 
                             // Store the preset origin:
                             //preset_origin.value = el.name;
