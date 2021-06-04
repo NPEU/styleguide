@@ -58,14 +58,11 @@ ready(function(){
     whatson_filter.addEventListener('change', function(e) {
 
         var filter_string = whatson_filter.value;
-        //console.log(filters.indexOf(filter_string));
 
-        if (filters.indexOf(filter_string) === -1) {
+        if (filter_string != '' && filters.indexOf(filter_string) === -1) {
             new_filter.removeAttribute('hidden');
-            //new_filter_button.value = filter_string;
         } else {
             new_filter.setAttribute('hidden', '');
-            //new_filter_button.value = '';
         }
     });
 });
