@@ -5924,6 +5924,8 @@ $glimpse--link-border-bottom--hover: false !default;*/
   padding: 0;
   margin: 0;
   border: 0;
+  text-align: left;
+  z-index: 1;
 }
 
 .c-info-overlay.c-info-overlay a[href],
