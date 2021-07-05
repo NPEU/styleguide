@@ -16,7 +16,7 @@ $panel--padding: 2rem !default;
 $theme-only: false !default;
 
 
-@mixin panel-theme ($theme-name: "", $theme: (), $pattern-varient: "") {
+@mixin panel-theme ($theme-name: "", $theme: (), $pattern-variant: "") {
 	// Set up theme name:
 	$theme-class: "";
 	@if $theme-name != "" {
@@ -43,9 +43,9 @@ $theme-only: false !default;
 	// "Error: Base-level rules cannot contain the parent-selector-referencing character '&'."
 	// There's no '&' being used, so not sure what's going on.
 	// Using nested option as a workaround.
-	//.#{$panel-namespace}#{$panel-namespace}#{$pattern-varient}panel.#{$theme-prefix}#{$theme-name} {
+	//.#{$panel-namespace}#{$panel-namespace}#{$pattern-variant}panel.#{$theme-prefix}#{$theme-name} {
 	// + panel + . + #{$theme-prefix} + #{$theme-name}
-	.#{$panel-namespace}panel.#{$panel-namespace}panel#{$pattern-varient}#{$theme-class} {
+	.#{$panel-namespace}panel.#{$panel-namespace}panel#{$pattern-variant}#{$theme-class} {
 		color: $text-color;
 		background: $background-color;
 
@@ -94,11 +94,36 @@ $theme-only: false !default;
 
             h1 {
                 border-bottom: 1px solid #bbb;
-                margin-bottom: calc(#{$s__base-rem-space-unit} - 1px);
+                padding-bottom: calc(#{$s__base-rem-space-unit} - 1px);
+                margin-bottom: $s__base-rem-space-unit;
             }
 
             h1:only-child {
                 margin-bottom: -1px;
+            }
+            
+            header {
+                border-bottom: 1px solid #bbb;
+                margin-bottom: -1px;
+                
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: space-between;
+                    
+                max-width: 100%;
+                
+                h1 {
+                    border-bottom: none;
+                    padding-bottom: 0;
+                    margin-bottom: $s__base-rem-space-unit;
+                    padding-right: $s__base-rem-space-unit / 2;
+                }
+                
+                p {
+                    margin-bottom: $s__base-rem-space-unit;
+                }
             }
         }
 

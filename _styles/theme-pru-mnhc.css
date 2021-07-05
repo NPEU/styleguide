@@ -5995,6 +5995,9 @@ $glimpse--link-border-bottom--hover: false !default;*/
   max-width: 42em;
   margin-left: auto;
   margin-right: auto;
+  /***
+            padding-top: $sz-m;
+            ***/
   /*h1 {
                 border-bottom: 1px solid #bbb;
                 margin-bottom: calc(2.4rem - 1px);
@@ -6237,11 +6240,34 @@ $glimpse--link-border-bottom--hover: false !default;*/
 
 .c-panel.c-panel h1 {
   border-bottom: 1px solid #bbb;
-  margin-bottom: calc(2.4rem - 1px);
+  padding-bottom: calc(2.4rem - 1px);
+  margin-bottom: 2.4rem;
 }
 
 .c-panel.c-panel h1:only-child {
   margin-bottom: -1px;
+}
+
+.c-panel.c-panel header {
+  border-bottom: 1px solid #bbb;
+  margin-bottom: -1px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+}
+
+.c-panel.c-panel header h1 {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 2.4rem;
+  padding-right: 1.2rem;
+}
+
+.c-panel.c-panel header p {
+  margin-bottom: 2.4rem;
 }
 
 .c-panel__banner {
@@ -8819,10 +8845,12 @@ a[href][rel~="external"].u-image-natural:focus::after {
   margin-top: 0 !important;
 }
 
+/***/
 .u-space--below--none {
   margin-bottom: 0 !important;
 }
 
+/***/
 .u-space--left--none {
   margin-left: 0 !important;
 }
@@ -8831,10 +8859,11 @@ a[href][rel~="external"].u-image-natural:focus::after {
   margin-right: 0 !important;
 }
 
+/***
 .u-space--none {
-  margin: 0 !important;
+    margin: 0 !important;
 }
-
+***/
 .u-space--left--l {
   margin-left: 4.8rem !important;
 }

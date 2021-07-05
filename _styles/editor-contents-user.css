@@ -3986,10 +3986,12 @@ $theme-only: true;
   margin-top: 0 !important;
 }
 
+/***/
 .u-space--below--none {
   margin-bottom: 0 !important;
 }
 
+/***/
 .u-space--left--none {
   margin-left: 0 !important;
 }
@@ -3998,10 +4000,11 @@ $theme-only: true;
   margin-right: 0 !important;
 }
 
+/***
 .u-space--none {
-  margin: 0 !important;
+    margin: 0 !important;
 }
-
+***/
 .u-space--left--l {
   margin-left: 4.8rem !important;
 }

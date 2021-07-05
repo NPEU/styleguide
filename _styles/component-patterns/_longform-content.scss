@@ -18,6 +18,10 @@ $longform-content-max-width: 42em !default;
             max-width: $longform-content-max-width;
             margin-left: auto;
             margin-right: auto;
+            
+            /***
+            padding-top: $sz-m;
+            ***/
 
             /*h1 {
                 border-bottom: 1px solid #bbb;
@@ -26,7 +30,7 @@ $longform-content-max-width: 42em !default;
         }
         
         
-         details {
+        details {
             margin-bottom: $sz-m;
             border: 0;
             border-bottom: 1px solid #eee;
@@ -37,6 +41,5 @@ $longform-content-max-width: 42em !default;
             margin-bottom: $sz-m;
             font-weight: bold;
         }
-
     }
 }
