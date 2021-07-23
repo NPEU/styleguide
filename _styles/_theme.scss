@@ -427,6 +427,17 @@ $theme--very-dark: $theme;
     }
 }
 
+// Ugh - the above summary stuff isn't robust enough. It's the usual theme inheritance issue where 
+// a container is given a theme and so everything inside it also gets scoped, even it it shouldn't.
+// I've done a lot of work on this in V2 but for now, here, I need to fix this because ordinary
+// content blocks on themed pages are inheriting the themed version of the summary focus outline
+// colour, even though they're actually on white...
+
+.c-user-content summary:focus,
+.c-longform-content summary:focus {
+    outline: 2px solid rgba(0,0,0,0.5);
+}
+
 
 // This next bit is an experiment with a different approach. If successful, migrate the above to this
 // format (and possibly other stuff too)

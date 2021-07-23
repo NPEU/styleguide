@@ -11164,6 +11164,11 @@ input:not([type]):focus,
   outline: 2px solid rgba(0, 0, 0, 0.5);
 }
 
+.c-user-content summary:focus,
+.c-longform-content summary:focus {
+  outline: 2px solid rgba(0, 0, 0, 0.5);
+}
+
 [data-brand="white"] [data-display-as~="themed-box--background"],
 [data-brand="white"] [data-display-as~="themed-box--border"] {
   color: #ffffff;
@@ -12012,6 +12017,11 @@ input:not([type]):focus,
 }
 
 .t-neutral summary:focus {
+  outline: 2px solid rgba(0, 0, 0, 0.5);
+}
+
+.c-user-content summary:focus,
+.c-longform-content summary:focus {
   outline: 2px solid rgba(0, 0, 0, 0.5);
 }
 
@@ -13666,6 +13676,11 @@ input:not([type]):focus,
 
 .t-pru-mnhc summary:focus {
   outline: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.c-user-content summary:focus,
+.c-longform-content summary:focus {
+  outline: 2px solid rgba(0, 0, 0, 0.5);
 }
 
 [data-brand="pru-mnhc"] [data-display-as~="themed-box--background"],
