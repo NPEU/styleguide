@@ -160,7 +160,9 @@ $pagination-button--border-color: darken($pagination--base-color, 20%) !default;
             margin: 0;
 
             display: flex;
-            flex-direction: row
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .#{$pagination-namespace}pagination .#{$pagination-namespace}pagination__list--push-apart {

@@ -200,7 +200,7 @@ $content-breakpoint: 60em !default;
 
 
             /*
-                For some reason flex images size differently in IE1, so we need to multiply these
+                For some reason flex images size differently in IE11, so we need to multiply these
                 values by 1.666 !!! but only in the header. Footer logos behave properly.
                 I can't figure out what's causing the difference, so scoping to the header for now.
             */
