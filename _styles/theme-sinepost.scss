@@ -1,0 +1,40 @@
+/*! SINEPOST Theme (c) NPEU */
+
+/* --| START THEME |----------------------------------------------------------------------------- */
+
+//@import "_themes-config.scss";
+// Note darkening the brand color for contrast purposes - e.g. navbar and themed background boxes.
+$theme-name: sinepost;
+$theme: (
+    cta-text-color       : #ffffff,
+    cta-background-color : #734e8d,
+    primary-color        : #40bcd8,
+    secondary-color      : #734e8d,
+    page-header-color    : #ffffff
+);
+
+
+$s__breakpoint--enhanced: 83em;
+
+$theme-copy: $theme;
+$theme-name-copy: $theme-name;
+@import "_style";
+
+
+
+$theme-only: true;
+@import "_themeable-patterns.scss";
+
+
+//$theme: map_get($themes, $theme-name);
+$theme: $theme-copy;
+$theme-name: $theme-name-copy;
+@import "_theme";
+
+/* ---------------------------------------------------------------------------------------------- */
+
+/* --| SHAME |----------------------------------------------------------------------------------- */
+
+@import "_shame";
+
+/* ---------------------------------------------------------------------------------------------- */

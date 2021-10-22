@@ -122,7 +122,8 @@ $theme-only: false !default;
                 }
                 
                 p {
-                    margin-bottom: $s__base-rem-space-unit;
+                    margin-top: $s__base-rem-space-unit / 2;
+                    margin-bottom: $s__base-rem-space-unit / 2;
                 }
             }
         }

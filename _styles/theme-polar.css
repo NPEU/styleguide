@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! PEARL Theme (c) NPEU */
+/*! POLAR Theme (c) NPEU */
 /* --| START THEME |----------------------------------------------------------------------------- */
 /* --| SETTINGS |-------------------------------------------------------------------------------- */
 /*
@@ -4937,7 +4937,7 @@ a[href][rel~="external"].c-badge:focus::after {
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   .c-badge {
     /*
-                For some reason flex images size differently in IE1, so we need to multiply these
+                For some reason flex images size differently in IE11, so we need to multiply these
                 values by 1.666 !!! but only in the header. Footer logos behave properly.
                 I can't figure out what's causing the difference, so scoping to the header for now.
             */
@@ -5991,8 +5991,8 @@ $glimpse--link-border-bottom--hover: false !default;*/
 
 /*
 */
-.c-longform-content.c-longform-content {
-  max-width: 42em;
+.c-longform-content.c-longform-content > *:not([data-display-as~="blocks"]) {
+  max-width: 67rem;
   margin-left: auto;
   margin-right: auto;
   /***
@@ -6267,7 +6267,8 @@ $glimpse--link-border-bottom--hover: false !default;*/
 }
 
 .c-panel.c-panel header p {
-  margin-bottom: 2.4rem;
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
 }
 
 .c-panel__banner {
@@ -8568,7 +8569,7 @@ a[href][rel~="external"].u-image-natural:focus::after {
 /*
 */
 .u-max-measure {
-  max-width: 42em;
+  max-width: 67rem;
   margin: 0 auto;
 }
 
@@ -10133,6 +10134,11 @@ main :target {
   flex-basis: 11.25em;
   max-width: 15em;
   align-self: stretch;
+}
+
+.c-user-content [data-display-as~="blocks-large"] > * > * {
+  flex-basis: 16.25em;
+  max-width: 20em;
 }
 
 .c-user-content [data-display-as~="blocks"] > * > * > span {

@@ -5,7 +5,7 @@ $longform-content-namespace: c- !default;
 
 $theme-only: false !default;
 
-$longform-content-max-width: 42em !default;
+$longform-content-max-width: 67rem !default;
 
 // Note - no theme yet!
 
@@ -14,7 +14,7 @@ $longform-content-max-width: 42em !default;
 
     .#{$longform-content-namespace}longform-content {
 
-        &#{&} {
+        &#{&} > *:not([data-display-as~="blocks"]) {
             max-width: $longform-content-max-width;
             margin-left: auto;
             margin-right: auto;

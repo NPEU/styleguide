@@ -189,6 +189,11 @@ $uc-breakpoint: 35em !default;
 
             align-self: stretch;
         }
+        
+        [data-display-as~="blocks-large"] > * > * {
+            flex-basis: 16.25em;
+            max-width: 20em;
+        }
 
         [data-display-as~="blocks"] > * > * > span {
             display: flex;

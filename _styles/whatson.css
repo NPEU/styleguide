@@ -615,16 +615,24 @@ table.whatson-table.whatson-table td {
 }
 
 table.whatson-table.whatson-table tr[filterable_visible_item="even"] td {
-  background-color: #eee;
+  background-color: #f7f3ed;
 }
 
 table.whatson-table.whatson-table tr[filterable_visible_item="odd"] td {
   background-color: #fff;
 }
 
+table.whatson-table.whatson-table tr[filterable_visible_item="even"] td[aria-current="day"] {
+  background-color: #dac4a4;
+}
+
+table.whatson-table.whatson-table tr[filterable_visible_item="odd"] td[aria-current="day"] {
+  background-color: #e9dcc8;
+}
+
 table.whatson-table.whatson-table tr[filterable_visible_item]:target td,
 table.whatson-table.whatson-table[filterable_visibile_items="1"] tr[filterable_visible_item] td {
-  background-color: #dac4a4;
+  background-color: #e1d0b6;
 }
 
 table.whatson-table.whatson-table p {
