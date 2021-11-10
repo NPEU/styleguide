@@ -5259,16 +5259,16 @@ $card-button--border-color: darken($card--base-color, 20%) !default;
 /*
 
 */
-.c-contact-list.c-contact-list dt, .c-user-content [data-contains~="contact-details"] dt {
+.c-contact-list.c-contact-list dt, .c-user-content.c-user-content [data-contains~="contact-details"] dt {
   display: none;
 }
 
-.c-contact-list.c-contact-list dd, .c-user-content [data-contains~="contact-details"] dd {
+.c-contact-list.c-contact-list dd, .c-user-content.c-user-content [data-contains~="contact-details"] dd {
   margin-bottom: 0.6rem;
   position: relative;
 }
 
-.c-contact-list .icon, .c-user-content [data-contains~="contact-details"] .icon {
+.c-contact-list .icon, .c-user-content.c-user-content [data-contains~="contact-details"] .icon {
   margin-left: -1.75em;
   margin-top: 0.1em;
   position: absolute;
@@ -5992,6 +5992,7 @@ $glimpse--link-border-bottom--hover: false !default;*/
 /*
 */
 .c-longform-content.c-longform-content > *:not([data-display-as~="blocks"]) {
+  width: 100%;
   max-width: 67rem;
   margin-left: auto;
   margin-right: auto;
@@ -6035,7 +6036,7 @@ $glimpse--link-border-bottom--hover: false !default;*/
   margin: 0 auto;
 }
 
-.c-page-header .c-page-header__cta .c-primary-cta[href], .c-page-header .c-page-header__cta .c-user-content a[href][data-display-as~="primary-cta"], .c-user-content .c-page-header .c-page-header__cta a[href][data-display-as~="primary-cta"] {
+.c-page-header .c-page-header__cta .c-primary-cta[href], .c-page-header .c-page-header__cta .c-user-content.c-user-content a[href][data-display-as~="primary-cta"], .c-user-content.c-user-content .c-page-header .c-page-header__cta a[href][data-display-as~="primary-cta"] {
   margin-left: 1.2rem;
 }
 
@@ -6325,7 +6326,7 @@ $glimpse--link-border-bottom--hover: false !default;*/
            darken the background colour. For that we need this to be postitionL relative, and ...
          2. We also need to wrap the text in a span so it appears above the pseudo element.
     */
-.c-primary-cta[href], .c-user-content a[href][data-display-as~="primary-cta"] {
+.c-primary-cta[href], .c-user-content.c-user-content a[href][data-display-as~="primary-cta"] {
   display: inline-block;
   padding: 0.6rem 1.2rem;
   border: 0;
@@ -6339,7 +6340,7 @@ $glimpse--link-border-bottom--hover: false !default;*/
   /* [1] */
 }
 
-.c-primary-cta[href]::before, .c-user-content a[data-display-as~="primary-cta"][href]::before {
+.c-primary-cta[href]::before, .c-user-content.c-user-content a[data-display-as~="primary-cta"][href]::before {
   content: "";
   display: block;
   position: absolute;
@@ -6350,21 +6351,21 @@ $glimpse--link-border-bottom--hover: false !default;*/
   background-color: transparent;
 }
 
-.c-primary-cta[href]:hover, .c-user-content a[href]:hover[data-display-as~="primary-cta"], .c-primary-cta[href]:active, .c-user-content a[href]:active[data-display-as~="primary-cta"], .c-primary-cta[href]:focus, .c-user-content a[href]:focus[data-display-as~="primary-cta"] {
+.c-primary-cta[href]:hover, .c-user-content.c-user-content a[href]:hover[data-display-as~="primary-cta"], .c-primary-cta[href]:active, .c-user-content.c-user-content a[href]:active[data-display-as~="primary-cta"], .c-primary-cta[href]:focus, .c-user-content.c-user-content a[href]:focus[data-display-as~="primary-cta"] {
   border: 0;
 }
 
-.c-primary-cta[href] span, .c-user-content a[href][data-display-as~="primary-cta"] span {
+.c-primary-cta[href] span, .c-user-content.c-user-content a[href][data-display-as~="primary-cta"] span {
   position: relative;
   /* [12 */
 }
 
-.c-primary-cta[href], .c-user-content a[href][data-display-as~="primary-cta"] {
+.c-primary-cta[href], .c-user-content.c-user-content a[href][data-display-as~="primary-cta"] {
   color: #fff;
   background-color: #614776;
 }
 
-.c-primary-cta[href]:hover, .c-user-content a[href]:hover[data-display-as~="primary-cta"], .c-primary-cta[href]:active, .c-user-content a[href]:active[data-display-as~="primary-cta"], .c-primary-cta[href]:focus, .c-user-content a[href]:focus[data-display-as~="primary-cta"] {
+.c-primary-cta[href]:hover, .c-user-content.c-user-content a[href]:hover[data-display-as~="primary-cta"], .c-primary-cta[href]:active, .c-user-content.c-user-content a[href]:active[data-display-as~="primary-cta"], .c-primary-cta[href]:focus, .c-user-content.c-user-content a[href]:focus[data-display-as~="primary-cta"] {
   color: #fff;
   /*@if is-int($s__button-background-color--alt) {
                 @if $s__button-background-color--alt > 0 {
@@ -6379,7 +6380,7 @@ $glimpse--link-border-bottom--hover: false !default;*/
             */
 }
 
-.c-primary-cta[href]:hover::before, .c-user-content a[data-display-as~="primary-cta"][href]:hover::before, .c-primary-cta[href]:active::before, .c-user-content a[data-display-as~="primary-cta"][href]:active::before, .c-primary-cta[href]:focus::before, .c-user-content a[data-display-as~="primary-cta"][href]:focus::before {
+.c-primary-cta[href]:hover::before, .c-user-content.c-user-content a[data-display-as~="primary-cta"][href]:hover::before, .c-primary-cta[href]:active::before, .c-user-content.c-user-content a[data-display-as~="primary-cta"][href]:active::before, .c-primary-cta[href]:focus::before, .c-user-content.c-user-content a[data-display-as~="primary-cta"][href]:focus::before {
   background-color: rgba(0, 0, 0, 0.15);
 }
 
@@ -6522,21 +6523,21 @@ $glimpse--link-border-bottom--hover: false !default;*/
 
 /*
 */
-.c-thumbnail.c-thumbnail[href], .c-user-content [href][data-contains~="thumbnail"], .c-user-content [data-contains~="thumbnails"] a[href]:first-of-type {
+.c-thumbnail.c-thumbnail[href], .c-user-content.c-user-content [href][data-contains~="thumbnail"], .c-user-content.c-user-content [data-contains~="thumbnails"] a[href]:first-of-type {
   display: inline-block;
   border-width: 0;
   padding: 0;
   margin: 0;
 }
 
-.c-thumbnail.c-thumbnail[href]:hover, .c-user-content [href]:hover[data-contains~="thumbnail"], .c-user-content [data-contains~="thumbnails"] a[href]:hover:first-of-type, .c-thumbnail.c-thumbnail[href]:active, .c-user-content [href]:active[data-contains~="thumbnail"], .c-user-content [data-contains~="thumbnails"] a[href]:active:first-of-type, .c-thumbnail.c-thumbnail[href]:focus, .c-user-content [href]:focus[data-contains~="thumbnail"], .c-user-content [data-contains~="thumbnails"] a[href]:focus:first-of-type {
+.c-thumbnail.c-thumbnail[href]:hover, .c-user-content.c-user-content [href]:hover[data-contains~="thumbnail"], .c-user-content.c-user-content [data-contains~="thumbnails"] a[href]:hover:first-of-type, .c-thumbnail.c-thumbnail[href]:active, .c-user-content.c-user-content [href]:active[data-contains~="thumbnail"], .c-user-content.c-user-content [data-contains~="thumbnails"] a[href]:active:first-of-type, .c-thumbnail.c-thumbnail[href]:focus, .c-user-content.c-user-content [href]:focus[data-contains~="thumbnail"], .c-user-content.c-user-content [data-contains~="thumbnails"] a[href]:focus:first-of-type {
   box-shadow: 0 0 0 1.2rem rgba(255, 255, 255, 0.8), 0 0 0 1.8rem rgba(0, 0, 0, 0.2);
   border-width: 0;
   padding: 0;
   margin: 0;
 }
 
-.c-thumbnail img, .c-user-content [data-contains~="thumbnail"] img, .c-user-content [data-contains~="thumbnails"] a:first-of-type img {
+.c-thumbnail img, .c-user-content.c-user-content [data-contains~="thumbnail"] img, .c-user-content.c-user-content [data-contains~="thumbnails"] a:first-of-type img {
   margin: 0;
   border: 1px solid #a59c95;
 }
@@ -6544,7 +6545,7 @@ $glimpse--link-border-bottom--hover: false !default;*/
 /*@if $border-color == null {
 		$border-color: darken($background-color, 10%);
     }*/
-.c-thumbnail, .c-user-content [data-contains~="thumbnail"], .c-user-content [data-contains~="thumbnails"] a:first-of-type {
+.c-thumbnail, .c-user-content.c-user-content [data-contains~="thumbnail"], .c-user-content.c-user-content [data-contains~="thumbnails"] a:first-of-type {
   color: #333;
 }
 
@@ -7453,7 +7454,7 @@ _:-webkit-any-link, :root .l-col-to-row__item.l-col-to-row__item {
 /*    Distribute items inside a container.*/
 /*    IE11 needs this wrapper to behave properly.    If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.*.l-distribute-wrap {    display: -ms-flexbox;    display: flex;    width: 100%;    & > .l-distribute {        -webkit-flex-basis: 100%;        -ms-flex-preferred-size: 100%;        flex-basis: 100%;    }}*/
 /*    1. This is a hack for IE11, otherwise the container goes as wide as the children in a row.*/
-.l-distribute.l-distribute, .c-user-content [data-display-as~="blocks"] > * {
+.l-distribute.l-distribute, .c-user-content.c-user-content [data-display-as~="blocks"] > * {
   margin: 0;
   padding: 0;
   list-style-type: none;
@@ -7469,81 +7470,81 @@ _:-webkit-any-link, :root .l-col-to-row__item.l-col-to-row__item {
   /* [1] */
 }
 
-.l-distribute > *, .c-user-content [data-display-as~="blocks"] > * > * {
+.l-distribute > *, .c-user-content.c-user-content [data-display-as~="blocks"] > * > * {
   flex: 0 1 auto;
   margin: 0;
   padding: 0;
 }
 
-.l-distribute.l-distribute--start, .c-user-content [data-display-as~="blocks"] > .l-distribute--start {
+.l-distribute.l-distribute--start, .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--start {
   justify-content: flex-start;
 }
 
-.l-distribute.l-distribute--end, .c-user-content [data-display-as~="blocks"] > .l-distribute--end {
+.l-distribute.l-distribute--end, .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--end {
   justify-content: flex-end;
 }
 
-.l-distribute.l-distribute--limit-10 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-10 > * {
+.l-distribute.l-distribute--limit-10 > *, .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--limit-10 > * {
   -webkit-flex-basis: 10em;
   flex-basis: 7.5em;
   max-width: 10em;
 }
 
-.l-distribute.l-distribute--limit-15 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-15 > * {
+.l-distribute.l-distribute--limit-15 > *, .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--limit-15 > * {
   -webkit-flex-basis: 15em;
   flex-basis: 11.25em;
   max-width: 15em;
 }
 
-.l-distribute.l-distribute--limit-20 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-20 > * {
+.l-distribute.l-distribute--limit-20 > *, .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--limit-20 > * {
   -webkit-flex-basis: 20em;
   flex-basis: 15em;
   max-width: 20em;
 }
 
-.l-distribute.l-distribute--limit-25 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-25 > * {
+.l-distribute.l-distribute--limit-25 > *, .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--limit-25 > * {
   -webkit-flex-basis: 25em;
   flex-basis: 18.75em;
   max-width: 25em;
 }
 
-.l-distribute.l-distribute--limit-30 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-30 > * {
+.l-distribute.l-distribute--limit-30 > *, .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--limit-30 > * {
   -webkit-flex-basis: 30em;
   flex-basis: 22.5em;
   max-width: 30em;
 }
 
-.l-distribute.l-distribute--limit-35 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-35 > * {
+.l-distribute.l-distribute--limit-35 > *, .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--limit-35 > * {
   -webkit-flex-basis: 35em;
   flex-basis: 26.25em;
   max-width: 35em;
 }
 
-.l-distribute.l-distribute--limit-40 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--limit-40 > * {
+.l-distribute.l-distribute--limit-40 > *, .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--limit-40 > * {
   -webkit-flex-basis: 40em;
   flex-basis: 30em;
   max-width: 40em;
 }
 
-.l-distribute.l-distribute--gutter--s, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--s,
+.l-distribute.l-distribute--gutter--s, .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--s,
 .l-distribute.l-distribute--gutter--s > *,
-.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--s > * {
+.c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--s > * {
   padding: 0.6rem;
   --s: 1.2rem;
 }
 
-.l-distribute.l-distribute--gutter, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter,
+.l-distribute.l-distribute--gutter, .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter,
 .l-distribute.l-distribute--gutter > *,
-.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter > *, .l-distribute.l-distribute--gutter--m, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--m,
+.c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter > *, .l-distribute.l-distribute--gutter--m, .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--m,
 .l-distribute.l-distribute--gutter--m > *,
-.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--m > * {
+.c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--m > * {
   padding: 1.2rem;
   --s: 2.4rem;
 }
 
-.l-distribute.l-distribute--gutter--l, .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--l,
+.l-distribute.l-distribute--gutter--l, .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--l,
 .l-distribute.l-distribute--gutter--l > *,
-.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--l > * {
+.c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--l > * {
   padding: 2.4rem;
   --s: 4.8rem;
 }
@@ -7558,59 +7559,59 @@ _:-webkit-any-link, :root .l-col-to-row__item.l-col-to-row__item {
   /* [1] */
 }
 
-.l-distribute--flush-edge-gutters > .l-distribute, .c-user-content .l-distribute--flush-edge-gutters[data-display-as~="blocks"] > * {
+.l-distribute--flush-edge-gutters > .l-distribute, .c-user-content.c-user-content .l-distribute--flush-edge-gutters[data-display-as~="blocks"] > * {
   width: auto;
   /* [2] */
   min-width: none;
   /* [2] */
 }
 
-.l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter--s, .l-distribute--flush-edge-gutters .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--s, .c-user-content .l-distribute--flush-edge-gutters [data-display-as~="blocks"] > .l-distribute--gutter--s {
+.l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter--s, .l-distribute--flush-edge-gutters .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--s, .c-user-content.c-user-content .l-distribute--flush-edge-gutters [data-display-as~="blocks"] > .l-distribute--gutter--s {
   margin: -1.2rem;
 }
 
-.l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter, .l-distribute--flush-edge-gutters .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter, .c-user-content .l-distribute--flush-edge-gutters [data-display-as~="blocks"] > .l-distribute--gutter,
+.l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter, .l-distribute--flush-edge-gutters .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter, .c-user-content.c-user-content .l-distribute--flush-edge-gutters [data-display-as~="blocks"] > .l-distribute--gutter,
 .l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter--m,
-.l-distribute--flush-edge-gutters .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--m,
-.c-user-content .l-distribute--flush-edge-gutters [data-display-as~="blocks"] > .l-distribute--gutter--m {
+.l-distribute--flush-edge-gutters .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--m,
+.c-user-content.c-user-content .l-distribute--flush-edge-gutters [data-display-as~="blocks"] > .l-distribute--gutter--m {
   margin: -2.4rem;
 }
 
-.l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter--l, .l-distribute--flush-edge-gutters .c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--l, .c-user-content .l-distribute--flush-edge-gutters [data-display-as~="blocks"] > .l-distribute--gutter--l {
+.l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter--l, .l-distribute--flush-edge-gutters .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--gutter--l, .c-user-content.c-user-content .l-distribute--flush-edge-gutters [data-display-as~="blocks"] > .l-distribute--gutter--l {
   margin: -4.8rem;
 }
 
-.l-distribute.l-distribute--balance-bottom > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-bottom > * {
+.l-distribute.l-distribute--balance-bottom > *, .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-bottom > * {
   flex-grow: 1;
 }
 
-.l-distribute.l-distribute--basis-15 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--basis-15 > * {
+.l-distribute.l-distribute--basis-15 > *, .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--basis-15 > * {
   flex-basis: 15rem;
   --b: 15rem;
 }
 
-.l-distribute.l-distribute--basis-20 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--basis-20 > * {
+.l-distribute.l-distribute--basis-20 > *, .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--basis-20 > * {
   flex-basis: 20rem;
   --b: 20rem;
 }
 
-.l-distribute.l-distribute--basis-25 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--basis-25 > * {
+.l-distribute.l-distribute--basis-25 > *, .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--basis-25 > * {
   flex-basis: 25rem;
   --b: 25rem;
 }
 
-.l-distribute.l-distribute--basis-30 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--basis-30 > * {
+.l-distribute.l-distribute--basis-30 > *, .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--basis-30 > * {
   flex-basis: 30rem;
   --b: 30rem;
 }
 
-.l-distribute.l-distribute--basis-35 > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--basis-35 > * {
+.l-distribute.l-distribute--basis-35 > *, .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--basis-35 > * {
   flex-basis: 35rem;
   --b: 35rem;
 }
 
 @supports (width: max(1px, 1px)) {
-  .l-distribute, .c-user-content [data-display-as~="blocks"] > * {
+  .l-distribute, .c-user-content.c-user-content [data-display-as~="blocks"] > * {
     /* 1 or more: */
     /* 2 or more: */
     /* 3 or more: - note this should be part of col-to-row*/
@@ -7644,96 +7645,96 @@ _:-webkit-any-link, :root .l-col-to-row__item.l-col-to-row__item {
     /*&.l-distribute--balance-top > :nth-last-child(n+11) ~ :nth-child(7),        &.l-distribute--balance-top > :nth-last-child(n+11) ~ :nth-child(7) ~ * {            flex-basis: unquote("max(25%, (var(--bp2) - 100%) * 999)");        }*/
     /* 12 or more: double class to boost specificity - ugh.*/
   }
-  .l-distribute.l-distribute--balance-top, .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top {
+  .l-distribute.l-distribute--balance-top, .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top {
     --bp1: 90rem;
     --bp1-2: 110rem;
     --bp2: 130em;
   }
-  .l-distribute.l-distribute--balance-top > *, .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > * {
+  .l-distribute.l-distribute--balance-top > *, .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > * {
     flex-basis: 100%;
     flex-grow: 1;
   }
-  .l-distribute.l-distribute--balance-top > :nth-last-child(n+2), .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+2),
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+2), .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+2),
   .l-distribute.l-distribute--balance-top > :nth-last-child(n+2) ~ *,
-  .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+2) ~ * {
+  .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+2) ~ * {
     flex-basis: max(50%, ((var(--b) * 2) - 100%) * 999);
   }
-  .l-distribute.l-distribute--balance-top > :nth-last-child(n+3), .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+3),
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+3), .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+3),
   .l-distribute.l-distribute--balance-top > :nth-last-child(n+3) ~ *,
-  .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+3) ~ * {
+  .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+3) ~ * {
     flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999));
   }
-  .l-distribute.l-distribute--balance-top > :nth-last-child(n+3), .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+3) {
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+3), .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+3) {
     flex-basis: max(33%, ((var(--b) * 3) - 100%) * 999);
   }
-  .l-distribute.l-distribute--balance-top > :nth-last-child(n+4), .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+4),
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+4), .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+4),
   .l-distribute.l-distribute--balance-top > :nth-last-child(n+4) ~ *,
-  .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+4) ~ * {
+  .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+4) ~ * {
     flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(25%, ((var(--b) * 4) - 100%) * 999));
   }
-  .l-distribute.l-distribute--balance-top > :nth-last-child(n+5), .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+5),
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+5), .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+5),
   .l-distribute.l-distribute--balance-top > :nth-last-child(n+5) ~ *,
-  .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+5) ~ * {
+  .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+5) ~ * {
     flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(25%, ((var(--b) * 4) - 100%) * 999), max(20%, ((var(--b) * 5) - 100%) * 999));
   }
-  .l-distribute.l-distribute--balance-top > :nth-last-child(n+5), .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+5),
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+5), .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+5),
   .l-distribute.l-distribute--balance-top > :nth-last-child(n+5) + *,
-  .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+5) + * {
+  .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+5) + * {
     flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(20%, ((var(--b) * 5) - 100%) * 999));
   }
-  .l-distribute.l-distribute--balance-top > :nth-last-child(n+5), .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+5) {
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+5), .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+5) {
     flex-basis: min(max(50%, ((var(--b) * 3) - 100%) * 999), max(100%, ((var(--b) * 4) - 100%) * 999), max(20%, ((var(--b) * 5) - 100%) * 999));
   }
-  .l-distribute.l-distribute--balance-top > :nth-last-child(n+6), .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+6),
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+6), .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+6),
   .l-distribute.l-distribute--balance-top > :nth-last-child(n+6) ~ *,
-  .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+6) ~ * {
+  .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+6) ~ * {
     flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(16%, ((var(--b) * 6) - 100%) * 999));
   }
-  .l-distribute.l-distribute--balance-top > :nth-last-child(n+7), .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+7),
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+7), .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+7),
   .l-distribute.l-distribute--balance-top > :nth-last-child(n+7) ~ *,
-  .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+7) ~ * {
+  .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+7) ~ * {
     flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(25%, ((var(--b) * 4) - 100%) * 999), max(14%, ((var(--b) * 7) - 100%) * 999));
   }
-  .l-distribute.l-distribute--balance-top > :nth-last-child(n+7) + *, .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+7) + *,
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+7) + *, .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+7) + *,
   .l-distribute.l-distribute--balance-top > :nth-last-child(n+7) + * + *,
-  .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+7) + * + * {
+  .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+7) + * + * {
     flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(14%, ((var(--b) * 7) - 100%) * 999));
   }
-  .l-distribute.l-distribute--balance-top > :nth-last-child(n+7), .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+7) {
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+7), .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+7) {
     flex-basis: min(max(33%, ((var(--b) * 4) - 100%) * 999), max(14%, ((var(--b) * 7) - 100%) * 999));
   }
-  .l-distribute.l-distribute--balance-top > :nth-last-child(n+8), .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+8),
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+8), .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+8),
   .l-distribute.l-distribute--balance-top > :nth-last-child(n+8) ~ *,
-  .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+8) ~ * {
+  .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+8) ~ * {
     flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(25%, ((var(--b) * 4) - 100%) * 999), max(12%, ((var(--b) * 8) - 100%) * 999));
   }
-  .l-distribute.l-distribute--balance-top > :nth-last-child(n+9), .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+9),
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+9), .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+9),
   .l-distribute.l-distribute--balance-top > :nth-last-child(n+9) ~ *,
-  .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+9) ~ * {
+  .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+9) ~ * {
     flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(11%, ((var(--b) * 9) - 100%) * 999));
   }
-  .l-distribute.l-distribute--balance-top > :nth-last-child(n+9), .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+9) {
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+9), .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+9) {
     flex-basis: min(max(33%, ((var(--b) * 3) - 100%) * 999), max(11%, ((var(--b) * 9) - 100%) * 999));
   }
-  .l-distribute.l-distribute--balance-top > :nth-last-child(n+10), .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+10),
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+10), .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+10),
   .l-distribute.l-distribute--balance-top > :nth-last-child(n+10) ~ *,
-  .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+10) ~ * {
+  .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+10) ~ * {
     flex-basis: min(max(50%, ((var(--b) * 2)- 100%) * 999), max(20%, ((var(--b) * 5) - 100%) * 999), max(10%, ((var(--b) * 10) - 100%) * 999));
   }
-  .l-distribute.l-distribute--balance-top > :nth-last-child(n+11), .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+11),
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+11), .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+11),
   .l-distribute.l-distribute--balance-top > :nth-last-child(n+11) ~ *,
-  .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+11) ~ * {
+  .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+11) ~ * {
     flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(9%, ((var(--b) * 11) - 100%) * 999));
   }
-  .l-distribute.l-distribute--balance-top > :nth-last-child(n+11) + *, .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+11) + * {
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+11) + *, .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+11) + * {
     flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(9%, ((var(--b) * 11) - 100%) * 999));
   }
-  .l-distribute.l-distribute--balance-top > :nth-last-child(n+11), .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+11) {
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+11), .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+11) {
     flex-basis: min(max(50%, ((var(--b) * 3) - 100%) * 999), max(9%, ((var(--b) * 11) - 100%) * 999));
   }
-  .l-distribute.l-distribute.l-distribute--balance-top > :nth-last-child(n+12), .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+12),
+  .l-distribute.l-distribute.l-distribute--balance-top > :nth-last-child(n+12), .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+12),
   .l-distribute.l-distribute.l-distribute--balance-top > :nth-last-child(n+12) ~ *,
-  .c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+12) ~ * {
+  .c-user-content.c-user-content [data-display-as~="blocks"] > .l-distribute--balance-top > :nth-last-child(n+12) ~ * {
     flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(25%, ((var(--b) * 4) - 100%) * 999), max(16%, ((var(--b) * 6) - 100%) * 999), max(8%, ((var(--b) * 12) - 100%) * 999));
   }
 }
@@ -8602,13 +8603,13 @@ a[href][rel~="external"].u-image-natural:focus::after {
 
 .u-padding--left--s,
 .u-padding--sides--s,
-.c-user-content [data-display-as~="blocks"] > * > * {
+.c-user-content.c-user-content [data-display-as~="blocks"] > * > * {
   padding-left: 1.2rem !important;
 }
 
 .u-padding--right--s,
 .u-padding--sides--s,
-.c-user-content [data-display-as~="blocks"] > * > * {
+.c-user-content.c-user-content [data-display-as~="blocks"] > * > * {
   padding-right: 1.2rem !important;
 }
 
@@ -8836,7 +8837,7 @@ a[href][rel~="external"].u-image-natural:focus::after {
   margin-top: 2.4rem !important;
 }
 
-.u-space--below, .c-user-content [data-display-as~="blocks"] > * > *, .c-user-content [data-contains~="thumbnails"] a:first-of-type {
+.u-space--below, .c-user-content.c-user-content [data-display-as~="blocks"] > * > *, .c-user-content.c-user-content [data-contains~="thumbnails"] a:first-of-type {
   margin-bottom: 2.4rem !important;
 }
 
@@ -8937,7 +8938,7 @@ a[href][rel~="external"].u-image-natural:focus::after {
   justify-content: flex-start;
 }
 
-.u-text-align--center, .c-user-content [data-display-as~="blocks"] > * > * {
+.u-text-align--center, .c-user-content.c-user-content [data-display-as~="blocks"] > * > * {
   text-align: center !important;
   justify-content: center;
 }
@@ -9905,55 +9906,55 @@ main :target {
     I'm considering their use. An (abandoned) attempt at customising the CKEditor div plugin
     would have required these.
 */
-.c-user-content {
+.c-user-content.c-user-content {
   /*[data-display-as~="blocks"] {
-            @extend .l-distribute-wrap;
-        }*/
+                @extend .l-distribute-wrap;
+            }*/
   /*
-            Note this original method just assumed that images are square.
-            MaatHRI team page proves this is not the case, so the above, explicit portrait
-            declaration is needed.
-            It's still ok to assume square images in templates, though, where I know I'm just using
-            the avatars folder (where square is forced on upload).
-            So, it's really just user content that's the problem, so keep things as they are for
-            now.
-        */
+                Note this original method just assumed that images are square.
+                MaatHRI team page proves this is not the case, so the above, explicit portrait
+                declaration is needed.
+                It's still ok to assume square images in templates, though, where I know I'm just using
+                the avatars folder (where square is forced on upload).
+                So, it's really just user content that's the problem, so keep things as they are for
+                now.
+            */
 }
 
-.c-user-content [data-display-is~="width-one-quarter"] + [data-contains~="contact-details"],
-.c-user-content [data-width="one-quarter"] + [data-contains~="contact-details"] {
+.c-user-content.c-user-content [data-display-is~="width-one-quarter"] + [data-contains~="contact-details"],
+.c-user-content.c-user-content [data-width="one-quarter"] + [data-contains~="contact-details"] {
   max-width: 100%;
   width: calc((35em - 100%) * 1000);
   min-width: calc(75% - 2.4rem);
 }
 
-.c-user-content [data-display-is~="width-one-third"] + [data-contains~="contact-details"],
-.c-user-content [data-width="one-third"] + [data-contains~="contact-details"] {
+.c-user-content.c-user-content [data-display-is~="width-one-third"] + [data-contains~="contact-details"],
+.c-user-content.c-user-content [data-width="one-third"] + [data-contains~="contact-details"] {
   max-width: 100%;
   width: calc((35em - 100%) * 1000);
   min-width: calc(67% - 2.4rem);
 }
 
-.c-user-content [data-display-is~="width-one-half"] + [data-contains~="contact-details"],
-.c-user-content [data-width="one-half"] + [data-contains~="contact-details"] {
+.c-user-content.c-user-content [data-display-is~="width-one-half"] + [data-contains~="contact-details"],
+.c-user-content.c-user-content [data-width="one-half"] + [data-contains~="contact-details"] {
   max-width: 100%;
   width: calc((35em - 100%) * 1000);
   min-width: calc(50% - 2.4rem);
 }
 
-.c-user-content [data-display-is~="width-two-thirds"] + [data-contains~="contact-details"],
-.c-user-content [data-width="two-thirds"] + [data-contains~="contact-details"] {
+.c-user-content.c-user-content [data-display-is~="width-two-thirds"] + [data-contains~="contact-details"],
+.c-user-content.c-user-content [data-width="two-thirds"] + [data-contains~="contact-details"] {
   max-width: 100%;
   width: calc((35em - 100%) * 1000);
   min-width: calc(33% - 2.4rem);
 }
 
-.c-user-content [data-display-is*="width-"] + [data-contains~="contact-details"] + *,
-.c-user-content [data-width] + [data-contains~="contact-details"] + * {
+.c-user-content.c-user-content [data-display-is*="width-"] + [data-contains~="contact-details"] + *,
+.c-user-content.c-user-content [data-width] + [data-contains~="contact-details"] + * {
   clear: both;
 }
 
-.c-user-content a[href][data-display-as~="cta"] {
+.c-user-content.c-user-content a[href][data-display-as~="cta"] {
   display: inline-block;
   /* AK. IE9 needs this. Hmmm, for what exactly?*/
   min-height: 3rem;
@@ -10000,21 +10001,21 @@ main :target {
     }*/
 }
 
-.c-user-content a[href][data-display-as~="cta"]:hover, .c-user-content a[href][data-display-as~="cta"]:active {
+.c-user-content.c-user-content a[href][data-display-as~="cta"]:hover, .c-user-content.c-user-content a[href][data-display-as~="cta"]:active {
   background-color: #ebe6f0;
 }
 
-.c-user-content a[href][data-display-as~="cta"]:focus {
+.c-user-content.c-user-content a[href][data-display-as~="cta"]:focus {
   outline: 0;
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.5);
 }
 
-.c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-express[href], .c-user-content a[href][data-display-as~="primary-cta"] a.t-express[href][data-display-as~="primary-cta"] {
+.c-user-content.c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-express[href], .c-user-content.c-user-content a[href][data-display-as~="primary-cta"] a.t-express[href][data-display-as~="primary-cta"] {
   color: #ffffff;
   background-color: #f49929;
 }
 
-.c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-express[href]:hover, .c-user-content a[href][data-display-as~="primary-cta"] a.t-express[href]:hover[data-display-as~="primary-cta"], .c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-express[href]:active, .c-user-content a[href][data-display-as~="primary-cta"] a.t-express[href]:active[data-display-as~="primary-cta"], .c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-express[href]:focus, .c-user-content a[href][data-display-as~="primary-cta"] a.t-express[href]:focus[data-display-as~="primary-cta"] {
+.c-user-content.c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-express[href]:hover, .c-user-content.c-user-content a[href][data-display-as~="primary-cta"] a.t-express[href]:hover[data-display-as~="primary-cta"], .c-user-content.c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-express[href]:active, .c-user-content.c-user-content a[href][data-display-as~="primary-cta"] a.t-express[href]:active[data-display-as~="primary-cta"], .c-user-content.c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-express[href]:focus, .c-user-content.c-user-content a[href][data-display-as~="primary-cta"] a.t-express[href]:focus[data-display-as~="primary-cta"] {
   color: #ffffff;
   /*@if is-int($s__button-background-color--alt) {
                 @if $s__button-background-color--alt > 0 {
@@ -10029,270 +10030,270 @@ main :target {
             */
 }
 
-.c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-express[href]:hover::before, .c-user-content a[href][data-display-as~="primary-cta"] a.t-express[data-display-as~="primary-cta"][href]:hover::before, .c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-express[href]:active::before, .c-user-content a[href][data-display-as~="primary-cta"] a.t-express[data-display-as~="primary-cta"][href]:active::before, .c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-express[href]:focus::before, .c-user-content a[href][data-display-as~="primary-cta"] a.t-express[data-display-as~="primary-cta"][href]:focus::before {
+.c-user-content.c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-express[href]:hover::before, .c-user-content.c-user-content a[href][data-display-as~="primary-cta"] a.t-express[data-display-as~="primary-cta"][href]:hover::before, .c-user-content.c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-express[href]:active::before, .c-user-content.c-user-content a[href][data-display-as~="primary-cta"] a.t-express[data-display-as~="primary-cta"][href]:active::before, .c-user-content.c-user-content a[href][data-display-as~="primary-cta"] .c-primary-cta.t-express[href]:focus::before, .c-user-content.c-user-content a[href][data-display-as~="primary-cta"] a.t-express[data-display-as~="primary-cta"][href]:focus::before {
   background-color: rgba(0, 0, 0, 0.15);
 }
 
-.c-user-content [data-display-as~="box"],
-.c-user-content [data-display-as~="pale-box"],
-.c-user-content [data-display-as~="themed-box--background"],
-.c-user-content [data-display-as~="themed-box--border"],
-.c-user-content [data-display-as~="notice-box"] {
+.c-user-content.c-user-content [data-display-as~="box"],
+.c-user-content.c-user-content [data-display-as~="pale-box"],
+.c-user-content.c-user-content [data-display-as~="themed-box--background"],
+.c-user-content.c-user-content [data-display-as~="themed-box--border"],
+.c-user-content.c-user-content [data-display-as~="notice-box"] {
   padding: 2.4rem;
   margin-bottom: 2.4rem;
   width: 100%;
 }
 
-.c-user-content [data-display-as~="box"]::before, .c-user-content [data-display-as~="box"]::after,
-.c-user-content [data-display-as~="pale-box"]::before,
-.c-user-content [data-display-as~="pale-box"]::after,
-.c-user-content [data-display-as~="themed-box--background"]::before,
-.c-user-content [data-display-as~="themed-box--background"]::after,
-.c-user-content [data-display-as~="themed-box--border"]::before,
-.c-user-content [data-display-as~="themed-box--border"]::after,
-.c-user-content [data-display-as~="notice-box"]::before,
-.c-user-content [data-display-as~="notice-box"]::after {
+.c-user-content.c-user-content [data-display-as~="box"]::before, .c-user-content.c-user-content [data-display-as~="box"]::after,
+.c-user-content.c-user-content [data-display-as~="pale-box"]::before,
+.c-user-content.c-user-content [data-display-as~="pale-box"]::after,
+.c-user-content.c-user-content [data-display-as~="themed-box--background"]::before,
+.c-user-content.c-user-content [data-display-as~="themed-box--background"]::after,
+.c-user-content.c-user-content [data-display-as~="themed-box--border"]::before,
+.c-user-content.c-user-content [data-display-as~="themed-box--border"]::after,
+.c-user-content.c-user-content [data-display-as~="notice-box"]::before,
+.c-user-content.c-user-content [data-display-as~="notice-box"]::after {
   content: " ";
   display: table;
 }
 
-.c-user-content [data-display-as~="box"], .c-user-content [data-display-as~="box"]::after,
-.c-user-content [data-display-as~="pale-box"],
-.c-user-content [data-display-as~="pale-box"]::after,
-.c-user-content [data-display-as~="themed-box--background"],
-.c-user-content [data-display-as~="themed-box--background"]::after,
-.c-user-content [data-display-as~="themed-box--border"],
-.c-user-content [data-display-as~="themed-box--border"]::after,
-.c-user-content [data-display-as~="notice-box"],
-.c-user-content [data-display-as~="notice-box"]::after {
+.c-user-content.c-user-content [data-display-as~="box"], .c-user-content.c-user-content [data-display-as~="box"]::after,
+.c-user-content.c-user-content [data-display-as~="pale-box"],
+.c-user-content.c-user-content [data-display-as~="pale-box"]::after,
+.c-user-content.c-user-content [data-display-as~="themed-box--background"],
+.c-user-content.c-user-content [data-display-as~="themed-box--background"]::after,
+.c-user-content.c-user-content [data-display-as~="themed-box--border"],
+.c-user-content.c-user-content [data-display-as~="themed-box--border"]::after,
+.c-user-content.c-user-content [data-display-as~="notice-box"],
+.c-user-content.c-user-content [data-display-as~="notice-box"]::after {
   clear: both;
 }
 
-.c-user-content [data-display-as~="box"] {
+.c-user-content.c-user-content [data-display-as~="box"] {
   border: 1px solid #8e8279;
 }
 
-.c-user-content [data-display-as~="pale-box"] {
+.c-user-content.c-user-content [data-display-as~="pale-box"] {
   background-color: #f7f6f6;
 }
 
-.c-user-content [data-display-as~="themed-box--background"] {
+.c-user-content.c-user-content [data-display-as~="themed-box--background"] {
   color: #fff;
   background: #5e6db1;
 }
 
-.c-user-content [data-display-as~="themed-box--background"] a[href] {
+.c-user-content.c-user-content [data-display-as~="themed-box--background"] a[href] {
   color: #fff;
 }
 
-.c-user-content [data-display-as~="themed-box--background"] a[href]:hover,
-.c-user-content [data-display-as~="themed-box--background"] a[href]:active,
-.c-user-content [data-display-as~="themed-box--background"] a[href]:focus {
+.c-user-content.c-user-content [data-display-as~="themed-box--background"] a[href]:hover,
+.c-user-content.c-user-content [data-display-as~="themed-box--background"] a[href]:active,
+.c-user-content.c-user-content [data-display-as~="themed-box--background"] a[href]:focus {
   color: #fff;
 }
 
-.c-user-content [data-display-as~="themed-box--background"] a[href][data-display-as~="cta"] {
+.c-user-content.c-user-content [data-display-as~="themed-box--background"] a[href][data-display-as~="cta"] {
   border-color: #fff;
   color: #fff;
 }
 
-.c-user-content [data-display-as~="themed-box--background"] a[href][data-display-as~="cta"]:hover,
-.c-user-content [data-display-as~="themed-box--background"] a[href][data-display-as~="cta"]:active,
-.c-user-content [data-display-as~="themed-box--background"] a[href][data-display-as~="cta"]:focus {
+.c-user-content.c-user-content [data-display-as~="themed-box--background"] a[href][data-display-as~="cta"]:hover,
+.c-user-content.c-user-content [data-display-as~="themed-box--background"] a[href][data-display-as~="cta"]:active,
+.c-user-content.c-user-content [data-display-as~="themed-box--background"] a[href][data-display-as~="cta"]:focus {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.c-user-content [data-display-as~="themed-box--background"] a[href][data-display-as~="primary-cta"] {
+.c-user-content.c-user-content [data-display-as~="themed-box--background"] a[href][data-display-as~="primary-cta"] {
   border-color: #fff;
   border-width: 2px;
   border-style: solid;
   padding: calc(0.6rem - 2px) 1.2rem;
 }
 
-.c-user-content [data-display-as~="themed-box--border"] {
+.c-user-content.c-user-content [data-display-as~="themed-box--border"] {
   border-color: currentColor;
   border-style: solid;
   border-width: 3px;
 }
 
-.c-user-content [data-display-as~="notice-box"] {
+.c-user-content.c-user-content [data-display-as~="notice-box"] {
   border: 6px solid #f49929;
   background: #fef8f0;
 }
 
-.c-user-content [data-display-as~="notice-box"] a[href][data-display-as~="cta"]:hover,
-.c-user-content [data-display-as~="notice-box"] a[href][data-display-as~="cta"]:active,
-.c-user-content [data-display-as~="notice-box"] a[href][data-display-as~="cta"]:focus {
+.c-user-content.c-user-content [data-display-as~="notice-box"] a[href][data-display-as~="cta"]:hover,
+.c-user-content.c-user-content [data-display-as~="notice-box"] a[href][data-display-as~="cta"]:active,
+.c-user-content.c-user-content [data-display-as~="notice-box"] a[href][data-display-as~="cta"]:focus {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.c-user-content [data-display-as~="notice-box"] a[href][data-display-as~="primary-cta"] {
+.c-user-content.c-user-content [data-display-as~="notice-box"] a[href][data-display-as~="primary-cta"] {
   background-color: #f49929;
 }
 
-.c-user-content [data-display-as~="blocks"] > * > * {
+.c-user-content.c-user-content [data-display-as~="blocks"] > * > * {
   flex-basis: 11.25em;
   max-width: 15em;
   align-self: stretch;
 }
 
-.c-user-content [data-display-as~="blocks-large"] > * > * {
+.c-user-content.c-user-content [data-display-as~="blocks-large"] > * > * {
   flex-basis: 16.25em;
   max-width: 20em;
 }
 
-.c-user-content [data-display-as~="blocks"] > * > * > span {
+.c-user-content.c-user-content [data-display-as~="blocks"] > * > * > span {
   display: flex;
   flex-direction: column;
 }
 
-.c-user-content [data-display-as~="blocks"] > * > * > span > a {
+.c-user-content.c-user-content [data-display-as~="blocks"] > * > * > span > a {
   flex: 0 0 auto;
 }
 
-.c-user-content [data-display-as~="blocks"] > * > * > span > a:first-child {
+.c-user-content.c-user-content [data-display-as~="blocks"] > * > * > span > a:first-child {
   flex: 1 0 auto;
 }
 
-.c-user-content [data-display-is~="pulled-left"],
-.c-user-content [data-display-is~="pulled-right"],
-.c-user-content [data-display-is~="pulled-center"],
-.c-user-content [data-position] {
+.c-user-content.c-user-content [data-display-is~="pulled-left"],
+.c-user-content.c-user-content [data-display-is~="pulled-right"],
+.c-user-content.c-user-content [data-display-is~="pulled-center"],
+.c-user-content.c-user-content [data-position] {
   margin-bottom: 1.2rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
   /*&::before,
-            &::after {
-                content: "";
-                display: block;
-                -webkit-flex: 0 0 auto;
-                    -ms-flex: 0 0 auto;
-                        flex: 0 0 auto;
-                //@include ff-width($sz-m, $uc-breakpoint, 100%);
-            }
+                &::after {
+                    content: "";
+                    display: block;
+                    -webkit-flex: 0 0 auto;
+                        -ms-flex: 0 0 auto;
+                            flex: 0 0 auto;
+                    //@include ff-width($sz-m, $uc-breakpoint, 100%);
+                }
 
-            // Because these pseudo elements are children, we need to calculate parent's parent:
+                // Because these pseudo elements are children, we need to calculate parent's parent:
 
-            &[data-display-is~="width-one-half"]::before,
-            &[data-display-is~="width-one-half"]::after {
-                @include ff-width($sz-m, ($uc-breakpoint / 2), 0);
-            }*/
+                &[data-display-is~="width-one-half"]::before,
+                &[data-display-is~="width-one-half"]::after {
+                    @include ff-width($sz-m, ($uc-breakpoint / 2), 0);
+                }*/
 }
 
-.c-user-content [data-display-is~="pulled-left"],
-.c-user-content [data-position="left"] {
+.c-user-content.c-user-content [data-display-is~="pulled-left"],
+.c-user-content.c-user-content [data-position="left"] {
   float: left;
   clear: left;
   margin-right: 2.4rem;
 }
 
-.c-user-content [data-display-is~="pulled-left"]::before,
-.c-user-content [data-position="left"]::before {
+.c-user-content.c-user-content [data-display-is~="pulled-left"]::before,
+.c-user-content.c-user-content [data-position="left"]::before {
   display: none;
 }
 
-.c-user-content [data-display-is~="pulled-left"] + ::before,
-.c-user-content [data-display-is~="pulled-left"] + ::after,
-.c-user-content [data-position="left"] + ::before,
-.c-user-content [data-position="left"] + ::after {
+.c-user-content.c-user-content [data-display-is~="pulled-left"] + ::before,
+.c-user-content.c-user-content [data-display-is~="pulled-left"] + ::after,
+.c-user-content.c-user-content [data-position="left"] + ::before,
+.c-user-content.c-user-content [data-position="left"] + ::after {
   content: " ";
   display: table;
 }
 
-.c-user-content [data-display-is~="pulled-left"] + ::after,
-.c-user-content [data-position="left"] + ::after {
+.c-user-content.c-user-content [data-display-is~="pulled-left"] + ::after,
+.c-user-content.c-user-content [data-position="left"] + ::after {
   clear: both;
 }
 
-.c-user-content [data-display-is~="pulled-right"],
-.c-user-content [data-position="right"] {
+.c-user-content.c-user-content [data-display-is~="pulled-right"],
+.c-user-content.c-user-content [data-position="right"] {
   float: right;
   clear: right;
   margin-left: 2.4rem;
 }
 
-.c-user-content [data-display-is~="pulled-right"]::after,
-.c-user-content [data-position="right"]::after {
+.c-user-content.c-user-content [data-display-is~="pulled-right"]::after,
+.c-user-content.c-user-content [data-position="right"]::after {
   display: none;
 }
 
-.c-user-content [data-display-is~="pulled-right"] + ::before,
-.c-user-content [data-display-is~="pulled-right"] + ::after,
-.c-user-content [data-position="right"] + ::before,
-.c-user-content [data-position="right"] + ::after {
+.c-user-content.c-user-content [data-display-is~="pulled-right"] + ::before,
+.c-user-content.c-user-content [data-display-is~="pulled-right"] + ::after,
+.c-user-content.c-user-content [data-position="right"] + ::before,
+.c-user-content.c-user-content [data-position="right"] + ::after {
   content: " ";
   display: table;
 }
 
-.c-user-content [data-display-is~="pulled-right"] + ::after,
-.c-user-content [data-position="right"] + ::after {
+.c-user-content.c-user-content [data-display-is~="pulled-right"] + ::after,
+.c-user-content.c-user-content [data-position="right"] + ::after {
   clear: both;
 }
 
-.c-user-content [data-display-is~="pulled-center"],
-.c-user-content [data-position="center"] {
+.c-user-content.c-user-content [data-display-is~="pulled-center"],
+.c-user-content.c-user-content [data-position="center"] {
   margin-left: auto;
   margin-right: auto;
 }
 
-.c-user-content [data-display-is~="pulled-center"]::after,
-.c-user-content [data-position="center"]::after {
+.c-user-content.c-user-content [data-display-is~="pulled-center"]::after,
+.c-user-content.c-user-content [data-position="center"]::after {
   display: none;
 }
 
-.c-user-content [data-display-is~="width-one-quarter"],
-.c-user-content [data-width="one-quarter"] {
+.c-user-content.c-user-content [data-display-is~="width-one-quarter"],
+.c-user-content.c-user-content [data-width="one-quarter"] {
   max-width: 100%;
   width: calc((35em - 100%) * 1000);
   min-width: 25%;
 }
 
-.c-user-content [data-display-is~="width-one-third"],
-.c-user-content [data-width="one-third"] {
+.c-user-content.c-user-content [data-display-is~="width-one-third"],
+.c-user-content.c-user-content [data-width="one-third"] {
   max-width: 100%;
   width: calc((35em - 100%) * 1000);
   min-width: 33%;
 }
 
-.c-user-content [data-display-is~="width-one-half"],
-.c-user-content [data-width="one-half"] {
+.c-user-content.c-user-content [data-display-is~="width-one-half"],
+.c-user-content.c-user-content [data-width="one-half"] {
   max-width: 100%;
   width: calc((35em - 100%) * 1000);
   min-width: 50%;
 }
 
-.c-user-content [data-display-is~="width-two-thirds"],
-.c-user-content [data-width="two-thirds"] {
+.c-user-content.c-user-content [data-display-is~="width-two-thirds"],
+.c-user-content.c-user-content [data-width="two-thirds"] {
   max-width: 100%;
   width: calc((35em - 100%) * 1000);
   min-width: 67%;
 }
 
-.c-user-content [data-display-is~="width-one-whole"],
-.c-user-content [data-width="one-whole"] {
+.c-user-content.c-user-content [data-display-is~="width-one-whole"],
+.c-user-content.c-user-content [data-width="one-whole"] {
   width: 100%;
 }
 
-.c-user-content [data-contains~="image"] {
+.c-user-content.c-user-content [data-contains~="image"] {
   display: inline-block;
   vertical-align: middle;
   position: relative;
   /* [1] */
 }
 
-.c-user-content [data-contains~="image"] svg {
+.c-user-content.c-user-content [data-contains~="image"] svg {
   max-width: 100%;
 }
 
-.c-user-content [data-contains~="image"] img {
+.c-user-content.c-user-content [data-contains~="image"] img {
   /*
-                    1. This is to provide positioning context for the ::after pseudo-element.
-                    2. This is so a broken image is still 100%.
-                    3. Center in container.
-                    4. This prevents long-thin images appearing huge an narrow (100% width) sizes.
-                       However, it's a bit of a magic number, so may not work in all cases.
-                */
+                        1. This is to provide positioning context for the ::after pseudo-element.
+                        2. This is so a broken image is still 100%.
+                        3. Center in container.
+                        4. This prevents long-thin images appearing huge an narrow (100% width) sizes.
+                           However, it's a bit of a magic number, so may not work in all cases.
+                    */
   position: relative;
   /* [1] */
   display: block;
@@ -10307,17 +10308,17 @@ main :target {
   /* [3] */
 }
 
-.c-user-content a[href][data-contains~="image"] {
+.c-user-content.c-user-content a[href][data-contains~="image"] {
   border: 0;
   padding: 0;
 }
 
-.c-user-content a[href][data-contains~="image"]:hover, .c-user-content a[href][data-contains~="image"]:active, .c-user-content a[href][data-contains~="image"]:focus {
+.c-user-content.c-user-content a[href][data-contains~="image"]:hover, .c-user-content.c-user-content a[href][data-contains~="image"]:active, .c-user-content.c-user-content a[href][data-contains~="image"]:focus {
   border: 0;
   box-shadow: 0 0 0 0.6rem #fff, 0 0 0 1.2rem rgba(0, 0, 0, 0.2);
 }
 
-.c-user-content a[href][rel~="external"][data-contains~="image"]::after {
+.c-user-content.c-user-content a[href][rel~="external"][data-contains~="image"]::after {
   position: absolute;
   right: -1em;
   top: -1em;
@@ -10326,58 +10327,58 @@ main :target {
   display: block;
 }
 
-.c-user-content [data-contains~="logo"] img {
+.c-user-content.c-user-content [data-contains~="logo"] img {
   max-height: 9rem;
   background-color: transparent;
 }
 
-.c-user-content [data-contains~="logo-xsmall"] img {
+.c-user-content.c-user-content [data-contains~="logo-xsmall"] img {
   max-height: 5.4rem;
 }
 
-.c-user-content [data-contains~="logo-small"] img {
+.c-user-content.c-user-content [data-contains~="logo-small"] img {
   max-height: 7.2rem;
 }
 
-.c-user-content [data-contains~="logo-medium"] img {
+.c-user-content.c-user-content [data-contains~="logo-medium"] img {
   max-height: 9rem;
 }
 
-.c-user-content [data-contains~="logo-large"] img {
+.c-user-content.c-user-content [data-contains~="logo-large"] img {
   max-height: 10.8rem;
 }
 
-.c-user-content [data-contains~="logo-xlarge"] img {
+.c-user-content.c-user-content [data-contains~="logo-xlarge"] img {
   max-height: 14.4rem;
 }
 
-.c-user-content [data-contains~="logo-xxlarge"] img {
+.c-user-content.c-user-content [data-contains~="logo-xxlarge"] img {
   max-height: 18rem;
 }
 
-.c-user-content [data-contains~="logo-xxxlarge"] img {
+.c-user-content.c-user-content [data-contains~="logo-xxxlarge"] img {
   max-height: 21.6rem;
 }
 
-.c-user-content img {
+.c-user-content.c-user-content img {
   background: #fff;
 }
 
-.c-user-content b > img,
-.c-user-content b > i > img {
+.c-user-content.c-user-content b > img,
+.c-user-content.c-user-content b > i > img {
   border: 3px solid #a59c95 !important;
 }
 
-.c-user-content b > i > img {
+.c-user-content.c-user-content b > i > img {
   padding: 1.2rem;
 }
 
-.c-user-content [data-contains~="portrait"] {
+.c-user-content.c-user-content [data-contains~="portrait"] {
   width: 100%;
   max-width: 16em;
 }
 
-.c-user-content [data-contains~="portrait"]::before {
+.c-user-content.c-user-content [data-contains~="portrait"]::before {
   content: "";
   width: 1px;
   margin-left: -1px;
@@ -10386,14 +10387,14 @@ main :target {
   padding-top: 100%;
 }
 
-.c-user-content [data-contains~="portrait"]::after {
+.c-user-content.c-user-content [data-contains~="portrait"]::after {
   /* to clear float */
   content: "";
   display: table;
   clear: both;
 }
 
-.c-user-content [data-contains~="portrait"] img {
+.c-user-content.c-user-content [data-contains~="portrait"] img {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -10401,8 +10402,8 @@ main :target {
   object-fit: cover;
 }
 
-.c-user-content img[src*="/assets/images/avatars/"],
-.c-user-content [data-contains~="portrait"] img {
+.c-user-content.c-user-content img[src*="/assets/images/avatars/"],
+.c-user-content.c-user-content [data-contains~="portrait"] img {
   display: block;
   width: 100%;
   max-width: 16em;
@@ -10411,42 +10412,42 @@ main :target {
   overflow: hidden;
 }
 
-.c-user-content [data-display-as~="smallprint"] {
+.c-user-content.c-user-content [data-display-as~="smallprint"] {
   font-size: 0.875em;
 }
 
-.c-user-content [data-display-as~="strapline"] {
+.c-user-content.c-user-content [data-display-as~="strapline"] {
   font-size: 1.125em;
 }
 
-.c-user-content figcaption {
+.c-user-content.c-user-content figcaption {
   text-align: center;
   font-size: 0.875em;
   margin-top: 1.2rem;
 }
 
-.c-user-content [data-contains~="download"] {
+.c-user-content.c-user-content [data-contains~="download"] {
   display: inline-block;
 }
 
-.c-user-content a[href$=".pdf"]:not([data-contains="thumbnail"])::before,
-.c-user-content a[href$=".pdf"] br + span::before,
-.c-user-content a[href$=".doc"]:not([data-contains="thumbnail"])::before,
-.c-user-content a[href$=".doc"] br + span::before,
-.c-user-content a[href$=".docx"]:not([data-contains="thumbnail"])::before,
-.c-user-content a[href$=".docx"] br + span::before,
-.c-user-content a[href$=".ppt"]:not([data-contains="thumbnail"])::before,
-.c-user-content a[href$=".ppt"] br + span::before,
-.c-user-content a[href$=".pptx"]:not([data-contains="thumbnail"])::before,
-.c-user-content a[href$=".pptx"] br + span::before,
-.c-user-content a[href$=".ppsx"]:not([data-contains="thumbnail"])::before,
-.c-user-content a[href$=".ppsx"] br + span::before,
-.c-user-content a[href$=".xls"]:not([data-contains="thumbnail"])::before,
-.c-user-content a[href$=".xls"] br + span::before,
-.c-user-content a[href$=".xlsx"]:not([data-contains="thumbnail"])::before,
-.c-user-content a[href$=".xlsx"] br + span::before,
-.c-user-content a[href$=".zip"]:not([data-contains="thumbnail"])::before,
-.c-user-content a[href$=".zip"] br + span::before {
+.c-user-content.c-user-content a[href$=".pdf"]:not([data-contains="thumbnail"])::before,
+.c-user-content.c-user-content a[href$=".pdf"] br + span::before,
+.c-user-content.c-user-content a[href$=".doc"]:not([data-contains="thumbnail"])::before,
+.c-user-content.c-user-content a[href$=".doc"] br + span::before,
+.c-user-content.c-user-content a[href$=".docx"]:not([data-contains="thumbnail"])::before,
+.c-user-content.c-user-content a[href$=".docx"] br + span::before,
+.c-user-content.c-user-content a[href$=".ppt"]:not([data-contains="thumbnail"])::before,
+.c-user-content.c-user-content a[href$=".ppt"] br + span::before,
+.c-user-content.c-user-content a[href$=".pptx"]:not([data-contains="thumbnail"])::before,
+.c-user-content.c-user-content a[href$=".pptx"] br + span::before,
+.c-user-content.c-user-content a[href$=".ppsx"]:not([data-contains="thumbnail"])::before,
+.c-user-content.c-user-content a[href$=".ppsx"] br + span::before,
+.c-user-content.c-user-content a[href$=".xls"]:not([data-contains="thumbnail"])::before,
+.c-user-content.c-user-content a[href$=".xls"] br + span::before,
+.c-user-content.c-user-content a[href$=".xlsx"]:not([data-contains="thumbnail"])::before,
+.c-user-content.c-user-content a[href$=".xlsx"] br + span::before,
+.c-user-content.c-user-content a[href$=".zip"]:not([data-contains="thumbnail"])::before,
+.c-user-content.c-user-content a[href$=".zip"] br + span::before {
   content: "[FILE] ";
   position: relative;
   display: inline-block;
@@ -10736,12 +10737,12 @@ $patterns: (
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.c-primary-cta.t-white[href], .c-user-content a.t-white[href][data-display-as~="primary-cta"] {
+.c-primary-cta.t-white[href], .c-user-content.c-user-content a.t-white[href][data-display-as~="primary-cta"] {
   color: #333333;
   background-color: #ffffff;
 }
 
-.c-primary-cta.t-white[href]:hover, .c-user-content a.t-white[href]:hover[data-display-as~="primary-cta"], .c-primary-cta.t-white[href]:active, .c-user-content a.t-white[href]:active[data-display-as~="primary-cta"], .c-primary-cta.t-white[href]:focus, .c-user-content a.t-white[href]:focus[data-display-as~="primary-cta"] {
+.c-primary-cta.t-white[href]:hover, .c-user-content.c-user-content a.t-white[href]:hover[data-display-as~="primary-cta"], .c-primary-cta.t-white[href]:active, .c-user-content.c-user-content a.t-white[href]:active[data-display-as~="primary-cta"], .c-primary-cta.t-white[href]:focus, .c-user-content.c-user-content a.t-white[href]:focus[data-display-as~="primary-cta"] {
   color: #333333;
   /*@if is-int($s__button-background-color--alt) {
                 @if $s__button-background-color--alt > 0 {
@@ -10756,7 +10757,7 @@ $patterns: (
             */
 }
 
-.c-primary-cta.t-white[href]:hover::before, .c-user-content a.t-white[data-display-as~="primary-cta"][href]:hover::before, .c-primary-cta.t-white[href]:active::before, .c-user-content a.t-white[data-display-as~="primary-cta"][href]:active::before, .c-primary-cta.t-white[href]:focus::before, .c-user-content a.t-white[data-display-as~="primary-cta"][href]:focus::before {
+.c-primary-cta.t-white[href]:hover::before, .c-user-content.c-user-content a.t-white[data-display-as~="primary-cta"][href]:hover::before, .c-primary-cta.t-white[href]:active::before, .c-user-content.c-user-content a.t-white[data-display-as~="primary-cta"][href]:active::before, .c-primary-cta.t-white[href]:focus::before, .c-user-content.c-user-content a.t-white[data-display-as~="primary-cta"][href]:focus::before {
   background-color: rgba(0, 0, 0, 0.15);
 }
 
@@ -11445,12 +11446,12 @@ $patterns: (
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.c-primary-cta.t-neutral[href], .c-user-content a.t-neutral[href][data-display-as~="primary-cta"] {
+.c-primary-cta.t-neutral[href], .c-user-content.c-user-content a.t-neutral[href][data-display-as~="primary-cta"] {
   color: #333333;
   background-color: #ffffff;
 }
 
-.c-primary-cta.t-neutral[href]:hover, .c-user-content a.t-neutral[href]:hover[data-display-as~="primary-cta"], .c-primary-cta.t-neutral[href]:active, .c-user-content a.t-neutral[href]:active[data-display-as~="primary-cta"], .c-primary-cta.t-neutral[href]:focus, .c-user-content a.t-neutral[href]:focus[data-display-as~="primary-cta"] {
+.c-primary-cta.t-neutral[href]:hover, .c-user-content.c-user-content a.t-neutral[href]:hover[data-display-as~="primary-cta"], .c-primary-cta.t-neutral[href]:active, .c-user-content.c-user-content a.t-neutral[href]:active[data-display-as~="primary-cta"], .c-primary-cta.t-neutral[href]:focus, .c-user-content.c-user-content a.t-neutral[href]:focus[data-display-as~="primary-cta"] {
   color: #333333;
   /*@if is-int($s__button-background-color--alt) {
                 @if $s__button-background-color--alt > 0 {
@@ -11465,7 +11466,7 @@ $patterns: (
             */
 }
 
-.c-primary-cta.t-neutral[href]:hover::before, .c-user-content a.t-neutral[data-display-as~="primary-cta"][href]:hover::before, .c-primary-cta.t-neutral[href]:active::before, .c-user-content a.t-neutral[data-display-as~="primary-cta"][href]:active::before, .c-primary-cta.t-neutral[href]:focus::before, .c-user-content a.t-neutral[data-display-as~="primary-cta"][href]:focus::before {
+.c-primary-cta.t-neutral[href]:hover::before, .c-user-content.c-user-content a.t-neutral[data-display-as~="primary-cta"][href]:hover::before, .c-primary-cta.t-neutral[href]:active::before, .c-user-content.c-user-content a.t-neutral[data-display-as~="primary-cta"][href]:active::before, .c-primary-cta.t-neutral[href]:focus::before, .c-user-content.c-user-content a.t-neutral[data-display-as~="primary-cta"][href]:focus::before {
   background-color: rgba(0, 0, 0, 0.15);
 }
 
@@ -13103,12 +13104,12 @@ $patterns: (
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.c-primary-cta.t-express[href], .c-user-content a.t-express[href][data-display-as~="primary-cta"] {
+.c-primary-cta.t-express[href], .c-user-content.c-user-content a.t-express[href][data-display-as~="primary-cta"] {
   color: #ffffff;
   background-color: #f49929;
 }
 
-.c-primary-cta.t-express[href]:hover, .c-user-content a.t-express[href]:hover[data-display-as~="primary-cta"], .c-primary-cta.t-express[href]:active, .c-user-content a.t-express[href]:active[data-display-as~="primary-cta"], .c-primary-cta.t-express[href]:focus, .c-user-content a.t-express[href]:focus[data-display-as~="primary-cta"] {
+.c-primary-cta.t-express[href]:hover, .c-user-content.c-user-content a.t-express[href]:hover[data-display-as~="primary-cta"], .c-primary-cta.t-express[href]:active, .c-user-content.c-user-content a.t-express[href]:active[data-display-as~="primary-cta"], .c-primary-cta.t-express[href]:focus, .c-user-content.c-user-content a.t-express[href]:focus[data-display-as~="primary-cta"] {
   color: #ffffff;
   /*@if is-int($s__button-background-color--alt) {
                 @if $s__button-background-color--alt > 0 {
@@ -13123,7 +13124,7 @@ $patterns: (
             */
 }
 
-.c-primary-cta.t-express[href]:hover::before, .c-user-content a.t-express[data-display-as~="primary-cta"][href]:hover::before, .c-primary-cta.t-express[href]:active::before, .c-user-content a.t-express[data-display-as~="primary-cta"][href]:active::before, .c-primary-cta.t-express[href]:focus::before, .c-user-content a.t-express[data-display-as~="primary-cta"][href]:focus::before {
+.c-primary-cta.t-express[href]:hover::before, .c-user-content.c-user-content a.t-express[data-display-as~="primary-cta"][href]:hover::before, .c-primary-cta.t-express[href]:active::before, .c-user-content.c-user-content a.t-express[data-display-as~="primary-cta"][href]:active::before, .c-primary-cta.t-express[href]:focus::before, .c-user-content.c-user-content a.t-express[data-display-as~="primary-cta"][href]:focus::before {
   background-color: rgba(0, 0, 0, 0.15);
 }
 
