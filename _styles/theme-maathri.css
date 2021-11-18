@@ -5991,7 +5991,7 @@ $glimpse--link-border-bottom--hover: false !default;*/
 
 /*
 */
-.c-longform-content.c-longform-content > *:not([data-display-as~="blocks"]) {
+.c-longform-content.c-longform-content > *:not([data-display-as~="blocks"]):not([data-display-as~="breakout-box"]) {
   width: 100%;
   max-width: 67rem;
   margin-left: auto;

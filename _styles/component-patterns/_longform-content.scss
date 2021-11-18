@@ -14,7 +14,7 @@ $longform-content-max-width: 67rem !default;
 
     .#{$longform-content-namespace}longform-content {
 
-        &#{&} > *:not([data-display-as~="blocks"]) {
+        &#{&} > *:not([data-display-as~="blocks"]):not([data-display-as~="breakout-box"]) {
             width: 100%;
             max-width: $longform-content-max-width;
             margin-left: auto;
