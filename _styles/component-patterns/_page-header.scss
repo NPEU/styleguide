@@ -51,11 +51,11 @@ $theme-only: false !default;
         & #{&}__cta {
             margin: 0 auto;
             
-            .#{$page-header-namespace}primary-cta {
+            /*.#{$page-header-namespace}primary-cta {
                 &[href] {
                     margin-left: $s__base-rem-space-unit / 2 ;
                 }
-            }
+            }*/
         }
 
     }

@@ -18,7 +18,7 @@ $uc-breakpoint: 35em !default;
 // We don't need this if we're only theming the pattern:
 @if $theme-only == false {
     .#{$user-content-namespace}user-content {
-        &#{&} {
+        &#{&}#{&} {
 
             // Contact list:
             [data-contains~="contact-details"] {
