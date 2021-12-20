@@ -215,6 +215,17 @@ $theme-only: false !default;
             }
         }
     }
+    
+    @media #{$s__ie10-11} {
+        .#{$hero-namespace}hero {
+            #{&}__message {
+                /*
+                    1. IE11 is just not behaving well :-(
+                */
+                max-width: calc(100vw - 1.7rem) !important; /* [1] */
+            }
+        }
+    }
 
     @media only screen and (max-width:#{$hero-breakpoint-wide}) {
         .#{$hero-namespace}hero {

@@ -1,3 +1,21 @@
+// IE11 needs this, though I think in T2 this will be sorted by adding w/h to the SVG.
+// Need to check this though. (See NeoCLEAR footer for example - the icons are huge without this.)
+.c-badge.twitter img,
+.c-badge.youtube img {
+    max-height: 60px;
+}
+
+
+
+// More IE11 fixes:
+@media #{$s__ie10-11} {
+    .sticky-footer-wrap > * {
+        max-width: calc(100vw - 1.7rem) !important; /* [1] */
+    }
+}
+
+
+
 /// Try to incorporate these into StartCSS or put somewhere more sensible.
 
 @import "_start_tweaks.scss";
@@ -283,6 +301,13 @@ img[height] {
 
     margin: 0;
     padding-left: 1em;
+}
+
+// IE11 needs a wrapper to make the flex behave properly, which I can't add to the markup.
+@media #{$s__ie10-11} {
+    .dl-2-col {
+        display: block;
+    }
 }
 
 /*------------------*/

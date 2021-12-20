@@ -3429,7 +3429,17 @@ $theme-only: true;
     want to apply the styles because it makes editing hard.
 */
 /*    Distribute items inside a container.*/
-/*    IE11 needs this wrapper to behave properly.    If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.*.l-distribute-wrap {    display: -ms-flexbox;    display: flex;    width: 100%;    & > .l-distribute {        -webkit-flex-basis: 100%;        -ms-flex-preferred-size: 100%;        flex-basis: 100%;    }}*/
+/*    IE11 needs this wrapper to behave properly.    If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.*/
+.l-distribute-wrap {
+  display: flex;
+  width: 100%;
+}
+
+.l-distribute-wrap > .l-distribute {
+  max-width: 100%;
+  flex: 1 1 100%;
+}
+
 /*    1. This is a hack for IE11, otherwise the container goes as wide as the children in a row.*/
 .l-distribute.l-distribute {
   margin: 0;
@@ -4327,6 +4337,19 @@ details:not([open]) > *:not(summary) {
   margin-top: 0.6rem;
   padding-top: 0.6rem;
   border-top: 1px solid #eee;
+}
+
+/* The following overrides TFS styles. I need to put this in STARTCSS when I have a chance:
+TFSL
+button,input,label,select,textarea {
+    vertical-align:middle;
+    vertical-align:middle;
+    min-height:2.2em;
+    margin:.2em 0
+}
+*/
+button, input, label, select, textarea {
+  margin: 0;
 }
 
 /*

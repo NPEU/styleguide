@@ -1,6 +1,9 @@
 /* --| SETTINGS |-------------------------------------------------------------------------------- */
 
 // NOTE - Needs an overhaul because of updated StartCSS
+// Also note - this is for Template v1.x.x - the dev area for v2.x.x is:
+// C:\Users\akirk\Documents\GitHub\_NPEU
+// BUT these styles make use of newer layout classes, imported at the end of _shame.scss
 
 
 @import "_settings.scss";
@@ -132,7 +135,6 @@ $s__sub-nav__link--border-style:           solid;
 .nav-bar__items .nav-bar__item {
     margin-left: 1.2rem;
 }
-
 
 
 

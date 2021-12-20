@@ -59,7 +59,7 @@ $theme-only: false !default;
         display: flex;
         flex-direction: row;
             flex-wrap: wrap;
-                    
+
         width: 0; /* [1] */
         min-width: 100%; /* [1] */
     }
@@ -99,7 +99,7 @@ $theme-only: false !default;
         &#{&}--span-all {
              flex-basis: 100%;
         }
-        
+
         // FF and Chrome handle span breaks differently.
         // Can't get FF to be like Chrome so making them like FF:
         br {
@@ -153,10 +153,19 @@ $theme-only: false !default;
             background: #000;
         }
 
+        /*
+            1. IE11 doesn't handle flex sizing and word wrapping together well.
+               Longer words overflow their container and can cause H scrollbar, whereas it SHOULD
+               cause the sign box to expand and thus drop into single-col layout.
+               E.g. Trials 'Clinicians' sing. Make this 'Clinicianssssssssssss' to see the effect.
+               Currently I can't find a wAy to get it to behave properly so just making IE11 wrap
+               the text instead.
+        */
         #{&}__text {
             text-align: center;
             display: inline-block;
             width: 100%;
+            -ms-word-break: break-all; /* 1 */
         }
 
 
@@ -184,7 +193,12 @@ $theme-only: false !default;
             align-items: center;
             align-content: center;
             justify-content: center;
-}
+
+            & > * {
+                flex: 0 0 auto;
+                max-width: 100%;
+            }
+        }
 
         #{&}__svg {
             display: block;

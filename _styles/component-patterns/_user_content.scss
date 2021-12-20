@@ -503,6 +503,11 @@ $uc-breakpoint: 35em !default;
             }
 
             // Figures
+            // New TFS gives figures overflow-x for fallback a11y, but I causes scrollbars in this 
+            // design, so override:
+            figure {
+                overflow-x: visible;
+            }
 
             figcaption {
                 text-align: center;

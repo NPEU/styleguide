@@ -33,6 +33,10 @@ $utilitext-namespace: c- !default;
                 border-style: dashed;   
             }
         }
+        
+        & > br {
+            display: none;
+        }
     }
     
     
@@ -99,6 +103,12 @@ $utilitext-namespace: c- !default;
         
         #{&}#{&}--smaller {
             font-size: 0.8125em;
+        }
+        
+        #{&}#{&}--spaced > *,
+        #{&}#{&}--spaced > a[href] {
+            margin-left: $s__sz-s;
+            margin-right: $s__sz-s;
         }
     }
 
