@@ -3380,6 +3380,22 @@ $theme-only: true;
   position: relative;
 }
 
+.c-contact-list.c-contact-list dd > svg:first-child {
+  margin-left: -1.75em;
+  margin-top: 0.1em;
+  position: absolute;
+  display: inline;
+  fill: none;
+  fill-opacity: 0;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  width: 1.25em;
+  height: 1.25em;
+  padding: 0;
+}
+
 .c-contact-list .icon {
   margin-left: -1.75em;
   margin-top: 0.1em;

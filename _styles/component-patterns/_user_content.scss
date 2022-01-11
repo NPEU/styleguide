@@ -177,10 +177,30 @@ $uc-breakpoint: 35em !default;
             }*/
 
             [data-display-as~="blocks"] > * {
-                @extend .l-distribute;
+                //@extend .l-distribute;
+                
+                
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+
+                display: flex;
+
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                align-items: stretch;
+
+                //--s: 0;
+
+                width: 0; /* [1] */
+                min-width: 100%; /* [1] */
             }
 
             [data-display-as~="blocks"] > * > * {
+                margin: 0;
+                padding: 0;
+                
                 @extend .u-space--below;
                 @extend .u-text-align--center;
                 @extend .u-padding--sides--s;
@@ -189,6 +209,7 @@ $uc-breakpoint: 35em !default;
                 max-width: 15em;
 
                 align-self: stretch;
+                
             }
             
             [data-display-as~="blocks-large"] > * > * {

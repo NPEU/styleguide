@@ -7,6 +7,7 @@
 
 
 
+
 // More IE11 fixes:
 @media #{$s__ie10-11} {
     .sticky-footer-wrap > * {
@@ -335,8 +336,8 @@ legend h6 {
 
 /*---------------------*/
 
-// For use on PRu homepage - not sure where this best fits in.
-.video-center {
+// For use on PRU homepage - not sure where this best fits in.
+.video-center.video-center {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -429,3 +430,4 @@ legend h6 {
 
 $layout-spacing-unit: $s__base-rem-space-unit / 2;
 @import ".././NPEU.github.io/_styles/layout-patterns/_base.scss";
+@import ".././NPEU.github.io/_styles/layout-patterns/_distribute.scss";
