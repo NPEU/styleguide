@@ -63,6 +63,9 @@ $theme-only: false !default;
             color: $system-message--text-color;
             //background-color: $system-message--background-color;
             padding: $system-message-spacing-unit;
+            position: relative;
+            border: 0;
+            margin: 0;
             
             //@include bottom-space-fix($system-message-spacing-unit);
 

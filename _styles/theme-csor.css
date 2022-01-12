@@ -6965,6 +6965,9 @@ ul.c-utilitext li + li, ol.c-utilitext li + li {
 .c-system-message.c-system-message {
   color: #333;
   padding: 1.2rem;
+  position: relative;
+  border: 0;
+  margin: 0;
   /*
             @if $system-message--border-or-outline == 'outline' {
                 outline: $system-message--border-width $system-message--border-style $system-message--color;
@@ -8025,33 +8028,34 @@ $pagination-button--border-color: darken($pagination--base-color, 20%) !default;
     min-height seems to be safe for Safari though, and is needed for Edge.
 */
 .u-fill-height {
-  flex: 1 0 auto;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
+  flex: 1 0 auto !important;
+  min-height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 .u-fill-height > * {
-  flex: 1 0 auto;
+  flex: 1 0 auto !important;
 }
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   .u-fill-height {
-    height: 100%;
+    height: 100% !important;
   }
 }
 
 .u-fill-height--column {
+  flex: 1 0 auto !important;
   display: flex !important;
-  flex-direction: column;
+  flex-direction: column !important;
 }
 
 .u-fill-height--column > * {
-  flex: 0 0 auto;
+  flex: 0 0 auto !important;
 }
 
 .u-fill-height--column > .u-fill-height--column__expand {
-  flex: 1 0 auto;
+  flex: 1 0 auto !important;
 }
 
 /*
@@ -15106,6 +15110,14 @@ legend h6 {
 }
 
 /*
+    1. In case layout is applied to an inline element for fallback reasons.
+*/
+.l-layout {
+  display: block;
+  /* 1 */
+}
+
+/*
     1. This allows for --expand to work.
 */
 .l-layout__inner {
@@ -15341,8 +15353,28 @@ legend h6 {
 }
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  /*
+        1. IE11 hack to make width behave properly.
+    */
   .l-layout__inner {
+    width: 0px;
+    /* 1 */
+    min-width: 100%;
+    /* 1 */
     max-width: 100%;
+  }
+  .l-gutter--s.l-flush-edge-gutter > .l-layout__inner {
+    min-width: calc(100% + 1.2rem);
+    /* 1 */
+  }
+  .l-gutter.l-flush-edge-gutter > .l-layout__inner,
+  .l-gutter--m.l-flush-edge-gutter > .l-layout__inner {
+    min-width: calc(100% + 2.4rem);
+    /* 1 */
+  }
+  .l-gutter--l.l-flush-edge-gutter > .l-layout__inner {
+    min-width: calc(100% + 4.8rem);
+    /* 1 */
   }
   .l-gutter > .l-layout__inner,
   .l-gutter--m > .l-layout__inner {
