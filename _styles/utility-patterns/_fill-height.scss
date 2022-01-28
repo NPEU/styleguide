@@ -21,11 +21,16 @@ $fill-height-namespace: u- !default;
     }
 }
 
+
 @media #{$s__ie10-11} {
     .#{$fill-height-namespace}fill-height {
         height: 100% !important;
+        min-height: auto;
+        width: 1px;
+        min-width: 100%;
     }
 }
+
 
 
 .#{$fill-height-namespace}fill-height--column {

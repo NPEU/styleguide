@@ -9,14 +9,15 @@ $center-namespace: l- !default;
 */
 
 .#{$center-namespace}center {
-    &#{&} {
+    &#{&}#{&} {
         display: flex;
         align-items: center;
         justify-content: center;
-    }
 
-    & > * {
-        flex: 0 1 auto;
+        & > * {
+            flex: 0 1 auto;
+        }
+    
     }
     
     /*

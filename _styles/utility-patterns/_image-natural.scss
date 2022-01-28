@@ -83,3 +83,22 @@ a[href][rel~="external"].#{$image-natural-namespace}image-natural:focus::after {
     display: block;
     margin: 0;
 }
+
+
+/*
+    IE10-11
+
+    1. I can't figure this one out, but some images refuse to be limited to 100% of their
+       container (see https://dev.npeu.ox.ac.uk/toast podcast image) when viewport is less than
+       body max-width.
+       This hack takes into account the scrollbar (17px).
+*/
+
+@media #{$s__ie10-11} {
+
+    .#{$image-natural-namespace}image-natural.#{$image-natural-namespace}image-natural {
+        img {
+            max-width: calc(100vw - 17px); /* [1] */
+        }
+    }
+}
