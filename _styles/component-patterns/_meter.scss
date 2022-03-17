@@ -64,8 +64,8 @@ $theme-only: false !default;
             box-shadow: 0 0 0 1px currentColor inset;
             background: transparent;
             border-radius: 0.6rem;
-            height: #{$meter-spacing-unit / 2};
-            margin: #{$meter-spacing-unit / 4} 0;
+            height: #{$s__sz-m/ 2};
+            margin: #{$s__sz-m/ 4} 0;
             position: relative;
             overflow: hidden;
 
@@ -106,7 +106,7 @@ $theme-only: false !default;
                 position: absolute;
                 left: 0;
                 top: 0;
-                height: #{$meter-spacing-unit / 2};
+                height: #{$s__sz-m/ 2};
 
             }
         }
@@ -130,14 +130,14 @@ $theme-only: false !default;
 
                 &::before {
                     content: "";
-                    top: -#{$meter-spacing-unit / 8};
+                    top: -#{$s__sz-m/ 8};
 
                     // Triangle:
                     width: 0px;
                     height: 0px;
-                    border-left: #{$meter-spacing-unit / 4} solid transparent;
-                    border-right: #{$meter-spacing-unit / 4} solid transparent;
-                    border-bottom: #{$meter-spacing-unit / 4} solid currentColor;
+                    border-left: #{$s__sz-m/ 4} solid transparent;
+                    border-right: #{$s__sz-m/ 4} solid transparent;
+                    border-bottom: #{$s__sz-m/ 4} solid currentColor;
                 }
 
                 &::after {

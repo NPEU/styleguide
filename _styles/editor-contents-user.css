@@ -3428,9 +3428,14 @@ $theme-only: true;
   margin: 0;
 }
 
-.c-thumbnail img {
+.c-thumbnail > * {
+  display: inline-block;
+}
+
+.c-thumbnail.c-thumbnail[href] img {
   margin: 0;
-  border: 1px solid #ccc;
+  outline: 0.1rem solid #ccc;
+  height: auto;
 }
 
 /*@if $border-color == null {

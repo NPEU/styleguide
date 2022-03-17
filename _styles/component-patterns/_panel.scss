@@ -127,6 +127,11 @@ $theme-only: false !default;
                 }
             }
         }
+        
+        &#{&} &__module header {
+            margin-bottom: $s__base-rem-space-unit;
+            border: 0;
+        }
 
         &__banner {
             margin-top: -$panel--padding;

@@ -95,7 +95,7 @@ $theme-only: false !default;
 
             position: relative; /* [1] */
             overflow: hidden; /* [1] */
- 
+
                 &::before {
                     content: "";
                     display: block;
@@ -112,7 +112,7 @@ $theme-only: false !default;
                 &:focus {
                     border: 0;
                 }
-                
+
                 span {
                     position: relative; /* [12 */
                 }
