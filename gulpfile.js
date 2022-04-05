@@ -185,6 +185,7 @@ function do_concat_js(cb) {
 
     // Common script:
     gulp.src([
+        './_scripts/js/carousel.js',
         './_scripts/js/cookie-notice-settings.js',
         './_scripts/js/fit-contents.js',
         './_scripts/js/layout-adjustments.js',

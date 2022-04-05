@@ -19,7 +19,7 @@
 
             Array.prototype.forEach.call(nav_links, function(nl, i) {
                 nl.addEventListener('click', function(e) {
-                    if (debug) {
+                    if(debug) {
                         console.log('nav link clicked');
                     }
 
@@ -38,8 +38,6 @@
                     return false;
                 });
             });
-
-
 
         });
     };
@@ -84,7 +82,7 @@ var cookie_html                   =
 (function() {
 
     var setIframeHeight = function(iframe) {
-        
+
         var newHeight = iframe.contentDocument.querySelector('html').offsetHeight;
         iframe.style.height = newHeight + 'px';
     };
@@ -96,7 +94,7 @@ var cookie_html                   =
         Array.prototype.forEach.call(elements, function(el, i) {
             var iframe        = el;
             var iframe_window = iframe.contentWindow;
-            
+
             iframe.addEventListener('load', function() {
                 setIframeHeight(iframe);
             });
@@ -172,8 +170,8 @@ var cookie_html                   =
     }
 
     // https://davidwalsh.name/javascript-debounce-function
-    // Returns a function, that, as long as it continues to be invoked, will not be triggered. 
-    // The function will be called after it stops being called for N milliseconds. If `immediate` 
+    // Returns a function, that, as long as it continues to be invoked, will not be triggered.
+    // The function will be called after it stops being called for N milliseconds. If `immediate`
     // is passed, trigger the function on the leading edge, instead of the trailing.
     var debounce = function(func, wait, immediate) {
         var timeout;
@@ -255,7 +253,7 @@ var cookie_html                   =
             document.addEventListener('DOMContentLoaded', fn);
         }
     }
-    
+
     var createCookie = function(name,value,days) {
         if (days) {
             var date = new Date();
@@ -280,7 +278,7 @@ var cookie_html                   =
     var eraseCookie = function(name) {
         createCookie(name,"",-1);
     }
-    
+
     var cookienotice = {
 
         init: function() {
@@ -288,13 +286,13 @@ var cookie_html                   =
             if (!accepted_cookies) {
                 var body_el = document.getElementsByTagName('body')[0];
                 body_el.insertAdjacentHTML('afterbegin', cookie_html);
-                
+
                 document.getElementById(cookie_button_id).onclick = function(){
                     createCookie(cookie_name, 'true', cookie_expire_days);
                     document.getElementById(cookie_notice_id).setAttribute('data-close', true);
                     //document.getElementById(cookie_notice_id).className += '  ' + cookie_close_class;
                     /*
-                        Without CSS (or transition support - IE9) the notice won't disappear, so wait until fade 
+                        Without CSS (or transition support - IE9) the notice won't disappear, so wait until fade
                         has finished then remove:
                     */
                     setTimeout(function(){
@@ -305,7 +303,7 @@ var cookie_html                   =
             }
         }
     }
-    
+
     ready(cookienotice.init);
 })();
 
@@ -343,7 +341,7 @@ var cookie_html                   =
     if (close_button_id) {
         close_button_id_string = ' class="' + close_button_id +'"';
     }
-    
+
     // Focus HAS to move somewhere so default to h1. May rethink this...
     if (!close_button_focus_target_selector) {
         close_button_focus_target_selector = 'h1';
@@ -392,7 +390,7 @@ var cookie_html                   =
                     setTimeout(function(){
                         close_button_container.parentNode.removeChild(close_button_container);
                     }, close_button_effect_duration);
-                    
+
                     document.querySelector(this.getAttribute('data-js-focus-target')).focus();
                 });
             });
@@ -433,7 +431,7 @@ var cookie_html                   =
             document.addEventListener('DOMContentLoaded', fn);
         }
     }
-    
+
     var set_style = function(element, style) {
         Object.keys(style).forEach(function(key) {
             element.style[key] = style[key];
@@ -575,7 +573,7 @@ var cookie_html                   =
 })();
 
 /*! --------------------------------------------------------------------------------------------- *\
-    
+
     Fall-Back Dropdown v2.0.0
     https://github.com/Fall-Back/Patterns/tree/master/Dropdown
     Copyright (c) 2021, Andy Kirk
@@ -597,7 +595,7 @@ var cookie_html                   =
     var selector              = '[data-js="' + ident + '"]';
 
     var dropdown_js_has_classname = 'js-has--' + ident;
-    
+
     var dropdown_is_open_classname      = ident + '__area--is-open';
     var dropdown_is_animating_classname = ident + '__area--is-animating';
 
@@ -693,7 +691,7 @@ var cookie_html                   =
 
                         // Set the attribute:
                         this.setAttribute('aria-expanded', !expanded);
-                        
+
                         // Toggle the `is_open` class:
                         if (!expanded) {
                             area.classList.add(dropdown_is_open_classname);
@@ -735,7 +733,7 @@ var cookie_html                   =
 })();
 
 /*! --------------------------------------------------------------------------------------------- *\
-    
+
     Fall-Back Over Panel v2.0.0
     https://github.com/Fall-Back/Patterns/tree/master/Over%20Panel
     Copyright (c) 2021, Andy Kirk

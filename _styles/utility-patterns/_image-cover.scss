@@ -106,6 +106,13 @@ $image-cover-namespace: u- !default;
                 width: 100%;
             }
     }
+    
+    .#{$image-cover-namespace}image-cover--contain {
+
+        .#{$image-cover-namespace}image-cover__image {
+            object-fit: contain;
+        }
+    }
 }
 
 // Where a 'cover' image is in a flexible box, and especially in a ff-width pair where the two parts

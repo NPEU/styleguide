@@ -29,6 +29,8 @@ $theme-only: false !default;
         border: 0;
         width: 100%;
 
+        background-color: darken(map-get($theme, primary-color), 10%);
+
         // Note this won't be needed when moving to :last-child margin method.
         &::after {
             display: none;
@@ -47,10 +49,16 @@ $theme-only: false !default;
 
         #{&}__nav {
 
-            padding: 0 0.6rem;
-            margin: -$sz-m 0 0 0;
-            z-index: 1;
+            padding: 0.6rem;
+            margin-top: -$sz-s;
+            //margin-top: 0;
+            margin-right: 0;
+            margin-bottom: 0;
+            margin-left: 0;
+            z-index: 2;
 
+            //box-shadow: 0 0 $sz-s 0 rgba(0,0,0,0.5);
+            //background-color: lighten(map-get($theme, primary-color), 45%);
             //@include sloped-background(map-get($theme, primary-color));
 
             p {
@@ -60,9 +68,9 @@ $theme-only: false !default;
             a[href] {
                 display: inline-block;
                 overflow: hidden;
-                border-radius: 0.6rem;
-                height: 1.2rem;
-                width: 1.2rem;
+                border-radius: 0.8rem;
+                height: 1.4rem;
+                width: 1.4rem;
                 background: #bbb;
                 text-indent: 1.2rem;
                 border: 1px solid #333;
@@ -118,8 +126,11 @@ $theme-only: false !default;
                 position: relative;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
-                
+                //justify-content: space-between;
+
+                background: transparent;
+                color: #fff;
+
                 /*
                     Turn off :target highlighting animation.
                 */
@@ -139,12 +150,23 @@ $theme-only: false !default;
         #{&}__message {
             //@extend .u-word-wrap;
 
-            padding: $sz-xs $sz-m;
+            padding-top: $sz-m;
+            padding-right: $sz-m;
+            padding-bottom: $sz-m;
+            padding-left: $sz-m;
+
+            flex-grow: 1;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
         }
 
 
-        #{&}__message * {
-            margin: 0;
+        #{&}__message > * {
+            margin:  $sz-xs 0;
+            flex: 0 0 auto;
         }
 
         #{&}__message > #{&}__message--fluid_text,
@@ -191,7 +213,7 @@ $theme-only: false !default;
         }
     }
 
-    .#{$hero-namespace}hero--reversed .#{$hero-namespace}hero__image-credit {
+    .#{$hero-namespace}hero--right .#{$hero-namespace}hero__image-credit {
         right: auto;
         left: 0;
     }
@@ -210,12 +232,12 @@ $theme-only: false !default;
 
         .#{$hero-namespace}hero-carousel {
             #{&}__nav {
-                margin: 0;
+                //margin: 0;
 
             }
         }
     }
-    
+
     @media #{$s__ie10-11} {
         .#{$hero-namespace}hero {
             #{&}__message {
@@ -250,14 +272,16 @@ $theme-only: false !default;
 
                 bottom: 0;
                 left: 0;
-                width: calc(10em + 20%);
+                //width: calc(10em + 20%);
+                min-width: 30%;
+                max-width: 40%;
                 top: 0;
                 background: rgba(255,255,255,0.75);
 
-                display: flex;
-                flex-wrap: wrap;
-                align-items: center;
-                align-content: center;
+                //display: flex;
+                //flex-wrap: wrap;
+                //align-items: center;
+                //align-content: center;
                 justify-content: flex-start;
             }
 
@@ -266,11 +290,18 @@ $theme-only: false !default;
             }
         }
 
-        .#{$hero-namespace}hero--reversed .#{$hero-namespace}hero__message:not(.#{$hero-namespace}hero__message--wide) {
+        .#{$hero-namespace}hero--right .#{$hero-namespace}hero__message:not(.#{$hero-namespace}hero__message--wide) {
             right: 0;
             left: auto;
         }
 
+        .#{$hero-namespace}hero--bottom .#{$hero-namespace}hero__message:not(.#{$hero-namespace}hero__message--wide) {
+            width: 100%;
+            min-width: auto;
+            max-width: none;
+            bottom: 0;
+            top: auto;
+        }
     }
 
     @media only screen and (min-width:#{$hero-breakpoint-wide}) {
@@ -283,14 +314,17 @@ $theme-only: false !default;
 
                 bottom: 0;
                 left: 0;
-                width: calc(20em + 20%);
+                //width: calc(20em + 20%);
+                min-width: 30%;
+                max-width: 50%;
                 top: 0;
                 background: rgba(255,255,255,0.75);
+                color: #333;
 
-                display: flex;
-                flex-wrap: wrap;
-                align-items: center;;
-                align-content: center;
+                //display: flex;
+                //flex-wrap: wrap;
+                //align-items: center;
+                //align-content: center;
                 justify-content: flex-start;
             }
 
@@ -300,9 +334,34 @@ $theme-only: false !default;
             }
         }
 
-        .#{$hero-namespace}hero--reversed .#{$hero-namespace}hero__message {
+        .#{$hero-namespace}hero--right .#{$hero-namespace}hero__message {
             right: 0;
             left: auto;
+        }
+
+        .#{$hero-namespace}hero--bottom .#{$hero-namespace}hero__message {
+            width: 100%;
+            min-width: auto;
+            max-width: none;
+            bottom: 0;
+            top: auto;
+        }
+
+        .#{$hero-namespace}hero-carousel {
+
+            #{&}__nav {
+                margin-top: -#{$sz-s + $sz-m};
+                //background-color: transparent;
+                //box-shadow: none;
+
+                p {
+                    text-align: right;
+                }
+            }
+
+            .#{$hero-namespace}hero__message--wide {
+                padding-bottom: #{$sz-s + $sz-m};
+            }
         }
 
     }
