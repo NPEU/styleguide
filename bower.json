@@ -7,6 +7,7 @@
         "Fall-Back-Patterns":      "https://github.com/Fall-Back/Patterns.git",
         "Fall-Back-Cookie-Notice": "https://github.com/Fall-Back/Cookie-Notice.git",
         "Fall-Back-Filterability": "https://github.com/Fall-Back/Filterability.git",
+        "Fall-Back-Sortability":   "https://github.com/Fall-Back/Sortability.git#main",
         "Details-Polyfill":        "https://github.com/javan/details-element-polyfill.git",
         "Mark-JS":                 "https://github.com/julmot/mark.js.git",
         "SlimSelect":              "https://github.com/brianvoe/slim-select.git",

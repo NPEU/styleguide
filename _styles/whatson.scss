@@ -144,7 +144,8 @@ table.whatson-table.whatson-table[filterable_visibile_items="1"] tr[filterable_v
     background-color: lighten($s__secondary-ui-color, 25%);
 }
 
-table.whatson-table.whatson-table tr:target td[aria-current="day"] {
+table.whatson-table.whatson-table tr:target td[aria-current="day"],
+table.whatson-table.whatson-table[filterable_visibile_items="1"] tr[filterable_visible_item] td[aria-current="day"] {
     background-color: darken($s__secondary-ui-color, 10%);
     color: #fff;
 }

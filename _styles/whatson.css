@@ -635,7 +635,8 @@ table.whatson-table.whatson-table[filterable_visibile_items="1"] tr[filterable_v
   background-color: #e1d0b6;
 }
 
-table.whatson-table.whatson-table tr:target td[aria-current="day"] {
+table.whatson-table.whatson-table tr:target td[aria-current="day"],
+table.whatson-table.whatson-table[filterable_visibile_items="1"] tr[filterable_visible_item] td[aria-current="day"] {
   background-color: #a27b43;
   color: #fff;
 }

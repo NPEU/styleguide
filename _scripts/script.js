@@ -355,7 +355,7 @@ var cookie_html                   =
     var close_button_html  =
 '<button' + close_button_id_string + close_button_class_string + close_button_focus_target_selector_string + '>' +
 '    <span hidden="" aria-hidden="false">Close</span>' +
-'    <svg focusable="false" class="icon  icon--is-open" width="20" height="20"><use xlink:href="#icon-cross"></use></svg></button>' +
+'    <svg focusable="false" class="icon  icon--is-open"><use xlink:href="#icon-cross"></use></svg></button>' +
 '</button>' + "\n";
 
     var ready = function(fn) {
@@ -421,10 +421,12 @@ var cookie_html                   =
     //var debug                                = true;
     var debug                                = false;
     var ident                                = 'cmr';
+    var css_check_selector                   = "#css_has_loaded";
     var selector                             = '[data-js="' + ident + '"]';
     var js_classname_prefix                  = 'js';
     var container_js_classname_wide_suffix   = 'wide';
     var container_js_classname_narrow_suffix = 'narrow';
+    var detector_n                           = 0;
 
     var ready = function(fn) {
         if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
@@ -433,10 +435,83 @@ var cookie_html                   =
             document.addEventListener('DOMContentLoaded', fn);
         }
     }
-    
+
+    var debounce = function(func, wait, immediate) {
+        var timeout;
+        return function() {
+            var context = this;
+            var args = arguments;
+            var later = function() {
+                timeout = null;
+                if (!immediate) {
+                    func.apply(context, args);
+                }
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) {
+                func.apply(context, args);
+            }
+        };
+    }
+
+    var check_for_css = function(selector) {
+
+        if (debug) {
+            console.log('Checking for CSS: ' + selector);
+        }
+
+        var rules;
+        var haveRule = false;
+        if (typeof document.styleSheets != "undefined") { // is this supported
+            var cssSheets = document.styleSheets;
+
+
+            // IE doesn't have document.location.origin, so fix that:
+            if (!document.location.origin) {
+                document.location.origin = document.location.protocol + "//" + document.location.hostname + (document.location.port ? ':' + document.location.port: '');
+            }
+            var domain_regex  = RegExp('^' + document.location.origin);
+
+            outerloop:
+            for (var i = 0; i < cssSheets.length; i++) {
+                var sheet = cssSheets[i];
+
+                // Some browsers don't allow checking of rules if not on the same domain (CORS), so
+                // checking for that here:
+                if (sheet.href !== null && domain_regex.exec(sheet.href) === null) {
+                    continue;
+                }
+
+                // Check for IE or standards:
+                rules = (typeof sheet.cssRules != "undefined") ? sheet.cssRules : sheet.rules;
+
+                for (var j = 0; j < rules.length; j++) {
+                    if (rules[j].selectorText == selector) {
+                        haveRule = true;
+                        break outerloop;
+                    }
+                }
+            }
+        }
+
+        if (debug) {
+            console.log(selector + ' ' + (haveRule ? '' : 'not') + ' found');
+        }
+
+        return haveRule;
+    }
+
     var set_style = function(element, style) {
         Object.keys(style).forEach(function(key) {
-            element.style[key] = style[key];
+            var val = style[key];
+            if (val.indexOf(' !important' ) !== -1) {
+                val = val.replace(' !important', '');
+                element.style.setProperty(key, val, 'important');
+            } else {
+                element.style.setProperty(key, val);
+            }
         });
     }
 
@@ -448,14 +523,32 @@ var cookie_html                   =
 
         switcher: function(cmr) {
 
-            // Check for browser font chnage and reset breakpoints if it has:
-            if ($cmr.root_font_size != window.getComputedStyle(document.documentElement).getPropertyValue('font-size')) {
-                $cmr.set_breakpoints($cmr.cmrs);
+            // Check for browser font change and reset breakpoints if it has:
+            // (Note IE11 does some REALLY strange things with the font size - there's a slight
+            // difference in the output depending on whether the page is refreshed or reloaded!
+            var cached_font_size   = Math.ceil(parseFloat($cmr.root_font_size));
+            var document_font_size = Math.ceil(parseFloat(window.getComputedStyle(document.documentElement).getPropertyValue('font-size')));
+
+            if (debug) {
+                console.log($cmr.root_font_size, window.getComputedStyle(document.documentElement).getPropertyValue('font-size'));
+                console.log(cached_font_size, document_font_size);
             }
 
+            if (cached_font_size != document_font_size) {
+                $cmr.root_font_size = document_font_size;
+                $cmr.set_breakpoints($cmr.cmrs);
+                window.setTimeout(function(){
+                    $cmr.do_switch(cmr);
+                }, 250);
+            } else {
+                $cmr.do_switch(cmr);
+            }
+        },
+
+        do_switch: function(cmr) {
             // Note using getAttribute('data-') instead of dataset so it doesn't fail on older
             // browsers and leave behind the clone.
-            // May rethink this as I don't NEED to support older browsers witht this - I just don't
+            // May rethink this as I don't NEED to support older browsers with this - I just don't
             // want it broken. Maybe I should quit out of this if dataset isn't supported, but it's
             // ok for now.
             var wide = cmr.offsetWidth > cmr.getAttribute('data-js-breakpoint');
@@ -480,36 +573,76 @@ var cookie_html                   =
         set_breakpoints: function(cmrs) {
 
             Array.prototype.forEach.call(cmrs, function (cmr, i) {
+                //set_style(cmr, {'position': 'relative'});
                 var clone = cmr.cloneNode(true);
                 clone.classList.add(js_classname_prefix + '-' + ident + '--' + container_js_classname_wide_suffix);
 
                 set_style(clone, {
-                    position: 'absolute',
-                    border: '0',
-                    left: '0',
-                    top: '0',
+                    'border': '0',
+                    'left': '0',
+                    'top': '0',
+                    'width': 'max-content',
+                    'flex-wrap': 'nowrap',
+                    'justify-content': 'flex-start',
+                    'max-width': 'none'
                 });
+
                 cmr.parentNode.appendChild(clone);
 
                 var children   = clone.children;
+                var n_children = children.length;
                 var breakpoint = 0;
+
+                // Set widths for flexible children:
                 Array.prototype.forEach.call(children, function (child, i) {
-                    // If this child is intended to be flexible, we need to add it's min-width,
-                    // rather than actual width:
+                    //console.log(child);
                     if (child.getAttribute('data-min-width')) {
-                        breakpoint += Math.ceil(child.getAttribute('data-min-width'));
-                    } else {
-                        breakpoint += Math.ceil(child.offsetWidth);
+                        var w = parseInt(child.getAttribute('data-min-width'));
+                        var pLeft  = parseInt(getComputedStyle(child).paddingLeft);
+                        var pRight = parseInt(getComputedStyle(child).paddingRight);
+                        //console.log(w, pLeft, pRight);
+                        set_style(child, {
+                            'width': (w + pLeft + pRight) + 'px !important',
+                            'max-width': (w + pLeft + pRight) + 'px !important',
+                            'min-width': (w + pLeft + pRight) + 'px !important'
+                        })
                     }
                 });
 
-                cmr.setAttribute('data-js-breakpoint', breakpoint);
-
-                clone.remove();
+                // Handle IE separately:
+                if (!!window.MSInputMethodContext && !!document.documentMode) {
+                    var pLeft  = parseInt(getComputedStyle(clone).paddingLeft);
+                    var pRight = parseInt(getComputedStyle(clone).paddingRight);
+                    breakpoint += pLeft + pRight;
+                    Array.prototype.forEach.call(children, function (child, i) {
+                        breakpoint += Math.ceil(child.offsetWidth);
+                    });
+                    if (debug) {
+                        console.log('breakpoint: ', breakpoint);
+                    }
+                    cmr.setAttribute('data-js-breakpoint', breakpoint);
+                    clone.remove();
+                } else {
+                    if (debug) {
+                        console.log('breakpoint: ', clone.offsetWidth);
+                    }
+                    cmr.setAttribute('data-js-breakpoint', clone.offsetWidth);
+                    clone.remove();
+                }
             });
         },
 
         init: function() {
+
+            var css_is_loaded = check_for_css(css_check_selector);
+
+            if (debug) {
+                console.log('css_is_loaded:', css_is_loaded);
+            }
+
+            if (!css_is_loaded) {
+                return false;
+            }
 
             if (debug) {
                 console.log('Initialising ' + ident);
@@ -541,39 +674,63 @@ var cookie_html                   =
                 }
 
                 var style = {
-                    position: 'absolute',
-                    display: 'block',
-                    border: '0',
-                    left: '0',
-                    top: '0',
-                    width: '100%',
-                    height: '100%',
-                    pointerEvents: 'none',
-                    zIndex: '-1'
+                    'position': 'absolute',
+                    'display': 'block',
+                    'border': '0',
+                    'width': '100%',
+                    'height': '100%',
+                    'pointerEvents': 'none',
+                    'z-index': '-1'
                 };
 
-                // Note visibility: hidden prevents the resize event from occuring in FF.
+                // Note visibility: hidden prevents the resize event from occurring in FF.
+                // Also note that putting the detector iframe in a flex container causes problems
+                // for IE11 (it continues to take up space) - so we need to look for a safe non-flex
+                // container for it to use, so specify this in the markup as n parent levels above
+                // the CMR element.
 
                 Array.prototype.forEach.call($cmr.cmrs, function (cmr, i) {
+
                     var detector = document.createElement('iframe');
+                    detector.id = 'detector-' + (++detector_n);
+                    cmr.detector_id = detector.id;
+
                     set_style(detector, style);
                     detector.setAttribute('aria-hidden', 'true');
 
-                    cmr.appendChild(detector);
+                    var n = cmr.getAttribute('data-ie-safe-parent-level');
+                    var safe_parent = cmr;
+                    if (n) {
+                        while (n-- > 0) {
+                            safe_parent = safe_parent.parentNode;
+                            if (!safe_parent) {
+                                // to avoid a possible "TypeError: Cannot read property 'parentNode' of null" if the requested level is higher than document
+                                break;
+                            }
+                        }
+                        set_style(safe_parent, {'position': 'relative'});
+                        safe_parent.appendChild(detector);
+                    } else {
+                        set_style(cmr, {'position': 'relative'});
+                        cmr.appendChild(detector);
+                    }
 
                     detector.contentWindow.addEventListener('resize', function() {
+                        if (debug) {
+                            console.log('Reszing ' + detector.id + ' (1)');
+                        }
                         $cmr.switcher(cmr);
                     });
                     $cmr.switcher(cmr);
+
                 });
             }
             return;
         }
     }
 
-    ready($cmr.init);
+    window.setTimeout(function(){ready($cmr.init)}, 50);
 })();
-
 /*! --------------------------------------------------------------------------------------------- *\
     
     Fall-Back Dropdown v2.0.0
