@@ -1,5 +1,11 @@
 // NEED A BETTER PLACE FOR THE FOLLOWING:
 
+
+// Links should always be allowed to break (wrap) so they never overflow their container:
+a {
+    word-break: break-word;
+}
+
 // Reduce opacity of external link marker to make less overbearing.
 a[href][rel~="external"]::after {
     opacity: 0.6;

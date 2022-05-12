@@ -4145,6 +4145,10 @@ $theme-only: true;
     I'm considering their use. An (abandoned) attempt at customising the CKEditor div plugin
     would have required these.
 */
+a {
+  word-break: break-word;
+}
+
 a[href][rel~="external"]::after {
   opacity: 0.6;
 }

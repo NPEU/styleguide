@@ -13,6 +13,8 @@ $hero-min-message-size: 16px !default;
 $hero-max-message-size: 26px !default;
 $hero-min-heading-size: 24px !default;
 $hero-max-heading-size: 46px !default;
+$hero-min-fake-heading-size: 22px !default;
+$hero-max-fake-heading-size: 36px !default;
 
 $theme-only: false !default;
 
@@ -169,22 +171,27 @@ $theme-only: false !default;
             flex: 0 0 auto;
         }
 
+         /*
+            1. For IE10 to wrap text.
+        */
         #{&}__message > #{&}__message--fluid_text,
         #{&}__message > #{&}__message--fluid_heading {
-            /*
-                1. For IE10 to wrap text.
-            */
-
-            @include fluid-type(strip-unit($hero-breakpoint) * 16px, strip-unit($hero-max-message-breakpoint) * 16px, $hero-min-message-size, $hero-max-message-size);
-
             line-height: 1.3;
             font-weight: bold;
             margin: 0;
             max-width: 100%; /* [1] */
         }
 
-        #{&}__message > #{&}__message--fluid_heading {
+        #{&}__message > #{&}__message--fluid_text {
+            @include fluid-type(strip-unit($hero-breakpoint) * 16px, strip-unit($hero-max-message-breakpoint) * 16px, $hero-min-message-size, $hero-max-message-size);
+        }
+
+        #{&}__message > h1#{&}__message--fluid_heading {
             @include fluid-type(strip-unit($hero-breakpoint) * 16px, strip-unit($hero-max-message-breakpoint) * 16px, $hero-min-heading-size, $hero-max-heading-size);
+        }
+
+        #{&}__message > p#{&}__message--fluid_heading {
+            @include fluid-type(strip-unit($hero-breakpoint) * 16px, strip-unit($hero-max-message-breakpoint) * 16px, $hero-min-fake-heading-size, $hero-max-fake-heading-size);
         }
 
         #{&}__image-credit {

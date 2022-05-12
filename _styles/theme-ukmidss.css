@@ -5767,6 +5767,12 @@ $glimpse--link-border-bottom--hover: false !default;*/
   animation: none;
 }
 
+.c-hero {
+  /*
+            1. For IE10 to wrap text.
+        */
+}
+
 .c-hero.c-hero {
   position: relative;
   background: #fff;
@@ -5792,9 +5798,6 @@ $glimpse--link-border-bottom--hover: false !default;*/
 
 .c-hero .c-hero__message > .c-hero__message--fluid_text,
 .c-hero .c-hero__message > .c-hero__message--fluid_heading {
-  /*
-                1. For IE10 to wrap text.
-            */
   line-height: 1.3;
   font-weight: bold;
   margin: 0;
@@ -5802,38 +5805,51 @@ $glimpse--link-border-bottom--hover: false !default;*/
   /* [1] */
 }
 
-.c-hero .c-hero__message > .c-hero__message--fluid_text,
-.c-hero .c-hero__message > .c-hero__message--fluid_heading {
+.c-hero .c-hero__message > .c-hero__message--fluid_text {
   font-size: 16px;
 }
 
 @media screen and (min-width: 640px) {
-  .c-hero .c-hero__message > .c-hero__message--fluid_text,
-  .c-hero .c-hero__message > .c-hero__message--fluid_heading {
+  .c-hero .c-hero__message > .c-hero__message--fluid_text {
     font-size: calc(16px + 10 * ((100vw - 640px) / 960));
   }
 }
 
 @media screen and (min-width: 1600px) {
-  .c-hero .c-hero__message > .c-hero__message--fluid_text,
-  .c-hero .c-hero__message > .c-hero__message--fluid_heading {
+  .c-hero .c-hero__message > .c-hero__message--fluid_text {
     font-size: 26px;
   }
 }
 
-.c-hero .c-hero__message > .c-hero__message--fluid_heading {
+.c-hero .c-hero__message > h1.c-hero__message--fluid_heading {
   font-size: 24px;
 }
 
 @media screen and (min-width: 640px) {
-  .c-hero .c-hero__message > .c-hero__message--fluid_heading {
+  .c-hero .c-hero__message > h1.c-hero__message--fluid_heading {
     font-size: calc(24px + 22 * ((100vw - 640px) / 960));
   }
 }
 
 @media screen and (min-width: 1600px) {
-  .c-hero .c-hero__message > .c-hero__message--fluid_heading {
+  .c-hero .c-hero__message > h1.c-hero__message--fluid_heading {
     font-size: 46px;
+  }
+}
+
+.c-hero .c-hero__message > p.c-hero__message--fluid_heading {
+  font-size: 22px;
+}
+
+@media screen and (min-width: 640px) {
+  .c-hero .c-hero__message > p.c-hero__message--fluid_heading {
+    font-size: calc(22px + 14 * ((100vw - 640px) / 960));
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .c-hero .c-hero__message > p.c-hero__message--fluid_heading {
+    font-size: 36px;
   }
 }
 
@@ -6063,6 +6079,10 @@ $glimpse--link-border-bottom--hover: false !default;*/
                 border-bottom: 1px solid #bbb;
                 margin-bottom: calc(2.4rem - 1px);
             }*/
+}
+
+.c-longform-content.c-longform-content > *[data-display-as~="breakout-box"]:not(:last-child) {
+  margin-bottom: 2.4rem;
 }
 
 .c-longform-content details {
@@ -14460,6 +14480,10 @@ input:not([type]):focus,
   }
 }
 
+a {
+  word-break: break-word;
+}
+
 a[href][rel~="external"]::after {
   opacity: 0.6;
 }
@@ -15094,6 +15118,10 @@ legend h6 {
 
 .l-layout .l-box--push-apart {
   margin: 0 auto !important;
+}
+
+.l-layout .l-box--push-end {
+  margin-left: auto !important;
 }
 
 .l-layout .l-box--space--edge,
