@@ -67,11 +67,11 @@
                 }
 
                 // Form controls and default sort order:
-                // (just a set of radios for now - other inputs like select can be added later:
+                // (just a set of radios for now - other inputs like select can be added later)
                 var control_group = sortable_group.querySelector('[sortable_form_controls]');
                 var default_sort  = control_group.querySelector('[sortable_choice][checked]');
-
-                sortability.sortList(sortable_group, default_sort.value);
+                var default_dir   = (default_sort.hasAttribute('sortable_dir') ? default_sort.getAttribute('sortable_dir') : 'asc');
+                sortability.sortList(sortable_group, default_sort.value, default_dir);
 
                 var form_controls = control_group.querySelectorAll('[sortable_choice]');
                 Array.prototype.forEach.call(form_controls, function(form_control, i) {
@@ -79,7 +79,8 @@
                         e.preventDefault();
 
                         // sort the list:
-                        sortability.sortList(sortable_group, this.value);
+                        var dir   = (this.hasAttribute('sortable_dir') ? this.getAttribute('sortable_dir') : 'asc');
+                        sortability.sortList(sortable_group, this.value, dir);
                         return false;
                     });
                 });
@@ -89,9 +90,10 @@
             });
         },
 
-        sortList: function(group, index_name) {
+        sortList: function(group, index_name, dir) {
+            console.log(dir);
             // There may be more than one list in a group (for example if there were
-            // sub-headings within a larger group of lists
+            // sub-headings within a larger group of lists)
             var sortable_lists = group.querySelectorAll('[sortable_list]');
             Array.prototype.forEach.call(sortable_lists, function(sortable_list, i) {
 
@@ -120,14 +122,20 @@
 
                 var items_array = Array.prototype.slice.call(items, 0);
                 items_array.sort(function(a,b){
-                    if (a.getAttribute('sortable_index_string') < b.getAttribute('sortable_index_string')) {
+                    var aa = a.getAttribute('sortable_index_string'),
+                        ba = b.getAttribute('sortable_index_string');
+                    if (aa < ba) {
                         return -1;
                     }
-                    if (a.getAttribute('sortable_index_string') > b.getAttribute('sortable_index_string')) {
+                    if (aa > ba) {
                         return 1;
                     }
                     return 0;
                 });
+
+                if (dir == 'desc') {
+                    items_array.reverse();
+                }
 
                 Array.prototype.forEach.call(items_array, function(item, i) {
                     sortable_list.appendChild(item);
@@ -136,6 +144,8 @@
 
         }
     };
+
+
 
     ready(sortability.init);
 })();
