@@ -2037,7 +2037,7 @@ sup {
 /*
     1. Change the fill color to match the text color in all browsers.
        (needs more testing)
-       
+
     2. iOS7 (at least) adds a mystery top margin.
 */
 svg {
@@ -2314,12 +2314,12 @@ main :target {
 /*
 Shelving this for now
 @if $s__procedural-margins == false {
-    /* this is too generic 
+    /* this is too generic
     * + * {
         margin-top: $s__base-rem-space-unit;
     }
     /
-    
+
     /* This is the full list but it's not exactly what we want:
     * + address,
     * + article,
@@ -2355,7 +2355,7 @@ Shelving this for now
     * + table,
     * + ul
     /
-    
+
     /*
         Taking out list items, hr and div:
     /
@@ -2388,11 +2388,11 @@ Shelving this for now
     *:not(legend):not(figcaption) + ul {
         margin-top: $s__base-rem-space-unit;
     }
-    
+
     hr {
         margin-top: calc(2.4rem - 1px;
     }
-} 
+}
 */
 /*! Start-CSS Accessibility. See SCSS file for documentation. */
 /*-------------------------------------------------------------------------------------------------|
@@ -2485,7 +2485,7 @@ a[hidden="false"][aria-hidden="false"]:active {
     ("Press TAB to highlight each item on a web page.)
     That is - the default outline focus style works, but shadows don't unless appearance: none
     is used.
-    
+
     1. Safari 9.1 doesn't recognize 'auto' but I suspect others won't recognize 'initial', so
        keeping both for now.
 */
@@ -3046,7 +3046,7 @@ a[hidden="false"][aria-hidden="false"]:active {
     This default icon set used Feather Icons (https://feathericons.com/)
     If you want to use a different icon set, omit the @import declaration for this file and replace
     it with a custom one.
-    
+
     The markup here is based on this article:
     [Accessible SVG Icons with Inline Sprites](https://www.24a11y.com/2018/accessible-svg-icons-with-inline-sprites/)
 
@@ -3069,13 +3069,13 @@ a[hidden="false"][aria-hidden="false"]:active {
             }
         </style>
         <symbol id="icon-building" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         >
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
             <polyline points="9 22 9 12 15 12 15 22"/>
         </symbol>
         <symbol id="icon-calendar" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         >
             <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
             <line x1="16" y1="2" x2="16" y2="6"/>
@@ -3083,105 +3083,105 @@ a[hidden="false"][aria-hidden="false"]:active {
             <line x1="3" y1="10" x2="21" y2="10"/>
         </symbol>
         <symbol id="icon-chevron-down" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         >
             <polyline points="6 9 12 15 18 9"/>
         </symbol>
         <symbol id="icon-chevron-up" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         >
             <polyline points="18 15 12 9 6 15"/>
         </symbol>
         <symbol id="icon-chevron-left" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         >
             <polyline points="15 18 9 12 15 6"/>
         </symbol>
         <symbol id="icon-chevron-right" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         >
             <polyline points="9 18 15 12 9 6"/>
         </symbol>
         <symbol id="icon-cross" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         >
             <line x1="18" y1="6" x2="6" y2="18"/>
             <line x1="6" y1="6" x2="18" y2="18"/>
         </symbol>
         <symbol id="icon-edit" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         >
             <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
         </symbol>
         <symbol id="icon-email" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         >
             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
             <polyline points="22,6 12,13 2,6"/>
         </symbol>
         <symbol id="icon-facebook" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         >
             <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
         </symbol>
         <symbol id="icon-fax" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         >
             <path class="st0" d="M6,18H4c-1.1,0-2-0.7-2-1.6v-4c0-0.9,0.9-1.6,2-1.6h16c1.1,0,2,0.7,2,1.6v4c0,0.9-0.9,1.6-2,1.6h-2"/>
             <rect x="6" y="14" class="st0" width="12" height="8"/>
             <path class="st0" d="M6,7.4L4.8,6.2C4.4,5.7,4.4,5,4.8,4.6c0,0,0.1,0,0.1-0.1c1.4-1.1,3-1.9,4.7-2.2c1.6-0.4,3.2-0.4,4.8,0 c1.7,0.4,3.3,1.1,4.7,2.2c0.5,0.4,0.5,1.1,0.1,1.6c0,0,0,0.1-0.1,0.1L18,7.4c-0.4,0.4-1,0.5-1.5,0.1c-0.4-0.3-0.9-0.6-1.4-0.8 c-0.4-0.2-0.7-0.6-0.7-1v-1c-1.6-0.4-3.2-0.4-4.8,0v1c0,0.4-0.3,0.8-0.7,1C8.4,6.9,8,7.2,7.5,7.5C7.1,7.8,6.4,7.8,6,7.4z"/>
         </symbol>
         <symbol id="icon-file" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         >
             <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
             <polyline points="13 2 13 9 20 9"/>
         </symbol>
         <symbol id="icon-info" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         >
             <circle cx="12" cy="12" r="10"/>
             <line x1="12" y1="16" x2="12" y2="12"/>
             <line x1="12" y1="8" x2="12.01" y2="8"/>
         </symbol>
         <symbol id="icon-linkedin" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
-        >            
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        >
             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
             <rect x="2" y="9" width="4" height="12"/>
             <circle cx="4" cy="4" r="2"/>
         </symbol>
         <symbol id="icon-menu" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         >
             <line x1="3" y1="12" x2="21" y2="12"/>
             <line x1="3" y1="6" x2="21" y2="6"/>
             <line x1="3" y1="18" x2="21" y2="18"/>
         </symbol>
         <symbol id="icon-person" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         >
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
             <circle cx="12" cy="7" r="4"/>
         </symbol>
         <symbol id="icon-phone" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         >
             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
         </symbol>
         <symbol id="icon-rss" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         >
             <path class="st0" d="M5.6,9.1c4,0,7.2,3.2,7.2,7.2"/><path class="st0" d="M5.6,3.5c7,0,12.8,5.7,12.8,12.8"/><circle class="st0" cx="6.4" cy="15.5" r="0.8"/>
         </symbol>
         <symbol id="icon-search" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         >
             <circle cx="10.5" cy="10.5" r="7.5"/>
             <line x1="21" y1="21" x2="15.8" y2="15.8"/>
         </symbol>
         <symbol id="icon-twitter" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         >
             <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
         </symbol>
@@ -3243,7 +3243,7 @@ _:-o-prefocus, :root .icon {
     ("Press TAB to highlight each item on a web page.)
     That is - the default outline focus style works, but shadows don't unless appearance: none
     is used.
-    
+
     1. Safari 9.1 doesn't recognize 'auto' but I suspect others won't recognize 'initial', so
        keeping both for now.
 */
@@ -3410,7 +3410,7 @@ _:-o-prefocus, :root .icon {
 
 /* ---------------------------------------------------------------------------------------------- */
 /*! --------------------------------------------------------------------------------------------- *\
-    
+
     Fall-Back Over Panel v2.0.0
     https://github.com/Fall-Back/Patterns/tree/master/Over%20Panel
     Copyright (c) 2021, Andy Kirk
@@ -3681,7 +3681,7 @@ _:-o-prefocus, :root .icon {
 
 /* ---------------------------------------------------------------------------------------------- */
 /*! --------------------------------------------------------------------------------------------- *\
-    
+
     Fall-Back Nav Bar v2.0.0
     https://github.com/Fall-Back/Patterns/tree/master/Nav%20Bar
     Copyright (c) 2021, Andy Kirk
@@ -4044,7 +4044,7 @@ _:-o-prefocus, :root .icon {
 }
 
 /*! --------------------------------------------------------------------------------------------- *\
-    
+
     Fall-Back Dropdown v2.0.0
     https://github.com/Fall-Back/Patterns/tree/master/Dropdown
     Copyright (c) 2021, Andy Kirk
@@ -4331,7 +4331,7 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
 }
 
 /*! --------------------------------------------------------------------------------------------- *\
-    
+
     Fall-Back Search Form v2.0.0
     https://github.com/Fall-Back/Patterns/tree/master/Search%20Form
     Copyright (c) 2021, Andy Kirk
@@ -4559,7 +4559,7 @@ body {
             -moz-transform: translateX(-50%);
         }
     }
-    
+
     /* Reset for Firefox 22+ *
     @supports (-moz-appearance:none) and (display:flex) {
         .sticky-footer-wrap {
@@ -5014,7 +5014,7 @@ $card-button--border-color: darken($card--base-color, 20%) !default;
 */
 /*
         IE10-11 needs this wrapper to behave properly.
-        If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.   
+        If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.
     */
 /*.c-card-wrap {
         & {
@@ -5028,7 +5028,7 @@ $card-button--border-color: darken($card--base-color, 20%) !default;
     }*/
 /*
         Older webkit browsers also need special treatment.
-        
+
         1. Chrome 39-50, Opera 26-37, Safari/iOS 9-10. Using prefixed property as flex-direction
            breaks IE11 otherwise, so may as well use for all.
     */
@@ -6717,10 +6717,10 @@ $tool-form--link-border-bottom--hover: false !default;*/
 
 /*
     Utilitarian text and links. E.g. footer, login info, skiplinks
-    
+
     Utilitext links are prime candidates to have icons as part of the links text.
     However, the underline border doesn't work well with icons, so an additional span is used to
-    wrap the link text (not the icon) regardless of whether or not there is an icon, since we can't 
+    wrap the link text (not the icon) regardless of whether or not there is an icon, since we can't
     look inside elements with CSS.
 */
 .c-utilitext.c-utilitext {
@@ -7302,7 +7302,7 @@ ul.c-utilitext li + li, ol.c-utilitext li + li {
     * Above content breakpoint, there's a single row. Each item needs to be of adequate width.
 
     * [Optional: gutter and bottom spacing]
-    
+
     After much messing around with IE, the solution is to have an extra wrapper with `display: flex`
     and `flex-basis: 100%` on the inner wrapper.
 
@@ -7321,21 +7321,21 @@ ul.c-utilitext li + li, ol.c-utilitext li + li {
 .l-col-to-row-wrap {
     display: --webkit-flex;
     display: -ms-flexbox;
-    display: flex; 
-    
+    display: flex;
+
     width: 100%;
-    
+
     & > .l-col-to-row {
         -webkit-flex-basis: 100%;
         -ms-flex-preferred-size: 100%;
-        flex-basis: 100%; 
+        flex-basis: 100%;
     }
 }
 */
 .l-col-to-row {
   /*
         Older webkit browsers also need special treatment.
-        
+
         1. Chrome 39-50, Opera 26-37, Safari/iOS 9-10. Using prefixed property as flex-direction
            breaks IE11 otherwise, so may as well use for all.
     */
@@ -7591,7 +7591,7 @@ _:-webkit-any-link, :root .l-col-to-row__item.l-col-to-row__item {
     */
   /* MODIFIERS */
   /* Widths */
-  /* 
+  /*
         1. In Flexbox, with these settings, incomplete rows will have their items stretched to fill,
            (due to flex-grow: 1), so a max-width is necessary.
            This is why Grid is preferred and if supported, added below.
@@ -7809,7 +7809,7 @@ _:-webkit-any-link, :root .l-col-to-row__item.l-col-to-row__item {
             -ms-grid-rows: 100%;
         }
 
-        & > * {            
+        & > * {
             -ms-grid-column-align: center;
             -ms-grid-row-align: center;
         }
@@ -8250,7 +8250,7 @@ $pagination-button--border-color: darken($pagination--base-color, 20%) !default;
 
 /*@media (max-width: $s__breakpoint--enhanced) {
     .u-image-cover {
-       
+
         &--min-10 {
            min-height: 10vmin;
         }
@@ -8440,7 +8440,7 @@ a[href][rel~="external"].u-image-natural:focus::after {
 
 /*
     Box padding.
-    
+
     @To Do: allow for responsive variations.
 */
 .u-padding--left--xs,
@@ -8850,7 +8850,7 @@ a[href][rel~="external"].u-image-natural:focus::after {
 
 /*
     Text size.
-    
+
     @To Do: allow for responsive variations.
 */
 .u-text-size--small {
@@ -13513,10 +13513,10 @@ $tool-form--link-border-bottom: false !default;
 $tool-form--link-border-bottom--hover: false !default;*/
 /*
     Utilitarian text and links. E.g. footer, login info, skiplinks
-    
+
     Utilitext links are prime candidates to have icons as part of the links text.
     However, the underline border doesn't work well with icons, so an additional span is used to
-    wrap the link text (not the icon) regardless of whether or not there is an icon, since we can't 
+    wrap the link text (not the icon) regardless of whether or not there is an icon, since we can't
     look inside elements with CSS.
 */
 .c-utilitext.c-utilitext {
@@ -14565,7 +14565,7 @@ h1, h2, h3, h4 {
 
 @supports (width: max(1px, 1px)) and (overscroll-behavior: auto) {
   h1, h2, h3, h4 {
-    line-height: max(2.4rem, min(3.6rem, ((20px - 100%) * -999)), min(4.8rem, ((32px - 100%) * -999)), min(6rem, ((44px - 100%) * -999)), min(7.2rem, ((56px - 100%) * -999)));
+    -line-height: max(2.4rem, min(3.6rem, ((20px - 100%) * -999)), min(4.8rem, ((32px - 100%) * -999)), min(6rem, ((44px - 100%) * -999)), min(7.2rem, ((56px - 100%) * -999)));
   }
 }
 
@@ -15556,7 +15556,13 @@ legend h6 {
   }
 }
 
-/*    Distribute Layout    =================    Distribute items inside a container.*/
+/*
+    Distribute Layout
+    =================
+
+    Distribute items inside a container.
+
+*/
 .l-layout.l-distribute > .l-layout__inner > .l-box {
   flex-grow: 0;
 }
@@ -15574,16 +15580,36 @@ legend h6 {
     /* 3 or more: */
     /* 3 or more, different values for the first one: */
     /* 4 or more: */
-    /*            From here on in there are increasingly more possibilities on how things can be laid out.            More items = more possibilities. I've tried to go for what I consider to be the most balanced option but almost all other possibilities are achievable.            */
+    /*
+            From here on in there are increasingly more possibilities on how things can be laid out.
+            More items = more possibilities. I've tried to go for what I consider to be the most balanced option but almost all other possibilities are achievable.
+            */
     /* 5 or more: (1x5 | 1,2x2 | 2,3 | 5) (skip out 1,4???) */
     /* 5 or more, different values for the first two: */
     /* 5 or more, different values for the first one: */
     /* 6 or more: */
     /* 6 or more, different values for the first two: */
-    /*& > .l-box:nth-last-child(n+6),            & > .l-box:nth-last-child(n+6) + * {                flex-basis: unquote("min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(50%, ((var(--b) * 4) - 100%) * 999), max(20%, ((var(--b) * 5) - 100%) * 999), max(16%, ((var(--b) * 6) - 100%) * 999))");            }*/
+    /*& > .l-box:nth-last-child(n+6),
+            & > .l-box:nth-last-child(n+6) + * {
+                flex-basis: unquote("min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(50%, ((var(--b) * 4) - 100%) * 999), max(20%, ((var(--b) * 5) - 100%) * 999), max(16%, ((var(--b) * 6) - 100%) * 999))");
+            }*/
     /* 6 or more, different values for the first one: */
-    /*& > .l-box:nth-last-child(n+6) {                flex-basis: unquote("min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(50%, ((var(--b) * 4) - 100%) * 999), max(100%, ((var(--b) * 5) - 100%) * 999), max(16%, ((var(--b) * 6) - 100%) * 999))");            }*/
-    /*                It's worth noting here that things get especially tricky and messy. We've already seen                with 6 we've had to skip some steps, and things like 7 and 11 are quite hard too.                Also with ANY amount, the practicalities of allowing all arrangements up to a single                row become limiting.                If you assume you have items that are quite small - and can therefore fit into a single                row - a small reduction in available width that causes wrapping would leave a very large                item on it's own row. This is the whole reason we want to balance things in the first                place, so that this doesn't happen - we want a reduction in available width that causes                wrapping to lead to MORE items being wrapped and thus creating a better balance.                It's just very hard to know where things SHOULD land.            */
+    /*& > .l-box:nth-last-child(n+6) {
+                flex-basis: unquote("min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(50%, ((var(--b) * 4) - 100%) * 999), max(100%, ((var(--b) * 5) - 100%) * 999), max(16%, ((var(--b) * 6) - 100%) * 999))");
+            }*/
+    /*
+                It's worth noting here that things get especially tricky and messy. We've already seen
+                with 6 we've had to skip some steps, and things like 7 and 11 are quite hard too.
+                Also with ANY amount, the practicalities of allowing all arrangements up to a single
+                row become limiting.
+                If you assume you have items that are quite small - and can therefore fit into a single
+                row - a small reduction in available width that causes wrapping would leave a very large
+                item on it's own row. This is the whole reason we want to balance things in the first
+                place, so that this doesn't happen - we want a reduction in available width that causes
+                wrapping to lead to MORE items being wrapped and thus creating a better balance.
+                It's just very hard to know where things SHOULD land.
+
+            */
     /* 7 or more: (1x7 | 1,2x3 | 1,3x2 | 3,4) */
     /* 7 or more, different values for the second and third: */
     /* 7 or more, different values for the first one: */

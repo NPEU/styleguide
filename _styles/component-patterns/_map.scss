@@ -31,12 +31,15 @@ $map-heights: (
             width: 100%;
         }
 
-
             .#{$map-namespace}map > * {
                 width: 100%;
                 height: 100%;
-                
+
                 flex: 1 0 auto;
+            }
+
+            #{$map-namespace}map .leaflet-popup-content {
+                margin: 1emk
             }
 
             @each $height in $map-heights {

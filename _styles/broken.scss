@@ -39,3 +39,7 @@ a {
 a.c-badge--decorated div {
     color: rgba(0,0,0,0.65);
 }
+
+.c-map .leaflet-popup-content {
+    margin: 1em;
+}
